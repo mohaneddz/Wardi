@@ -1,0 +1,1 @@
+// import Quran from '../models/quranModel.js';

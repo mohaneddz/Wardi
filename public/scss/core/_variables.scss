@@ -1,0 +1,79 @@
+// Color Palette //////////////////////////
+$primary-color: #0D142C;
+$primary-color-light: lighten($primary-color, 10%); // Lightened by 10%
+$primary-color-lighter: lighten($primary-color, 20%); // Lightened by 20%
+$primary-color-dark: darken($primary-color, 10%); // Darkened by 10%
+$primary-color-darker: darken($primary-color, 20%); // Darkened by 20%
+
+$secondary-color: #233678;
+$secondary-color-light: lighten($secondary-color, 10%);
+$secondary-color-lighter: lighten($secondary-color, 20%);
+$secondary-color-dark: darken($secondary-color, 10%);
+$secondary-color-darker: darken($secondary-color, 20%);
+
+$tertiary-color: #c92478;
+$tertiary-color-light: lighten($tertiary-color, 10%);
+$tertiary-color-lighter: lighten($tertiary-color, 20%);
+$tertiary-color-dark: darken($tertiary-color, 10%);
+$tertiary-color-darker: darken($tertiary-color, 20%);
+
+$background-color: #ffffff;
+$text-color: #212529;
+$link-color: $secondary-color;
+$link-hover-color: $secondary-color-dark;
+
+// Typography //////////////////////////
+$font-family-base: 'Roboto', sans-serif;
+$font-size-base: 16px;
+$font-size-sm: 14px;
+$font-size-lg: 20px;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$line-height-base: 1.5;
+$heading-color: $primary-color-dark;
+
+// Spacing //////////////////////////
+$spacer: 1rem; // 16px
+$spacer-sm: 0.5rem; // 8px
+$spacer-lg: 2rem; // 32px
+$padding-base: $spacer;
+$padding-sm: $spacer-sm;
+$padding-lg: $spacer-lg;
+$margin-base: $spacer;
+$margin-sm: $spacer-sm;
+$margin-lg: $spacer-lg;
+
+// Borders //////////////////////////
+$border-radius: 0.25rem; // 4px
+$border-width: 1px;
+$border-color: #dee2e6;
+$border-radius-sm: 0.2rem; // 3.2px
+$border-radius-lg: 0.3rem; // 4.8px
+
+// Shadows //////////////////////////
+$box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+$box-shadow-lg: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+
+// Breakpoints //////////////////////////
+$breakpoint-xs: 480px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Z-index //////////////////////////
+$z-index-dropdown: 1000;
+$z-index-navbar: 1020;
+$z-index-modal: 1050;
+$z-index-tooltip: 1070;
+
+// Custom Components //////////////////////////
+$header-height: 60px;
+$footer-height: 100px;
+$button-padding: 0.5rem 1rem;
+$button-border-radius: $border-radius;
+
+// Transitions //////////////////////////
+$transition-base: 0.3s ease-in-out;
+$transition-fast: 0.1s ease-in-out;
+$transition-slow: 0.5s ease-in-out;

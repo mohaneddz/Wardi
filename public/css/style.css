@@ -1,0 +1,72 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+::selection {
+  background-color: var(--color-secondary);
+}
+
+.header nav {
+  color: black;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.header nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  width: 100%;
+}
+.header nav ul li {
+  margin-right: 1rem;
+}
+.header nav ul li.header__logo {
+  margin-right: auto;
+}
+.header nav ul li.header__logo a {
+  align-self: flex-start;
+  color: green;
+}
+.header nav ul li.header__user {
+  margin-left: auto;
+}
+.header nav ul li.header__user a {
+  align-self: flex-start;
+  color: green;
+}
+.header nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.6rem;
+}
+.header nav ul li a:hover {
+  color: red;
+}
+
+/*# sourceMappingURL=style.css.map */

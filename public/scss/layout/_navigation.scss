@@ -1,0 +1,46 @@
+.header {
+	nav {
+		color: black;
+		padding: 1rem 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		ul {
+			display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+			list-style: none;
+			width: 100%; 
+			li {
+				margin-right: 1rem;
+
+				&.header__logo {
+					margin-right: auto; 
+					a {
+						align-self: flex-start;
+						color: green;
+					}
+				}
+				&.header__user {
+					margin-left: auto; 
+					a {
+						align-self: flex-start;
+						color: green;
+					}
+				}
+
+				a {
+					text-decoration: none;
+					color: black;
+					font-size: 1.6rem;
+
+					&:hover {
+						color: red;
+					}
+				}
+			}
+		}
+	}
+}
