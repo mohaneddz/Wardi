@@ -1,43 +1,76 @@
 .header {
+	background-color: rgba($primary-color-dark, 0.3);
+	padding: 1rem 1rem;
+
 	nav {
-		color: black;
 		padding: 1rem 0;
 		display: flex;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
 		width: 100%;
+
 		ul {
 			display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
+			justify-content: center;
+			align-items: center;
+			gap: 4rem;
 			list-style: none;
-			width: 100%; 
+			width: 100%;
+
 			li {
 				margin-right: 1rem;
+				position: relative; // Combine position for consistency
+				&:last-child {
+					margin-right: 0; // Removes unnecessary margin on the last item
+				}
+
+				i {
+					font-size: 2rem;
+					color: $tertiary-color;
+					position: absolute;
+					transform: translateX(-2.5rem); // Initial transform for all `i` elements
+				}
 
 				&.header__logo {
-					margin-right: auto; 
-					a {
-						align-self: flex-start;
-						color: green;
+					margin-right: auto;
+
+					img {
+						width: 5rem;
+						height: 5rem;
 					}
-				}
-				&.header__user {
-					margin-left: auto; 
+
 					a {
 						align-self: flex-start;
-						color: green;
 					}
 				}
 
-				a {
+				&.header__user,
+				&.header__search {
+					i {
+						transform: translate(-2.5rem, -1.5rem); 
+					}
+
+					a {
+						align-self: flex-start;
+					}
+				}
+
+				&.header__search {
+					margin-left: auto;
+				}
+
+				a,
+				&:visited {
 					text-decoration: none;
-					color: black;
+					color: $tertiary-color;
 					font-size: 1.6rem;
+				}
 
-					&:hover {
-						color: red;
+				&:hover {
+					@include baseHover(white, 1.3, 0);
+
+					* {
+						color: white; // Ensures all child elements change color on hover
 					}
 				}
 			}

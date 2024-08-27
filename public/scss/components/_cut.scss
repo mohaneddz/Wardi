@@ -1,0 +1,19 @@
+.cuts > * {
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	color: white;
+    text-shadow: 2px 2px 20px black;
+	font-size: 3rem;
+	padding: 3rem 3rem;
+	background-color: $primary-color-light;
+	border: 3px solid rgba($primary-color-dark, 0.9);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5), 0.2rem 0.5rem 5px rgba($primary-color-lighter, 0.5) inset;
+	border-radius: 1rem;
+    
+    &:hover{
+        @include baseHover($tertiary-color);
+    }
+}

@@ -1,0 +1,51 @@
+.cards > * {
+	background-color: $primary-color;
+	color: white;
+	position: relative;
+	padding: 2rem 3rem;
+	border-radius: 1rem;
+	box-shadow:
+		0 0 1rem rgba(0, 0, 0, 0.5),
+		0 0 1rem rgba(0, 0, 0, 0.1);
+	p.cards__surah__info__order,
+	h3.cards__surah__name {
+		display: inline;
+		position: relative;
+        z-index: 2;
+        margin-right: 2rem;
+        color: $secondary-color;
+	}
+	p.cards__surah__info__order::after {
+		content: '';
+		width: 3.25rem;
+		height: 3.25rem;
+		background-color: $tertiary-color;
+		z-index: -1;
+		position: absolute;
+		top: 0;
+		left: -40%;
+        transform: rotate(45deg);
+        border-radius: 5px;
+	}
+
+	p.cards__surah__info__ayat,
+	p.cards__surah__info__type {
+		display: inline;
+		color: $secondary-color-darker;
+		font-size: 2rem;
+	}
+	p.cards__surah__info__type{
+		float: right;
+	}
+	a {
+		top: 5%;
+		right: 5%;
+		position: absolute;
+		color: $tertiary-color;
+		text-decoration: none;
+	}
+}
+
+.cards__surah__info__order {
+	color: red;
+}

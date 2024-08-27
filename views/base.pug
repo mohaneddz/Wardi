@@ -7,6 +7,8 @@ html
       link(rel='stylesheet' href='../public/css/style.css')
       link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
       link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+      link(rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-solid-rounded/css/uicons-solid-rounded.css')
+      link(rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-straight/css/uicons-regular-straight.css')
       title Wardi | #{title}
 
   body(data-alert=`${alert ? alert : ''}`)
@@ -15,6 +17,6 @@ html
 
     // CONTENT
     block content
-    
+
     // FOOTER
-    //- include _footer
+    include _footer

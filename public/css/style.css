@@ -21,17 +21,57 @@ body {
   position: relative;
   z-index: 1;
   margin: 0;
+  padding: 0;
+  background-color: #0D142C;
+  position: relative;
+  font-family: "Roboto", sans-serif;
 }
 
 ::selection {
-  background-color: var(--color-secondary);
+  background-color: #edeef2;
 }
 
-.header nav {
-  color: black;
-  padding: 1rem 0;
+.title {
+  transition: all 0.3s;
+}
+.title h1 {
   display: flex;
   justify-content: center;
+  align-items: center;
+  font-size: 15rem;
+  color: #c72378;
+  text-shadow: 0.2rem 0.2rem 2rem rgba(0, 0, 0, 0.5);
+}
+.title h1:hover {
+  transform: scale(1.2) translateY(-0.5rem);
+  transition: all 0.3s ease;
+  text-shadow: 0.4rem 0.4rem 2rem rgba(199, 35, 120, 0.452);
+  color: #c72378;
+  cursor: crosshair;
+}
+.title h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  color: #b0b5c9;
+  text-shadow: 0.2rem 0.2rem 0.2rem rgba(199, 35, 120, 0.5);
+}
+.title h2:hover {
+  transform: scale(1.2) translateY(-0.5rem);
+  transition: all 0.3s ease;
+  text-shadow: 0.4rem 0.4rem 2rem rgba(176, 181, 201, 0.452);
+  color: #b0b5c9;
+}
+
+.header {
+  background-color: rgba(1, 2, 5, 0.3);
+  padding: 1rem 1rem;
+}
+.header nav {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
 }
@@ -39,34 +79,221 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 4rem;
   list-style: none;
   width: 100%;
 }
 .header nav ul li {
   margin-right: 1rem;
+  position: relative;
+}
+.header nav ul li:last-child {
+  margin-right: 0;
+}
+.header nav ul li i {
+  font-size: 2rem;
+  color: #c72378;
+  position: absolute;
+  transform: translateX(-2.5rem);
 }
 .header nav ul li.header__logo {
   margin-right: auto;
 }
+.header nav ul li.header__logo img {
+  width: 5rem;
+  height: 5rem;
+}
 .header nav ul li.header__logo a {
   align-self: flex-start;
-  color: green;
 }
-.header nav ul li.header__user {
+.header nav ul li.header__user i, .header nav ul li.header__search i {
+  transform: translate(-2.5rem, -1.5rem);
+}
+.header nav ul li.header__user a, .header nav ul li.header__search a {
+  align-self: flex-start;
+}
+.header nav ul li.header__search {
   margin-left: auto;
 }
-.header nav ul li.header__user a {
-  align-self: flex-start;
-  color: green;
-}
-.header nav ul li a {
+.header nav ul li a, .header nav ul li:visited {
   text-decoration: none;
-  color: black;
+  color: #c72378;
   font-size: 1.6rem;
 }
-.header nav ul li a:hover {
+.header nav ul li:hover {
+  transform: scale(1.3) translateY(0);
+  transition: all 0.3s ease;
+  text-shadow: 0.4rem 0.4rem 2rem rgba(255, 255, 255, 0.452);
+  color: white;
+}
+.header nav ul li:hover * {
+  color: white;
+}
+
+.footer {
+  background-color: rgba(1, 2, 5, 0.1);
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.footer__content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+.footer__section {
+  margin-bottom: 1.5rem;
+}
+.footer__section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+.footer__section p,
+.footer__section ul {
+  font-size: 1rem;
+  margin: 0;
+}
+.footer__section ul {
+  list-style-type: none;
+  padding: 0;
+}
+.footer__section ul li {
+  margin-bottom: 0.5rem;
+}
+.footer__section ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+.footer__section ul li a:hover {
+  text-decoration: underline;
+}
+.footer__social-icons {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.footer__social-icons li a img {
+  width: 32px;
+  height: 32px;
+}
+.footer__bottom {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  border-top: 1px solid #444;
+  padding-top: 1rem;
+}
+
+.cuts > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  text-shadow: 2px 2px 20px black;
+  font-size: 3rem;
+  padding: 3rem 3rem;
+  background-color: #192653;
+  border: 3px solid rgba(1, 2, 5, 0.9);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5), 0.2rem 0.5rem 5px rgba(36, 56, 123, 0.5) inset;
+  border-radius: 1rem;
+}
+.cuts > *:hover {
+  transform: scale(1.2) translateY(-0.5rem);
+  transition: all 0.3s ease;
+  text-shadow: 0.4rem 0.4rem 2rem rgba(199, 35, 120, 0.452);
+  color: #c72378;
+}
+
+.cards > * {
+  background-color: #0D142C;
+  color: white;
+  position: relative;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5), 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+.cards > * p.cards__surah__info__order,
+.cards > * h3.cards__surah__name {
+  display: inline;
+  position: relative;
+  z-index: 2;
+  margin-right: 2rem;
+  color: #b0b5c9;
+}
+.cards > * p.cards__surah__info__order::after {
+  content: "";
+  width: 3.25rem;
+  height: 3.25rem;
+  background-color: #c72378;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: -40%;
+  transform: rotate(45deg);
+  border-radius: 5px;
+}
+.cards > * p.cards__surah__info__ayat,
+.cards > * p.cards__surah__info__type {
+  display: inline;
+  color: #737ca0;
+  font-size: 2rem;
+}
+.cards > * p.cards__surah__info__type {
+  float: right;
+}
+.cards > * a {
+  top: 5%;
+  right: 5%;
+  position: absolute;
+  color: #c72378;
+  text-decoration: none;
+}
+
+.cards__surah__info__order {
   color: red;
+}
+
+main {
+  display: grid;
+  grid-template-rows: minmax(30vh, 30rem) repeat(2, min-content);
+  grid-template-columns: [center-start] repeat(12, [col-start] minmax(min-content, 20rem) [col-end]) [center-end];
+  grid-gap: 2rem;
+  padding: 2rem;
+  margin-left: min(10rem, 5%);
+  margin-right: min(10rem, 5%);
+}
+main .title {
+  grid-column: center-start/center-end;
+  padding: 1rem 3rem;
+}
+main .cuts {
+  grid-column: center-start/center-end;
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  background-color: rgba(25, 38, 83, 0.5);
+  padding: 2rem;
+  border-radius: 3rem;
+  border: 5px solid rgba(1, 2, 5, 0.9);
+  gap: 2rem;
+}
+main .cards {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: 2rem;
+  background-color: #192653;
+  padding: 2rem;
+  font-size: 3rem;
 }
 
 /*# sourceMappingURL=style.css.map */

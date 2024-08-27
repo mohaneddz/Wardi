@@ -5,22 +5,17 @@ $primary-color-lighter: lighten($primary-color, 20%); // Lightened by 20%
 $primary-color-dark: darken($primary-color, 10%); // Darkened by 10%
 $primary-color-darker: darken($primary-color, 20%); // Darkened by 20%
 
-$secondary-color: #233678;
+$secondary-color: #b0b5c9;
 $secondary-color-light: lighten($secondary-color, 10%);
 $secondary-color-lighter: lighten($secondary-color, 20%);
 $secondary-color-dark: darken($secondary-color, 10%);
 $secondary-color-darker: darken($secondary-color, 20%);
 
-$tertiary-color: #c92478;
+$tertiary-color: #c72378;
 $tertiary-color-light: lighten($tertiary-color, 10%);
 $tertiary-color-lighter: lighten($tertiary-color, 20%);
 $tertiary-color-dark: darken($tertiary-color, 10%);
 $tertiary-color-darker: darken($tertiary-color, 20%);
-
-$background-color: #ffffff;
-$text-color: #212529;
-$link-color: $secondary-color;
-$link-hover-color: $secondary-color-dark;
 
 // Typography //////////////////////////
 $font-family-base: 'Roboto', sans-serif;

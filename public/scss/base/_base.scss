@@ -1,44 +1,48 @@
 *,
 *::after,
 *::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
 }
 
 html {
-  font-size: 62.5%; //
+	font-size: 62.5%; //
 
-  // @media (max-width: 1200px) {
-  //   font-size: 45%; // Adjust font size for large screens
-  // }
+	// @media (max-width: 1200px) {
+	//   font-size: 45%; // Adjust font size for large screens
+	// }
 
-  // @media (max-width: 992px) {
-  //   font-size: 40%; // Adjust font size for medium screens
-  // }
+	// @media (max-width: 992px) {
+	//   font-size: 40%; // Adjust font size for medium screens
+	// }
 
-  // @media (max-width: 768px) {
-  //   font-size: 35%; // Adjust font size for small screens
-  // }
+	// @media (max-width: 768px) {
+	//   font-size: 35%; // Adjust font size for small screens
+	// }
 
-  // @media (max-width: 576px) {
-  //   font-size: 25%; // Adjust font size for extra small screens
-  // }
-
+	// @media (max-width: 576px) {
+	//   font-size: 25%; // Adjust font size for extra small screens
+	// }
 }
 body {
-  box-sizing: border-box;
-  padding: 3rem;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background-size: cover;
-  background-attachment: fixed;
-  position: relative; 
-  z-index: 1; 
-  margin: 0;
+	box-sizing: border-box;
+	padding: 3rem;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background-size: cover;
+	background-attachment: fixed;
+	position: relative;
+	z-index: 1;
+	margin: 0;
+	padding: 0;
+	background-color: $primary-color;
+	position: relative;
+	font-family: $font-family-base;
+	// color: $secondary-color;
 }
 
 ::selection {
-  background-color: var(--color-secondary);
+	background-color: $secondary-color-lighter;
 }

@@ -1,0 +1,6 @@
+@mixin baseHover($color, $amount: 1.2, $move : -0.5rem) {
+	transform: scale($amount) translateY($move);
+	transition: all 0.3s ease;
+	text-shadow: 0.4rem 0.4rem 2rem rgba($color, 0.452);
+	color: $color;
+}

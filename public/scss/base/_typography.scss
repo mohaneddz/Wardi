@@ -1,0 +1,28 @@
+.title {
+	transition: all 0.3s;
+	h1 {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 15rem;
+		color: $tertiary-color;
+		text-shadow: 0.2rem 0.2rem 2rem rgba($primary-color-darker, 0.5);
+		&:hover {
+			@include baseHover($tertiary-color);
+			cursor: crosshair;
+		}
+	}
+
+	h2 {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 5rem;
+		color: $secondary-color;
+		text-shadow: 0.2rem 0.2rem 0.2rem rgba($tertiary-color, 0.5);
+
+		&:hover {
+			@include baseHover($secondary-color);
+		}
+	}
+}

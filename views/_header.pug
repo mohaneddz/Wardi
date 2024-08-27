@@ -1,15 +1,34 @@
 header.header
     nav
-        ul 
+        ul
             li.header__logo
-                a(href='/') Logo
+                a(href='/' )
+                  img(src='../public/img/HD_Logo_Finale.png', alt='Logo') 
+
             li.header__quran
+                i(class="fi fi-rs-book-quran")                
                 a(href='/about') Quran
+
             li.header__hadith
+                i(class="fi fi-rs-books")                
                 a(href='/contact') Hadith
-            li.header__tafsir   
+
+            li.header__tafsir
+                i(class="fi fi-rs-book-open-cover")                
                 a(href='/login') Tafsir
-            li.header__about   
+
+            li.header__about
+                i(class="fi fi-rs-info")                
                 a(href='/login') About
-            li.header__user   
-                a(href='/login') User
+
+            li.header__bookmarks
+                i(class="fi fi-rs-wishlist-star")                
+                a(href='/bookmarks') Bookmarks
+
+            li.header__search
+                a(href='/search') 
+                i( class="fi fi-rs-search")
+                
+            li.header__user
+                a(href='/login') 
+                i( class="fi fi-rs-user")
