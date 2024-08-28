@@ -1,0 +1,12 @@
+extends base
+
+block append head
+  - var title = 'Quran Reading'
+  - var bodyClass = 'quranReading'
+
+block content
+  include _Lsidebar
+  include _quran
+  include _Rsidebar
+
+block footer

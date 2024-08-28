@@ -1,0 +1,12 @@
+.Lsidebar {
+	background-color: $primary-color-light;
+
+    display: grid;
+    grid-template-rows: min-content 1fr;
+	ul {
+		list-style-type: none;
+        display: grid;
+        grid-template-rows: repeat(50,1fr);
+        gap: 0.5em;
+	}
+}

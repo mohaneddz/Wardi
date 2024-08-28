@@ -26,3 +26,15 @@
 		}
 	}
 }
+.Lsidebar,
+.Rsidebar {
+	h1 {
+		text-align: center;
+		font-size: 1.5em;
+		font-weight: bold;
+		margin: 2rem 2rem;
+		padding:0.5em;
+		background-color: $primary-color;
+		color: $tertiary-color;
+	}
+}

@@ -11,12 +11,16 @@ html
       link(rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-straight/css/uicons-regular-straight.css')
       title Wardi | #{title}
 
-  body(data-alert=`${alert ? alert : ''}`)
+  body()
+    
     // HEADER
     include _header
+    
+    main(class=bodyClass)
+      // CONTENT
+      block content
 
-    // CONTENT
-    block content
 
     // FOOTER
-    include _footer
+    block footer
+      include _footer

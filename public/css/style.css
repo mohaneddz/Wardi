@@ -64,6 +64,17 @@ body {
   color: #b0b5c9;
 }
 
+.Lsidebar h1,
+.Rsidebar h1 {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 2rem 2rem;
+  padding: 0.5em;
+  background-color: #0D142C;
+  color: #c72378;
+}
+
 .header {
   background-color: rgba(1, 2, 5, 0.3);
   padding: 1rem 1rem;
@@ -135,9 +146,6 @@ body {
   color: #fff;
   padding: 2rem;
   text-align: center;
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
 }
 .footer__content {
@@ -187,6 +195,34 @@ body {
   font-size: 0.875rem;
   border-top: 1px solid #444;
   padding-top: 1rem;
+}
+
+.Lsidebar {
+  background-color: #192653;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+}
+.Lsidebar ul {
+  list-style-type: none;
+  display: grid;
+  grid-template-rows: repeat(50, 1fr);
+  gap: 0.5em;
+}
+
+.Rsidebar {
+  background-color: #192653;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+}
+.Rsidebar ul {
+  list-style-type: none;
+  display: grid;
+  grid-template-rows: repeat(50, 1fr);
+  gap: 0.5em;
+}
+
+.quran {
+  background-color: red;
 }
 
 .cuts > * {
@@ -259,31 +295,45 @@ body {
   color: red;
 }
 
-main {
+.LsideEntry {
+  padding: 0.5em;
+  background-color: #192653;
+  color: #b0b5c9;
+  margin: 0.5em;
+}
+.LsideEntry a {
+  text-decoration: none;
+  color: #c72378;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 10vh minmax(75vh, min-content) 15vh;
+}
+body main {
   display: grid;
   grid-template-rows: minmax(30vh, 30rem) repeat(2, min-content);
-  grid-template-columns: [center-start] repeat(12, [col-start] minmax(min-content, 20rem) [col-end]) [center-end];
+  grid-template-columns: [center-start] repeat(12, [col-start] minmax(min-content, 100rem) [col-end]) [center-end];
   grid-gap: 2rem;
   padding: 2rem;
   margin-left: min(10rem, 5%);
   margin-right: min(10rem, 5%);
 }
-main .title {
+body main .title {
   grid-column: center-start/center-end;
   padding: 1rem 3rem;
 }
-main .cuts {
+body main .cuts {
   grid-column: center-start/center-end;
   display: flex;
   justify-content: center;
-  gap: 0.7rem;
   background-color: rgba(25, 38, 83, 0.5);
   padding: 2rem;
   border-radius: 3rem;
   border: 5px solid rgba(1, 2, 5, 0.9);
   gap: 2rem;
 }
-main .cards {
+body main .cards {
   grid-column: span 12;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
@@ -294,6 +344,17 @@ main .cards {
   background-color: #192653;
   padding: 2rem;
   font-size: 3rem;
+}
+
+.quranReading {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: 15% 70% 15%;
+  grid-template-rows: 1fr;
+  grid-gap: 0rm;
+  margin: 0;
+  padding: 0;
 }
 
 /*# sourceMappingURL=style.css.map */

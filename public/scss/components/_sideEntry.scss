@@ -1,0 +1,11 @@
+.LsideEntry {
+	padding: 0.5em;
+	background-color: $primary-color-light;
+	color: $secondary-color;
+	margin: 0.5em;
+	
+	a {
+		text-decoration: none;
+		color: $tertiary-color;
+	}
+}
