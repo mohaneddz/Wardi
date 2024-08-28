@@ -1,3 +1,44 @@
-.quran{
-    background-color: red;
+.hadith {
+	@include reader();
+	h1 {
+		font-family: 'Parenthesis', 'AmiriWeb', serif;
+		font-weight: 800;
+		margin: 3rem 0rem;
+	}
+	p {
+		font-family: 'AmiriWeb', serif;
+		font-weight: 400;
+		border: 3px solid rgba(0, 0, 0, 0.1);
+		padding: 5rem;
+	}
+	h2 {
+		font-family: 'Divider', serif;
+		font-size: 10rem;
+		font-weight: 400;
+		margin: 1.5rem 0rem;
+	}
+	.grades {
+		p {
+			border: none;
+			padding: 0rem;
+		}
+	}
+}
+
+.quran {
+	@include reader();
+	p {
+		font-family: 'Uthmanic', 'AmiriWeb', serif;
+		font-weight: 400;
+	}
+	h1 {
+		font-family: 'Surah', serif;
+		font-weight: 400;
+		margin: 1.5rem 0rem;
+	}
+	h2 {
+		font-family: 'Basmallah', serif;
+		font-weight: 400;
+		margin: 1.5rem 0rem;
+	}
 }

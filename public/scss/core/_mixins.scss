@@ -1,6 +1,30 @@
-@mixin baseHover($color, $amount: 1.2, $move : -0.5rem) {
+@mixin baseHover($color, $amount: 1.2, $move: -0.5rem) {
 	transform: scale($amount) translateY($move);
 	transition: all 0.3s ease;
 	text-shadow: 0.4rem 0.4rem 2rem rgba($color, 0.452);
 	color: $color;
+}
+
+@mixin sidebar() {
+	background-color: $primary-color-light;
+	border-radius: 2rem;
+	display: grid;
+	padding: 2rem;
+	grid-template-rows: min-content 1fr;
+	ul {
+		list-style-type: none;
+		display: grid;
+		grid-template-rows: repeat(50, 1fr);
+		gap: 0.5em;
+	}
+}
+
+@mixin reader() {
+	background-color: rgba(rgb(245, 246, 255), 0.7);
+	color: black;
+	text-align: center;
+	font-size: 4rem;
+	line-height: 7rem;
+	padding: 2rem;
+	border-radius: 2rem;
 }

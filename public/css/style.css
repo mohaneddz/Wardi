@@ -1,3 +1,4 @@
+@import url("../css/amiri.css");
 *,
 *::after,
 *::before {
@@ -24,11 +25,44 @@ body {
   padding: 0;
   background-color: #0D142C;
   position: relative;
-  font-family: "Roboto", sans-serif;
 }
 
 ::selection {
   background-color: #edeef2;
+}
+
+@font-face {
+  font-family: "Uthmanic";
+  src: url("../fonts/Uthmanic-V22.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Surah";
+  src: url("../fonts/Elgharib-SurahName V4.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Basmallah";
+  src: url("../fonts/Elgharib-Basmala.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Divider";
+  src: url("../fonts/Elgharib-Dividers.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Parenthesis";
+  src: url("../fonts/Elgharib-A002.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: "AmiriWeb", serif;
 }
 
 .title {
@@ -67,12 +101,19 @@ body {
 .Lsidebar h1,
 .Rsidebar h1 {
   text-align: center;
-  font-size: 1.5em;
+  font-size: 3em;
   font-weight: bold;
   margin: 2rem 2rem;
   padding: 0.5em;
   background-color: #0D142C;
   color: #c72378;
+  border: 2px solid rgba(1, 2, 5, 0.9);
+  border-radius: 1rem;
+  transition: all 0.3s;
+}
+.Lsidebar h1:hover,
+.Rsidebar h1:hover {
+  transform: scale(1.05);
 }
 
 .header {
@@ -199,7 +240,9 @@ body {
 
 .Lsidebar {
   background-color: #192653;
+  border-radius: 2rem;
   display: grid;
+  padding: 2rem;
   grid-template-rows: min-content 1fr;
 }
 .Lsidebar ul {
@@ -211,7 +254,9 @@ body {
 
 .Rsidebar {
   background-color: #192653;
+  border-radius: 2rem;
   display: grid;
+  padding: 2rem;
   grid-template-rows: min-content 1fr;
 }
 .Rsidebar ul {
@@ -221,8 +266,59 @@ body {
   gap: 0.5em;
 }
 
+.hadith {
+  background-color: rgba(245, 246, 255, 0.7);
+  color: black;
+  text-align: center;
+  font-size: 4rem;
+  line-height: 7rem;
+  padding: 2rem;
+  border-radius: 2rem;
+}
+.hadith h1 {
+  font-family: "Parenthesis", "AmiriWeb", serif;
+  font-weight: 800;
+  margin: 3rem 0rem;
+}
+.hadith p {
+  font-family: "AmiriWeb", serif;
+  font-weight: 400;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  padding: 5rem;
+}
+.hadith h2 {
+  font-family: "Divider", serif;
+  font-size: 10rem;
+  font-weight: 400;
+  margin: 1.5rem 0rem;
+}
+.hadith .grades p {
+  border: none;
+  padding: 0rem;
+}
+
 .quran {
-  background-color: red;
+  background-color: rgba(245, 246, 255, 0.7);
+  color: black;
+  text-align: center;
+  font-size: 4rem;
+  line-height: 7rem;
+  padding: 2rem;
+  border-radius: 2rem;
+}
+.quran p {
+  font-family: "Uthmanic", "AmiriWeb", serif;
+  font-weight: 400;
+}
+.quran h1 {
+  font-family: "Surah", serif;
+  font-weight: 400;
+  margin: 1.5rem 0rem;
+}
+.quran h2 {
+  font-family: "Basmallah", serif;
+  font-weight: 400;
+  margin: 1.5rem 0rem;
 }
 
 .cuts > * {
@@ -252,6 +348,7 @@ body {
   position: relative;
   padding: 2rem 3rem;
   border-radius: 1rem;
+  margin: 1rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5), 0 0 1rem rgba(0, 0, 0, 0.1);
 }
 .cards > * p.cards__surah__info__order,
@@ -264,13 +361,13 @@ body {
 }
 .cards > * p.cards__surah__info__order::after {
   content: "";
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 3.5rem;
+  height: 3.5rem;
   background-color: #c72378;
   z-index: -1;
   position: absolute;
-  top: 0;
-  left: -40%;
+  top: 10%;
+  left: -50%;
   transform: rotate(45deg);
   border-radius: 5px;
 }
@@ -290,20 +387,33 @@ body {
   color: #c72378;
   text-decoration: none;
 }
+.cards > *:hover {
+  transform: scale(1.05);
+  background-color: #701444;
+  z-index: 3;
+}
 
 .cards__surah__info__order {
   color: red;
 }
 
-.LsideEntry {
-  padding: 0.5em;
+.LsideEntry, .RsideEntry {
   background-color: #192653;
   color: #b0b5c9;
-  margin: 0.5em;
-}
-.LsideEntry a {
+  margin: 0.3em;
+  padding: 1.75rem;
   text-decoration: none;
+  text-align: center;
+  font-size: 2.5rem;
+  display: block;
+  border: 2px solid rgba(1, 2, 5, 0.9);
+  border-radius: 1rem;
+  transition: all 0.3s;
+}
+.LsideEntry:hover, .RsideEntry:hover {
+  background-color: #24387b;
   color: #c72378;
+  transform: scale(1.05);
 }
 
 body {
@@ -314,7 +424,7 @@ body main {
   display: grid;
   grid-template-rows: minmax(30vh, 30rem) repeat(2, min-content);
   grid-template-columns: [center-start] repeat(12, [col-start] minmax(min-content, 100rem) [col-end]) [center-end];
-  grid-gap: 2rem;
+  row-gap: 2rem;
   padding: 2rem;
   margin-left: min(10rem, 5%);
   margin-right: min(10rem, 5%);
@@ -336,7 +446,7 @@ body main .cuts {
 body main .cards {
   grid-column: span 12;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  grid-template-columns: repeat(4, minmax(14rem, 1fr));
   align-items: center;
   justify-content: center;
   align-content: center;
@@ -345,16 +455,30 @@ body main .cards {
   padding: 2rem;
   font-size: 3rem;
 }
+@media (max-width: 1200px) {
+  body main .cards {
+    grid-template-columns: repeat(3, minmax(14rem, 1fr));
+  }
+}
+@media (max-width: 900px) {
+  body main .cards {
+    grid-template-columns: repeat(2, minmax(14rem, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  body main .cards {
+    grid-template-columns: repeat(1, minmax(14rem, 1fr));
+  }
+}
 
-.quranReading {
+.mainquranReading {
+  column-gap: 1%;
   display: grid;
   width: 100vw;
   height: 100vh;
-  grid-template-columns: 15% 70% 15%;
+  grid-template-columns: 14% 70% 14%;
   grid-template-rows: 1fr;
-  grid-gap: 0rm;
   margin: 0;
-  padding: 0;
 }
 
 /*# sourceMappingURL=style.css.map */

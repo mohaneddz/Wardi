@@ -1,62 +1,62 @@
 .footer {
-  background-color: rgba($primary-color-dark, 0.1);
-  color: #fff;
-  padding: 2rem;
-  text-align: center;
-  width: 100%;
+	background-color: rgba($primary-color-dark, 0.1);
+	color: #fff;
+	padding: 2rem;
+	text-align: center;
+	width: 100%;
 
-  &__content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-  }
+	&__content {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 2rem;
+	}
 
-  &__section {
-      margin-bottom: 1.5rem;
-      h2 {
-          margin-bottom: 1rem;
-          font-size: 1.5rem;
-      }
-      p,
-      ul {
-          font-size: 1rem;
-          margin: 0;
-      }
-      ul {
-          list-style-type: none;
-          padding: 0;
+	&__section {
+		margin-bottom: 1.5rem;
+		h2 {
+			margin-bottom: 1rem;
+			font-size: 1.5rem;
+		}
+		p,
+		ul {
+			font-size: 1rem;
+			margin: 0;
+		}
+		ul {
+			list-style-type: none;
+			padding: 0;
 
-          li {
-              margin-bottom: 0.5rem;
+			li {
+				margin-bottom: 0.5rem;
 
-              a {
-                  color: #fff;
-                  text-decoration: none;
+				a {
+					color: #fff;
+					text-decoration: none;
 
-                  &:hover {
-                      text-decoration: underline;
-                  }
-              }
-          }
-      }
-  }
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
 
-  &__social-icons {
-      list-style-type: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      li a img {
-          width: 32px;
-          height: 32px;
-      }
-  }
+	&__social-icons {
+		list-style-type: none;
+		padding: 0;
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		li a img {
+			width: 32px;
+			height: 32px;
+		}
+	}
 
-  &__bottom {
-      margin-top: 2rem;
-      font-size: 0.875rem;
-      border-top: 1px solid #444;
-      padding-top: 1rem;
-  }
+	&__bottom {
+		margin-top: 2rem;
+		font-size: 0.875rem;
+		border-top: 1px solid #444;
+		padding-top: 1rem;
+	}
 }

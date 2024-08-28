@@ -1,5 +1,10 @@
 extends base
 
+block append head
+  - var title = 'Quran Reading'
+  - var bodyClass = 'landing'
+  - var mainClass = 'mainlanding'
+
 block content
     .title
         h1.title__main وردي
@@ -40,3 +45,29 @@ block content
                 p.cards__surah__info__fav
                     a(href="#") &hearts;
             
+        .cards__surah 
+            p.cards__surah__info__order 4
+            h3.cards__surah__name الفاتحة
+            .cards__surah__info
+                p.cards__surah__info__ayat 7 آيات
+                p.cards__surah__info__type مكية
+                p.cards__surah__info__fav
+                    a(href="#") &hearts;
+
+        .cards__surah 
+            p.cards__surah__info__order 5
+            h3.cards__surah__name االبقرة
+            .cards__surah__info
+                p.cards__surah__info__ayat 286 آيات
+                p.cards__surah__info__type مدنية
+                p.cards__surah__info__fav
+                    a(href="#") &hearts;
+
+        .cards__surah 
+            p.cards__surah__info__order 6
+            h3.cards__surah__name آل عمران
+            .cards__surah__info
+                p.cards__surah__info__ayat  200 آيات
+                p.cards__surah__info__type مدنية
+                p.cards__surah__info__fav
+                    a(href="#") &hearts;

@@ -1,42 +1,54 @@
 body {
-    display: grid;
-    grid-template-rows: 10vh minmax(75vh, min-content) 15vh;
-    main {
-        display: grid;
-        grid-template-rows: minmax(30vh, 30rem) repeat(2, min-content);
-        grid-template-columns: [center-start] repeat(12, [col-start] minmax(min-content, 100rem) [col-end]) [center-end];
+	display: grid;
+	grid-template-rows: 10vh minmax(75vh, min-content) 15vh;
+	main {
+		display: grid;
+		grid-template-rows: minmax(30vh, 30rem) repeat(2, min-content);
+		grid-template-columns: [center-start] repeat(12, [col-start] minmax(min-content, 100rem) [col-end]) [center-end];
 
-		grid-gap: 2rem;
-        padding: 2rem;
-        margin-left: min(10rem, 5%);
-        margin-right: min(10rem, 5%);
-        .title {
-            grid-column: center-start / center-end;
-            padding: 1rem 3rem;
-        }
-        .cuts {
-            grid-column: center-start / center-end;
-            display: flex;
-            justify-content: center;
-            background-color: rgba($primary-color-light, 0.5);
-            padding: 2rem;
-            border-radius: 3rem;
-            border: 5px solid rgba($primary-color-dark, 0.9);
-            gap: 2rem;
-        }
-        .cards {
-            grid-column: span 12;
+		row-gap: 2rem;
+		padding: 2rem;
+		margin-left: min(10rem, 5%);
+		margin-right: min(10rem, 5%);
+		.title {
+			grid-column: center-start / center-end;
+			padding: 1rem 3rem;
+		}
+		.cuts {
+			grid-column: center-start / center-end;
+			display: flex;
+			justify-content: center;
+			background-color: rgba($primary-color-light, 0.5);
+			padding: 2rem;
+			border-radius: 3rem;
+			border: 5px solid rgba($primary-color-dark, 0.9);
+			gap: 2rem;
+		}
+		.cards {
+			grid-column: span 12;
 
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-            align-items: center;
-            justify-content: center;
-            align-content: center;
-            gap: 2rem;
+			display: grid;
+			grid-template-columns: repeat(4, minmax(14rem, 1fr));
+			align-items: center;
+			justify-content: center;
+			align-content: center;
+			gap: 2rem;
 
-            background-color: $primary-color-light;
-            padding: 2rem;
-            font-size: 3rem;
-        }
-    }
+			background-color: $primary-color-light;
+			padding: 2rem;
+			font-size: 3rem;
+
+			@media (max-width: 1200px) {
+				grid-template-columns: repeat(3, minmax(14rem, 1fr));
+			}
+
+			@media (max-width: 900px) {
+				grid-template-columns: repeat(2, minmax(14rem, 1fr));
+			}
+
+			@media (max-width: 600px) {
+				grid-template-columns: repeat(1, minmax(14rem, 1fr));
+			}
+		}
+	}
 }
