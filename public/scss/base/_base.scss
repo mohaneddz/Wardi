@@ -21,9 +21,13 @@ html {
 	//   font-size: 35%; // Adjust font size for small screens
 	// }
 
-	// @media (max-width: 576px) {
-	//   font-size: 25%; // Adjust font size for extra small screens
-	// }
+	@media (max-width: 576px) {
+	  font-size: 50%; // Adjust font size for extra small screens
+	}
+
+	@media (max-width: 450px) {
+	  font-size: 45%; // Adjust font size for extra small screens
+	}
 }
 body {
 	box-sizing: border-box;

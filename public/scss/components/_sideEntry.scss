@@ -1,22 +1,26 @@
-.LsideEntry, .RsideEntry {
+.LsideEntry,
+.RsideEntry {
 	background-color: $primary-color-light;
 	color: $secondary-color;
-	
+
 	margin: 0.3em;
 	padding: 1.75rem;
-	
+
 	text-decoration: none;
 	text-align: center;
-	font-size: 2.5rem;
+	font-size: 2rem;
 	display: block;
 
 	border: 2px solid rgba($primary-color-dark, 0.9);
 	border-radius: 1rem;
 	transition: all 0.3s;
 
-	&:hover{
+	&:hover {
 		background-color: $primary-color-lighter;
 		color: $tertiary-color;
 		transform: scale(1.05);
+	}
+	@media (max-width: 1800px) {
+		font-size: 2rem;
 	}
 }

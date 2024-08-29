@@ -1,5 +1,16 @@
-.hadith {
+.hadith,
+.quran,
+.tafsir {
+	position: relative;
 	@include reader();
+	.toggle {
+		position: absolute;
+		top: 2rem;
+		left: 2rem;
+	}
+}
+
+.hadith {
 	h1 {
 		font-family: 'Parenthesis', 'AmiriWeb', serif;
 		font-weight: 800;
@@ -26,7 +37,6 @@
 }
 
 .quran {
-	@include reader();
 	p {
 		font-family: 'Uthmanic', 'AmiriWeb', serif;
 		font-weight: 400;
@@ -44,7 +54,6 @@
 }
 
 .tafsir {
-	@include reader();
 	h1 {
 		font-family: 'Surah', serif;
 		font-weight: 400;
@@ -78,6 +87,57 @@
 			text-align: center;
 			font-weight: 400;
 			margin: 0rem 0rem;
+		}
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.mainquranReading,
+	.maintafsirReading,
+	.mainhadithReading {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+		padding: 0;
+		row-gap: 2%;
+		&.active {
+			grid-template-columns: 1fr;
+			grid-template-rows: 7vh 7vh 1fr;
+			.tafsir,
+			.quran,
+			.hadith {
+				height: 76vh;
+			}
+		}
+	}
+
+	.Lsidebar,
+	.Rsidebar {
+		flex-direction: row;
+	}
+	.tafsir,
+	.quran,
+	.hadith {
+		height: 94vh;
+		width: 97vw;
+		h1 {
+			font-size: 7rem;
+		}
+		h2 {
+			font-size: 5rem;
+		}
+		p {
+			&.verse {
+				font-size: 3rem;
+				padding: 1rem;
+			}
+			&.explanation {
+				font-size: 2.5rem;
+				padding: 1rem;
+			}
+			&.seperator {
+				font-size: 3rem;
+				padding: 1rem;
+			}
 		}
 	}
 }

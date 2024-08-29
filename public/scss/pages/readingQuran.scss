@@ -1,9 +1,23 @@
-.mainquranReading{
-    column-gap: 1%;
-    display: grid;
-    width: 100vw;
-    height: 100vh;
-    grid-template-columns: 14% 70% 14%;
-    grid-template-rows: 1fr;
-    margin: 0;
+.mainquranReading,
+.maintafsirReading,
+.mainhadithReading {
+	column-gap: 1%;
+	display: grid;
+	width: 100vw;
+	height: 100vh;
+	grid-template-columns: 1fr;
+	align-items: start;
+	margin: 0;
+	&.active {
+		grid-template-columns: min-content 1fr min-content;
+	}
+}
+
+// html bodies 
+.hadithReading,
+.quranReading,
+.tafsirReading {
+	overflow: hidden;
+	width: 100vw;
+	height: 100vh;
 }

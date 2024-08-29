@@ -1,3 +1,7 @@
 .Lsidebar {
 	@include sidebar();
+	font-size: 5rem;
+	@media screen and (max-width: 1200px) {
+		grid-row: 1 / 2;
+	}
 }

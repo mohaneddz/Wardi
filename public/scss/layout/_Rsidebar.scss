@@ -1,4 +1,6 @@
 .Rsidebar {
     @include sidebar();
-
+    @media screen and (max-width: 1200px) {
+		grid-row: 2 / 3;
+	}
 }

@@ -1,3 +1,5 @@
+'use strict';
+
 const menubtn = document.querySelector('.header__menu');
 const menu = document.querySelector('.Menusidebar');
 

@@ -1,9 +1,10 @@
 extends base
 
 block append head
+  script(src='../public/source/reader.js' defer )
   - var title = 'Quran Reading'
-  - var bodyClass = 'quranReading'
-  - var mainClass = 'mainquranReading'
+  - var bodyClass = 'hadithReading'
+  - var mainClass = 'mainhadithReading'
 
 block content
   include _Lsidebar

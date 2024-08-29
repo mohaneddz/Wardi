@@ -25,7 +25,6 @@
 				}
 				&:hover {
 					@include baseHover(white, 1.3, 0);
-
 					* {
 						color: white;
 					}
@@ -121,14 +120,18 @@
 					color: $tertiary-color;
 					font-size: 1.6rem;
 				}
-				&.header__quran,
-				&.header__hadith,
-				&.header__tafsir,
-				&.header__about,
-				&.header__bookmarks {
-					transform: translateX(15rem);
-					@media (max-width: 1150px) {
-						display: none;
+			}
+			&.topbar {
+				li {
+					&.header__quran,
+					&.header__hadith,
+					&.header__tafsir,
+					&.header__about,
+					&.header__bookmarks {
+						transform: translateX(15rem);
+						@media (max-width: 1150px) {
+							display: none;
+						}
 					}
 				}
 			}
@@ -148,6 +151,16 @@
 				padding-top: 4rem;
 				z-index: 5;
 				backdrop-filter: blur(15px);
+				li {
+					transform: translateX(5rem);
+					margin-right: 0;
+					width: 100%;
+					z-index: 6;
+					&:hover {
+						text-shadow: 0.4rem 0.4rem 2rem rgba(white, 0.452);
+						color: white;
+					}
+				}
 				&.open {
 					display: flex;
 				}

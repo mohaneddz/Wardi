@@ -7,16 +7,68 @@
 @mixin sidebar() {
 	background-color: $primary-color-light;
 	border-radius: 2rem;
-	display: grid;
+	display: none;
+	flex-direction: column;
 	padding: 2rem;
 	grid-template-rows: min-content 1fr;
-	height: 90vh;
-    overflow-y: auto; 
+	overflow-y: auto;
+	flex-wrap: nowrap;
+	max-height: 90vh;
+	h1 {
+		font-size: 4rem;
+	}
 	ul {
 		list-style-type: none;
-		display: grid;
-		grid-template-rows: repeat(50, 1fr);
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		justify-content: start;
+		padding: 0;
 		gap: 0.5em;
+		flex-wrap: nowrap;
+
+		li {
+			width: 100%;
+		}
+	}
+	@media screen and (max-width: 1200px) {
+		max-height: 7vh;
+		height: 30vh;
+		width: 97vw;
+		align-items: center;
+		padding: 0.5rem;
+
+		h1 {
+			font-size: 2.4rem;
+			padding: 0.5rem;
+		}
+		ul {
+			flex-direction: row;
+			max-height: 7vh;
+			justify-content: center;
+			align-items: center;
+
+			li a {
+				padding: 0.5rem;
+				font-size: 2rem;
+				width: 20rem;
+			}
+		}
+	}
+	@media screen and (max-width: 1000px) {
+		h1 {
+			font-size: 2rem;
+		}
+		ul {
+			li a {
+				font-size: 1.5rem;
+				width: 15rem;
+			}
+		}
+	}
+
+	&.active {
+		display: flex;
 	}
 }
 
@@ -28,4 +80,10 @@
 	line-height: 7rem;
 	padding: 2rem;
 	border-radius: 2rem;
+	height: 90vh;
+	width: 100%;
+	overflow-y: auto;
+	.active {
+		width: 70vw;
+	}
 }
