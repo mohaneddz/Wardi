@@ -17,6 +17,8 @@
 		grid-template-rows: repeat(50, 1fr);
 		gap: 0.5em;
 	}
+	height: 90vh;
+    overflow-y: auto; 
 }
 
 @mixin reader() {

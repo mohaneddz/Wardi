@@ -42,3 +42,42 @@
 		margin: 1.5rem 0rem;
 	}
 }
+
+.tafsir {
+	@include reader();
+	h1 {
+		font-family: 'Surah', serif;
+		font-weight: 400;
+		margin: 1.5rem 0rem;
+	}
+	h2 {
+		font-family: 'Basmallah', serif;
+		font-weight: 400;
+		margin: 1.5rem 0rem;
+	}
+	p {
+		font-family: 'Uthmanic', 'AmiriWeb', serif;
+		font-weight: 400;
+		margin: 1.5rem 0rem;
+		text-align: end;
+		&.verse {
+			border: 3px solid rgba(0, 0, 0, 0.5);
+			padding: 2rem;
+		}
+		&.explanation {
+			border: 3px solid rgba(0, 0, 0, 0.1);
+			font-size: 3rem;
+			line-height: 4.5rem;
+			padding: 2rem;
+			color: rgba(black, 0.6);
+		}
+		&.seperator {
+			font-family: 'Divider', serif;
+			font-size: 5rem;
+			color: rgba(black, 0.6);
+			text-align: center;
+			font-weight: 400;
+			margin: 0rem 0rem;
+		}
+	}
+}
