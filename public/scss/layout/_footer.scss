@@ -4,6 +4,8 @@
 	padding: 2rem;
 	text-align: center;
 	width: 100%;
+	// align to the end of the grid row
+	align-self: end;
 
 	&__content {
 		display: grid;

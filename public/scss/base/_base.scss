@@ -29,8 +29,7 @@ body {
 	box-sizing: border-box;
 	padding: 3rem;
 	width: 100vw;
-	height: 100vh;
-	overflow: hidden;
+	min-height: 100vh;
 	background-size: cover;
 	background-attachment: fixed;
 	position: relative;

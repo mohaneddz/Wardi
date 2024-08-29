@@ -1,67 +1,41 @@
-@font-face {
-    font-family: 'Uthmanic';
-    src: url('../fonts/Uthmanic-V22.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Surah';
-    src: url('../fonts/Elgharib-SurahName V4.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Basmallah';
-    src: url('../fonts/Elgharib-Basmala.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Divider';
-    src: url('../fonts/Elgharib-Dividers.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Parenthesis';
-    src: url('../fonts/Elgharib-A002.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@import url('../css/amiri.css');
-
 body {
 	font-family: 'AmiriWeb', serif;
 }
+
 .title {
-	transition: all 0.3s;
 	h1 {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-
-		font-size: 15rem;
+		transition: all 0.3s;
+		margin-top: -3rem;
+		margin-bottom: -2rem;
+		font-size: 20rem;
 		color: $tertiary-color;
 		text-shadow: 0.2rem 0.2rem 2rem rgba($primary-color-darker, 0.5);
+		max-width: 100%;
+		padding: 0 1rem;
 		&:hover {
 			@include baseHover($tertiary-color);
-			cursor: crosshair;
 		}
 	}
+
 	h2 {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-
+		transition: all 0.3s;
 		font-size: 5rem;
 		color: $secondary-color;
 		text-shadow: 0.2rem 0.2rem 0.2rem rgba($tertiary-color, 0.5);
-
+		max-width: 100%;
+		padding: 0 1rem;
 		&:hover {
 			@include baseHover($secondary-color);
 		}
 	}
 }
+
 .Lsidebar,
 .Rsidebar {
 	h1 {
@@ -75,9 +49,5 @@ body {
 		border: 2px solid rgba($primary-color-dark, 0.9);
 		border-radius: 1rem;
 		transition: all 0.3s;
-
-		&:hover {
-			transform: scale(1.05);
-		}
 	}
 }

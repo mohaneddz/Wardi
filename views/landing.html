@@ -6,25 +6,34 @@
     <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
     <link rel="icon" type="image/x-icon" href="../public/img/favicon.ico">
     <link rel="stylesheet" href="../public/css/style.css">
-    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.5.1/uicons-solid-rounded/css/uicons-solid-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css">
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-straight/css/uicons-regular-straight.css">
+    <script src="../public/source/landing.js" defer></script>
     <title>Wardi | </title>
   </head>
   <body class="landing">
     <!-- HEADER-->
     <header class="header">
       <nav>
-        <ul>
-          <li class="header__logo"><a href="/"><img src="../public/img/LogoHD.png" alt="Logo"></a></li>
+        <ul class="topbar">
+          <li class="header__logo"><a href="/views/landing.html"><img src="../public/img/LogoHD.png" alt="Logo"></a></li>
           <li class="header__quran"><i class="fi fi-rs-book-quran">               </i><a href="/views/quranReading.html">Quran</a></li>
           <li class="header__hadith"><i class="fi fi-rs-books">               </i><a href="/views/hadithReading.html">Hadith</a></li>
           <li class="header__tafsir"><i class="fi fi-rs-book-open-cover">               </i><a href="/views/tafsirReading.html">Tafsir</a></li>
           <li class="header__about"><i class="fi fi-rs-info">               </i><a href="/views/about.html">About</a></li>
           <li class="header__bookmarks"><i class="fi fi-rs-wishlist-star">               </i><a href="/views/bookmarks.html">Bookmarks</a></li>
-          <li class="header__search"><a href="/views/search/html"> </a><i class="fi fi-rs-search"></i>
-            <input>
+          <li class="header__search">
+            <input type="text" placeholder="Search.."><i class="fi fi-rs-search"></i><a href="/views/search/html"> </a>
           </li>
           <li class="header__user"><a href="/views/login.html"> </a><i class="fi fi-rs-user"></i></li>
+          <li class="header__menu"><a href="/views/menu.html"></a><i class="fi fi-rr-menu-burger"></i></li>
+        </ul>
+        <ul class="Menusidebar">
+          <li class="header__quran"><i class="fi fi-rs-book-quran">               </i><a href="/views/quranReading.html">Quran</a></li>
+          <li class="header__hadith"><i class="fi fi-rs-books">               </i><a href="/views/hadithReading.html">Hadith</a></li>
+          <li class="header__tafsir"><i class="fi fi-rs-book-open-cover">               </i><a href="/views/tafsirReading.html">Tafsir</a></li>
+          <li class="header__about"><i class="fi fi-rs-info">               </i><a href="/views/about.html">About</a></li>
+          <li class="header__bookmarks"><i class="fi fi-rs-wishlist-star">               </i><a href="/views/bookmarks.html">Bookmarks</a></li>
         </ul>
       </nav>
     </header>
@@ -77,7 +86,7 @@
           </div>
         </div>
         <div class="cards__surah"> 
-          <p class="cards__surah__info__order">5</p>
+          <p class="cards__surah__info__order">150</p>
           <h3 class="cards__surah__name">االبقرة</h3>
           <div class="cards__surah__info">
             <p class="cards__surah__info__ayat">286 آيات</p>
@@ -121,11 +130,19 @@
         </div>
         <div class="footer__section footer__section--social">
           <h2>Follow Us</h2>
-          <ul class="footer__social-icons">
-            <li> <a href="#"><img src="path/to/facebook-icon.png" alt="Facebook"></a></li>
-            <li> <a href="#"><img src="path/to/twitter-icon.png" alt="Twitter"></a></li>
-            <li> <a href="#"><img src="path/to/instagram-icon.png" alt="Instagram"></a></li>
-          </ul>
+          <ul class="footer__social-icons"></ul>
+          <!-- TODO: Add social media icons
+          //- li 
+          //-   a(href='#')
+          //-     img(src='path/to/facebook-icon.png' alt='Facebook')
+          //- li 
+          //-   a(href='#')
+          //-     img(src='path/to/twitter-icon.png' alt='Twitter')
+          //- li 
+          //-   a(href='#')
+          //-     img(src='path/to/instagram-icon.png' alt='Instagram')
+          
+          -->
         </div>
       </div>
       <div class="footer__bottom">

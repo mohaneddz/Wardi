@@ -1,6 +1,5 @@
 @mixin baseHover($color, $amount: 1.2, $move: -0.5rem) {
 	transform: scale($amount) translateY($move);
-	transition: all 0.3s ease;
 	text-shadow: 0.4rem 0.4rem 2rem rgba($color, 0.452);
 	color: $color;
 }
@@ -11,14 +10,14 @@
 	display: grid;
 	padding: 2rem;
 	grid-template-rows: min-content 1fr;
+	height: 90vh;
+    overflow-y: auto; 
 	ul {
 		list-style-type: none;
 		display: grid;
 		grid-template-rows: repeat(50, 1fr);
 		gap: 0.5em;
 	}
-	height: 90vh;
-    overflow-y: auto; 
 }
 
 @mixin reader() {

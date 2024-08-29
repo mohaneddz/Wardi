@@ -3,11 +3,16 @@
 	color: white;
 	position: relative;
 	padding: 2rem 3rem;
+	min-width: min-content;
+	min-height: min-content;
 	border-radius: 1rem;
 	margin: 1rem;
 	box-shadow:
 		0 0 1rem rgba(0, 0, 0, 0.5),
 		0 0 1rem rgba(0, 0, 0, 0.1);
+	transition: all 0.3s;
+
+	// Order and Name
 	p.cards__surah__info__order,
 	h3.cards__surah__name {
 		display: inline;
@@ -16,43 +21,59 @@
 		margin-right: 2rem;
 		color: $secondary-color;
 	}
-	p.cards__surah__info__order::after {
-		content: '';
+
+	// Order Specific Styling
+	p.cards__surah__info__order {
+		font-size: 1.5rem;
 		width: 3.5rem;
 		height: 3.5rem;
-		background-color: $tertiary-color;
-		z-index: -1;
-		position: absolute;
-		top: 10%;
-		left: -50%;
-		transform: rotate(45deg);
-		border-radius: 5px;
+		color: rgb(255, 254, 254);
+
+		&::after {
+			content: '';
+			width: 3.5rem;
+			height: 3.5rem;
+			background-color: $tertiary-color;
+			z-index: -1;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%) rotate(45deg);
+			border-radius: 5px;
+		}
 	}
 
+	// Ayat and Type
 	p.cards__surah__info__ayat,
 	p.cards__surah__info__type {
 		display: inline;
 		color: $secondary-color-darker;
 		font-size: 2rem;
+		float: left;
 	}
+
+	// Type Specific Styling
 	p.cards__surah__info__type {
 		float: right;
 	}
+
+	// Link Styling
 	a {
+		position: absolute;
 		top: 5%;
 		right: 5%;
-		position: absolute;
 		color: $tertiary-color;
 		text-decoration: none;
 	}
 
+	// Hover Effect
 	&:hover {
-		transform: scale(1.05);
+		transform: scale(1.1);
 		background-color: $tertiary-color-darker;
 		z-index: 3;
+		cursor: pointer;
 	}
-}
-
-.cards__surah__info__order {
-	color: red;
+	@media (max-width: 600px) {
+		min-width: 40rem;
+	}
 }

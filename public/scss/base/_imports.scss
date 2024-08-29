@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'Uthmanic';
+    src: url('../fonts/Uthmanic-V22.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Surah';
+    src: url('../fonts/Elgharib-SurahName V4.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Basmallah';
+    src: url('../fonts/Elgharib-Basmala.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Divider';
+    src: url('../fonts/Elgharib-Dividers.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Parenthesis';
+    src: url('../fonts/Elgharib-A002.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@import url('../css/amiri.css');

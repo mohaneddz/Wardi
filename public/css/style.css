@@ -1,36 +1,4 @@
 @import url("../css/amiri.css");
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-
-html {
-  font-size: 62.5%;
-}
-
-body {
-  box-sizing: border-box;
-  padding: 3rem;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background-size: cover;
-  background-attachment: fixed;
-  position: relative;
-  z-index: 1;
-  margin: 0;
-  padding: 0;
-  background-color: #0D142C;
-  position: relative;
-}
-
-::selection {
-  background-color: #edeef2;
-}
-
 @font-face {
   font-family: "Uthmanic";
   src: url("../fonts/Uthmanic-V22.ttf") format("truetype");
@@ -61,39 +29,72 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+  width: 100vw;
+  min-height: 100vh;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  background-color: #0D142C;
+  position: relative;
+}
+
+::selection {
+  background-color: #edeef2;
+}
+
 body {
   font-family: "AmiriWeb", serif;
 }
 
-.title {
-  transition: all 0.3s;
-}
 .title h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 15rem;
+  transition: all 0.3s;
+  margin-top: -3rem;
+  margin-bottom: -2rem;
+  font-size: 20rem;
   color: #c72378;
   text-shadow: 0.2rem 0.2rem 2rem rgba(0, 0, 0, 0.5);
+  max-width: 100%;
+  padding: 0 1rem;
 }
 .title h1:hover {
   transform: scale(1.2) translateY(-0.5rem);
-  transition: all 0.3s ease;
   text-shadow: 0.4rem 0.4rem 2rem rgba(199, 35, 120, 0.452);
   color: #c72378;
-  cursor: crosshair;
 }
 .title h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s;
   font-size: 5rem;
   color: #b0b5c9;
   text-shadow: 0.2rem 0.2rem 0.2rem rgba(199, 35, 120, 0.5);
+  max-width: 100%;
+  padding: 0 1rem;
 }
 .title h2:hover {
   transform: scale(1.2) translateY(-0.5rem);
-  transition: all 0.3s ease;
   text-shadow: 0.4rem 0.4rem 2rem rgba(176, 181, 201, 0.452);
   color: #b0b5c9;
 }
@@ -110,10 +111,6 @@ body {
   border: 2px solid rgba(1, 2, 5, 0.9);
   border-radius: 1rem;
   transition: all 0.3s;
-}
-.Lsidebar h1:hover,
-.Rsidebar h1:hover {
-  transform: scale(1.05);
 }
 
 .header {
@@ -139,17 +136,16 @@ body {
   margin-right: 1rem;
   position: relative;
 }
+.header nav ul li:last-child {
+  margin-right: 0;
+}
 .header nav ul li:hover {
   transform: scale(1.3) translateY(0);
-  transition: all 0.3s ease;
   text-shadow: 0.4rem 0.4rem 2rem rgba(255, 255, 255, 0.452);
   color: white;
 }
 .header nav ul li:hover * {
   color: white;
-}
-.header nav ul li:last-child {
-  margin-right: 0;
 }
 .header nav ul li i {
   font-size: 2rem;
@@ -167,20 +163,29 @@ body {
 .header nav ul li.header__logo a {
   align-self: flex-start;
 }
-.header nav ul li.header__user {
+.header nav ul li.header__user, .header nav ul li.header__menu {
   display: flex;
   align-items: center;
 }
-.header nav ul li.header__user img {
+.header nav ul li.header__user img, .header nav ul li.header__menu img {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
   margin-right: 1rem;
 }
-.header nav ul li.header__user a {
+.header nav ul li.header__user a, .header nav ul li.header__menu a {
   font-size: 1.6rem;
   color: #c72378;
   font-weight: bold;
+}
+.header nav ul li.header__menu {
+  display: none;
+  z-index: 10;
+}
+@media (max-width: 1150px) {
+  .header nav ul li.header__menu {
+    display: flex;
+  }
 }
 .header nav ul li.header__search {
   margin-left: auto;
@@ -226,6 +231,31 @@ body {
 .header nav ul li.header__quran, .header nav ul li.header__hadith, .header nav ul li.header__tafsir, .header nav ul li.header__about, .header nav ul li.header__bookmarks {
   transform: translateX(15rem);
 }
+@media (max-width: 1150px) {
+  .header nav ul li.header__quran, .header nav ul li.header__hadith, .header nav ul li.header__tafsir, .header nav ul li.header__about, .header nav ul li.header__bookmarks {
+    display: none;
+  }
+}
+.header nav ul.Menusidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 20rem;
+  background-color: rgba(1, 2, 5, 0.9);
+  transition: all 0.3s;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2rem;
+  padding-top: 4rem;
+  z-index: 5;
+  backdrop-filter: blur(15px);
+}
+.header nav ul.Menusidebar.open {
+  display: flex;
+}
 
 .footer {
   background-color: rgba(1, 2, 5, 0.1);
@@ -233,6 +263,7 @@ body {
   padding: 2rem;
   text-align: center;
   width: 100%;
+  align-self: end;
 }
 .footer__content {
   display: grid;
@@ -426,12 +457,23 @@ body {
   padding: 3rem 3rem;
   background-color: #192653;
   border: 3px solid rgba(1, 2, 5, 0.9);
+  transition: all 0.3s;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5), 0.2rem 0.5rem 5px rgba(36, 56, 123, 0.5) inset;
   border-radius: 1rem;
+  cursor: pointer;
+}
+@media (max-width: 800px) {
+  .cuts > * {
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 656px) {
+  .cuts > * {
+    font-size: 1.75rem;
+  }
 }
 .cuts > *:hover {
   transform: scale(1.2) translateY(-0.5rem);
-  transition: all 0.3s ease;
   text-shadow: 0.4rem 0.4rem 2rem rgba(199, 35, 120, 0.452);
   color: #c72378;
 }
@@ -441,9 +483,12 @@ body {
   color: white;
   position: relative;
   padding: 2rem 3rem;
+  min-width: min-content;
+  min-height: min-content;
   border-radius: 1rem;
   margin: 1rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5), 0 0 1rem rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
 }
 .cards > * p.cards__surah__info__order,
 .cards > * h3.cards__surah__name {
@@ -453,6 +498,12 @@ body {
   margin-right: 2rem;
   color: #b0b5c9;
 }
+.cards > * p.cards__surah__info__order {
+  font-size: 1.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: rgb(255, 254, 254);
+}
 .cards > * p.cards__surah__info__order::after {
   content: "";
   width: 3.5rem;
@@ -460,9 +511,9 @@ body {
   background-color: #c72378;
   z-index: -1;
   position: absolute;
-  top: 10%;
-  left: -50%;
-  transform: rotate(45deg);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
   border-radius: 5px;
 }
 .cards > * p.cards__surah__info__ayat,
@@ -470,25 +521,28 @@ body {
   display: inline;
   color: #737ca0;
   font-size: 2rem;
+  float: left;
 }
 .cards > * p.cards__surah__info__type {
   float: right;
 }
 .cards > * a {
+  position: absolute;
   top: 5%;
   right: 5%;
-  position: absolute;
   color: #c72378;
   text-decoration: none;
 }
 .cards > *:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
   background-color: #701444;
   z-index: 3;
+  cursor: pointer;
 }
-
-.cards__surah__info__order {
-  color: red;
+@media (max-width: 600px) {
+  .cards > * {
+    min-width: 40rem;
+  }
 }
 
 .LsideEntry, .RsideEntry {
@@ -512,12 +566,15 @@ body {
 
 body {
   display: grid;
-  grid-template-rows: 10vh minmax(75vh, min-content) 15vh;
+  grid-template-rows: max(min-content, 5vh), max(min-content, 70%), max(min-content, 25%);
+  margin-bottom: 0;
 }
 body main {
   display: grid;
-  grid-template-rows: minmax(30vh, 30rem) repeat(2, min-content);
+  grid-template-rows: minmax(30vh, min-content) repeat(2, min-content);
   grid-template-columns: [center-start] repeat(12, [col-start] minmax(min-content, 100rem) [col-end]) [center-end];
+  align-items: center;
+  justify-items: center;
   row-gap: 2rem;
   padding: 2rem;
   margin-left: min(10rem, 5%);
@@ -526,6 +583,12 @@ body main {
 body main .title {
   grid-column: center-start/center-end;
   padding: 1rem 3rem;
+  transition: all 0.3s;
+  width: min-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 body main .cuts {
   grid-column: center-start/center-end;
@@ -541,10 +604,12 @@ body main .cards {
   grid-column: span 12;
   display: grid;
   grid-template-columns: repeat(4, minmax(14rem, 1fr));
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   align-content: center;
+  border-radius: 3rem;
   gap: 2rem;
+  margin-bottom: 10rem;
   background-color: #192653;
   padding: 2rem;
   font-size: 3rem;

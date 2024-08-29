@@ -10,9 +10,20 @@
 	padding: 3rem 3rem;
 	background-color: $primary-color-light;
 	border: 3px solid rgba($primary-color-dark, 0.9);
+	transition: all 0.3s;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5), 0.2rem 0.5rem 5px rgba($primary-color-lighter, 0.5) inset;
 	border-radius: 1rem;
-    
+	cursor: pointer;
+
+	// 724 * 1207
+	@media (max-width: 800px) {
+		font-size: 2.5rem;
+	}
+	@media (max-width: 656px) {
+		font-size: 1.75rem;
+	}
+	
+
     &:hover{
         @include baseHover($tertiary-color);
     }
