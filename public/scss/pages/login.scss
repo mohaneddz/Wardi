@@ -1,0 +1,88 @@
+.loginpage {
+	display: grid;
+	grid-template-rows: auto 1fr;
+}
+.mainloginpage {
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: repeat(8, 1fr);
+}
+
+.login {
+	display: flex;
+	grid-column: 2/8;
+	justify-content: start;
+	align-items: center;
+	flex-direction: column;
+	background-color: #0d142c;
+	color: $tertiary-color;
+	font-size: 1.6rem;
+	height: 70%;
+	width: 100%;
+	padding: 2rem;
+
+	h1 {
+		font-size: 6rem;
+		margin-bottom: 2rem;
+	}
+	img {
+		width: 10rem;
+		height: 10rem;
+		border-radius: 100rem;
+	}
+	form {
+		background-color: #ffffff; // $color-white
+		padding: 2rem;
+		border-radius: 1rem;
+		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1); // $color-black
+		width: 100%;
+		max-width: 400px; // Limit the form width
+
+		div {
+			margin-bottom: 2rem;
+
+			label {
+				display: block;
+				margin-bottom: 1rem;
+			}
+
+			input[type='email'],
+			input[type='password'] {
+				width: 100%;
+				padding: 1rem;
+				font-size: 1.6rem;
+				border: 1px solid rgba(0, 0, 0, 0.1); // $color-black
+				border-radius: 0.5rem;
+
+				&:focus {
+					outline: none;
+					border-color: $tertiary-color;
+				}
+				&:invalid {
+					border-color: red;
+                    border-width: 2px;
+				}
+				// valid and not empty
+                &:valid:not(:placeholder-shown) {
+                    border-color: $primary-color;
+                    border-width: 2px;
+                }
+			}
+
+			input[type='submit'] {
+				width: 100%;
+				padding: 1rem;
+				font-size: 1.6rem;
+				background-color: #0d142c; // $color-primary
+				color: #ffffff; // $color-white
+				border: none;
+				border-radius: 0.5rem;
+				cursor: pointer;
+
+				&:hover {
+					background-color: darken(#0d142c, 5%); // darken($color-primary, 5%)
+				}
+			}
+		}
+	}
+}

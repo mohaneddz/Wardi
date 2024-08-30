@@ -1,0 +1,11 @@
+.login
+    h1 Login
+    form(action="/login", method="post")
+        div
+            label(for="email") Email
+            input(type="email", id="email", name="email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
+        div
+            label(for="password") Password
+            input(type="password", id="password", name="password" required)
+        div
+            input(type="submit", value="Login")

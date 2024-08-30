@@ -11,7 +11,7 @@
     <script src="../public/source/landing.js" defer></script>
     <title>Wardi | </title>
   </head>
-  <body>
+  <body class="loginpage">
     <!-- HEADER-->
     <header class="header">
       <nav>
@@ -37,52 +37,25 @@
         </ul>
       </nav>
     </header>
-    <main>
+    <main class="mainloginpage">
       <!-- CONTENT-->
+      <div class="login">
+        <h1>Login</h1>
+        <form action="/login" method="post">
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$">
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <div>
+            <input type="submit" value="Login">
+          </div>
+        </form>
+      </div>
     </main>
     <!-- FOOTER-->
-    <footer class="footer">
-      <div class="footer__content">
-        <div class="footer__section footer__section--about">
-          <h2>About وردي</h2>
-          <p>Wardi is your daily source of spiritual nourishment, offering Quranic readings, Hadith, and Tafsir. Join us on the path of enlightenment.</p>
-        </div>
-        <div class="footer__section footer__section--links">
-          <h2>Quick Links</h2>
-          <ul>
-            <li> <a href="/">Home</a></li>
-            <li> <a href="/quran">Quran</a></li>
-            <li> <a href="/hadith">Hadith</a></li>
-            <li> <a href="/tafsir">Tafsir</a></li>
-            <li> <a href="/about">About</a></li>
-          </ul>
-        </div>
-        <div class="footer__section footer__section--contact">
-          <h2>Contact Us</h2>
-          <p>Email: info@wardi.com</p>
-          <p>Phone: +123 456 7890</p>
-          <p>Address: 123 Islamic Street, Does not exist :)</p>
-        </div>
-        <div class="footer__section footer__section--social">
-          <h2>Follow Us</h2>
-          <ul class="footer__social-icons"></ul>
-          <!-- TODO: Add social media icons
-          //- li 
-          //-   a(href='#')
-          //-     img(src='path/to/facebook-icon.png' alt='Facebook')
-          //- li 
-          //-   a(href='#')
-          //-     img(src='path/to/twitter-icon.png' alt='Twitter')
-          //- li 
-          //-   a(href='#')
-          //-     img(src='path/to/instagram-icon.png' alt='Instagram')
-          
-          -->
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <p>&copy; 2024 وردى. All Rights Reserved.</p>
-      </div>
-    </footer>
   </body>
 </html>

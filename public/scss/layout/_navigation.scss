@@ -66,6 +66,9 @@
 						color: $tertiary-color;
 						font-weight: bold;
 					}
+					&:hover {
+						cursor: pointer;
+					}
 				}
 				&.header__menu {
 					display: none;
@@ -81,7 +84,6 @@
 					position: relative;
 					display: flex;
 					align-items: center;
-
 					input {
 						order: 1;
 						margin-right: 0.5rem;
@@ -92,7 +94,14 @@
 						color: $tertiary-color;
 						font-size: 1.6rem;
 						transition: all 0.3s ease;
-						width: 90%;
+						width: 100%;
+						&:focus {
+							color: white;
+						}
+						&:focus {
+							outline: none;
+							border: 1px solid rgba(255, 255, 255, 0.311);
+						}
 					}
 
 					i,
@@ -110,7 +119,9 @@
 						input {
 							background-color: rgba($primary-color-dark, 0.7);
 							backface-visibility: hidden;
-							width: 100%;
+						}
+						* {
+							color: white;
 						}
 					}
 				}
@@ -155,14 +166,16 @@
 					transform: translateX(5rem);
 					margin-right: 0;
 					width: 100%;
-					z-index: 6;
+					z-index: 10;
 					&:hover {
 						text-shadow: 0.4rem 0.4rem 2rem rgba(white, 0.452);
-						color: white;
 					}
 				}
 				&.open {
 					display: flex;
+					@media (min-width: 1150px) {
+						display: none;
+					}
 				}
 			}
 		}

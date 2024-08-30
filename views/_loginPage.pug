@@ -1,0 +1,11 @@
+extends base
+
+block append head 
+  - var title = 'Login'
+  - var bodyClass = 'loginpage'
+  - var mainClass = 'mainloginpage'
+
+block content
+  include _login
+
+block footer

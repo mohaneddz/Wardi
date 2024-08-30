@@ -213,6 +213,9 @@ body {
   color: #c72378;
   font-weight: bold;
 }
+.header nav ul li.header__user:hover, .header nav ul li.header__menu:hover {
+  cursor: pointer;
+}
 .header nav ul li.header__menu {
   display: none;
   z-index: 10;
@@ -238,7 +241,14 @@ body {
   color: #c72378;
   font-size: 1.6rem;
   transition: all 0.3s ease;
-  width: 90%;
+  width: 100%;
+}
+.header nav ul li.header__search input:focus {
+  color: white;
+}
+.header nav ul li.header__search input:focus {
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.311);
 }
 .header nav ul li.header__search i,
 .header nav ul li.header__search a {
@@ -256,7 +266,9 @@ body {
 .header nav ul li.header__search:hover input {
   background-color: rgba(1, 2, 5, 0.7);
   backface-visibility: hidden;
-  width: 100%;
+}
+.header nav ul li.header__search:hover * {
+  color: white;
 }
 .header nav ul li a, .header nav ul li:visited {
   text-decoration: none;
@@ -292,14 +304,18 @@ body {
   transform: translateX(5rem);
   margin-right: 0;
   width: 100%;
-  z-index: 6;
+  z-index: 10;
 }
 .header nav ul.Menusidebar li:hover {
   text-shadow: 0.4rem 0.4rem 2rem rgba(255, 255, 255, 0.452);
-  color: white;
 }
 .header nav ul.Menusidebar.open {
   display: flex;
+}
+@media (min-width: 1150px) {
+  .header nav ul.Menusidebar.open {
+    display: none;
+  }
 }
 
 .footer {
@@ -854,6 +870,91 @@ body main .cards {
   body main .cards {
     grid-template-columns: repeat(1, minmax(14rem, 1fr));
   }
+}
+
+.loginpage {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.mainloginpage {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.login {
+  display: flex;
+  grid-column: 2/8;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  background-color: #0d142c;
+  color: #c72378;
+  font-size: 1.6rem;
+  height: 70%;
+  width: 100%;
+  padding: 2rem;
+}
+.login h1 {
+  font-size: 6rem;
+  margin-bottom: 2rem;
+}
+.login img {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 100rem;
+}
+.login form {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+.login form div {
+  margin-bottom: 2rem;
+}
+.login form div label {
+  display: block;
+  margin-bottom: 1rem;
+}
+.login form div input[type=email],
+.login form div input[type=password] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+.login form div input[type=email]:focus,
+.login form div input[type=password]:focus {
+  outline: none;
+  border-color: #c72378;
+}
+.login form div input[type=email]:invalid,
+.login form div input[type=password]:invalid {
+  border-color: red;
+  border-width: 2px;
+}
+.login form div input[type=email]:valid:not(:placeholder-shown),
+.login form div input[type=password]:valid:not(:placeholder-shown) {
+  border-color: #0D142C;
+  border-width: 2px;
+}
+.login form div input[type=submit] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.6rem;
+  background-color: #0d142c;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.login form div input[type=submit]:hover {
+  background-color: #070b18;
 }
 
 /*# sourceMappingURL=style.css.map */
