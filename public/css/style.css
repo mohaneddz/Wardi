@@ -407,8 +407,8 @@ body {
   grid-template-rows: min-content 1fr;
   overflow-y: auto;
   flex-wrap: nowrap;
+  position: relative;
   max-height: 90vh;
-  font-size: 5rem;
 }
 .Lsidebar h1 {
   font-size: 4rem;
@@ -462,6 +462,32 @@ body {
 .Lsidebar.active {
   display: flex;
 }
+.Lsidebar .search {
+  position: relative;
+}
+.Lsidebar .search input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  border: 2px solid black;
+  background-color: #24387b;
+  color: white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.Lsidebar .search input:focus {
+  outline: none;
+  color: #c72378;
+}
+.Lsidebar .search i {
+  position: absolute;
+  font-size: 2rem;
+  color: #c72378;
+  top: 37%;
+  right: 7%;
+  cursor: pointer;
+}
 @media screen and (max-width: 1200px) {
   .Lsidebar {
     grid-row: 1/2;
@@ -477,6 +503,7 @@ body {
   grid-template-rows: min-content 1fr;
   overflow-y: auto;
   flex-wrap: nowrap;
+  position: relative;
   max-height: 90vh;
 }
 .Rsidebar h1 {
@@ -530,6 +557,32 @@ body {
 }
 .Rsidebar.active {
   display: flex;
+}
+.Rsidebar .search {
+  position: relative;
+}
+.Rsidebar .search input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  border: 2px solid black;
+  background-color: #24387b;
+  color: white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.Rsidebar .search input:focus {
+  outline: none;
+  color: #c72378;
+}
+.Rsidebar .search i {
+  position: absolute;
+  font-size: 2rem;
+  color: #c72378;
+  top: 37%;
+  right: 7%;
+  cursor: pointer;
 }
 @media screen and (max-width: 1200px) {
   .Rsidebar {

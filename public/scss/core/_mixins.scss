@@ -13,6 +13,7 @@
 	grid-template-rows: min-content 1fr;
 	overflow-y: auto;
 	flex-wrap: nowrap;
+	position: relative;
 	max-height: 90vh;
 	h1 {
 		font-size: 4rem;
@@ -69,6 +70,35 @@
 
 	&.active {
 		display: flex;
+	}
+	.search{
+		position: relative;
+
+		input {
+			width: 100%;
+			padding: 1rem;
+			font-size: 1.5rem;
+			border-radius: 1rem;
+			border: 2px solid black;
+
+			background-color: $primary-color-lighter;
+			color: white;
+			margin-top: 2rem;
+			margin-bottom: 2rem;
+			
+			&:focus {
+				outline: none;
+				color: $tertiary-color;
+			}
+		}
+		i{
+			position: absolute;
+			font-size: 2rem;
+			color: $tertiary-color;
+			top: 37%;
+			right: 7%;
+			cursor: pointer;
+		}
 	}
 }
 
