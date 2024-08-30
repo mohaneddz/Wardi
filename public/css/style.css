@@ -182,11 +182,17 @@ body {
 .header nav ul li:hover * {
   color: white;
 }
-.header nav ul li i {
+.header nav ul li:hover a i {
+  cursor: pointer;
+}
+.header nav ul li a i {
   font-size: 2rem;
   color: #c72378;
   position: absolute;
-  transform: translateX(-2.5rem);
+  left: -70%;
+}
+.header nav ul li.header__bookmarks a i {
+  left: -40%;
 }
 .header nav ul li.header__logo {
   margin-right: auto;
@@ -195,7 +201,7 @@ body {
   width: 5rem;
   height: 5rem;
 }
-.header nav ul li.header__logo a {
+.header nav ul li.header__logo a i {
   align-self: flex-start;
 }
 .header nav ul li.header__user, .header nav ul li.header__menu {
@@ -208,16 +214,18 @@ body {
   border-radius: 50%;
   margin-right: 1rem;
 }
-.header nav ul li.header__user a, .header nav ul li.header__menu a {
-  font-size: 1.6rem;
-  color: #c72378;
-  font-weight: bold;
-}
 .header nav ul li.header__user:hover, .header nav ul li.header__menu:hover {
   cursor: pointer;
 }
+.header nav ul li.header__user a i, .header nav ul li.header__menu a i {
+  transform: translate(-1rem, -1rem);
+}
+.header nav ul li.header__user, .header nav ul li.header__menu, .header nav ul li.header__search {
+  transform: translateX(-1rem);
+}
 .header nav ul li.header__menu {
   display: none;
+  transform: translateX(-2rem);
   z-index: 10;
 }
 @media (max-width: 1150px) {
@@ -241,16 +249,12 @@ body {
   color: #c72378;
   font-size: 1.6rem;
   transition: all 0.3s ease;
-  width: 100%;
 }
 .header nav ul li.header__search input:focus {
   color: white;
-}
-.header nav ul li.header__search input:focus {
   outline: none;
   border: 1px solid rgba(255, 255, 255, 0.311);
 }
-.header nav ul li.header__search i,
 .header nav ul li.header__search a {
   order: 2;
   font-size: 2rem;
@@ -260,12 +264,14 @@ body {
   transform: none;
   cursor: pointer;
 }
+.header nav ul li.header__search a i {
+  transform: translateY(-1rem);
+}
 .header nav ul li.header__search:hover {
   transform: none;
 }
 .header nav ul li.header__search:hover input {
   background-color: rgba(1, 2, 5, 0.7);
-  backface-visibility: hidden;
 }
 .header nav ul li.header__search:hover * {
   color: white;
@@ -306,6 +312,9 @@ body {
   width: 100%;
   z-index: 10;
 }
+.header nav ul.Menusidebar li a i {
+  left: -15%;
+}
 .header nav ul.Menusidebar li:hover {
   text-shadow: 0.4rem 0.4rem 2rem rgba(255, 255, 255, 0.452);
 }
@@ -315,6 +324,20 @@ body {
 @media (min-width: 1150px) {
   .header nav ul.Menusidebar.open {
     display: none;
+  }
+}
+@media (max-width: 400px) {
+  .header nav ul.Menusidebar.open {
+    width: 107vw;
+    padding-left: 5rem;
+  }
+  .header nav ul.Menusidebar.open li a {
+    font-size: 5rem;
+    margin-left: 5rem;
+  }
+  .header nav ul.Menusidebar.open li a i {
+    left: -10%;
+    font-size: 5rem;
   }
 }
 

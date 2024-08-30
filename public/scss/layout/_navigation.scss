@@ -28,15 +28,27 @@
 					* {
 						color: white;
 					}
+					a {
+						i {
+							cursor: pointer;
+						}
+					}
 				}
-
-				i {
-					font-size: 2rem;
-					color: $tertiary-color;
-					position: absolute;
-					transform: translateX(-2.5rem);
+				a {
+					i {
+						font-size: 2rem;
+						color: $tertiary-color;
+						position: absolute;
+						left: -70%;
+					}
 				}
-
+				&.header__bookmarks {
+					a {
+						i {
+							left: -40%;
+						}
+					}
+				}
 				&.header__logo {
 					margin-right: auto;
 
@@ -46,7 +58,9 @@
 					}
 
 					a {
-						align-self: flex-start;
+						i {
+							align-self: flex-start;
+						}
 					}
 				}
 
@@ -61,24 +75,28 @@
 						border-radius: 50%;
 						margin-right: 1rem;
 					}
-					a {
-						font-size: 1.6rem;
-						color: $tertiary-color;
-						font-weight: bold;
-					}
 					&:hover {
 						cursor: pointer;
 					}
+					a {
+						i {
+							transform: translate(-1rem, -1rem);
+						}
+					}
+				}
+				&.header__user,
+				&.header__menu,
+				&.header__search {
+					transform: translateX(-1rem);
 				}
 				&.header__menu {
 					display: none;
-					z-index: 10;
-
 					@media (max-width: 1150px) {
 						display: flex;
 					}
+					transform: translateX(-2rem);
+					z-index: 10;
 				}
-
 				&.header__search {
 					margin-left: auto;
 					position: relative;
@@ -94,17 +112,13 @@
 						color: $tertiary-color;
 						font-size: 1.6rem;
 						transition: all 0.3s ease;
-						width: 100%;
 						&:focus {
 							color: white;
-						}
-						&:focus {
 							outline: none;
 							border: 1px solid rgba(255, 255, 255, 0.311);
 						}
 					}
 
-					i,
 					a {
 						order: 2;
 						font-size: 2rem;
@@ -113,18 +127,21 @@
 						position: relative;
 						transform: none;
 						cursor: pointer;
+						i {
+							transform: translateY(-1rem);
+						}
 					}
 					&:hover {
-						transform: none;
 						input {
 							background-color: rgba($primary-color-dark, 0.7);
-							backface-visibility: hidden;
 						}
 						* {
 							color: white;
 						}
+						transform: none;
 					}
 				}
+
 				a,
 				&:visited {
 					text-decoration: none;
@@ -164,6 +181,11 @@
 				backdrop-filter: blur(15px);
 				li {
 					transform: translateX(5rem);
+					a{
+						i{
+							left: -15%;
+						}
+					}
 					margin-right: 0;
 					width: 100%;
 					z-index: 10;
@@ -175,6 +197,20 @@
 					display: flex;
 					@media (min-width: 1150px) {
 						display: none;
+					}
+					@media (max-width: 400px) {
+						width: 107vw;
+						padding-left: 5rem;
+						li{
+							a{
+								font-size: 5rem;
+								margin-left: 5rem;
+								i{
+									left: -10%;
+									font-size: 5rem;
+								}
+							}
+						}
 					}
 				}
 			}
