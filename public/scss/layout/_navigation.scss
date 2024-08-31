@@ -90,12 +90,12 @@
 					transform: translateX(-1rem);
 				}
 				&.header__menu {
+					transform: translateX(-2rem);
 					display: none;
+					z-index: 10;
 					@media (max-width: 1150px) {
 						display: flex;
 					}
-					transform: translateX(-2rem);
-					z-index: 10;
 				}
 				&.header__search {
 					margin-left: auto;
@@ -132,13 +132,13 @@
 						}
 					}
 					&:hover {
+						transform: none;
 						input {
 							background-color: rgba($primary-color-dark, 0.7);
 						}
 						* {
 							color: white;
 						}
-						transform: none;
 					}
 				}
 
@@ -181,16 +181,16 @@
 				backdrop-filter: blur(15px);
 				li {
 					transform: translateX(5rem);
-					a{
-						i{
-							left: -15%;
-						}
-					}
 					margin-right: 0;
 					width: 100%;
 					z-index: 10;
 					&:hover {
 						text-shadow: 0.4rem 0.4rem 2rem rgba(white, 0.452);
+					}
+					a{
+						i{
+							left: -15%;
+						}
 					}
 				}
 				&.open {

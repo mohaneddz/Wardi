@@ -17,13 +17,13 @@ import cors from 'cors'; // cors module ( for cross origin resource sharing )
 // import globalErrorHandler from './controllers/errorController.js';
 
 // Importing the routers //////////////////////////////
-// import quranRouter from './routers/quranRoutes.js'; 
-// import hadithRouter from './routers/hadithRoutes.js'; 
-// import userRouter from './routers/userRoutes.js'; 
-// import tafsirRouter from './routers/tafsirRoutes.js'; 
-import viewRouter from './routers/viewRoutes.js'; 
+// import quranRouter from './routers/quranRoutes.js';
+// import hadithRouter from './routers/hadithRoutes.js';
+// import userRouter from './routers/userRoutes.js';
+// import tafsirRouter from './routers/tafsirRoutes.js';
+import viewRouter from './routers/viewRoutes.js';
 
-// - If you're working with __dirname or __filename, you may need to set them up manually using the `fileURLToPath` utility from the `url` module, like this:
+// - If you're working with __dirname or __filename, you may need to set them up manually using the fileURLToPath utility from the url module, like this:
 
 import { fileURLToPath } from 'url';
 
@@ -37,18 +37,32 @@ const app = express(); // creating an express app
 // app.disable('trust proxy'); // To disable the trust proxy in Express ( in development )
 
 app.set('view engine', 'pug'); // setting the view engine to pug ( for rendering the views :) )
-app.use(express.static(path.join(__dirname, 'public'))); // Serving static files
+app.set('views', './views');
 
+app.use(cors()); // Implementing CORS ( Cross Origin Resource Sharing )
+app.options('*', cors());
+
+app.use(express.static('./public')); // Serving the static files
+
+// TODO : FIX the standard Method
 app.get('/public/css/style.css', (req, res) => {
-    res.setHeader('Content-Type', 'text/css');
-    res.sendFile(path.join(__dirname, 'public', 'css', 'style.css'));
+	res.setHeader('Content-Type', 'text/css');
+	res.sendFile(path.join(__dirname, 'public', 'css', 'style.css'));
+});
+// app.get('/public/css/amiri.css', (req, res) => {
+// 	res.setHeader('Content-Type', 'text/css');
+// 	res.sendFile(path.join(__dirname, 'public', 'css', 'amiri.css'));
+// });
+app.get('/public/source/landing.js', (req, res) => {
+	res.setHeader('Content-Type', 'text/javascript');
+	res.sendFile(path.join(__dirname, 'public', 'source', 'landing.js'));
+});
+app.get('/public/img/LogoHD.png', (req, res) => {
+	res.setHeader('Content-Type', 'image/png');
+	res.sendFile(path.join(__dirname, 'public', 'img', 'LogoHD.png'));
 });
 
 // // Setting the MIDDLEWARES! //////////////////////////////
-
-app.use(cors()); // Implementing CORS ( Cross Origin Resource Sharing )
-
-app.use(express.static(path.join(__dirname, 'public'))); // Serving the static files
 
 app.use(helmet()); // Setting the security HTTP headers
 process.env.NODE_ENV === 'development' && app.use(morgan('dev')); // Only for development, logging the requests to console
@@ -79,7 +93,7 @@ app.use('/', viewRouter); // view routes
 // app.use('/view', viewRouter); // view routes
 
 // app.all('*', (req, res, next) => {
-//     next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+//     next(new AppError(Can't find ${req.originalUrl} on this server!, 404));
 // });
 // app.use(globalErrorHandler); // centralize error handling functions
 

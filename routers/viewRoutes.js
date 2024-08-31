@@ -1,5 +1,5 @@
 // import authController from '../controllers/authController.js'; // for authentication
-import viewsController from '../controllers/viewsController.js';
+import * as viewsController from '../controllers/viewsController.js';
 import express from 'express';
 
 const router = express.Router();
@@ -8,7 +8,11 @@ const router = express.Router();
 
 // router.use(viewsController.alerts);
 
-router.get('/', viewsController.getHome);
+router.get('/', viewsController.getLanding);
+// router.get('/quran/', viewsController.getQuran);
+// router.get('/hadith/', viewsController.getHadith);
+// router.get('/tafsir/', viewsController.getTafsir);
+
 // router.get('/', (req, res) => {
 //     res.send('View Routes');
 // });

@@ -17,7 +17,17 @@ block content
             
     .cards
         //- card for each surah : this is a template as of now
-        
+        for chapter in chapters
+            .cards__surah 
+                p.cards__surah__info__order #{chapter.id}
+                h3.cards__surah__name #{chapter.name}
+                .cards__surah__info
+                    p.cards__surah__info__ayat #{chapter.ayat} آيات
+                    p.cards__surah__info__type #{chapter.type}
+                    p.cards__surah__info__fav
+                        a(href="#") &hearts; 
+
+
         .cards__surah 
             p.cards__surah__info__order 1
             h3.cards__surah__name الفاتحة

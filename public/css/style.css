@@ -224,8 +224,8 @@ body {
   transform: translateX(-1rem);
 }
 .header nav ul li.header__menu {
-  display: none;
   transform: translateX(-2rem);
+  display: none;
   z-index: 10;
 }
 @media (max-width: 1150px) {
@@ -312,11 +312,11 @@ body {
   width: 100%;
   z-index: 10;
 }
-.header nav ul.Menusidebar li a i {
-  left: -15%;
-}
 .header nav ul.Menusidebar li:hover {
   text-shadow: 0.4rem 0.4rem 2rem rgba(255, 255, 255, 0.452);
+}
+.header nav ul.Menusidebar li a i {
+  left: -15%;
 }
 .header nav ul.Menusidebar.open {
   display: flex;
