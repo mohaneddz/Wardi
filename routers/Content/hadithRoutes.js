@@ -7,4 +7,4 @@ router.get('/', (req, res) => {
 	res.send('Hadith Routes');
 });
 
-module.exports = router;
+export default router;

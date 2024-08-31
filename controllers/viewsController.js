@@ -1,43 +1,63 @@
-import Chapter from '../models/Quran/quranChaptersModel.js';
-import Page from '../models/Quran/quranPagesModel.js';
-import Juz from '../models/Quran/quranJuzsModel.js';
-import Info from '../models/Quran/quranInfoModel.js';
+import Chapter from '../models/Content/Quran/quranChaptersModel.js';
+import Page from '../models/Content/Quran/quranPagesModel.js';
+import Juz from '../models/Content/Quran/quranJuzsModel.js';
+import Info from '../models/Content/Quran/quranInfoModel.js';
 
 import catchAsync from '../utils/catchAsync.js';
 import AppError from '../utils/appError.js';
 
 export const getLanding = catchAsync(async (req, res, next) => {
-	const chapters = await Chapter.find();
-
+	
+	const chapters = await Chapter.find().lean();
 	if (!chapters) {
-		return next(new AppError('There is no Chapter with that Number.', 404));
+		return next(new AppError('There are currently no Chapters??.', 404));
 	}
-	res.status(200).json({
-		status: 'success',
-		data: {
-			chapters,
-		},
+	res.status(200).render('landing', {
+		title: 'Landing',
+		chapters,
 	});
-
-	// res.status(200).render('landing', {
-	// 	title: 'Landing',
-	// 	chapters,
-	// });
 });
 
 export const getChapter = catchAsync(async (req, res, next) => {
+
 	const chapter = await Chapter.findOne({ chapter: req.params.chapter });
-	const chapterInfo = await Info.findOne({ chapters: chapter.content.chapter });
 
 	if (!chapter) {
 		return next(new AppError('There is no Chapter with that Number.', 404));
 	}
 
 	res.status(200).render('quranReading', {
-		title: `${chapterInfo.name}`,
+		title: `${chapter.info.arabicname}`,
 		chapter,
-		chapterInfo,
 	});
+});
+
+export const getJuz = catchAsync(async (req, res, next) => {
+	const juz = await Juz.findOne({ juz: req.params.juz });
+	const juzInfo = await Info.findOne({ juzs: juz.juz });
+
+	if (!juz) {
+		return next(new AppError('There is no Juz with that Number.', 404));
+	}
+
+	res.status(200).render('quranReading', {
+		title: `${juzInfo.name}`,
+		juz,
+		juzInfo,
+	});
+});
+
+export const getPage = catchAsync(async (req, res, next) => {
+  const page = await Page.findOne({ pageNumber: req.params.page });
+
+  if (!page) {
+    return next(new AppError('There is no Page with that Number.', 404));
+  }
+
+  res.status(200).render('quranReading', {
+    title: `Page ${page.pageNumber}`,
+    page,
+  });
 });
 
 // export const getLoginForm = (req, res) => {
@@ -84,43 +104,3 @@ export const getChapter = catchAsync(async (req, res, next) => {
 //     user: updatedUser
 //   });
 // });
-
-// Fetch all chapters
-export const getAllData = async (req, res) => {
-    try {
-      console.log('Fetching data from database...');
-      const chapters = await Chapter.find();
-      console.log('Chapters fetched:', chapters);
-  
-      const pages = await Page.find();
-      console.log('Pages fetched:', pages);
-  
-      const juzs = await Juz.find();
-      console.log('Juzs fetched:', juzs);
-  
-      const infos = await Info.find();
-      console.log('Infos fetched:', infos);
-  
-      res.status(200).json({
-        status: 'success',
-        results: {
-          chapters: chapters.length,
-          pages: pages.length,
-          juzs: juzs.length,
-          infos: infos.length,
-        },
-        data: {
-        //   chapters,
-        //   pages,
-        //   juzs,
-        //   infos,
-        },
-      });
-    } catch (err) {
-      res.status(500).json({
-        status: 'error',
-        message: 'Failed to fetch data',
-        error: err.message,
-      });
-    }
-  };

@@ -18,66 +18,12 @@ block content
     .cards
         //- card for each surah : this is a template as of now
         for chapter in chapters
-            .cards__surah 
-                p.cards__surah__info__order #{chapter.id}
+            .cards__surah
+                a.cards__surah__link(href=`/quran/chapter/${chapter.chapter}`)
+                p.cards__surah__info__order #{chapter.chapter}
                 h3.cards__surah__name #{chapter.name}
                 .cards__surah__info
-                    p.cards__surah__info__ayat #{chapter.ayat} آيات
-                    p.cards__surah__info__type #{chapter.type}
+                    p.cards__surah__info__ayat #{chapter.verses.length} آيات
+                    p.cards__surah__info__type #{chapter.info.revelation}
                     p.cards__surah__info__fav
-                        a(href="#") &hearts; 
-
-
-        .cards__surah 
-            p.cards__surah__info__order 1
-            h3.cards__surah__name الفاتحة
-            .cards__surah__info
-                p.cards__surah__info__ayat 7 آيات
-                p.cards__surah__info__type مكية
-                p.cards__surah__info__fav
-                    a(href="#") &hearts;
-
-        .cards__surah 
-            p.cards__surah__info__order 2
-            h3.cards__surah__name االبقرة
-            .cards__surah__info
-                p.cards__surah__info__ayat 286 آيات
-                p.cards__surah__info__type مدنية
-                p.cards__surah__info__fav
-                    a(href="#") &hearts;
-
-        .cards__surah 
-            p.cards__surah__info__order 3
-            h3.cards__surah__name آل عمران
-            .cards__surah__info
-                p.cards__surah__info__ayat  200 آيات
-                p.cards__surah__info__type مدنية
-                p.cards__surah__info__fav
-                    a(href="#") &hearts;
-            
-        .cards__surah 
-            p.cards__surah__info__order 4
-            h3.cards__surah__name الفاتحة
-            .cards__surah__info
-                p.cards__surah__info__ayat 7 آيات
-                p.cards__surah__info__type مكية
-                p.cards__surah__info__fav
-                    a(href="#") &hearts;
-
-        .cards__surah 
-            p.cards__surah__info__order 150
-            h3.cards__surah__name االبقرة
-            .cards__surah__info
-                p.cards__surah__info__ayat 286 آيات
-                p.cards__surah__info__type مدنية
-                p.cards__surah__info__fav
-                    a(href="#") &hearts;
-
-        .cards__surah 
-            p.cards__surah__info__order 6
-            h3.cards__surah__name آل عمران
-            .cards__surah__info
-                p.cards__surah__info__ayat  200 آيات
-                p.cards__surah__info__type مدنية
-                p.cards__surah__info__fav
-                    a(href="#") &hearts;
+                        a(href="#") &hearts;

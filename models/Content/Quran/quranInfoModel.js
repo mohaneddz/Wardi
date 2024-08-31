@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import Chapter from '../schemas/chapterSchema.js';
 
 const quranInfoSchema = new mongoose.Schema({
   verses: {

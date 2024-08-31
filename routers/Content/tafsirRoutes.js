@@ -6,4 +6,4 @@ router.get('/', (req, res) => {
 	res.send('Tafsir Routes');
 });
 
-module.exports = router;
+export default router;

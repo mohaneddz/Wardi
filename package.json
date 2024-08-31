@@ -10,7 +10,7 @@
 		"watch:scss": "sass public/scss/main.scss public/css/style.css -w",
 		"devserver": "npm-run-all --parallel dev --browser=\"C:/Program Files/Firefox Developer Edition/firefox.exe\"",
 		"start": "npm-run-all --parallel devserver watch:scss",
-		"pugg": "pug -w ./ -o ./ -P",
+		"pugg": "pug -w ./views -o ./public -P",
 		"view": "npm-run-all --parallel pugg watch:scss"
 	},
 	"author": "Mohaned Manaa",

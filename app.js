@@ -1,4 +1,5 @@
 // Importing the modules //////////////////////////////
+// NPM Modules-------------------------
 import path from 'path'; // path module
 import express from 'express'; // express module
 import morgan from 'morgan'; // morgan module ( for logging )
@@ -12,55 +13,36 @@ import bodyParser from 'body-parser'; // body parser module ( for parsing the bo
 import compression from 'compression'; // compression module ( for compressing the response )
 import cors from 'cors'; // cors module ( for cross origin resource sharing )
 
-// Importing the error controllers
+// Error Handlers-------------------------
 // import AppError from './utils/appError.js'; // AppError class
 // import globalErrorHandler from './controllers/errorController.js';
 
-// Importing the routers //////////////////////////////
-// import quranRouter from './routers/quranRoutes.js';
-// import hadithRouter from './routers/hadithRoutes.js';
-// import userRouter from './routers/userRoutes.js';
-// import tafsirRouter from './routers/tafsirRoutes.js';
+// Routers-------------------------
+import quranRouter from './routers/Content/quranRoutes.js';
+import hadithRouter from './routers/Content/hadithRoutes.js';
+import tafsirRouter from './routers/Content/tafsirRoutes.js';
+import userRouter from './routers/userRoutes.js';
 import viewRouter from './routers/viewRoutes.js';
-
-// - If you're working with __dirname or __filename, you may need to set them up manually using the fileURLToPath utility from the url module, like this:
-
 import { fileURLToPath } from 'url';
+
+// Initial Variables-------------------------
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-// // Start of the express app //////////////////////////////
-
 const app = express(); // creating an express app
+
+// Start of the express app //////////////////////////////
 
 // app.enable('trust proxy', 1); // To correctly read the X-Forwarded-Proto header, enable trust proxy in Express (HTTP header)
 // app.disable('trust proxy'); // To disable the trust proxy in Express ( in development )
 
 app.set('view engine', 'pug'); // setting the view engine to pug ( for rendering the views :) )
-app.set('views', './views');
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(cors()); // Implementing CORS ( Cross Origin Resource Sharing )
 app.options('*', cors());
 
-app.use(express.static('./public')); // Serving the static files
-
-// TODO : FIX the standard Method
-app.get('/public/css/style.css', (req, res) => {
-	res.setHeader('Content-Type', 'text/css');
-	res.sendFile(path.join(__dirname, 'public', 'css', 'style.css'));
-});
-// app.get('/public/css/amiri.css', (req, res) => {
-// 	res.setHeader('Content-Type', 'text/css');
-// 	res.sendFile(path.join(__dirname, 'public', 'css', 'amiri.css'));
-// });
-app.get('/public/source/landing.js', (req, res) => {
-	res.setHeader('Content-Type', 'text/javascript');
-	res.sendFile(path.join(__dirname, 'public', 'source', 'landing.js'));
-});
-app.get('/public/img/LogoHD.png', (req, res) => {
-	res.setHeader('Content-Type', 'image/png');
-	res.sendFile(path.join(__dirname, 'public', 'img', 'LogoHD.png'));
-});
+app.use(express.static(path.join(__dirname, 'public')));
 
 // // Setting the MIDDLEWARES! //////////////////////////////
 
@@ -86,11 +68,10 @@ app.use(compression());
 // // Setting the routes //////////////////////////////
 
 app.use('/', viewRouter); // view routes
-// app.use('/quran', quranRouter); // quran routes
-// app.use('/hadith', hadithRouter); // hadith routes
-// app.use('/users', userRouter); // user routes
-// app.use('/tafsir', tafsirRouter); // booking routes
-// app.use('/view', viewRouter); // view routes
+app.use('/quran', quranRouter); // quran routes
+app.use('/hadith', hadithRouter); // hadith routes
+app.use('/users', userRouter); // user routes
+app.use('/tafsir', tafsirRouter); // booking routes
 
 // app.all('*', (req, res, next) => {
 //     next(new AppError(Can't find ${req.originalUrl} on this server!, 404));

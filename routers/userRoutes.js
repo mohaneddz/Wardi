@@ -6,4 +6,4 @@ router.get('/', (req, res) => {
 	res.send('User Routes');
 });
 
-module.exports = router;
+export default router;
