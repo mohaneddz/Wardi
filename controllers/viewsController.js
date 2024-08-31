@@ -1,25 +1,23 @@
-import Chapter from './../models/quranChaptersModel.js';
-import Page from './../models/quranPagesModel.js';
-import Juz from './../models/quranJuzsModel.js';
-import Info from './../models/quranInfoModel.js';
+import Chapter from '../models/Quran/quranChaptersModel.js';
+import Page from '../models/Quran/quranPagesModel.js';
+import Juz from '../models/Quran/quranJuzsModel.js';
+import Info from '../models/Quran/quranInfoModel.js';
 
 import catchAsync from '../utils/catchAsync.js';
 import AppError from '../utils/appError.js';
 
 export const getLanding = catchAsync(async (req, res, next) => {
 	const chapters = await Chapter.find();
-    console.log(chapters);
-	console.log('HELLO');
-    
+
 	if (!chapters) {
 		return next(new AppError('There is no Chapter with that Number.', 404));
 	}
-    res.status(200).json({
-        status: 'success',
-        data: {
-            chapters
-        }
-    });
+	res.status(200).json({
+		status: 'success',
+		data: {
+			chapters,
+		},
+	});
 
 	// res.status(200).render('landing', {
 	// 	title: 'Landing',
@@ -86,3 +84,43 @@ export const getChapter = catchAsync(async (req, res, next) => {
 //     user: updatedUser
 //   });
 // });
+
+// Fetch all chapters
+export const getAllData = async (req, res) => {
+    try {
+      console.log('Fetching data from database...');
+      const chapters = await Chapter.find();
+      console.log('Chapters fetched:', chapters);
+  
+      const pages = await Page.find();
+      console.log('Pages fetched:', pages);
+  
+      const juzs = await Juz.find();
+      console.log('Juzs fetched:', juzs);
+  
+      const infos = await Info.find();
+      console.log('Infos fetched:', infos);
+  
+      res.status(200).json({
+        status: 'success',
+        results: {
+          chapters: chapters.length,
+          pages: pages.length,
+          juzs: juzs.length,
+          infos: infos.length,
+        },
+        data: {
+        //   chapters,
+        //   pages,
+        //   juzs,
+        //   infos,
+        },
+      });
+    } catch (err) {
+      res.status(500).json({
+        status: 'error',
+        message: 'Failed to fetch data',
+        error: err.message,
+      });
+    }
+  };

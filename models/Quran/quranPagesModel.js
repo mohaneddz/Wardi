@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import VerseSchema from './VerseSchema.js';
+import VerseSchema from '../schemas/VerseSchema.js';
 
 const quranPagesModel = new mongoose.Schema({
 	pageNumber: {
@@ -12,6 +12,6 @@ const quranPagesModel = new mongoose.Schema({
 	},
 });
 
-const Page = mongoose.model('Page', quranPagesModel);
+const Page = mongoose.model('Pages', quranPagesModel);
 
 export default Page;

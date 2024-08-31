@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
-import VerseSchema from './VerseSchema.js';
-import slugify from 'slugify';
+import VerseSchema from '../schemas/VerseSchema.js';
 
 const quranChaptersSchema = new mongoose.Schema({
 	chapter: {

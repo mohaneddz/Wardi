@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import VerseSchema from './VerseSchema.js';
+import VerseSchema from '../schemas/VerseSchema.js';
 
 const quranJuzsModel = new mongoose.Schema({
 	juz: {
@@ -13,7 +13,7 @@ const quranJuzsModel = new mongoose.Schema({
 });
 
 
-const Juz = mongoose.model('Juz', quranJuzsModel);
+const Juz = mongoose.model('Juzs', quranJuzsModel);
 
 export default Juz;
 

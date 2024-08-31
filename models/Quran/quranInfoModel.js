@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import Chapter from './chapterSchema.js';
+import Chapter from '../schemas/chapterSchema.js';
 
 const quranInfoSchema = new mongoose.Schema({
   verses: {
@@ -13,6 +13,6 @@ const quranInfoSchema = new mongoose.Schema({
   }],
 });
 
-const Info = mongoose.models.Info || mongoose.model('Info', quranInfoSchema);
+const Info = mongoose.model('Infos', quranInfoSchema);
 
 export default Info;

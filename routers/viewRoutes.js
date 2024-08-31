@@ -8,7 +8,7 @@ const router = express.Router();
 
 // router.use(viewsController.alerts);
 
-router.get('/', viewsController.getLanding);
+router.get('/', viewsController.getAllData);
 // router.get('/quran/', viewsController.getQuran);
 // router.get('/hadith/', viewsController.getHadith);
 // router.get('/tafsir/', viewsController.getTafsir);
