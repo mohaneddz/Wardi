@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
-export const VerseInfoSchema = new mongoose.Schema({
+export const VerseInfoSchema = new Schema({
 	verse: {
 		type: Number,
 		required: true,

@@ -1,9 +1,7 @@
-import mongoose from 'mongoose';
+import { connections } from '../../../server.js';
 import VerseSchema from '../schemas/VerseSchema.js';
 import ChapterInfoSchema from '../schemas/ChapterInfoSchema.js';
-import connections from '../../../server.js';
-
-const { Schema } = mongoose;
+import { Schema } from 'mongoose';
 
 const ChapterSchema = new Schema({
     chapter: {
@@ -32,6 +30,6 @@ ChapterSchema.virtual('versesCount').get(function () {
     return this.verses.length;
 });
 
-const Chapter = mongoose.model('Chapter', ChapterSchema);
+const Chapter = connections.Quran.model('Chapter', ChapterSchema);
 
 export default Chapter;
