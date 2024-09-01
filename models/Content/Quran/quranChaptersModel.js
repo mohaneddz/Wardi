@@ -1,35 +1,37 @@
-import { connections } from '../../../server.js';
-import VerseSchema from '../schemas/VerseSchema.js';
-import ChapterInfoSchema from '../schemas/ChapterInfoSchema.js';
-import { Schema } from 'mongoose';
+import mongoose from 'mongoose';
+import {VerseSchema} from '../schemas/QuranSchema.js';
+import {ChapterInfoSchema} from '../schemas/QuranSchema.js';
 
-const ChapterSchema = new Schema({
-    chapter: {
-        type: Number,
-        required: true,
-    },
-    name: {
-        type: String,
-        required: true,
-    },
-    verses: {
-        type: [VerseSchema],
-        required: true,
-    },
-    info: {
-        type: ChapterInfoSchema,
-        required: true,
-    },
-}, {
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true }
-});
+const ChapterSchema = new mongoose.Schema(
+	{
+		chapter: {
+			type: Number,
+			required: true,
+		},
+		name: {
+			type: String,
+			required: true,
+		},
+		verses: {
+			type: [VerseSchema],
+			required: true,
+		},
+		info: {
+			type: ChapterInfoSchema,
+			required: true,
+		},
+	},
+	{
+		toJSON: { virtuals: true },
+		toObject: { virtuals: true },
+	}
+);
 
 // Virtual property for versesCount ✅
 ChapterSchema.virtual('versesCount').get(function () {
-    return this.verses.length;
+	return this.verses.length;
 });
 
-const Chapter = connections.Quran.model('Chapter', ChapterSchema);
+const Chapter = mongoose.model('Chapter', ChapterSchema);
 
 export default Chapter;

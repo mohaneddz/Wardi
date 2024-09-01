@@ -1,10 +1,12 @@
 // @ts-ignore
 import express from 'express';
+import * as hadithController from '../../controllers/Content/hadithController.js';
 const router = express.Router();
 
-// Define your routes here
-router.get('/', (req, res) => {
-	res.send('Hadith Routes');
-});
+// router.route('/book/:book/page/:page').get(hadithController.getPageView);
+// router.route('/book/:book/hadith/:hadith').get(hadithController.getHadithView);
+// router.route('/book/:book/section/:section').get(hadithController.getSectionView);
+
+router.route('/').get(hadithController.getBooksView);
 
 export default router;

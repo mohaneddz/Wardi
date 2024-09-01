@@ -1,7 +1,6 @@
 import mongoose from 'mongoose'; // Import the mongoose instance
-import { Schema } from 'mongoose';
 
-const quranInfoSchema = new Schema({
+const quranInfoSchema = new mongoose.Schema({
   verses: {
     type: Number,
     required: true,
@@ -13,6 +12,6 @@ const quranInfoSchema = new Schema({
   }],
 });
 
-const Info = connections.quran.model('Infos', quranInfoSchema);
+const Info = mongoose.model('Infos', quranInfoSchema);
 
 export default Info;

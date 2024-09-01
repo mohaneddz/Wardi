@@ -1,7 +1,7 @@
-import VerseSchema from '../schemas/VerseSchema.js';
-import { Schema } from 'mongoose';
+import mongoose from 'mongoose';
+import {VerseSchema} from '../schemas/QuranSchema.js';
 
-const quranJuzsModel = new Schema({
+const quranJuzsModel = new mongoose.Schema({
 	juz: {
 		type: Number,
 		required: true,
@@ -13,7 +13,7 @@ const quranJuzsModel = new Schema({
 });
 
 
-const Juz = connections.quran.model('Juzs', quranJuzsModel);
+const Juz = mongoose.model('Juzs', quranJuzsModel);
 
 export default Juz;
 
