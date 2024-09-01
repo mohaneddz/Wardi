@@ -1,0 +1,26 @@
+extends ./Layout/base
+
+block append head
+  - var bodyClass = 'HadithBooks'
+  - var mainClass = 'mainHadithBooks'
+
+block content
+    .title
+        h2.title__sub كتب الحديث النبوي الشريف
+
+    .books
+        //- card for each surah : this is a template as of now
+        for book in books
+            .books__card
+                a.books__card__link(href=`/hadith/book/${book.number}`)
+                img(src=`${book.img}`, alt="Book Cover")
+                h3.books__card__name #{book.metadata.name}
+                .books__card__info
+                    p.books__card__info__hadiths #{book.hadith_counts} حديث
+                    //- if the name starts with ara- then it is arabic / else it is english
+                    if book.name.startsWith('ara-')
+                        p.books__card__info__language عربي
+                    else
+                        p.books__card__info__language English
+                    p.books__card__info__fav
+                        a(href="#") &hearts;

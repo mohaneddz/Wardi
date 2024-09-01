@@ -46,7 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // // Setting the MIDDLEWARES! //////////////////////////////
 
-app.use(helmet()); // Setting the security HTTP headers
+// app.use(helmet()); // Setting the security HTTP headers
 process.env.NODE_ENV === 'development' && app.use(morgan('dev')); // Only for development, logging the requests to console
 const limiter = rateLimit({
 	max: 100, // limiting the requests to 100 per hour
