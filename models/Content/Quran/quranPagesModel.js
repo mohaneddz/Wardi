@@ -1,8 +1,7 @@
-import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 import VerseSchema from '../schemas/VerseSchema.js';
-import connections from '../../../server.js';
 
-const quranPagesModel = new mongoose.Schema({
+const quranPagesModel = new Schema({
 	pageNumber: {
 		type: Number,
 		required: true,
@@ -13,6 +12,6 @@ const quranPagesModel = new mongoose.Schema({
 	},
 });
 
-const Page = mongoose.model('Pages', quranPagesModel);
+const Page = connections.quran.model('Pages', quranPagesModel);
 
 export default Page;

@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 import VerseInfoSchema from './VerseInfoSchema.js';
 
-export const ChapterInfoSchema = new mongoose.Schema({
+export const ChapterInfoSchema = new Schema({
     name: {
         type: String,
         required: true,
