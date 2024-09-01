@@ -11,7 +11,7 @@ const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSW
 mongoose.connect(DB, {
 	serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
 	socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
-  dbName: 'Quran',
+  dbName: 'Content',
 })
 	.then(() => {
 		console.log('DB connection successful');
