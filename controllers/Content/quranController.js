@@ -7,17 +7,86 @@ import catchAsync from '../../utils/catchAsync.js';
 import * as factory from '../handlerFactory.js';
 import AppError from '../../utils/appError.js';
 
-// Getters --------------------------------------------
-export const getInfo = factory.getOne(Info);
+// Getters -------------------------------------------- [ Factory Functions  | If turn it into an API ]
 
-export const getChapter = factory.getOne(Chapter);
-export const getPage = factory.getOne(Page);
-export const getJuz = factory.getOne(Juz);
+// export const getInfo = factory.getOne(Info);
 
-// Get all
-export const getAllChapters = factory.getAll(Chapter);
-export const getAllPages = factory.getAll(Page);
-export const getAllJuzs = factory.getAll(Juz);
-export const getAllInfos = factory.getAll(Info);
+// export const getChapter = factory.getOne(Chapter);
+// export const getPage = factory.getOne(Page);
+// export const getJuz = factory.getOne(Juz);
+
+// // Get all
+// export const getAllChapters = factory.getAll(Chapter);
+// export const getAllPages = factory.getAll(Page);
+// export const getAllJuzs = factory.getAll(Juz);
+// export const getAllInfos = factory.getAll(Info);
 
 // |.....|---------------------------------------------
+
+export const getPageView = catchAsync(async (req, res, next) => {
+	// page_number = req.params.page
+	const page = await Page.findOne({ page_number: req.params.page }).lean();;
+	if (!page) {
+		return next(new AppError('There is no Page with that Number.', 404));
+	}
+	res.status(200).render('quranReading', {
+		title: `Page ${page.pageNumber}`,
+		page,
+	});
+});
+export const getJuzView = catchAsync(async (req, res, next) => {
+	const juz = Juz.findOne({ juz: req.params.juz }).lean();;
+	const juzInfo = await getInfo(req, res, next);
+	if (!juz) {
+		return next(new AppError('There is no Juz with that Number.', 404));
+	}
+	res.status(200).render('quranReading', {
+		title: `${juzInfo.name}`,
+		juz,
+		juzInfo,
+	});
+});
+export const getChapterView = catchAsync(async (req, res, next) => {
+
+	const allchapters = await Chapter.find();
+	const chapter = allchapters[req.params.chapter - 1];
+	
+	if (!chapter) {
+		return next(new AppError('There is no Chapter with that Number.', 404));
+	}
+	res.status(200).render('quranReading', {
+		title: `${chapter.name}`,
+		allchapters,
+		chapter,
+	});
+});
+export const getAllPagesView = catchAsync(async (req, res, next) => {
+	const pages = await getAllPages(req, res, next);
+	if (!pages) {
+		return next(new AppError('There are currently no Pages.', 404));
+	}
+	res.status(200).render('quranReading', {
+		title: 'All Pages',
+		pages,
+	});
+});
+export const getAllJuzsView = catchAsync(async (req, res, next) => {
+	const juzs = await getAllJuzs(req, res, next);
+	if (!juzs) {
+		return next(new AppError('There are currently no Juzs.', 404));
+	}
+	res.status(200).render('quranReading', {
+		title: 'All Juzs',
+		juzs,
+	});
+});
+export const getAllChaptersView = catchAsync(async (req, res, next) => {
+	const chapters = await getAllChapters(req, res, next);
+	if (!chapters) {
+		return next(new AppError('There are currently no Chapters.', 404));
+	}
+	res.status(200).render('landing', {
+		title: 'Landing',
+		chapters,
+	});
+});

@@ -32,6 +32,7 @@
 			width: 100%;
 		}
 	}
+	// Media Queries ------------------------------- ( Too many media queries... )
 	@media screen and (max-width: 1200px) {
 		max-height: 7vh;
 		height: 30vh;
@@ -68,6 +69,7 @@
 		}
 	}
 
+	// ----------------------------------------------
 	&.active {
 		display: flex;
 	}
@@ -75,7 +77,7 @@
 		position: relative;
 
 		input {
-			width: 100%;
+			min-width: 20rem;
 			padding: 1rem;
 			font-size: 1.5rem;
 			border-radius: 1rem;
@@ -85,6 +87,11 @@
 			color: white;
 			margin-top: 2rem;
 			margin-bottom: 2rem;
+
+			@media screen and (max-width: 1000px) {
+				width: 15rem;
+				font-size: 1.2rem;
+			}
 			
 			&:focus {
 				outline: none;
@@ -100,6 +107,7 @@
 			cursor: pointer;
 		}
 	}
+
 }
 
 @mixin reader() {

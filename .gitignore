@@ -1,5 +1,5 @@
 node_modules
 parcel-cache
 config.env
-# public/css
+public/css
 .vscode

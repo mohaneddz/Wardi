@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import VerseSchema from '../schemas/VerseSchema.js';
 import ChapterInfoSchema from '../schemas/ChapterInfoSchema.js';
+import connections from '../../../server.js';
 
 const { Schema } = mongoose;
 

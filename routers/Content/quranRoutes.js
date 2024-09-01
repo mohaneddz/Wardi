@@ -3,16 +3,14 @@ import * as quranController from '../../controllers/Content/quranController.js';
 
 const router = express.Router();
 
-// Define your routes here
+router.route('/page/:page').get(quranController.getPageView);
+router.route('/juz/:juz').get(quranController.getJuzView);
+router.route('/chapter/:chapter').get(quranController.getChapterView);
 
-router.route('/pages/:page').get(quranController.getPage);
-router.route('/juzs/:juz').get(quranController.getJuz);
-router.route('/chapter/:chapter').get(quranController.getChapter);
+router.route('/page/').get(quranController.getAllPagesView);
+router.route('/juz/').get(quranController.getAllJuzsView);
+router.route('/chapter/').get(quranController.getAllChaptersView);
 
-router.route('/pages/').get(quranController.getAllPages);
-router.route('/juzs/').get(quranController.getAllJuzs);
-router.route('/chapter/').get(quranController.getAllChapters);
-
-router.route('/').get(quranController.getAllChapters);
+router.route('/').get(quranController.getAllChaptersView);
 
 export default router;

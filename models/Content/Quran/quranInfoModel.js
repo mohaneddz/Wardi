@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import connections from '../../../server.js';
 
 const quranInfoSchema = new mongoose.Schema({
   verses: {

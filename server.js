@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import app from './app.js';
+import { databases } from './config.js';
 
 dotenv.config({ path: './config.env' });
 
@@ -23,3 +24,6 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
 	console.log(`App running on http://localhost:${port}/`);
 });
+
+const connections = {};
+export default connections;

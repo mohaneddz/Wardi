@@ -1,6 +1,7 @@
 .hadith,
 .quran,
 .tafsir {
+	scroll-behavior: smooth;
 	position: relative;
 	@include reader();
 	.toggle {
@@ -44,13 +45,23 @@
 	}
 	h1 {
 		font-family: 'Surah', serif;
-		font-weight: 400;
-		margin: 1.5rem 0rem;
+		font-weight: 100;
+		font-size: 18rem;
+		margin: 4rem 0rem;
+		color: $tertiary-color;
+		// give stroke
+		-webkit-text-stroke: 1px $primary-color;
 	}
 	h2 {
 		font-family: 'Basmallah', serif;
 		font-weight: 400;
+		font-size: 8rem;
 		margin: 1.5rem 0rem;
+	}
+	p.quran__verse {
+		.selected {
+			color: rgb(98, 98, 205);
+		}
 	}
 }
 
@@ -121,10 +132,10 @@
 		height: 94vh;
 		width: 97vw;
 		h1 {
-			font-size: 7rem;
+			font-size: 12rem;
 		}
 		h2 {
-			font-size: 5rem;
+			font-size: 6rem;
 		}
 		p {
 			&.verse {

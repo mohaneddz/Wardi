@@ -1,0 +1,11 @@
+.Rsidebar 
+    h1 Ayats
+    .search
+        input(type="text" placeholder="Search" class="Rsearch")
+        a(class="RsearchButton")
+            i(class="fi fi-rs-search")
+    ul
+        for verse in chapter.verses
+            li
+                a(href=`#` class="RsideEntry" id=verse.verse)= verse.verse
+                    i(class="fi fi-rs-heart heart" data-verse-id=verse.verse)

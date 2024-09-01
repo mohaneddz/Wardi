@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import connections from '../../../server.js';
 import VerseSchema from '../schemas/VerseSchema.js';
 
 const quranJuzsModel = new mongoose.Schema({
