@@ -19,8 +19,8 @@
             
             if juz.juz === this_juz.juz
                 li
-                    a(href=`/quran/juz/${juz.juz}` class="LsideEntry selectedEntry")= `${juz.juz} الجزء`
+                    a(href=`/quran/juz/${juz.juz}/chapter/${juz.content[0].chapter}` class="LsideEntry selectedEntry")= `${juz.juz} الجزء`
             else
                 li
-                    a(href=`/quran/juz/${juz.juz}` class="LsideEntry")= `${juz.juz} الجزء`
+                    a(href=`/quran/juz/${juz.juz}/chapter/${juz.content[0].chapter}` class="LsideEntry")= `${juz.juz} الجزء`
     

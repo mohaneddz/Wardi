@@ -15,7 +15,7 @@
             for chapter in chapters
                 if chapter.chapter === this_chapter
                     li
-                        a(href=`/quran/juz/${this_juz.juz}/${chapter.chapter}` class="RsideEntry selectedEntry")= info.chapters[chapter.chapter - 1][0].arabicname
+                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` class="RsideEntry selectedEntry")= info.chapters[chapter.chapter - 1][0].arabicname
                 else
                     li
-                        a(href=`/quran/juz/${this_juz.juz}/${chapter.chapter}` class="RsideEntry")= info.chapters[chapter.chapter - 1][0].arabicname
+                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` class="RsideEntry")= info.chapters[chapter.chapter - 1][0].arabicname

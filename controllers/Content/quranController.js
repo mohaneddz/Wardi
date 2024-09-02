@@ -44,8 +44,9 @@ export const getChapterView = catchAsync(async (req, res, next) => {
 
 // For the Quran Juz View --------------------------------------------
 export const getJuzView = catchAsync(async (req, res, next) => {
-	const alljuz = await Juz.find();
+	const alljuz = await Juz.find().sort({ juz: 1 }).lean();
 	const this_juz = await Juz.find({ juz: req.params.juz });
+	const juzNumber = req.params.juz;
 	const this_chapter = req.params.chapter;
 	let chapterName = await Chapter.findOne({ chapter: this_chapter }).exec();
 	chapterName = chapterName ? chapterName.name : null;
@@ -100,6 +101,7 @@ export const getJuzView = catchAsync(async (req, res, next) => {
 	res.status(200).render('quranReading', {
 		title: `Juz ${req.params.juz}`,
 		this_juz,
+		juzNumber,
 		this_chapter,
 		alljuz,
 		chapters,
