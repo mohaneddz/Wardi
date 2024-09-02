@@ -18,7 +18,7 @@ block content
     .cards
         //- card for each surah : this is a template as of now
         for chapter in chapters
-            .cards__surah
+            .cards__surah.hidden
                 a.cards__surah__link(href=`/quran/chapter/${chapter.chapter}`)
                 p.cards__surah__info__order #{chapter.chapter}
                 h3.cards__surah__name #{chapter.name}
@@ -26,4 +26,5 @@ block content
                     p.cards__surah__info__ayat #{chapter.verses.length} آيات
                     p.cards__surah__info__type #{chapter.info.revelation}
                     p.cards__surah__info__fav
-                        a(href="#") &hearts;
+                        a(href="#")
+                            i(class="fi fi-rs-heart")

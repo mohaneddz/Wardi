@@ -1,0 +1,32 @@
+@keyframes listscroll {
+	0% {
+		opacity: 0;
+		scale: 0.5;
+	}
+	100% {
+		opacity: 1;
+		scale: 1;
+	}
+}
+
+.hidden {
+	opacity: 0;
+	scale: 0.3;
+    filter: blur(10px);
+    transform: translateY(100%);
+	transition: all 1s ease;
+}
+
+.animate {
+	opacity: 1;
+	scale: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hidden {
+		opacity: 1;
+		scale: 1;
+	}
+}

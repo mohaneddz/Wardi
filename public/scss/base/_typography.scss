@@ -59,6 +59,7 @@ body {
 			font-size: 7rem;
 			text-align: center;
 			&:hover {
+				cursor: pointer;
 				color: $primary-color-dark;
 				text-shadow: 0 0 10px $tertiary-color;
 			}
@@ -74,6 +75,36 @@ body {
 				font-size: 4rem;
 				margin-bottom: -4rem;
 			}
+		}
+	}
+	h3 {
+		font-size: 3rem;
+		text-align: center;
+		color: $tertiary-color;
+		text-shadow: 0.2rem 0.2rem 0.2rem rgba($primary-color-darker, 0.5);
+	}
+	.books__card__info {
+		display: flex;
+		width: 100%;
+		&__hadiths {
+			font-size: 2rem;
+			color: $border-color;
+			display: flex;
+		}
+		&__fav a {
+			text-decoration: none;
+			color: $tertiary-color;
+		}
+		&__language {
+			position: absolute;
+			font-size: 2rem;
+			color: $border-color;
+			top: 0;
+			right: 0;
+			background-color: $tertiary-color;
+			padding: 0.5rem;
+			border-radius: 0 0 0 1rem;
+			box-shadow: 0 0 10px rgba($primary-color-dark, 0.5);
 		}
 	}
 }

@@ -129,6 +129,7 @@ body {
   text-align: center;
 }
 .HadithBooks .title h2:hover {
+  cursor: pointer;
   color: #010205;
   text-shadow: 0 0 10px #c72378;
 }
@@ -150,7 +151,68 @@ body {
     margin-bottom: -4rem;
   }
 }
+.HadithBooks h3 {
+  font-size: 3rem;
+  text-align: center;
+  color: #c72378;
+  text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
+}
+.HadithBooks .books__card__info {
+  display: flex;
+  width: 100%;
+}
+.HadithBooks .books__card__info__hadiths {
+  font-size: 2rem;
+  color: #dee2e6;
+  display: flex;
+}
+.HadithBooks .books__card__info__fav a {
+  text-decoration: none;
+  color: #c72378;
+}
+.HadithBooks .books__card__info__language {
+  position: absolute;
+  font-size: 2rem;
+  color: #dee2e6;
+  top: 0;
+  right: 0;
+  background-color: #c72378;
+  padding: 0.5rem;
+  border-radius: 0 0 0 1rem;
+  box-shadow: 0 0 10px rgba(1, 2, 5, 0.5);
+}
 
+@keyframes listscroll {
+  0% {
+    opacity: 0;
+    scale: 0.5;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+.hidden {
+  opacity: 0;
+  scale: 0.3;
+  filter: blur(10px);
+  transform: translateY(100%);
+  transition: all 1s ease;
+}
+
+.animate {
+  opacity: 1;
+  scale: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hidden {
+    opacity: 1;
+    scale: 1;
+  }
+}
 .books__card {
   display: flex;
   flex-direction: column;
@@ -163,7 +225,51 @@ body {
   background-color: #24387b;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
+  overflow: hidden;
   cursor: pointer;
+  position: relative;
+}
+.books__card .books__card__link {
+  position: absolute;
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+}
+.books__card .books__card__info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #dee2e6;
+}
+.books__card .books__card__info__hadiths {
+  font-size: 2rem;
+  display: flex;
+}
+.books__card .books__card__info__fav a {
+  position: absolute;
+  z-index: 60;
+  text-decoration: none;
+  color: #c72378;
+  font-size: 1.5rem;
+  bottom: 3%;
+  left: 5%;
+  transition: all 0.3s;
+}
+.books__card .books__card__info__fav a:hover {
+  color: #e56baa;
+  transform: scale(1.4);
+}
+.books__card img {
+  width: 100%;
+  height: 100%;
+  border: 5px solid #010205;
+  border-radius: 15px;
+}
+.books__card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  background-color: #0D142C;
+  border: 2px solid #701444;
 }
 
 .cuts > * {
@@ -209,6 +315,8 @@ body {
   margin: 1rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5), 0 0 1rem rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
+  animation: listscroll linear;
+  animation-timeline: view(100px);
 }
 .cards > * .cards__surah {
   position: relative;
@@ -227,6 +335,7 @@ body {
   position: relative;
   z-index: 2;
   margin-right: 2rem;
+  margin-left: 1rem;
   color: #b0b5c9;
 }
 .cards > * p.cards__surah__info__order {
@@ -234,6 +343,7 @@ body {
   width: 3.5rem;
   height: 3.5rem;
   color: rgb(255, 254, 254);
+  margin-bottom: 1rem;
 }
 .cards > * p.cards__surah__info__order::after {
   content: "";
@@ -997,8 +1107,6 @@ body main {
   justify-items: center;
   row-gap: 2rem;
   padding: 2rem;
-  margin-left: min(10rem, 5%);
-  margin-right: min(10rem, 5%);
 }
 body main .title {
   grid-column: center-start/center-end;
@@ -1136,9 +1244,9 @@ body main .cards {
 }
 
 main .books {
-  grid-column: span 12;
+  grid-column: 3/-3;
   display: grid;
-  grid-template-columns: repeat(3, minmax(14rem, 1fr));
+  grid-template-columns: repeat(4, minmax(14rem, 1fr));
   align-items: stretch;
   justify-content: center;
   align-content: center;
@@ -1149,18 +1257,10 @@ main .books {
   padding: 2rem;
   font-size: 3rem;
 }
-main .books .books__card__info__hadiths {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #dee2e6;
-}
-main .books img {
-  width: 100%;
-  height: 100%;
-  border: 5px solid #010205;
-  border-radius: 15px;
+@media (max-width: 1000px) {
+  main .books {
+    grid-template-columns: repeat(3, minmax(14rem, 1fr));
+  }
 }
 @media (max-width: 800px) {
   main .books {

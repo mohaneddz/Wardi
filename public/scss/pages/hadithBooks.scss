@@ -1,9 +1,9 @@
 main {
 
 	.books {
-		grid-column: span 12;
+		grid-column: 3/-3;
 		display: grid;
-		grid-template-columns: repeat(3, minmax(14rem, 1fr));
+		grid-template-columns: repeat(4, minmax(14rem, 1fr));
 		align-items: stretch;
 		justify-content: center;
 		align-content: center;
@@ -13,18 +13,9 @@ main {
 		background-color: $primary-color-light;
 		padding: 2rem;
 		font-size: 3rem;
-		.books__card__info__hadiths {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			color: $border-color;
-		}
-		img {
-			width: 100%;
-			height: 100%;
-			border: 5px solid $primary-color-dark;
-			border-radius: 15px;
+		
+		@media (max-width: 1000px) {
+			grid-template-columns: repeat(3, minmax(14rem, 1fr));
 		}
 		@media (max-width: 800px) {
 			grid-template-columns: repeat(2, minmax(14rem, 1fr));
