@@ -64,6 +64,7 @@ body {
   padding: 0;
   background-color: #0D142C;
   position: relative;
+  list-style-type: none;
 }
 
 ::selection {
@@ -393,9 +394,13 @@ body {
   margin: 0.3em;
   padding: 1.75rem;
   text-decoration: none;
-  text-align: center;
   font-size: 2rem;
   display: block;
+  max-height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: fit-content;
   border: 2px solid rgba(1, 2, 5, 0.9);
   border-radius: 1rem;
   transition: all 0.3s;
@@ -428,6 +433,12 @@ body {
   .LsideEntry,
   .RsideEntry {
     font-size: 2rem;
+    font-size: clamp(1rem, 2vw, 2rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    gap: 0.5rem;
   }
 }
 
@@ -719,11 +730,17 @@ body {
 }
 .Lsidebar ul li {
   width: 100%;
+  list-style-type: none;
+}
+.Lsidebar ul li a {
+  position: relative;
+  text-decoration: none;
 }
 @media screen and (max-width: 1200px) {
   .Lsidebar {
     max-height: 7vh;
     height: 30vh;
+    max-width: 97vw;
     width: 97vw;
     align-items: center;
     padding: 0.5rem;
@@ -735,33 +752,45 @@ body {
   .Lsidebar ul {
     flex-direction: row;
     max-height: 7vh;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
   }
   .Lsidebar ul li a {
     padding: 0.5rem;
     font-size: 2rem;
     width: 20rem;
+    max-height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
   }
 }
 @media screen and (max-width: 1000px) {
   .Lsidebar h1 {
     font-size: 2rem;
   }
+  .Lsidebar ul {
+    justify-content: start;
+  }
   .Lsidebar ul li a {
     font-size: 1.5rem;
     width: 15rem;
+    text-decoration: none;
   }
 }
 .Lsidebar.active {
   display: flex;
+  justify-content: start;
+  gap: 1rem;
 }
 .Lsidebar .search {
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   width: 100%;
+  flex-grow: 0;
 }
 .Lsidebar .search input {
   width: 20rem;
@@ -826,11 +855,17 @@ body {
 }
 .Rsidebar ul li {
   width: 100%;
+  list-style-type: none;
+}
+.Rsidebar ul li a {
+  position: relative;
+  text-decoration: none;
 }
 @media screen and (max-width: 1200px) {
   .Rsidebar {
     max-height: 7vh;
     height: 30vh;
+    max-width: 97vw;
     width: 97vw;
     align-items: center;
     padding: 0.5rem;
@@ -842,33 +877,45 @@ body {
   .Rsidebar ul {
     flex-direction: row;
     max-height: 7vh;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
   }
   .Rsidebar ul li a {
     padding: 0.5rem;
     font-size: 2rem;
     width: 20rem;
+    max-height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
   }
 }
 @media screen and (max-width: 1000px) {
   .Rsidebar h1 {
     font-size: 2rem;
   }
+  .Rsidebar ul {
+    justify-content: start;
+  }
   .Rsidebar ul li a {
     font-size: 1.5rem;
     width: 15rem;
+    text-decoration: none;
   }
 }
 .Rsidebar.active {
   display: flex;
+  justify-content: start;
+  gap: 1rem;
 }
 .Rsidebar .search {
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   width: 100%;
+  flex-grow: 0;
 }
 .Rsidebar .search input {
   width: 20rem;
@@ -908,7 +955,6 @@ body {
 .hadith,
 .quran,
 .tafsir {
-  scroll-behavior: smooth;
   position: relative;
   background-color: rgba(245, 246, 255, 0.7);
   color: black;

@@ -1,16 +1,3 @@
-//- .Rsidebar 
-//-     h1 Ayats
-//-     .search
-//-         input(type="text" placeholder="Search" class="Rsearch")
-//-         a(class="RsearchButton")
-//-             i(class="fi fi-rs-search")
-//-     ul
-//-         for verse in chapter.verses
-//-             li
-//-                 a(href=`#` class="RsideEntry" id=verse.verse)= verse.verse
-//-                     i(class="fi fi-rs-heart heart" data-verse-id=verse.verse)
-//- 
-//- 
 .Rsidebar 
     h1= Rtitle
     .search
@@ -18,12 +5,17 @@
         a(class="RsearchButton")
             i(class="fi fi-rs-search")
     ul
-        each Relement in Rlist
-            li
-                if Rmatching
-                    if Relement[Rselector] === Rparam[Rselector]
-                        a(href=`${Rslug}${Relement[Rselector]}` id=`${Relement[Rname]}` class="RsideEntry selectedEntry")= Relement[Rname]
-                    else
-                        a(href=`${Rslug}${Relement[Rselector]}` id=`${Relement[Rname]}` class="RsideEntry")= Relement[Rname]
+        if mode === "QuranChapter"
+            for verse in this_chapter.verses
+                li
+                    a(href=`#` class="RsideEntry" id=verse.verse)= verse.verse
+                        i(class="fi fi-rs-heart heart" data-verse-id=verse.verse)
+            
+        else if mode === "QuranJuz"
+            for chapter in chapters
+                if chapter.chapter === this_chapter.chapter
+                    li
+                        a(href=`/quran/juz/${this_juz.juz}/${chapter.chapter}` class="RsideEntry selectedEntry")= info.chapters[chapter.chapter - 1][0].arabicname
                 else
-                    a(href=`${Rslug}${Relement[Rselector]}` data-finder=`${Relement[Rname]}` class="RsideEntry")= Relement[Rname]
+                    li
+                        a(href=`/quran/juz/${this_juz.juz}/${chapter.chapter}` class="RsideEntry")= info.chapters[chapter.chapter - 1][0].arabicname

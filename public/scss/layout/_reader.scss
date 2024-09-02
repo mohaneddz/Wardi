@@ -1,7 +1,7 @@
 .hadith,
 .quran,
 .tafsir {
-	scroll-behavior: smooth;
+	// scroll-behavior: smooth;
 	position: relative;
 	@include reader();
 	.toggle {

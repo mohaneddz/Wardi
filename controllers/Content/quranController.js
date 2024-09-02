@@ -34,100 +34,74 @@ export const getPageView = catchAsync(async (req, res, next) => {
 		page,
 	});
 });
+
 export const getJuzView = catchAsync(async (req, res, next) => {
-	const alljuzs = await Juz.aggregate([
-		// Unwind the content array
-		{ $unwind: '$content' },
-		// Group by chapter and collect verses
+
+	const alljuz = await Juz.find();
+	const this_juz = await Juz.find({ jus: req.params.juz });
+	const this_chapter = req.params.chapter;
+
+	const chapters = await Juz.aggregate([
+		{
+			$match: { juz: Number(req.params.juz) },
+		},
+		{
+			$unwind: '$content',
+		},
 		{
 			$group: {
 				_id: '$content.chapter',
-				verses: { $push: '$content.verse' },
+				chapter: { $first: '$content.chapter' },
+				text: { $push: '$content.text' },
+			},
+		},
+		{
+			$sort: {
+				chapters: 1,
+			},
+		},
+		{
+			$project: {
+				_id: 0,
+				chapter: 1,
+				text: 1,
 			},
 		},
 	]);
 
-	const juz = alljuzs[req.params.juz - 1];
+	const info = await Info.findOne();
 
-	if (!juz) {
+	if (!this_juz) {
 		return next(new AppError('There is no Juz with that Number.', 404));
 	}
-
-	res.status(200).json({
-		status: 'success',
-		data: {
-			alljuzs,
-		},
+	res.status(200).render('quranReading', {
+		title: `Juz ${req.params.juz}`,
+		this_juz,
+		alljuz,
+		chapters,
+		info,
+		Ltitle: 'الجزء',
+		Rtitle: 'السور',
+		mode: 'QuranJuz',
 	});
-
-	// res.status(200).render('quranReading', {
-	// 	title: `Juz ${juz.juz}`,
-
-	// 	Ltilte: 'الاجزاء',
-	// 	Rtitle: 'السور',
-
-	// 	Lelement: 'Juz',
-	// 	Relement: 'Chapter',
-
-	// 	Llist: juzInfo,
-	// 	Rlist: juz.chapters,
-
-	// 	Lselector: 'juz',
-	// 	Rselector: 'chapter',
-
-	// 	Lname: 'juz',
-	// 	Rname: 'name',
-
-	// 	Lslug: '/quran/juz/',
-	// 	Rslug: '/quran/chapter/',
-
-	// 	Lmatching: true,
-	// 	Rmatching: false,
-
-	// 	Lparam: 'juz',
-	// 	Rparam: 'chapter',
-
-	// 	juz,
-	// 	readerTitle: `Juz ${juz.juz}`,
-	// });
 });
 
 export const getChapterView = catchAsync(async (req, res, next) => {
-	const allchapters = await Chapter.find();
-	const chapter = allchapters[req.params.chapter - 1];
 
-	if (!chapter) {
+	const allchapters = await Chapter.find().lean();
+	const this_chapter = allchapters[req.params.chapter - 1];
+
+	if (!this_chapter) {
 		return next(new AppError('There is no Chapter with that Number.', 404));
 	}
 	res.status(200).render('quranReading', {
-		title: `${chapter.name}`,
-
+		title: `${this_chapter.info.arabicname}`,
+		this_chapter,
+		allchapters,
+		readerTitle: this_chapter.name,
 		Ltitle: 'السور',
-		Rtitle: 'الأيات',
-
-		Lelement: 'Chapter',
-		Relement: 'Verse',
-
-		Llist: allchapters,
-		Rlist: chapter.verses,
-
-		Lselector: 'chapter',
-		Rselector: 'verse',
-
-		Lname: 'name',
-		Rname: 'verse',
-
-		Lslug: '/quran/chapter/',
-		Rslug: '/quran/verse/',
-
-		Lmatching: true,
-		Rmatching: false,
-
-		Lparam: 'chapter',
-		Rparam: 'verse',
-
-		chapter,
-		readerTitle: `${chapter.name}`,
+		Rtitle: 'الآيات',
+		mode: 'QuranChapter',
 	});
 });
 

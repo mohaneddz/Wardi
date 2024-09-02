@@ -1,16 +1,3 @@
-//- .Lsidebar 
-//-     h1 Surahs
-//-     .search
-//-         input(type="text" placeholder="Search" class="Lsearch")
-//-         a(class="LsearchButton")
-//-             i(class="fi fi-rs-search")
-//-     ul
-//-         each surah in allchapters
-//-             li
-//-                 if surah.chapter === chapter.chapter
-//-                     a(href=`/quran/chapter/${surah.chapter}` class="LsideEntry selectedEntry")= surah.name
-//-                 else
-//-                     a(href=`/quran/chapter/${surah.chapter}` class="LsideEntry")= surah.name
 .Lsidebar 
     h1= Ltitle
     .search
@@ -18,12 +5,22 @@
         a(class="LsearchButton")
             i(class="fi fi-rs-search")
     ul
-        each Lelement in Llist
-            li
-                if Lmatching
-                    if Lelement[Lselector] === Lparam[Lselector]
-                        a(href=`${Lslug}${Lelement[Lselector]}` class="LsideEntry selectedEntry")= Lelement[Lname]
-                    else
-                        a(href=`${Lslug}${Lelement[Lselector]}` class="LsideEntry")= Lelement[Lname]
-                else
-                    a(href=`${Lslug}${Lelement[Lselector]}` class="LsideEntry")= Lelement[Lname]
+    if mode === "QuranChapter"
+        each chapter in allchapters
+            if chapter.chapter === this_chapter.chapter 
+                li  
+                    a(href=`/quran/chapter/${chapter.chapter}` class="LsideEntry selectedEntry")= chapter.name
+            else
+                li  
+                    a(href=`/quran/chapter/${chapter.chapter}` class="LsideEntry")= chapter.name
+                    
+    else if mode === "QuranJuz"
+        each juz in alljuz
+            
+            if juz.juz === this_juz.juz
+                li
+                    a(href=`/quran/juz/${juz.juz}` class="LsideEntry selectedEntry")= `${juz.juz} الجزء`
+            else
+                li
+                    a(href=`/quran/juz/${juz.juz}` class="LsideEntry")= `${juz.juz} الجزء`
+    
