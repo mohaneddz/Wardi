@@ -21,20 +21,30 @@ import AppError from '../../utils/appError.js';
 // export const getAllJuzs = factory.getAll(Juz);
 // export const getAllInfos = factory.getAll(Info);
 
-// |.....|---------------------------------------------
+// For the Single Views--------------------------------------------------------------------------------------------
 
-export const getPageView = catchAsync(async (req, res, next) => {
-	// page_number = req.params.page
-	const page = await Page.findOne({ page_number: req.params.page }).lean();
-	if (!page) {
-		return next(new AppError('There is no Page with that Number.', 404));
+// For the Quran Chapter View --------------------------------------------
+export const getChapterView = catchAsync(async (req, res, next) => {
+
+	const allchapters = await Chapter.find().lean();
+	const this_chapter = allchapters[req.params.chapter - 1];
+
+	if (!this_chapter) {
+		return next(new AppError('There is no Chapter with that Number.', 404));
 	}
 	res.status(200).render('quranReading', {
-		title: `Page ${page.pageNumber}`,
-		page,
+		title: `${this_chapter.info.arabicname}`,
+		this_chapter,
+		allchapters,
+		readerTitle: this_chapter.name,
+		Ltitle: 'السور',
+		Rtitle: 'الآيات',
+		mode: 'QuranChapter',
 	});
 });
 
+
+// For the Quran Juz View --------------------------------------------
 export const getJuzView = catchAsync(async (req, res, next) => {
 
 	const alljuz = await Juz.find();
@@ -86,25 +96,20 @@ export const getJuzView = catchAsync(async (req, res, next) => {
 	});
 });
 
-export const getChapterView = catchAsync(async (req, res, next) => {
-
-	const allchapters = await Chapter.find().lean();
-	const this_chapter = allchapters[req.params.chapter - 1];
-
-	if (!this_chapter) {
-		return next(new AppError('There is no Chapter with that Number.', 404));
+// For the Quran Page View --------------------------------------------
+export const getPageView = catchAsync(async (req, res, next) => {
+	// page_number = req.params.page
+	const page = await Page.findOne({ page_number: req.params.page }).lean();
+	if (!page) {
+		return next(new AppError('There is no Page with that Number.', 404));
 	}
 	res.status(200).render('quranReading', {
-		title: `${this_chapter.info.arabicname}`,
-		this_chapter,
-		allchapters,
-		readerTitle: this_chapter.name,
-		Ltitle: 'السور',
-		Rtitle: 'الآيات',
-		mode: 'QuranChapter',
+		title: `Page ${page.pageNumber}`,
+		page,
 	});
 });
 
+// For the ALL Views --------------------------------------------------------------------------------------------
 export const getAllPagesView = catchAsync(async (req, res, next) => {
 	const pages = await getAllPages(req, res, next);
 	if (!pages) {

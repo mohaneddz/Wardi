@@ -18,11 +18,6 @@
 	border-radius: 1rem;
 	transition: all 0.3s;
 	// position: relative; // if disabled will hide the love icon
-	&:hover {
-		background-color: $primary-color-lighter;
-		color: $tertiary-color;
-		transform: scale(1.05);
-	}
 	&[style*='display: none'] {
 		display: none !important;
 	}
@@ -33,9 +28,19 @@
 		position: absolute;
 		right: 1rem;
 		top: 1rem;
+		opacity: 0;
 		transition: all 0.3s;
 		&:hover {
+			opacity: 1;
 			transform: scale(1.3);
+		}
+	}
+	&:hover {
+		background-color: $primary-color-lighter;
+		color: $tertiary-color;
+		transform: scale(1.05);
+		* {
+			opacity: 1;
 		}
 	}
 	@media (max-width: 1800px) {
