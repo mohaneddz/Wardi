@@ -10,6 +10,7 @@
 		top: 2rem;
 		left: 2rem;
 	}
+	height: 88.5vh;
 }
 
 .hadith {
@@ -108,9 +109,12 @@
 	.maintafsirReading,
 	.mainhadithReading {
 		grid-template-columns: 1fr;
-		grid-template-rows: 1fr;
-		padding: 0;
+		grid-template-rows: 3fr;
+		margin: 0rem 0rem;
 		row-gap: 2%;
+		padding: 0;
+		align-items: center;
+		justify-content: center;
 		&.active {
 			grid-template-columns: 1fr;
 			grid-template-rows: 7vh 7vh 1fr;
@@ -129,8 +133,10 @@
 	.tafsir,
 	.quran,
 	.hadith {
-		height: 94vh;
+		height: 88.5vh;
 		width: 97vw;
+		grid-row: 3/4;
+		margin-bottom: 2rem;
 		h1 {
 			font-size: 12rem;
 		}

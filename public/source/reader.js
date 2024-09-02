@@ -102,7 +102,7 @@ function favControl(event) {
 	if (event.target.classList.contains('heart')) {
 		console.log('Clicked on heart icon');
 		const heart = event.target;
-		const verseId = heart.getAttribute('data-verse-id');
+		const verseId = heart.getAttribute('data-finder');
 		if (favoriteVerses.has(verseId)) {
 			favoriteVerses.delete(verseId);
 			heart.classList.remove('fi-sr-heart', 'favorite', 'heart');

@@ -1,11 +1,29 @@
+//- .Rsidebar 
+//-     h1 Ayats
+//-     .search
+//-         input(type="text" placeholder="Search" class="Rsearch")
+//-         a(class="RsearchButton")
+//-             i(class="fi fi-rs-search")
+//-     ul
+//-         for verse in chapter.verses
+//-             li
+//-                 a(href=`#` class="RsideEntry" id=verse.verse)= verse.verse
+//-                     i(class="fi fi-rs-heart heart" data-verse-id=verse.verse)
+//- 
+//- 
 .Rsidebar 
-    h1 Ayats
+    h1= Rtitle
     .search
         input(type="text" placeholder="Search" class="Rsearch")
         a(class="RsearchButton")
             i(class="fi fi-rs-search")
     ul
-        for verse in chapter.verses
+        each Relement in Rlist
             li
-                a(href=`#` class="RsideEntry" id=verse.verse)= verse.verse
-                    i(class="fi fi-rs-heart heart" data-verse-id=verse.verse)
+                if Rmatching
+                    if Relement[Rselector] === Rparam[Rselector]
+                        a(href=`${Rslug}${Relement[Rselector]}` id=`${Relement[Rname]}` class="RsideEntry selectedEntry")= Relement[Rname]
+                    else
+                        a(href=`${Rslug}${Relement[Rselector]}` id=`${Relement[Rname]}` class="RsideEntry")= Relement[Rname]
+                else
+                    a(href=`${Rslug}${Relement[Rselector]}` data-finder=`${Relement[Rname]}` class="RsideEntry")= Relement[Rname]

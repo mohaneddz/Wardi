@@ -14,7 +14,8 @@
 	overflow-y: auto;
 	flex-wrap: nowrap;
 	position: relative;
-	max-height: 90vh;
+	height: 88.5vh;
+	max-width: 20vw;
 	h1 {
 		font-size: 4rem;
 	}
@@ -73,11 +74,15 @@
 	&.active {
 		display: flex;
 	}
-	.search{
+	.search {
+		display: flex;
 		position: relative;
-
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		
 		input {
-			min-width: 20rem;
+			width: 20rem;
 			padding: 1rem;
 			font-size: 1.5rem;
 			border-radius: 1rem;
@@ -92,13 +97,13 @@
 				width: 15rem;
 				font-size: 1.2rem;
 			}
-			
+
 			&:focus {
 				outline: none;
 				color: $tertiary-color;
 			}
 		}
-		i{
+		i {
 			position: absolute;
 			font-size: 2rem;
 			color: $tertiary-color;
@@ -107,7 +112,6 @@
 			cursor: pointer;
 		}
 	}
-
 }
 
 @mixin reader() {

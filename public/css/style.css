@@ -701,7 +701,8 @@ body {
   overflow-y: auto;
   flex-wrap: nowrap;
   position: relative;
-  max-height: 90vh;
+  height: 88.5vh;
+  max-width: 20vw;
 }
 .Lsidebar h1 {
   font-size: 4rem;
@@ -756,10 +757,14 @@ body {
   display: flex;
 }
 .Lsidebar .search {
+  display: flex;
   position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 .Lsidebar .search input {
-  min-width: 20rem;
+  width: 20rem;
   padding: 1rem;
   font-size: 1.5rem;
   border-radius: 1rem;
@@ -803,7 +808,8 @@ body {
   overflow-y: auto;
   flex-wrap: nowrap;
   position: relative;
-  max-height: 90vh;
+  height: 88.5vh;
+  max-width: 20vw;
 }
 .Rsidebar h1 {
   font-size: 4rem;
@@ -858,10 +864,14 @@ body {
   display: flex;
 }
 .Rsidebar .search {
+  display: flex;
   position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 .Rsidebar .search input {
-  min-width: 20rem;
+  width: 20rem;
   padding: 1rem;
   font-size: 1.5rem;
   border-radius: 1rem;
@@ -910,6 +920,7 @@ body {
   height: 90vh;
   width: 100%;
   overflow-y: auto;
+  height: 88.5vh;
 }
 .hadith .active,
 .quran .active,
@@ -1009,9 +1020,12 @@ body {
   .maintafsirReading,
   .mainhadithReading {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    padding: 0;
+    grid-template-rows: 3fr;
+    margin: 0rem 0rem;
     row-gap: 2%;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
   }
   .mainquranReading.active,
   .maintafsirReading.active,
@@ -1037,8 +1051,10 @@ body {
   .tafsir,
   .quran,
   .hadith {
-    height: 94vh;
+    height: 88.5vh;
     width: 97vw;
+    grid-row: 3/4;
+    margin-bottom: 2rem;
   }
   .tafsir h1,
   .quran h1,
@@ -1069,95 +1085,6 @@ body {
     padding: 1rem;
   }
 }
-.mainquranReading,
-.maintafsirReading,
-.mainhadithReading {
-  column-gap: 1%;
-  display: grid;
-  width: 100vw;
-  height: 100vh;
-  grid-template-columns: 1fr;
-  align-items: start;
-  margin: 0;
-}
-.mainquranReading.active,
-.maintafsirReading.active,
-.mainhadithReading.active {
-  grid-template-columns: min-content 1fr min-content;
-}
-
-.hadithReading,
-.quranReading,
-.tafsirReading {
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-}
-
-body {
-  display: grid;
-  grid-template-rows: max(min-content, 5vh), max(min-content, 70%), max(min-content, 25%);
-  margin-bottom: 0;
-}
-body main {
-  display: grid;
-  grid-template-rows: minmax(30vh, min-content) repeat(2, min-content);
-  grid-template-columns: [center-start] repeat(12, [col-start] minmax(min-content, 100rem) [col-end]) [center-end];
-  align-items: center;
-  justify-items: center;
-  row-gap: 2rem;
-  padding: 2rem;
-}
-body main .title {
-  grid-column: center-start/center-end;
-  padding: 1rem 3rem;
-  transition: all 0.3s;
-  width: min-content;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-body main .cuts {
-  grid-column: center-start/center-end;
-  display: flex;
-  justify-content: center;
-  background-color: rgba(25, 38, 83, 0.5);
-  padding: 2rem;
-  border-radius: 3rem;
-  border: 5px solid rgba(1, 2, 5, 0.9);
-  gap: 2rem;
-}
-body main .cards {
-  grid-column: span 12;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(14rem, 1fr));
-  align-items: stretch;
-  justify-content: center;
-  align-content: center;
-  border-radius: 3rem;
-  gap: 2rem;
-  margin-bottom: 10rem;
-  background-color: #192653;
-  padding: 2rem;
-  font-size: 3rem;
-}
-@media (max-width: 1200px) {
-  body main .cards {
-    grid-template-columns: repeat(3, minmax(14rem, 1fr));
-  }
-}
-@media (max-width: 900px) {
-  body main .cards {
-    grid-template-columns: repeat(2, minmax(14rem, 1fr));
-  }
-}
-@media (max-width: 600px) {
-  body main .cards {
-    grid-template-columns: repeat(1, minmax(14rem, 1fr));
-  }
-}
-
 .loginpage {
   display: grid;
   grid-template-rows: auto 1fr;
@@ -1271,6 +1198,103 @@ main .books {
   main .books {
     grid-template-columns: repeat(1, minmax(14rem, 1fr));
   }
+}
+
+body {
+  display: grid;
+  grid-template-rows: max(min-content, 5vh), max(min-content, 70%), max(min-content, 25%);
+  margin-bottom: 0;
+}
+body main {
+  display: grid;
+  grid-template-rows: minmax(30vh, min-content) repeat(2, min-content);
+  grid-template-columns: [center-start] repeat(12, [col-start] minmax(min-content, 100rem) [col-end]) [center-end];
+  align-items: center;
+  justify-items: center;
+  row-gap: 2rem;
+  padding: 2rem;
+}
+body main .title {
+  grid-column: center-start/center-end;
+  padding: 1rem 3rem;
+  transition: all 0.3s;
+  width: min-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body main .cuts {
+  grid-column: center-start/center-end;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(25, 38, 83, 0.5);
+  padding: 2rem;
+  border-radius: 3rem;
+  border: 5px solid rgba(1, 2, 5, 0.9);
+  gap: 2rem;
+}
+body main .cards {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(14rem, 1fr));
+  align-items: stretch;
+  justify-content: center;
+  align-content: center;
+  border-radius: 3rem;
+  gap: 2rem;
+  margin-bottom: 10rem;
+  background-color: #192653;
+  padding: 2rem;
+  font-size: 3rem;
+}
+@media (max-width: 1200px) {
+  body main .cards {
+    grid-template-columns: repeat(3, minmax(14rem, 1fr));
+  }
+}
+@media (max-width: 900px) {
+  body main .cards {
+    grid-template-columns: repeat(2, minmax(14rem, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  body main .cards {
+    grid-template-columns: repeat(1, minmax(14rem, 1fr));
+  }
+}
+
+.mainquranReading,
+.maintafsirReading,
+.mainhadithReading {
+  column-gap: 1%;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: 1fr;
+  align-items: start;
+  margin: 0;
+}
+.mainquranReading.active,
+.maintafsirReading.active,
+.mainhadithReading.active {
+  grid-template-columns: min-content 1fr min-content;
+}
+@media screen and (max-width: 1200px) {
+  .mainquranReading.active,
+  .maintafsirReading.active,
+  .mainhadithReading.active {
+    grid-template-columns: 1fr;
+    grid-template-rows: 7vh 7vh 1fr;
+  }
+}
+
+.hadithReading,
+.quranReading,
+.tafsirReading {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
 }
 
 /*# sourceMappingURL=style.css.map */

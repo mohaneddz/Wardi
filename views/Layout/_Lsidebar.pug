@@ -1,13 +1,29 @@
+//- .Lsidebar 
+//-     h1 Surahs
+//-     .search
+//-         input(type="text" placeholder="Search" class="Lsearch")
+//-         a(class="LsearchButton")
+//-             i(class="fi fi-rs-search")
+//-     ul
+//-         each surah in allchapters
+//-             li
+//-                 if surah.chapter === chapter.chapter
+//-                     a(href=`/quran/chapter/${surah.chapter}` class="LsideEntry selectedEntry")= surah.name
+//-                 else
+//-                     a(href=`/quran/chapter/${surah.chapter}` class="LsideEntry")= surah.name
 .Lsidebar 
-    h1 Surahs
+    h1= Ltitle
     .search
         input(type="text" placeholder="Search" class="Lsearch")
         a(class="LsearchButton")
             i(class="fi fi-rs-search")
     ul
-        each surah in allchapters
+        each Lelement in Llist
             li
-                if surah.chapter === chapter.chapter
-                    a(href=`/quran/chapter/${surah.chapter}` class="LsideEntry selectedEntry")= surah.name
+                if Lmatching
+                    if Lelement[Lselector] === Lparam[Lselector]
+                        a(href=`${Lslug}${Lelement[Lselector]}` class="LsideEntry selectedEntry")= Lelement[Lname]
+                    else
+                        a(href=`${Lslug}${Lelement[Lselector]}` class="LsideEntry")= Lelement[Lname]
                 else
-                    a(href=`/quran/chapter/${surah.chapter}` class="LsideEntry")= surah.name
+                    a(href=`${Lslug}${Lelement[Lselector]}` class="LsideEntry")= Lelement[Lname]

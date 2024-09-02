@@ -1,10 +1,10 @@
 .quran 
     .toggle
         i(class="fi fi-rr-menu-burger")
-    h1.quran__title= chapter.name
-    // remove basmallah if surah is 9 or 1             :D
+    h1.quran__title= readerTitle
+    // remove basmallah if surah is 9 or 1
     if chapter.chapter !== 9 && chapter.chapter !== 1
         h2.quran__basmallah 7
     p.quran__verse
-        each verse, index in chapter.verses
+        each verse, index in Rlist
             span(id=`verse-${index + 1}`)= `${verse.text} ${index + 1} `.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
