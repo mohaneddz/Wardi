@@ -135,7 +135,7 @@
 	.hadith {
 		height: 88.5vh;
 		width: 97vw;
-		grid-row: 3/4;
+		grid-row: 1/4;
 		margin-bottom: 2rem;
 		h1 {
 			font-size: 12rem;
@@ -156,6 +156,11 @@
 				font-size: 3rem;
 				padding: 1rem;
 			}
+		}
+		&.active {
+			grid-row: 3/4;
+			height: 72vh;
+			width: 97;
 		}
 	}
 }

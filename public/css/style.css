@@ -792,7 +792,6 @@ body {
   position: relative;
   align-items: center;
   justify-content: start;
-  width: 100%;
   flex-grow: 0;
 }
 .Lsidebar .search input {
@@ -917,7 +916,6 @@ body {
   position: relative;
   align-items: center;
   justify-content: start;
-  width: 100%;
   flex-grow: 0;
 }
 .Rsidebar .search input {
@@ -1102,7 +1100,7 @@ body {
   .hadith {
     height: 88.5vh;
     width: 97vw;
-    grid-row: 3/4;
+    grid-row: 1/4;
     margin-bottom: 2rem;
   }
   .tafsir h1,
@@ -1132,6 +1130,13 @@ body {
   .hadith p.seperator {
     font-size: 3rem;
     padding: 1rem;
+  }
+  .tafsir.active,
+  .quran.active,
+  .hadith.active {
+    grid-row: 3/4;
+    height: 72vh;
+    width: 97;
   }
 }
 .loginpage {

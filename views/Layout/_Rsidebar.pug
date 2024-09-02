@@ -13,7 +13,7 @@
             
         else if mode === "QuranJuz"
             for chapter in chapters
-                if chapter.chapter === this_chapter.chapter
+                if chapter.chapter === this_chapter
                     li
                         a(href=`/quran/juz/${this_juz.juz}/${chapter.chapter}` class="RsideEntry selectedEntry")= info.chapters[chapter.chapter - 1][0].arabicname
                 else

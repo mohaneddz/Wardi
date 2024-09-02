@@ -4,7 +4,7 @@ import * as quranController from '../../controllers/Content/quranController.js';
 const router = express.Router();
 
 router.route('/page/:page').get(quranController.getPageView);
-router.route('/juz/:juz').get(quranController.getJuzView);
+router.route('/juz/:juz/chapter/:chapter').get(quranController.getJuzView);
 router.route('/chapter/:chapter').get(quranController.getChapterView);
 
 router.route('/page/').get(quranController.getAllPagesView);

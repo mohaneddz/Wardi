@@ -17,5 +17,8 @@
         //- if this_juz.juz !== 9 && chapter.chapter !== 1
         h2.quran__basmallah 7
         p.quran__verse
-            each chapter, index in this_juz.chapters
-                span(id=`verse-${index + 1}`)= `${chapter.text} ${index + 1} `.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
+            each verse, index in this_juz[0].content
+                if verse.chapter === this_chapter
+                    span(id=`verse-${index + 1}`)= `${verse.text} ${index + 1} `.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
+
+- console.log('This Chapter:', this_chapter)

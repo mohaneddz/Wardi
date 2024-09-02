@@ -75,7 +75,7 @@ function searchSurah() {
 	surahs.forEach((surah) => {
 		const surahName = surah.textContent.toLowerCase();
 		if (surahName.includes(searchValue.toLowerCase())) {
-			surah.style.display = 'block';
+			surah.style.display = 'flex';
 		} else {
 			surah.style.display = 'none';
 		}
@@ -88,7 +88,7 @@ function searchAyah() {
 	ayat.forEach((aya) => {
 		const ayaNum = aya.textContent.toLowerCase();
 		if (ayaNum.includes(searchValue.toLowerCase())) {
-			aya.style.display = 'block';
+			aya.style.display = 'flex';
 		} else {
 			aya.style.display = 'none';
 		}

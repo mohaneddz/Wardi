@@ -25,7 +25,6 @@ import AppError from '../../utils/appError.js';
 
 // For the Quran Chapter View --------------------------------------------
 export const getChapterView = catchAsync(async (req, res, next) => {
-
 	const allchapters = await Chapter.find().lean();
 	const this_chapter = allchapters[req.params.chapter - 1];
 
@@ -43,53 +42,69 @@ export const getChapterView = catchAsync(async (req, res, next) => {
 	});
 });
 
-
 // For the Quran Juz View --------------------------------------------
 export const getJuzView = catchAsync(async (req, res, next) => {
-
 	const alljuz = await Juz.find();
-	const this_juz = await Juz.find({ jus: req.params.juz });
+	const this_juz = await Juz.find({ juz: req.params.juz });
 	const this_chapter = req.params.chapter;
+	let chapterName = await Chapter.findOne({ chapter: this_chapter }).exec();
+	chapterName = chapterName ? chapterName.name : null;
 
 	const chapters = await Juz.aggregate([
-		{
-			$match: { juz: Number(req.params.juz) },
-		},
-		{
-			$unwind: '$content',
-		},
-		{
-			$group: {
-				_id: '$content.chapter',
-				chapter: { $first: '$content.chapter' },
-				text: { $push: '$content.text' },
-			},
-		},
-		{
-			$sort: {
-				chapters: 1,
-			},
-		},
-		{
-			$project: {
-				_id: 0,
-				chapter: 1,
-				text: 1,
-			},
-		},
-	]);
+        {
+            $match: { juz: Number(req.params.juz) },
+        },
+        {
+            $unwind: '$content',
+        },
+        {
+            $group: {
+                _id: '$content.chapter',
+                chapter: { $first: '$content.chapter' },
+                text: { $push: '$content.text' },
+            },
+        },
+        {
+            $sort: {
+                chapter: 1,
+            },
+        },
+        {
+            $project: {
+                _id: 0,
+                chapter: 1,
+                text: 1,
+            },
+        },
+    ]).exec();
 
 	const info = await Info.findOne();
 
 	if (!this_juz) {
 		return next(new AppError('There is no Juz with that Number.', 404));
 	}
+
+	// res.status(200).json({
+	// 	title: `Juz ${req.params.juz}`,
+	// 	this_juz,
+	// 	alljuz,
+	// 	chapters,
+	// 	info,
+	// 	Ltitle: 'الجزء',
+	// 	Rtitle: 'السور',
+	// 	mode: 'QuranJuz',
+	// });
+	console.log(chapterName);
+	console.log(this_chapter);
+
 	res.status(200).render('quranReading', {
 		title: `Juz ${req.params.juz}`,
 		this_juz,
+		this_chapter,
 		alljuz,
 		chapters,
 		info,
+		readerTitle:  chapterName,
 		Ltitle: 'الجزء',
 		Rtitle: 'السور',
 		mode: 'QuranJuz',
