@@ -6,12 +6,26 @@ const quranInfoSchema = new mongoose.Schema({
     required: true,
   },
   chapters: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Chapter',
+    type: Array,
     required: true,
   }],
+}, {
+  toJSON: { 
+    transform: (doc, ret) => { 
+      delete ret._id; 
+      delete ret.__v; 
+      return { verses: ret.verses, chapters: ret.chapters };
+    } 
+  },
+  toObject: { 
+    transform: (doc, ret) => { 
+      delete ret._id; 
+      delete ret.__v; 
+      return { verses: ret.verses, chapters: ret.chapters };
+    } 
+  }
 });
 
-const Info = mongoose.model('Infos', quranInfoSchema);
+const Info = mongoose.model('infos', quranInfoSchema);
 
 export default Info;

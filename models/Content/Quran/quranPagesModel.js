@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import {VerseSchema} from '../schemas/QuranSchema.js';
 
 const quranPagesModel = new mongoose.Schema({
-	pageNumber: {
+	page_number: {
 		type: Number,
 		required: true,
 	},

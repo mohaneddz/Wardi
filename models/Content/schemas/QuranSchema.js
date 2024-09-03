@@ -19,6 +19,10 @@ export const VerseInfoSchema = new mongoose.Schema({
 		type: Number,
 		required: true,
 	},
+	line: {
+		type: Number,
+		required: true,
+	},
 	page: {
 		type: Number,
 		required: true,
@@ -32,6 +36,7 @@ export const VerseInfoSchema = new mongoose.Schema({
 		required: true,
 	},
 });
+
 
 export const ChapterInfoSchema = new mongoose.Schema({
 	name: {
@@ -53,6 +58,5 @@ export const ChapterInfoSchema = new mongoose.Schema({
 	},
 	verses_info: {
 		type: [VerseInfoSchema],
-		required: true,
 	},
 });

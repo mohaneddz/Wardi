@@ -6,19 +6,18 @@
 	padding: 1.75rem;
 
 	text-decoration: none;
-	text-align: center;
 	font-size: 2rem;
 	display: block;
+	max-height: 5vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: fit-content;
 
 	border: 2px solid rgba($primary-color-dark, 0.9);
 	border-radius: 1rem;
 	transition: all 0.3s;
 	// position: relative; // if disabled will hide the love icon
-	&:hover {
-		background-color: $primary-color-lighter;
-		color: $tertiary-color;
-		transform: scale(1.05);
-	}
 	&[style*='display: none'] {
 		display: none !important;
 	}
@@ -29,13 +28,29 @@
 		position: absolute;
 		right: 1rem;
 		top: 1rem;
+		opacity: 0;
 		transition: all 0.3s;
 		&:hover {
+			opacity: 1;
 			transform: scale(1.3);
+		}
+	}
+	&:hover {
+		background-color: $primary-color-lighter;
+		color: $tertiary-color;
+		transform: scale(1.05);
+		* {
+			opacity: 1;
 		}
 	}
 	@media (max-width: 1800px) {
 		font-size: 2rem;
+		font-size: clamp(1rem, 2vw, 2rem);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		width: 100%;
+		gap: 0.5rem;
 	}
 }
 .selectedEntry {

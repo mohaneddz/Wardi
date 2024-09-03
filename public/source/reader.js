@@ -14,7 +14,10 @@ const rsearchbtn = document.querySelector('.RsearchButton');
 const lsearch = document.querySelector('.Lsearch');
 const rsearch = document.querySelector('.Rsearch');
 
-// Functions -------------------------
+// temporary using this to store the favorite verses
+const favoriteVerses = new Set();
+
+// // Functions -------------------------
 function highlighter(event) {
 	// Check if the clicked element is a sidebar entry
 	if (event.target && event.target.matches('.RsideEntry')) {
@@ -75,12 +78,13 @@ function searchSurah() {
 	surahs.forEach((surah) => {
 		const surahName = surah.textContent.toLowerCase();
 		if (surahName.includes(searchValue.toLowerCase())) {
-			surah.style.display = 'block';
+			surah.style.display = 'flex';
 		} else {
 			surah.style.display = 'none';
 		}
 	});
 }
+
 function searchAyah() {
 	const searchValue = rsearch.value;
 	const ayat = document.querySelectorAll('.RsideEntry');
@@ -88,15 +92,12 @@ function searchAyah() {
 	ayat.forEach((aya) => {
 		const ayaNum = aya.textContent.toLowerCase();
 		if (ayaNum.includes(searchValue.toLowerCase())) {
-			aya.style.display = 'block';
+			aya.style.display = 'flex';
 		} else {
 			aya.style.display = 'none';
 		}
 	});
 }
-
-// temporary using this to store the favorite verses
-const favoriteVerses = new Set();
 
 function favControl(event) {
 	if (event.target.classList.contains('heart')) {
@@ -106,7 +107,7 @@ function favControl(event) {
 		if (favoriteVerses.has(verseId)) {
 			favoriteVerses.delete(verseId);
 			heart.classList.remove('fi-sr-heart', 'favorite', 'heart');
-			heart.classList.add('fi-rs-heart' , 'heart');
+			heart.classList.add('fi-rs-heart', 'heart');
 		} else {
 			favoriteVerses.add(verseId);
 

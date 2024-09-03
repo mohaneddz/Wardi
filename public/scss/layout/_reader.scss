@@ -1,7 +1,7 @@
 .hadith,
 .quran,
 .tafsir {
-	scroll-behavior: smooth;
+	// scroll-behavior: smooth;
 	position: relative;
 	@include reader();
 	.toggle {
@@ -135,7 +135,7 @@
 	.hadith {
 		height: 88.5vh;
 		width: 97vw;
-		grid-row: 3/4;
+		grid-row: 1/4;
 		margin-bottom: 2rem;
 		h1 {
 			font-size: 12rem;
@@ -157,5 +157,16 @@
 				padding: 1rem;
 			}
 		}
+		&.active {
+			grid-row: 3/4;
+			height: 72vh;
+			width: 97;
+		}
 	}
+}
+
+.quran__page--number{
+	position: absolute;
+	bottom: 0;
+	right: 50%;
 }
