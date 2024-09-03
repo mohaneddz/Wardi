@@ -1139,6 +1139,12 @@ body {
     width: 97;
   }
 }
+.quran__page--number {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+}
+
 .loginpage {
   display: grid;
   grid-template-rows: auto 1fr;

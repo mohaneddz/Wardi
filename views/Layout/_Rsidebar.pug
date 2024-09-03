@@ -19,3 +19,9 @@
                 else
                     li
                         a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` class="RsideEntry")= info.chapters[chapter.chapter - 1][0].arabicname
+
+        else if mode === "QuranPage"
+            for verse in this_page.verses
+                li
+                    a(href=`#` class="RsideEntry" id=verse.verse)= verse.verse
+                        i(class="fi fi-rs-heart heart" data-verse-id=verse.verse)

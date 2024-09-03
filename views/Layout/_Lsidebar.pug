@@ -24,3 +24,11 @@
                 li
                     a(href=`/quran/juz/${juz.juz}/chapter/${juz.content[0].chapter}` class="LsideEntry")= `${juz.juz} الجزء`
     
+    else if mode === "QuranPage"
+        each page in allpages
+            if page.page === this_page.page_number
+                li
+                    a(href=`/quran/page/${page.page_number}` class="LsideEntry selectedEntry")= `${page.page_number} الصفحة`
+            else
+                li
+                    a(href=`/quran/page/${page.page_number}` class="LsideEntry")= `${page.page_number} الصفحة`

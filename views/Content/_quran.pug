@@ -20,3 +20,11 @@
             each verse, index in this_juz[0].content
                 if verse.chapter == this_chapter
                     span(id=`verse-${index + 1}`)= `${verse.text} ${index + 1} `.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
+    else if mode === "QuranPage"
+        // remove basmallah if surah is 9 or 1
+        h2.quran__basmallah 7
+        p.quran__verse
+            each verse, index in this_page.verses
+                span(id=`verse-${index + 1}`)= `${verse.text} ${index + 1} `.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
+        p.quran__page--number
+            span= `${this_page.page_number} الصفحة`
