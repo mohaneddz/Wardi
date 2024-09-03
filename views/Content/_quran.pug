@@ -25,6 +25,6 @@
         h2.quran__basmallah 7
         p.quran__verse
             each verse, index in this_page.verses
-                span(id=`verse-${index + 1}`)= `${verse.text} ${index + 1} `.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
+                span(id=`verse-${verse.verse}`)= `${verse.text} ${verse.verse} `.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
         p.quran__page--number
             span= `${this_page.page_number} الصفحة`
