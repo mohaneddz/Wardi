@@ -94,10 +94,6 @@
 		font-weight: 400;
 		margin: 1.5rem 0rem;
 		text-align: end;
-		&.quran__verse {
-			border: 3px solid rgba(0, 0, 0, 0.5);
-			padding: 2rem;
-		}
 		&.explanation {
 			border: 3px solid rgba(0, 0, 0, 0.1);
 			font-size: 3rem;
@@ -114,6 +110,10 @@
 			font-weight: 400;
 			margin: 0rem 0rem;
 		}
+		&.quran__verse {
+			border: 3px solid rgba(0, 0, 0, 0.5);
+			padding: 2rem;
+		}
 		&.selected{
 			color: rgb(98, 98, 205);
 		}
@@ -129,9 +129,9 @@
 }
 
 @media screen and (max-width: 1200px) {
-	.mainquranReading,
-	.maintafsirReading,
-	.mainhadithReading {
+	.mainQuran_Reading,
+	.mainTafsir_Reading,
+	.mainHadith_Reading {
 		grid-template-columns: 1fr;
 		grid-template-rows: 3fr;
 		margin: 0rem 0rem;
