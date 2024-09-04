@@ -18,7 +18,6 @@ import AppError from '../../utils/appError.js';
 // // |.....|---------------------------------------------
 
 export const getTafsirChapterView = catchAsync(async (req, res) => {
-
 	const chapterNumber = parseInt(req.params.chapter);
 	const all_chapters = await Chapter.find().select('name chapter').lean();
 	const this_chapter = await Chapter.findOne({ chapter: chapterNumber }).lean();
@@ -39,13 +38,13 @@ export const getTafsirChapterView = catchAsync(async (req, res) => {
 		},
 	]);
 
-	res.status(200).render('tafsirReading', {
+	res.status(200).render('Tafsir_Reading', {
 		title: `${this_chapter.info.arabicname}`,
 		all_chapters,
 		this_chapter,
 		tafsir,
 		chapterNumber,
-        this_book: req.params.book,
+		this_book: req.params.book,
 		readerTitle: this_chapter.name,
 		Ltitle: 'السور',
 		Rtitle: 'الآيات',
@@ -53,14 +52,13 @@ export const getTafsirChapterView = catchAsync(async (req, res) => {
 	});
 });
 
-export const getTafsirBooksView = catchAsync(async (req, res) => {
-
-    const this_book = req.params.book;
+export const getTafsirBookView = catchAsync(async (req, res) => {
+	const this_book = req.params.book;
 	const chapterNumber = parseInt(req.params.chapter);
-    const allbooks = await Tafsir.find().select('name slug').lean();
+	const all_books = await Tafsir.find().select('name slug').lean();
 	const all_chapters = await Chapter.find().select('name chapter').lean();
 	const this_chapter = await Chapter.findOne({ chapter: chapterNumber }).lean();
-    const lang = this_book.split('-')[0];
+	const lang = this_book.split('-')[0];
 
 	const tafsir = await Tafsir.aggregate([
 		{
@@ -78,19 +76,46 @@ export const getTafsirBooksView = catchAsync(async (req, res) => {
 			},
 		},
 	]);
-
-	res.status(200).render('tafsirReading', {
+	
+	res.status(200).render('Tafsir_Reading', {
 		title: `${this_chapter.info.arabicname}`,
-        allbooks,
+		all_books,
 		all_chapters,
 		this_chapter,
 		tafsir,
-        lang,
+		lang,
 		chapterNumber,
 		readerTitle: this_chapter.name,
-        this_book,
+		this_book,
 		Ltitle: 'الكتاب',
 		Rtitle: 'السورة',
 		mode: 'TafsirBooks',
+	});
+});
+
+export const getTafsirBooksView = catchAsync(async (req, res) => {
+
+	const all_books = await Tafsir.aggregate([
+		{
+			$project: {
+				name: 1,
+				image: 1,
+				slug: 1,
+				'metadata.name': 1,
+			},
+		},
+		{
+			$match: {
+				name: { $not: /1$/ },
+			},
+		},
+		{
+			$sort: { 'slug': 1 },
+		},
+	]);
+
+	res.status(200).render('Tafsir_Books', {
+		title: 'Tafsir Books',
+		all_books,
 	});
 });

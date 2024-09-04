@@ -2,7 +2,7 @@
 
 ## Overview
 
-Wardi is a web application designed to provide users with access to various Islamic resources, including the Quran, Hadith, and Tafsir. The application is built using Node.js, Express, and MongoDB, and it follows a modular architecture to ensure scalability and maintainability.
+Wardi is a web application designed to provide Users with access to various Islamic resources, including the Quran, Hadith, and Tafsir. The application is built using Node.js, Express, and MongoDB, and it follows a modular architecture to ensure scalability and maintainability.
 
 **This is a Temporary Readme that I just made to not get bored, nothing's Over yet 🙂**
 
