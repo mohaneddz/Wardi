@@ -1,0 +1,121 @@
+[
+    {
+        "id": "12345",
+        "username": "johndoe",
+        "email": "johndoe@example.com",
+        "password": "hashed_password_here",
+        "firstName": "John",
+        "lastName": "Doe",
+        "createdAt": "2023-10-01T12:00:00Z",
+        "updatedAt": "2023-10-01T12:00:00Z",
+        "isActive": true,
+        "photo" : "",
+        "roles": ["user"],
+        "preferences": {
+            "language": "en",
+            "theme": "dark"
+        }
+    },
+    {
+        "id": "12346",
+        "username": "janedoe",
+        "email": "janedoe@example.com",
+        "password": "hashed_password_here",
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "createdAt": "2023-10-02T12:00:00Z",
+        "updatedAt": "2023-10-02T12:00:00Z",
+        "isActive": true,
+        "photo" : "",
+        "roles": ["user"],
+        "preferences": {
+            "language": "en",
+            "theme": "light"
+        }
+    },
+    {
+        "id": "12347",
+        "username": "alice",
+        "email": "alice@example.com",
+        "password": "hashed_password_here",
+        "firstName": "Alice",
+        "lastName": "Smith",
+        "createdAt": "2023-10-03T12:00:00Z",
+        "updatedAt": "2023-10-03T12:00:00Z",
+        "isActive": true,
+        "photo" : "",
+        "roles": ["admin"],
+        "preferences": {
+            "language": "fr",
+            "theme": "dark"
+        }
+    },
+    {
+        "id": "12348",
+        "username": "bob",
+        "email": "bob@example.com",
+        "password": "hashed_password_here",
+        "firstName": "Bob",
+        "lastName": "Johnson",
+        "createdAt": "2023-10-04T12:00:00Z",
+        "updatedAt": "2023-10-04T12:00:00Z",
+        "isActive": true,
+        "photo" : "",
+        "roles": ["user"],
+        "preferences": {
+            "language": "es",
+            "theme": "light"
+        }
+    },
+    {
+        "id": "12349",
+        "username": "charlie",
+        "email": "charlie@example.com",
+        "password": "hashed_password_here",
+        "firstName": "Charlie",
+        "lastName": "Brown",
+        "createdAt": "2023-10-05T12:00:00Z",
+        "updatedAt": "2023-10-05T12:00:00Z",
+        "isActive": true,
+        "photo" : "",
+        "roles": ["user"],
+        "preferences": {
+            "language": "de",
+            "theme": "dark"
+        }
+    },
+    {
+        "id": "12350",
+        "username": "david",
+        "email": "david@example.com",
+        "password": "hashed_password_here",
+        "firstName": "David",
+        "lastName": "Williams",
+        "createdAt": "2023-10-06T12:00:00Z",
+        "updatedAt": "2023-10-06T12:00:00Z",
+        "isActive": true,
+        "photo" : "",
+        "roles": ["user"],
+        "preferences": {
+            "language": "it",
+            "theme": "light"
+        }
+    },
+    {
+        "id": "12351",
+        "username": "eve",
+        "email": "eve@example.com",
+        "password": "hashed_password_here",
+        "firstName": "Eve",
+        "lastName": "Davis",
+        "createdAt": "2023-10-07T12:00:00Z",
+        "updatedAt": "2023-10-07T12:00:00Z",
+        "isActive": true,
+        "photo" : "",
+        "roles": ["user"],
+        "preferences": {
+            "language": "pt",
+            "theme": "dark"
+        }
+    }
+]
