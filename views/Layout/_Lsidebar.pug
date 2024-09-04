@@ -1,34 +1,87 @@
 .Lsidebar 
-    h1= Ltitle
+    .Sidebar__title
+        h1= Ltitle
     .search
         input(type="text" placeholder="Search" class="Lsearch")
         a(class="LsearchButton")
             i(class="fi fi-rs-search")
-    ul
-    if mode === "QuranChapter"
-        each chapter in allchapters
-            if chapter.chapter === this_chapter.chapter 
-                li  
-                    a(href=`/quran/chapter/${chapter.chapter}` class="LsideEntry selectedEntry")= chapter.name
-            else
-                li  
-                    a(href=`/quran/chapter/${chapter.chapter}` class="LsideEntry")= chapter.name
-                    
-    else if mode === "QuranJuz"
-        each juz in alljuz
-            
-            if juz.juz === this_juz.juz
-                li
-                    a(href=`/quran/juz/${juz.juz}/chapter/${juz.content[0].chapter}` class="LsideEntry selectedEntry")= `${juz.juz} الجزء`
-            else
-                li
-                    a(href=`/quran/juz/${juz.juz}/chapter/${juz.content[0].chapter}` class="LsideEntry")= `${juz.juz} الجزء`
     
-    else if mode === "QuranPage"
-        each page in allpages
-            if page.page === this_page.page_number
-                li
-                    a(href=`/quran/page/${page.page_number}` class="LsideEntry selectedEntry")= `${page.page_number} الصفحة`
-            else
-                li
-                    a(href=`/quran/page/${page.page_number}` class="LsideEntry")= `${page.page_number} الصفحة`
+    ul
+        if mode === "QuranChapter"
+            each chapter in all_chapters
+                if chapter.chapter === this_chapter.chapter 
+                    li  
+                        a(href=`/quran/chapter/${chapter.chapter}` class="LsideEntry selectedEntry")= chapter.name
+                            i(class="fi fi-rs-heart heart")
+                else
+                    li  
+                        a(href=`/quran/chapter/${chapter.chapter}` class="LsideEntry")= chapter.name
+                            i(class="fi fi-rs-heart heart")
+        
+        else if mode === "QuranJuz"
+            each juz in alljuz
+                if juz.juz === this_juz.juz
+                    li
+                        a(href=`/quran/juz/${juz.juz}/chapter/${juz.content[0].chapter}` class="LsideEntry selectedEntry")= `${juz.juz} الجزء`
+                            i(class="fi fi-rs-heart heart")
+                else
+                    li
+                        a(href=`/quran/juz/${juz.juz}/chapter/${juz.content[0].chapter}` class="LsideEntry")= `${juz.juz} الجزء`
+                            i(class="fi fi-rs-heart heart")
+        
+        else if mode === "QuranPage"
+            each page in allpages
+                if page.page === this_page.page_number
+                    li
+                        a(href=`/quran/page/${page.page_number}` class="LsideEntry selectedEntry")= `${page.page_number} الصفحة`
+                            i(class="fi fi-rs-heart heart")
+                else
+                    li
+                        a(href=`/quran/page/${page.page_number}` class="LsideEntry")= `${page.page_number} الصفحة`
+                            i(class="fi fi-rs-heart heart")
+
+        else if mode === "HadithChapter"
+            each book in all_books
+                if book.name === this_hadith.name
+                    li
+                        a(href=`/hadith/book/${book.name}/hadith/1` class="LsideEntry selectedEntry")= book.metadata.name
+                            i(class="fi fi-rs-heart heart")
+                else
+                    li
+                        a(href=`/hadith/book/${book.name}/hadith/1` class="LsideEntry")= book.metadata.name
+                            i(class="fi fi-rs-heart heart")
+
+        else if mode === "HadithSection"
+            -for(let index = 0; index < sectionsCount; index++)
+                if this_hadith.metadata.sections[String(index)] !== ""
+                    if index === sectionNumber
+                        li
+                            a(href=`/hadith/book/${this_hadith.name}/section/${index}` class="LsideEntry selectedEntry resizable")= `${this_hadith.metadata.sections[String(index)]}`
+                                i(class="fi fi-rs-heart heart")
+                    else
+                        li
+                            a(href=`/hadith/book/${this_hadith.name}/section/${index}` class="LsideEntry resizable")= `${this_hadith.metadata.sections[String(index)]}`
+                                i(class="fi fi-rs-heart heart")
+        
+        else if mode === "TafsirChapter"
+            each chapter in all_chapters
+                if chapter.chapter === this_chapter.chapter
+                    li
+                        a(href=`/tafsir/book/${this_book}/chapter/${chapter.chapter}` class="LsideEntry selectedEntry")= chapter.name
+                            i(class="fi fi-rs-heart heart")
+                else
+                    li
+                        a(href=`/tafsir/book/${this_book}/chapter/${chapter.chapter}` class="LsideEntry")= chapter.name
+                            i(class="fi fi-rs-heart heart")
+        
+        else if mode === "TafsirBooks"
+            each book in allbooks
+                if book.slug.split("-")[0] === lang
+                    if book.slug === this_book
+                        li
+                            a(href=`/tafsir/book/${this_book}/chapters/${this_chapter.chapter}` class="LsideEntry selectedEntry resizable")= book.name
+                                i(class="fi fi-rs-heart heart")
+                    else
+                        li
+                            a(href=`/tafsir/book/${this_book}/chapters/${this_chapter.chapter}` class="LsideEntry resizable")= book.name
+                                i(class="fi fi-rs-heart heart")

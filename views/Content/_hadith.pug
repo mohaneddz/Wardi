@@ -1,11 +1,22 @@
 .hadith 
     .toggle
         i(class="fi fi-rr-menu-burger")
-    h1.hadith__title الحديث رقم {1}
-    h2.hadith__start 13
-    p حَدَّثَنَا عَبْدُ اللَّهِ بْنُ مَسْلَمَةَ الْقَعْنَبِيُّ، عَنْ مَالِكٍ، عَنِ ابْنِ شِهَابٍ، عَنْ عُبَيْدِ اللَّهِ بْنِ عَبْدِ اللَّهِ بْنِ عُتْبَةَ بْنِ مَسْعُودٍ، عَنْ أُمِّ قَيْسٍ بِنْتِ مِحْصَنٍ، أَنَّهَا أَتَتْ بِابْنٍ لَهَا صَغِيرٍ لَمْ يَأْكُلِ الطَّعَامَ إِلَى رَسُولِ اللَّهِ صلى الله عليه وسلم فَأَجْلَسَهُ رَسُولُ اللَّهِ صلى الله عليه وسلم فِي حِجْرِهِ فَبَالَ عَلَى ثَوْبِهِ فَدَعَا بِمَاءٍ فَنَضَحَهُ وَلَمْ يَغْسِلْهُ ‏.‏
-    br
-    .grades
-        p Al-Albani : Hasan Sahih 
-        p Muhammad Muhyi Al-Din Abdul Hamid : Hasan Sahih
-        
+    if mode === 'HadithChapter'
+        h1.hadith__title= `الحديث رقم {${this_hadith.hadith.hadithnumber}}`
+        h2.hadith__start 13
+        p=this_hadith.hadith.text
+        br
+        .grades
+            if this_hadith.hadith.grades > 0
+                each grade in this_hadith.hadith.grades
+                    p.grade=grade.grade
+    if mode ===  'HadithSection'
+        for hadith in this_hadith.hadiths
+            h1(class='hadith__title' data-hadith= `${hadith.hadithnumber}` data-book=`${this_hadith.name}` )= `الحديث رقم {${hadith.hadithnumber}}`
+            h2(class=`hadith__start` data-hadith-under= `${hadith.hadithnumber}` ) 13
+            p=hadith.text
+            br
+            .grades
+                if hadith.grades > 0
+                    each grade in hadith.grades
+                        p.grade=grade.grade

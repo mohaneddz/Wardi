@@ -1,5 +1,6 @@
 .Rsidebar 
-    h1= Rtitle
+    .Sidebar__title
+        h1= Rtitle
     .search
         input(type="text" placeholder="Search" class="Rsearch")
         a(class="RsearchButton")
@@ -8,20 +9,51 @@
         if mode === "QuranChapter"
             for verse in this_chapter.verses
                 li
-                    a(href=`#` class="RsideEntry" id=verse.verse)= verse.verse
-                        i(class="fi fi-rs-heart heart" data-verse-id=verse.verse)
+                    a(href=`#` class="RsideEntry quranChapterSearch" data-verse=`${verse.verse}` data-chapter=`${readerTitle}`)= verse.verse
+                        i(class="fi fi-rs-heart heart")
             
         else if mode === "QuranJuz"
             for chapter in chapters
                 if chapter.chapter === this_chapter
                     li
-                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` class="RsideEntry selectedEntry")= info.chapters[chapter.chapter - 1][0].arabicname
+                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` class="RsideEntry selectedEntry" data-verse=`${verse.verse}` data-chapter=`${readerTitle}`)= info.chapters[chapter.chapter - 1][0].arabicname
+                            i(class="fi fi-rs-heart heart")
                 else
                     li
-                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` class="RsideEntry")= info.chapters[chapter.chapter - 1][0].arabicname
+                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` class="RsideEntry" data-verse=`${verse.verse}` data-chapter=`${readerTitle}`)= info.chapters[chapter.chapter - 1][0].arabicname
 
         else if mode === "QuranPage"
             for verse in this_page.verses
+                // script :
                 li
-                    a(href=`#` class="RsideEntry" id=verse.verse)= verse.verse
-                        i(class="fi fi-rs-heart heart" data-verse-id=verse.verse)
+                    a(href=`#` class="RsideEntry with_name" data-verse=`${verse.verse}` data-chapter=`${chapter_info[verse.chapter - 1].name}` )= `${verse.verse} ${chapter_info[verse.chapter - 1].name}`
+                        i(class="fi fi-rs-heart heart")
+
+        else if mode === "HadithChapter"
+            - for (var i = 1; i <= this_hadith.hadith_counts; i++)
+                if i === this_hadith.hadith.hadithnumber
+                    li
+                        a(href=`/hadith/book/${this_hadith.name}/hadith/${i}` class="RsideEntry selectedEntry nosearch" data-hadith=`${i}` data-book=`${this_hadith.name}`)= `الحديث رقم ${i}`
+                            i(class="fi fi-rs-heart heart")
+                else
+                    li
+                        a(href=`/hadith/book/${this_hadith.name}/hadith/${i}` class="RsideEntry nosearch" data-hadith=`${i}`)= `الحديث رقم ${i}`
+                            i(class="fi fi-rs-heart heart")
+
+        else if mode === "HadithSection"
+            for hadith in this_hadith.hadiths
+                li
+                    a(href=`#` class="RsideEntry Hadith__Section" data-hadith=`${hadith.hadithnumber}` data-book=`${this_hadith.name}`)= `الحديث رقم ${hadith.hadithnumber}`
+                        i(class="fi fi-rs-heart heart")
+
+        else if mode === "TafsirChapter"
+            for verse in this_chapter.verses
+                li
+                    a(href=`#` class="RsideEntry tafsirChapterSearch" data-verse=`${verse.verse}` data-chapter=`${readerTitle}`)= verse.verse
+                        i(class="fi fi-rs-heart heart")
+
+        else if mode === "TafsirBooks"
+            for chapter in all_chapters
+                li
+                    a(href=`/tafsir/book/${this_book}/chapters/${chapter.chapter}`  class="RsideEntry nosearch" data-chapter=`${readerTitle}`)= chapter.name
+                        i(class="fi fi-rs-heart heart")

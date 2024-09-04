@@ -1,9 +1,11 @@
 import express from 'express';
+import * as tafsirController from '../../controllers/Content/tafsirController.js';
 const router = express.Router();
 
-// Define your routes here
-router.get('/', (req, res) => {
-	res.send('Tafsir Routes');
-});
+// router.route('/book/:book/page/:page').get(tafsirController.getPageView);
+
+router.route('/book/:book/chapter/:chapter').get(tafsirController.getTafsirChapterView);
+router.route('/book/:book/chapters/:chapter').get(tafsirController.getTafsirBooksView);
+
 
 export default router;

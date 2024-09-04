@@ -2,6 +2,7 @@ import Chapter from '../../models/Content/Quran/quranChaptersModel.js';
 import Page from '../../models/Content/Quran/quranPagesModel.js';
 import Juz from '../../models/Content/Quran/quranJuzsModel.js';
 import Info from '../../models/Content/Quran/quranInfoModel.js';
+import ChapterInfo from '../../models/Content/Quran/quranChapterInfo.js';
 
 import catchAsync from '../../utils/catchAsync.js';
 import * as factory from '../handlerFactory.js';
@@ -25,8 +26,8 @@ import AppError from '../../utils/appError.js';
 
 // For the Quran Chapter View --------------------------------------------
 export const getChapterView = catchAsync(async (req, res, next) => {
-	const allchapters = await Chapter.find().lean();
-	const this_chapter = allchapters[req.params.chapter - 1];
+	const all_chapters = await Chapter.find().lean();
+	const this_chapter = all_chapters[req.params.chapter - 1];
 
 	if (!this_chapter) {
 		return next(new AppError('There is no Chapter with that Number.', 404));
@@ -34,7 +35,7 @@ export const getChapterView = catchAsync(async (req, res, next) => {
 	res.status(200).render('quranReading', {
 		title: `${this_chapter.info.arabicname}`,
 		this_chapter,
-		allchapters,
+		all_chapters,
 		readerTitle: this_chapter.name,
 		Ltitle: 'السور',
 		Rtitle: 'الآيات',
@@ -52,32 +53,32 @@ export const getJuzView = catchAsync(async (req, res, next) => {
 	chapterName = chapterName ? chapterName.name : null;
 
 	const chapters = await Juz.aggregate([
-        {
-            $match: { juz: Number(req.params.juz) },
-        },
-        {
-            $unwind: '$content',
-        },
-        {
-            $group: {
-                _id: '$content.chapter',
-                chapter: { $first: '$content.chapter' },
-                text: { $push: '$content.text' },
-            },
-        },
-        {
-            $sort: {
-                chapter: 1,
-            },
-        },
-        {
-            $project: {
-                _id: 0,
-                chapter: 1,
-                text: 1,
-            },
-        },
-    ]).exec();
+		{
+			$match: { juz: Number(req.params.juz) },
+		},
+		{
+			$unwind: '$content',
+		},
+		{
+			$group: {
+				_id: '$content.chapter',
+				chapter: { $first: '$content.chapter' },
+				text: { $push: '$content.text' },
+			},
+		},
+		{
+			$sort: {
+				chapter: 1,
+			},
+		},
+		{
+			$project: {
+				_id: 0,
+				chapter: 1,
+				text: 1,
+			},
+		},
+	]).exec();
 
 	const info = await Info.findOne();
 
@@ -93,7 +94,7 @@ export const getJuzView = catchAsync(async (req, res, next) => {
 		alljuz,
 		chapters,
 		info,
-		readerTitle:  chapterName,
+		readerTitle: chapterName,
 		Ltitle: 'الجزء',
 		Rtitle: 'السور',
 		mode: 'QuranJuz',
@@ -104,13 +105,10 @@ export const getJuzView = catchAsync(async (req, res, next) => {
 export const getPageView = catchAsync(async (req, res, next) => {
 	// page_number = req.params.page
 	const pageNumber = req.params.page;
-	const this_page = await Page.findOne({ page_number: pageNumber }).lean();
-	const allpages = await Page.find().sort({ page_number: 1 }).lean();
-	
-	console.log('this_page', this_page);
-	console.log('allpages', allpages);
-	console.log('pageNumber', pageNumber);
-	
+	const this_page = await Page.findOne({ page_number: pageNumber }).sort({ chapter: 1, verses: 1 }).lean();
+	const allpages = await Page.find().sort({  page_number: 1 }).lean();
+	const chapter_info = await ChapterInfo.find().sort({ number: 1 }).lean();
+
 	if (!this_page) {
 		return next(new AppError('There is no Page with that Number.', 404));
 	}
@@ -119,6 +117,7 @@ export const getPageView = catchAsync(async (req, res, next) => {
 		title: `Page ${this_page.page_number}`,
 		pageNumber,
 		this_page,
+		chapter_info,
 		allpages,
 		readerTitle: `Page ${this_page.page_number}`,
 		Ltitle: 'الصفحات',
