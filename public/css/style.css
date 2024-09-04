@@ -1,4 +1,4 @@
-@import url("../css/amiri.css");
+@import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @font-face {
   font-family: "Uthmanic";
   src: url("../fonts/Uthmanic-V22.ttf") format("truetype");
@@ -72,7 +72,7 @@ body {
 }
 
 body {
-  font-family: "AmiriWeb", serif;
+  font-family: "amiri", serif;
 }
 
 .title h1 {
@@ -394,13 +394,13 @@ body {
   margin: 0.3em;
   padding: 1.75rem;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: clamp(1rem, 2vw, 2rem);
   display: block;
   max-height: 5vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: fit-content;
+  width: 100%;
   border: 2px solid rgba(1, 2, 5, 0.9);
   border-radius: 1rem;
   transition: all 0.3s;
@@ -412,13 +412,16 @@ body {
 .LsideEntry i,
 .RsideEntry i {
   z-index: 30;
-  font-size: 2rem;
+  font-size: clamp(1rem, 2vw, 2rem);
   color: #c72378;
   position: absolute;
-  right: 1rem;
-  top: 1rem;
+  right: 0.35rem;
+  top: 0.35rem;
   opacity: 0;
   transition: all 0.3s;
+  background-color: rgba(36, 56, 123, 0.2);
+  border-radius: 1rem;
+  backdrop-filter: blur(1rem);
 }
 .LsideEntry i:hover,
 .RsideEntry i:hover {
@@ -438,13 +441,18 @@ body {
 @media (max-width: 1800px) {
   .LsideEntry,
   .RsideEntry {
-    font-size: 2rem;
     font-size: clamp(1rem, 2vw, 2rem);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
     gap: 0.5rem;
+  }
+}
+@media (max-width: 1200px) {
+  .LsideEntry,
+  .RsideEntry {
+    min-width: calc(100% + 3rem);
   }
 }
 
@@ -456,6 +464,15 @@ body {
 .favourite {
   background-color: #c72378;
   color: #c72378;
+}
+
+.resizable {
+  min-width: 20rem;
+  height: fit-content;
+  width: fit-content;
+  max-width: 100rem;
+  max-height: 100rem;
+  white-space: wrap;
 }
 
 .header {
@@ -748,15 +765,21 @@ body {
     align-items: center;
     padding: 0.5rem;
   }
+  .Lsidebar .Sidebar__title {
+    width: 10rem;
+    margin-right: 2rem;
+  }
   .Lsidebar h1 {
     font-size: 2.4rem;
     padding: 0.5rem;
+    width: 100%;
   }
   .Lsidebar ul {
     flex-direction: row;
     max-height: 7vh;
     justify-content: start;
     align-items: center;
+    gap: 5rem;
   }
   .Lsidebar ul li a {
     padding: 0.5rem;
@@ -785,13 +808,14 @@ body {
 .Lsidebar.active {
   display: flex;
   justify-content: start;
+  align-content: center;
   gap: 1rem;
 }
 .Lsidebar .search {
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   flex-grow: 0;
 }
 .Lsidebar .search input {
@@ -821,6 +845,7 @@ body {
   color: #c72378;
   top: 37%;
   right: 7%;
+  z-index: 99;
   cursor: pointer;
 }
 @media screen and (max-width: 1200px) {
@@ -872,15 +897,21 @@ body {
     align-items: center;
     padding: 0.5rem;
   }
+  .Rsidebar .Sidebar__title {
+    width: 10rem;
+    margin-right: 2rem;
+  }
   .Rsidebar h1 {
     font-size: 2.4rem;
     padding: 0.5rem;
+    width: 100%;
   }
   .Rsidebar ul {
     flex-direction: row;
     max-height: 7vh;
     justify-content: start;
     align-items: center;
+    gap: 5rem;
   }
   .Rsidebar ul li a {
     padding: 0.5rem;
@@ -909,13 +940,14 @@ body {
 .Rsidebar.active {
   display: flex;
   justify-content: start;
+  align-content: center;
   gap: 1rem;
 }
 .Rsidebar .search {
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   flex-grow: 0;
 }
 .Rsidebar .search input {
@@ -945,6 +977,7 @@ body {
   color: #c72378;
   top: 37%;
   right: 7%;
+  z-index: 99;
   cursor: pointer;
 }
 @media screen and (max-width: 1200px) {
@@ -957,6 +990,7 @@ body {
 .quran,
 .tafsir {
   position: relative;
+  height: 88.5vh;
   background-color: rgba(245, 246, 255, 0.7);
   color: black;
   text-align: center;
@@ -967,7 +1001,6 @@ body {
   height: 90vh;
   width: 100%;
   overflow-y: auto;
-  height: 88.5vh;
 }
 .hadith .active,
 .quran .active,
@@ -977,18 +1010,22 @@ body {
 .hadith .toggle,
 .quran .toggle,
 .tafsir .toggle {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
+  position: fixed;
+  backdrop-filter: blur(10px);
+  background-color: rgba(176, 179, 192, 0.5);
 }
 
 .hadith h1 {
-  font-family: "Parenthesis", "AmiriWeb", serif;
+  font-family: "Parenthesis", "amiri", serif;
   font-weight: 800;
+  font-size: 8rem;
   margin: 3rem 0rem;
 }
+.hadith h1.selected {
+  color: rgb(98, 98, 205);
+}
 .hadith p {
-  font-family: "AmiriWeb", serif;
+  font-family: "amiri", serif;
   font-weight: 400;
   border: 3px solid rgba(0, 0, 0, 0.1);
   padding: 5rem;
@@ -999,13 +1036,17 @@ body {
   font-weight: 400;
   margin: 1.5rem 0rem;
 }
+.hadith h2.selected {
+  color: rgb(98, 98, 205);
+}
 .hadith .grades p {
+  color: #81838d;
   border: none;
   padding: 0rem;
 }
 
 .quran p {
-  font-family: "Uthmanic", "AmiriWeb", serif;
+  font-family: "Uthmanic", "amiri", serif;
   font-weight: 400;
 }
 .quran h1 {
@@ -1028,8 +1069,11 @@ body {
 
 .tafsir h1 {
   font-family: "Surah", serif;
-  font-weight: 400;
-  margin: 1.5rem 0rem;
+  font-weight: 100;
+  font-size: 18rem;
+  margin: 4rem 0rem;
+  color: #c72378;
+  -webkit-text-stroke: 1px #0D142C;
 }
 .tafsir h2 {
   font-family: "Basmallah", serif;
@@ -1037,12 +1081,12 @@ body {
   margin: 1.5rem 0rem;
 }
 .tafsir p {
-  font-family: "Uthmanic", "AmiriWeb", serif;
+  font-family: "Uthmanic", "amiri", serif;
   font-weight: 400;
   margin: 1.5rem 0rem;
   text-align: end;
 }
-.tafsir p.verse {
+.tafsir p.quran__verse {
   border: 3px solid rgba(0, 0, 0, 0.5);
   padding: 2rem;
 }
@@ -1052,6 +1096,7 @@ body {
   line-height: 4.5rem;
   padding: 2rem;
   color: rgba(0, 0, 0, 0.6);
+  font-family: "amiri", serif;
 }
 .tafsir p.seperator {
   font-family: "Divider", serif;
@@ -1061,7 +1106,16 @@ body {
   font-weight: 400;
   margin: 0rem 0rem;
 }
+.tafsir p.selected {
+  color: rgb(98, 98, 205);
+}
 
+@media screen and (max-width: 1200px) {
+  .hadith h1,
+  .tafsir h1 {
+    font-size: 8rem;
+  }
+}
 @media screen and (max-width: 1200px) {
   .mainquranReading,
   .maintafsirReading,
@@ -1089,7 +1143,7 @@ body {
   .mainhadithReading.active .tafsir,
   .mainhadithReading.active .quran,
   .mainhadithReading.active .hadith {
-    height: 76vh;
+    height: 72vh;
   }
   .Lsidebar,
   .Rsidebar {
@@ -1106,7 +1160,7 @@ body {
   .tafsir h1,
   .quran h1,
   .hadith h1 {
-    font-size: 12rem;
+    font-size: 8rem;
   }
   .tafsir h2,
   .quran h2,
@@ -1138,11 +1192,14 @@ body {
     height: 72vh;
     width: 97;
   }
+  .hadith h1 {
+    font-size: 7rem;
+  }
 }
 .quran__page--number {
   position: absolute;
   bottom: 0;
-  right: 50%;
+  right: 45%;
 }
 
 .loginpage {

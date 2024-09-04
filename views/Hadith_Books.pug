@@ -12,7 +12,7 @@ block content
         //- card for each surah : this is a template as of now
         for book in books
             .books__card.hidden
-                a.books__card__link(href=`/hadith/book/${book.number}`)
+                a.books__card__link(href=`/hadith/book/${book.name}/hadith/1`)
                 img(src=`${book.img}`, alt="Book Cover")
                 h3.books__card__name #{book.metadata.name}
                 .books__card__info

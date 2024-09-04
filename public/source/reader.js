@@ -17,52 +17,134 @@ const rsearch = document.querySelector('.Rsearch');
 // temporary using this to store the favorite verses
 const favoriteVerses = new Set();
 
-// // Functions -------------------------
+// Functions ---------------------------------------------------
+
+// Highlighter Function -------------------------
 function highlighter(event) {
-	// Check if the clicked element is a sidebar entry
-	if (event.target && event.target.matches('.RsideEntry')) {
-		event.preventDefault();
+	if (event.target && event.target.classList.contains('nosearch')) return;
 
-		// remove highlight from any previously highlighted sidebar entry
-		document.querySelectorAll('.RsideEntry').forEach((entry) => {
-			entry.classList.remove('selectedEntry');
+	// Step 1: Remove highlights from previously highlighted sidebar entries and verses
+	document.querySelectorAll('.RsideEntry').forEach((entry) => {
+		entry.classList.remove('selectedEntry');
+	});
+
+	if (!event.target || !event.target.matches('.RsideEntry')) return;
+	event.preventDefault();
+
+	// Step 2: Highlight the clicked sidebar entry
+	if (event.target && event.target.classList.contains('Hadith__Section')) hadithSectionHighlighter(event);
+	else if (event.target && event.target.classList.contains('quranChapterSearch')) quranHighlighter(event);
+	else if (event.target && event.target.classList.contains('tafsirChapterSearch')) tafsirHighlighter(event);
+}
+
+function quranHighlighter(event) {
+	document.querySelectorAll('.quran__verse span').forEach((span) => {
+		span.classList.remove('selected'); // Reset verse highlight
+	});
+
+	event.target.classList.add('selectedEntry');
+
+	// Step 3: Get the verse number and chapter from the clicked sidebar entry's data attributes
+	const verseNumber = event.target.getAttribute('data-verse');
+	const chapter = event.target.getAttribute('data-chapter');
+	console.log(verseNumber, chapter);
+
+	// Step 4: Locate the verse element in the Quran reader
+	const verseElement = document.querySelector(
+		`.quran__verse span[data-verse='${verseNumber}'][data-chapter='${chapter}']`
+	);
+
+	// Check if the verse element exists
+	if (verseElement) {
+		// Step 5: Scroll the Quran reader to the verse within the .quran container
+		const readerContainer = document.querySelector('.quran');
+
+		// Scroll to the verse's position
+		readerContainer.scrollTo({
+			top: verseElement.offsetTop - readerContainer.offsetTop,
+			behavior: 'smooth',
 		});
-		event.target.classList.toggle('selectedEntry');
-		// Remove highlight from any previously highlighted verse
-		document.querySelectorAll('.quran__verse span').forEach((span) => {
-			span.classList.remove('selected'); // Reset highlight
-		});
 
-		// Get the verse number from the clicked link's id
-		const verseNumber = event.target.id;
-
-		// Find the verse element in the Quran reader
-		const verseElement = document.getElementById(`verse-${verseNumber}`);
-
-		if (verseElement) {
-			// Scroll the Quran reader to the verse within the .quran container
-			const readerContainer = document.querySelector('.quran');
-			const versePosition = verseElement.offsetTop;
-			readerContainer.scrollTo({
-				top: versePosition - readerContainer.offsetTop,
-				behavior: 'smooth',
-			});
-
-			// Highlight the verse by adding the 'selected' class
-			verseElement.classList.add('selected');
-		}
+		// Step 6: Highlight the verse by adding the 'selected' class
+		verseElement.classList.add('selected');
 	}
 }
+
+function hadithSectionHighlighter(event) {
+	document.querySelectorAll('.hadith__title').forEach((section) => {
+		section.classList.remove('selected');
+	});
+	document.querySelectorAll('.hadith__start').forEach((section) => {
+		section.classList.remove('selected');
+	});
+
+	event.target.classList.add('selectedEntry');
+
+	const hadithNumber = event.target.getAttribute('data-hadith');
+	const bookName = event.target.getAttribute('data-book');
+
+	const sectionElement = document.querySelector(
+		`.hadith__title[data-hadith='${hadithNumber}'][data-book='${bookName}']`
+	);
+	const sectionUnder = document.querySelector(`.hadith__start[data-hadith-under='${hadithNumber}']`);
+
+	if (sectionElement) {
+		const readerContainer = document.querySelector('.hadith');
+		sectionElement.classList.add('selected');
+		readerContainer.scrollTo({
+			top: sectionElement.offsetTop - readerContainer.offsetTop,
+			behavior: 'smooth',
+		});
+		sectionUnder.classList.add('selected');
+		sectionElement.classList.add('selected');
+	}
+}
+
+function tafsirHighlighter(event) {
+	document.querySelectorAll('.quran__verse span').forEach((span) => {
+		span.classList.remove('selected'); // Reset verse highlight
+	});
+
+	event.target.classList.add('selectedEntry');
+
+	// Step 3: Get the verse number and chapter from the clicked sidebar entry's data attributes
+	const verseNumber = event.target.getAttribute('data-verse');
+	const chapter = event.target.getAttribute('data-chapter');
+
+	// Step 4: Locate the verse element in the Quran reader
+	const verseElement = document.querySelector(
+		`.quran__verse[data-verse='${verseNumber}'][data-chapter='${chapter}']`
+	);
+	console.log(verseElement, verseNumber, chapter);
+
+	// Check if the verse element exists
+	if (verseElement) {
+		// Step 5: Scroll the Quran reader to the verse within the .quran container
+		const readerContainer = document.querySelector('.tafsir');
+
+		// Scroll to the verse's position
+		readerContainer.scrollTo({
+			top: verseElement.offsetTop - readerContainer.offsetTop,
+			behavior: 'smooth',
+		});
+
+		// Step 6: Highlight the verse by adding the 'selected' class
+		verseElement.classList.add('selected');
+	}
+}
+
+// ----------------------------------------------
 
 function toggleSides() {
 	lsidebar.classList.toggle('active');
 	rsidebar.classList.toggle('active');
 	sidesbtn.classList.toggle('on');
+
 	layout.classList.toggle('active');
 
 	quranReader && quranReader.classList.toggle('active');
-	hadithReader && quranReader.classList.toggle('active');
-	tafsirReader && quranReader.classList.toggle('active');
+	hadithReader && hadithReader.classList.toggle('active');
+	tafsirReader && tafsirReader.classList.toggle('active');
 
 	if (sidesbtn.classList.contains('on')) {
 		sidesbtn.innerHTML = '<i class="fi fi-rr-cross"></i>';
@@ -78,9 +160,9 @@ function searchSurah() {
 	surahs.forEach((surah) => {
 		const surahName = surah.textContent.toLowerCase();
 		if (surahName.includes(searchValue.toLowerCase())) {
-			surah.style.display = 'flex';
+			surah.parentElement.style.display = 'flex';
 		} else {
-			surah.style.display = 'none';
+			surah.parentElement.style.display = 'none';
 		}
 	});
 }
@@ -91,10 +173,11 @@ function searchAyah() {
 
 	ayat.forEach((aya) => {
 		const ayaNum = aya.textContent.toLowerCase();
+		// will apply to the parent element of the aya ( li )
 		if (ayaNum.includes(searchValue.toLowerCase())) {
-			aya.style.display = 'flex';
+			aya.parentElement.style.display = 'flex';
 		} else {
-			aya.style.display = 'none';
+			aya.parentElement.style.display = 'none';
 		}
 	});
 }
