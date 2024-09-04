@@ -72,6 +72,7 @@ app.use('/quran', quranRouter); // quran routes
 app.use('/hadith', hadithRouter); // hadith routes
 app.use('/users', userRouter); // user routes
 app.use('/tafsir', tafsirRouter); // booking routes
+app.use('/login', userRouter); // login routes
 
 // app.all('*', (req, res, next) => {
 //     next(new AppError(Can't find ${req.originalUrl} on this server!, 404));
