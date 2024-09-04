@@ -1,14 +1,14 @@
-.loginpage {
+.Loginpage {
 	display: grid;
 	grid-template-rows: auto 1fr;
 }
-.mainloginpage {
+.mainLoginpage {
 	display: grid;
 	grid-template-rows: 1fr;
 	grid-template-columns: repeat(8, 1fr);
 }
 
-.login {
+.Login {
 	display: flex;
 	grid-column: 2/8;
 	justify-content: start;

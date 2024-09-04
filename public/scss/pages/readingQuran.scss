@@ -1,6 +1,6 @@
-.mainquranReading,
-.maintafsirReading,
-.mainhadithReading {
+.mainQuran_Reading,
+.mainTafsir_Reading,
+.mainHadith_Reading {
 	column-gap: 1%;
 	display: grid;
 	width: 100vw;
@@ -18,9 +18,9 @@
 }
 
 // html bodies
-.hadithReading,
-.quranReading,
-.tafsirReading {
+.Hadith_Reading,
+.Quran_Reading,
+.Tafsir_Reading {
 	overflow: hidden;
 	width: 100vw;
 	height: 100vh;

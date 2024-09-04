@@ -12,7 +12,7 @@ export const getLanding = catchAsync(async (req, res, next) => {
 	if (!chapters) {
 		return next(new AppError('There are currently no Chapters??.', 404));
 	}
-	res.status(200).render('landing', {
+	res.status(200).render('Home', {
 		title: 'Landing',
 		chapters,
 	});
@@ -26,7 +26,7 @@ export const getChapter = catchAsync(async (req, res, next) => {
 		return next(new AppError('There is no Chapter with that Number.', 404));
 	}
 
-	res.status(200).render('quranReading', {
+	res.status(200).render('Quran_Reading', {
 		title: `${chapter.info.arabicname}`,
 		chapter,
 	});
@@ -40,7 +40,7 @@ export const getJuz = catchAsync(async (req, res, next) => {
 		return next(new AppError('There is no Juz with that Number.', 404));
 	}
 
-	res.status(200).render('quranReading', {
+	res.status(200).render('Quran_Reading', {
 		title: `${juzInfo.name}`,
 		juz,
 		juzInfo,
@@ -54,14 +54,14 @@ export const getPage = catchAsync(async (req, res, next) => {
     return next(new AppError('There is no Page with that Number.', 404));
   }
 
-  res.status(200).render('quranReading', {
+  res.status(200).render('Quran_Reading', {
     title: `Page ${page.pageNumber}`,
     page,
   });
 });
 
 // export const getLoginForm = (req, res) => {
-//   res.status(200).render('login', {
+//   res.status(200).render('Login', {
 //     title: 'Log into your account'
 //   });
 // };

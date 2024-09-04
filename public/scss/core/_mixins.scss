@@ -49,8 +49,8 @@
 		width: 97vw;
 		align-items: center;
 		padding: 0.5rem;
-		
-		.Sidebar__title{
+
+		.Sidebar__title {
 			width: 10rem;
 			margin-right: 2rem;
 		}
@@ -66,7 +66,9 @@
 			max-height: 7vh;
 			justify-content: start;
 			align-items: center;
-			gap: 5rem ;
+			gap: 5rem;
+			overflow-y: hidden;
+
 			li a {
 				padding: 0.5rem;
 				font-size: 2rem;
@@ -97,7 +99,7 @@
 	}
 
 	// ----------------------------------------------
-	// TODO make the Left search aligned with the items 
+	// TODO make the Left search aligned with the items
 	&.active {
 		display: flex;
 		justify-content: start;

@@ -6,17 +6,17 @@ block append head
 
 block content
     .title
-        h2.title__sub كتب الحديث النبوي الشريف
+        h2.title__sub كتب تفسير القرآن الكريم
 
     .books
         //- card for each surah : this is a template as of now
-        for book in books
+        for book in all_books
             .books__card.hidden
-                a.books__card__link(href=`/hadith/book/${book.name}/hadith/1`)
+                a.books__card__link(href=`/tafsir/book/${book.slug}/chapters/1`)
                 img(src=`${book.image}`, alt="Book Cover")
-                h3.books__card__name #{book.metadata.name}
+                h3.books__card__name #{book.name}
                 .books__card__info
-                    p.books__card__info__hadiths #{book.hadith_counts} حديث
+                    p.books__card__info__hadiths= book.author_name
                     //- if the name starts with ara- then it is arabic / else it is english ✅
                     if book.name.startsWith('ara-')
                         p.books__card__info__language عربي

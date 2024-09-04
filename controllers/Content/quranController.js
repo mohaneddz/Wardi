@@ -32,7 +32,7 @@ export const getChapterView = catchAsync(async (req, res, next) => {
 	if (!this_chapter) {
 		return next(new AppError('There is no Chapter with that Number.', 404));
 	}
-	res.status(200).render('quranReading', {
+	res.status(200).render('Quran_Reading', {
 		title: `${this_chapter.info.arabicname}`,
 		this_chapter,
 		all_chapters,
@@ -86,7 +86,7 @@ export const getJuzView = catchAsync(async (req, res, next) => {
 		return next(new AppError('There is no Juz with that Number.', 404));
 	}
 
-	res.status(200).render('quranReading', {
+	res.status(200).render('Quran_Reading', {
 		title: `Juz ${req.params.juz}`,
 		this_juz,
 		juzNumber,
@@ -113,7 +113,7 @@ export const getPageView = catchAsync(async (req, res, next) => {
 		return next(new AppError('There is no Page with that Number.', 404));
 	}
 
-	res.status(200).render('quranReading', {
+	res.status(200).render('Quran_Reading', {
 		title: `Page ${this_page.page_number}`,
 		pageNumber,
 		this_page,
@@ -132,7 +132,7 @@ export const getAllPagesView = catchAsync(async (req, res, next) => {
 	if (!pages) {
 		return next(new AppError('There are currently no Pages.', 404));
 	}
-	res.status(200).render('quranReading', {
+	res.status(200).render('Quran_Reading', {
 		title: 'All Pages',
 		pages,
 	});
@@ -142,7 +142,7 @@ export const getAllJuzsView = catchAsync(async (req, res, next) => {
 	if (!juzs) {
 		return next(new AppError('There are currently no Juzs.', 404));
 	}
-	res.status(200).render('quranReading', {
+	res.status(200).render('Quran_Reading', {
 		title: 'All Juzs',
 		juzs,
 	});
@@ -152,7 +152,7 @@ export const getAllChaptersView = catchAsync(async (req, res, next) => {
 	if (!chapters) {
 		return next(new AppError('There are currently no Chapters.', 404));
 	}
-	res.status(200).render('landing', {
+	res.status(200).render('Home', {
 		title: 'Landing',
 		chapters,
 	});

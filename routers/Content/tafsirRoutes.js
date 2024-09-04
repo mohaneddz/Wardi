@@ -5,7 +5,8 @@ const router = express.Router();
 // router.route('/book/:book/page/:page').get(tafsirController.getPageView);
 
 router.route('/book/:book/chapter/:chapter').get(tafsirController.getTafsirChapterView);
-router.route('/book/:book/chapters/:chapter').get(tafsirController.getTafsirBooksView);
+router.route('/book/:book/chapters/:chapter').get(tafsirController.getTafsirBookView);
 
+router.route('/').get(tafsirController.getTafsirBooksView);
 
 export default router;

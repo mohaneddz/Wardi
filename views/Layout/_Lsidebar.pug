@@ -75,13 +75,13 @@
                             i(class="fi fi-rs-heart heart")
         
         else if mode === "TafsirBooks"
-            each book in allbooks
-                if book.slug.split("-")[0] === lang
-                    if book.slug === this_book
-                        li
-                            a(href=`/tafsir/book/${this_book}/chapters/${this_chapter.chapter}` class="LsideEntry selectedEntry resizable")= book.name
-                                i(class="fi fi-rs-heart heart")
-                    else
-                        li
-                            a(href=`/tafsir/book/${this_book}/chapters/${this_chapter.chapter}` class="LsideEntry resizable")= book.name
-                                i(class="fi fi-rs-heart heart")
+            each book in all_books
+                //- if book.slug.split("-")[0] === lang
+                if book.slug === this_book
+                    li
+                        a(href=`/tafsir/book/${book.slug}/chapters/${this_chapter.chapter}` class="LsideEntry selectedEntry resizable")= book.name
+                            i(class="fi fi-rs-heart heart")
+                else
+                    li
+                        a(href=`/tafsir/book/${book.slug}/chapters/${this_chapter.chapter}` class="LsideEntry resizable")= book.name
+                            i(class="fi fi-rs-heart heart")

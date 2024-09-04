@@ -21,11 +21,15 @@ export const getBooksView = catchAsync(async (req, res) => {
 				book: 1,
 				number: 1,
 				name: 1,
+				image: 1,
+				'metadata.name': 1,
+				hadith_counts: { $size: '$hadiths' },
 			},
-			name: 1,
 		},
 		{
-			$match: { name: req.params.book, hadith_number: { $gte: section_start, $lte: section_end } },
+			$match: {
+				name: { $not: /1$/ },
+			},
 		},
 		{
 			$sort: { 'metadata.name': 1 },
@@ -41,13 +45,12 @@ export const getBooksView = catchAsync(async (req, res) => {
 export const getSectionView = catchAsync(async (req, res) => {
 	const lang = req.params.book.split('-')[0];
 
-	
 	const sectionNumber = parseInt(req.params.section);
-	
+
 	const section_range = await Hadith.findOne({ name: req.params.book }).select('metadata').lean();
 	const section_start = section_range.metadata.section_details[String(sectionNumber)].hadithnumber_first;
 	const section_end = section_range.metadata.section_details[String(sectionNumber)].hadithnumber_last;
-	
+
 	const thisbook = await Hadith.findOne({ name: req.params.book }).select('metadata').lean();
 	const hadithRaw = await Hadith.aggregate([
 		{
@@ -73,13 +76,13 @@ export const getSectionView = catchAsync(async (req, res) => {
 			},
 		},
 	]);
-	
+
 	const hadith_counts = hadithRaw[0].hadiths.length;
 	const this_hadith = hadithRaw[0];
 	const sectionsCount = Object.keys(thisbook.metadata.section_details).length;
 	console.log(sectionsCount);
-	
-	res.status(200).render('hadithReading', {
+
+	res.status(200).render('Hadith_Reading', {
 		title: `Hadith ${this_hadith.metadata.name}`,
 		this_hadith,
 		sectionsCount,
@@ -102,6 +105,7 @@ export const getHadithView = catchAsync(async (req, res) => {
 		{
 			// check if it starts with lang and not end with the number 1
 			$match: { name: { $regex: lang, $not: /1$/ } },
+			// $match: { name: { $regex: lang, $not: /1$/ } }, // Older version for same language
 		},
 		{
 			$project: {
@@ -133,7 +137,7 @@ export const getHadithView = catchAsync(async (req, res) => {
 	]);
 	const this_hadith = hadithRaw[0];
 
-	res.status(200).render('hadithReading', {
+	res.status(200).render('Hadith_Reading', {
 		title: `Hadith ${this_hadith.metadata.name}`,
 		this_hadith,
 		all_books,
