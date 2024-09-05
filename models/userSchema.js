@@ -2,60 +2,60 @@ import mongoose from 'mongoose';
 import validator from 'validator';
 
 const VerseSchema = new mongoose.Schema({
-    verse: {
-        type: Number,
-        required: true,
-    },
-    chapter: {
-        type: Number,
-        required: true,
-    },
+	verse: {
+		type: Number,
+		required: true,
+	},
+	chapter: {
+		type: Number,
+		required: true,
+	},
 });
 
 const ChapterSchema = new mongoose.Schema({
-    chapter: {
-        type: Number,
-        required: true,
-    },
+	chapter: {
+		type: Number,
+		required: true,
+	},
 });
 
 const HadithSchema = new mongoose.Schema({
-    hadith: {
-        type: Number,
-        required: true,
-    },
-    book: {
-        type: Number,
-        required: true,
-    },
+	hadith: {
+		type: Number,
+		required: true,
+	},
+	book: {
+		type: Number,
+		required: true,
+	},
 });
 
 const PageSchema = new mongoose.Schema({
-    page: {
-        type: Number,
-        required: true,
-    },
+	page: {
+		type: Number,
+		required: true,
+	},
 });
 
 const HadithBooksSchema = new mongoose.Schema({
-    book: {
-        type: Number,
-        required: true,
-    },
+	book: {
+		type: Number,
+		required: true,
+	},
 });
 
 const QuranBooksSchema = new mongoose.Schema({
-    book: {
-        type: Number,
-        required: true,
-    },
+	book: {
+		type: Number,
+		required: true,
+	},
 });
 
 const TafsirBooksSchema = new mongoose.Schema({
-    book: {
-        type: Number,
-        required: true,
-    },
+	book: {
+		type: Number,
+		required: true,
+	},
 });
 
 const PrefrencesSchema = new mongoose.Schema({
@@ -88,18 +88,18 @@ const BookmakSchema = new mongoose.Schema({
 		type: [HadithSchema],
 		default: '',
 	},
-    fav_books_hadiths: {
-        type: [HadithBooksSchema],
-        default: '',
-    },
-    fav_books_quran: {
-        type: [QuranBooksSchema],
-        default: '',
-    },
-    fav_books_tafsir: {
-        type: [TafsirBooksSchema],
-        default: '',
-    },
+	fav_books_hadiths: {
+		type: [HadithBooksSchema],
+		default: '',
+	},
+	fav_books_quran: {
+		type: [QuranBooksSchema],
+		default: '',
+	},
+	fav_books_tafsir: {
+		type: [TafsirBooksSchema],
+		default: '',
+	},
 });
 
 const userSchema = new mongoose.Schema({
@@ -110,7 +110,14 @@ const userSchema = new mongoose.Schema({
 	},
 	password: {
 		type: String,
-		required: true,
+		required: [true, 'Please provide a password'],
+		minlength: 8,
+		select: false,
+	},
+	confirmpassword: {
+		type: String,
+		required: [true, 'Please confirm your password'],
+		validate: [pass === this.password, 'Passwords are not the same'],
 	},
 	email: {
 		type: String,
@@ -119,10 +126,9 @@ const userSchema = new mongoose.Schema({
 		validator: [validator.isEmail, 'Please provide a valid email'],
 		message: 'Invalid email',
 	},
-	role: {
+	photo: {
 		type: String,
-		enum: ['user', 'admin', 'visitor'],
-		default: 'user',
+		default: 'default.jpg',
 	},
 	createdAt: {
 		type: Date,
@@ -136,6 +142,11 @@ const userSchema = new mongoose.Schema({
 		type: Boolean,
 		default: true,
 	},
+	role: {
+		type: String,
+		enum: ['user', 'admin', 'visitor'],
+		default: 'user',
+	},
 	prefrences: {
 		type: PrefrencesSchema,
 	},
@@ -143,6 +154,9 @@ const userSchema = new mongoose.Schema({
 		type: BookmakSchema,
 		default: [],
 	},
+	passwordChangedAt: Date,
+	passwordResetExpires: Date,
+	passwordResetToken: String
 });
 
 export default userSchema;
