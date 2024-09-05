@@ -68,7 +68,7 @@ body {
 }
 
 ::selection {
-  background-color: #edeef2;
+  background-color: #ced1de;
 }
 
 body {
@@ -87,6 +87,7 @@ body {
   text-shadow: 0.2rem 0.2rem 2rem rgba(0, 0, 0, 0.5);
   max-width: 100%;
   padding: 0 1rem;
+  cursor: pointer;
 }
 .title h1:hover {
   transform: scale(1.2) translateY(-0.5rem);
@@ -1088,10 +1089,6 @@ body {
   margin: 1.5rem 0rem;
   text-align: end;
 }
-.tafsir p.quran__verse {
-  border: 3px solid rgba(0, 0, 0, 0.5);
-  padding: 2rem;
-}
 .tafsir p.explanation {
   border: 3px solid rgba(0, 0, 0, 0.1);
   font-size: 3rem;
@@ -1108,6 +1105,10 @@ body {
   font-weight: 400;
   margin: 0rem 0rem;
 }
+.tafsir p.quran__verse {
+  border: 3px solid rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+}
 .tafsir p.selected {
   color: rgb(98, 98, 205);
 }
@@ -1119,9 +1120,9 @@ body {
   }
 }
 @media screen and (max-width: 1200px) {
-  .mainquranReading,
-  .maintafsirReading,
-  .mainhadithReading {
+  .mainQuran_Reading,
+  .mainTafsir_Reading,
+  .mainHadith_Reading {
     grid-template-columns: 1fr;
     grid-template-rows: 3fr;
     margin: 0rem 0rem;
@@ -1130,21 +1131,21 @@ body {
     align-items: center;
     justify-content: center;
   }
-  .mainquranReading.active,
-  .maintafsirReading.active,
-  .mainhadithReading.active {
+  .mainQuran_Reading.active,
+  .mainTafsir_Reading.active,
+  .mainHadith_Reading.active {
     grid-template-columns: 1fr;
     grid-template-rows: 7vh 7vh 1fr;
   }
-  .mainquranReading.active .tafsir,
-  .mainquranReading.active .quran,
-  .mainquranReading.active .hadith,
-  .maintafsirReading.active .tafsir,
-  .maintafsirReading.active .quran,
-  .maintafsirReading.active .hadith,
-  .mainhadithReading.active .tafsir,
-  .mainhadithReading.active .quran,
-  .mainhadithReading.active .hadith {
+  .mainQuran_Reading.active .tafsir,
+  .mainQuran_Reading.active .quran,
+  .mainQuran_Reading.active .hadith,
+  .mainTafsir_Reading.active .tafsir,
+  .mainTafsir_Reading.active .quran,
+  .mainTafsir_Reading.active .hadith,
+  .mainHadith_Reading.active .tafsir,
+  .mainHadith_Reading.active .quran,
+  .mainHadith_Reading.active .hadith {
     height: 72vh;
   }
   .Lsidebar,
@@ -1204,18 +1205,18 @@ body {
   right: 45%;
 }
 
-.loginpage {
+.Loginpage {
   display: grid;
   grid-template-rows: auto 1fr;
 }
 
-.mainloginpage {
+.mainLoginpage {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: repeat(8, 1fr);
 }
 
-.login {
+.Login {
   display: flex;
   grid-column: 2/8;
   justify-content: start;
@@ -1225,68 +1226,109 @@ body {
   color: #c72378;
   font-size: 1.6rem;
   height: 70%;
-  width: 100%;
+  max-width: 70vw;
   padding: 2rem;
+  z-index: 1;
 }
-.login h1 {
-  font-size: 6rem;
+.Login h1 {
+  font-size: 10rem;
   margin-bottom: 2rem;
+  text-shadow: 0 0 1rem rgba(0, 0, 0, 0.8);
 }
-.login img {
+.Login img {
   width: 10rem;
   height: 10rem;
   border-radius: 100rem;
 }
-.login form {
-  background-color: #ffffff;
-  padding: 2rem;
+.Login form {
+  background-color: #24387b;
+  padding: 4rem 6rem;
   border-radius: 1rem;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
+  width: max-content;
 }
-.login form div {
+.Login form div {
   margin-bottom: 2rem;
 }
-.login form div label {
+.Login form div label {
   display: block;
   margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
+  text-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
 }
-.login form div input[type=email],
-.login form div input[type=password] {
+.Login form div input[type=email],
+.Login form div input[type=password] {
   width: 100%;
-  padding: 1rem;
-  font-size: 1.6rem;
+  padding: 1rem 1.5rem;
+  font-size: 2.4rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
+  color: #9c1b5e;
 }
-.login form div input[type=email]:focus,
-.login form div input[type=password]:focus {
+.Login form div input[type=email]:focus,
+.Login form div input[type=password]:focus {
   outline: none;
   border-color: #c72378;
 }
-.login form div input[type=email]:invalid,
-.login form div input[type=password]:invalid {
-  border-color: red;
+.Login form div input[type=email]:invalid,
+.Login form div input[type=password]:invalid {
+  border-color: #c72378;
+  box-shadow: 0 0 15px #c72378;
   border-width: 2px;
 }
-.login form div input[type=email]:valid:not(:placeholder-shown),
-.login form div input[type=password]:valid:not(:placeholder-shown) {
-  border-color: #0D142C;
+.Login form div input[type=email]:valid:not(:placeholder-shown),
+.Login form div input[type=password]:valid:not(:placeholder-shown) {
   border-width: 2px;
+  border-color: green;
+  box-shadow: 0 0 5px green;
+  color: rgb(2, 100, 2);
 }
-.login form div input[type=submit] {
+.Login form div input[type=submit] {
   width: 100%;
-  padding: 1rem;
-  font-size: 1.6rem;
+  padding: 1.5rem 2rem;
+  font-size: 3rem;
   background-color: #0d142c;
   color: #ffffff;
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
 }
-.login form div input[type=submit]:hover {
+.Login form div input[type=submit]:hover {
   background-color: #070b18;
+  scale: 1.1;
+  transition: all 0.2s;
+  box-shadow: 0 0 15px rgba(1, 2, 5, 0.4);
+}
+.Login form div input[type=submit]:active {
+  background-color: #364167;
+  scale: 0.95;
+  transition: all 0.2s;
+  box-shadow: 0 0 15px rgba(1, 2, 5, 0.4);
+}
+.Login form div.password-container {
+  margin-bottom: 5rem;
+}
+
+.lower {
+  font-size: 2.5rem;
+  background-color: #192653;
+  color: #b0b5c9;
+  padding: 3.5rem 4rem 2rem 4rem;
+  border-radius: 1rem;
+  z-index: -1;
+  translate: 0 -3rem;
+}
+.lower a {
+  color: #9c1b5e;
+  text-decoration: none;
+}
+.lower a:hover {
+  color: #c72378;
+}
+.lower a:active {
+  color: #701444;
 }
 
 main .books {
@@ -1383,9 +1425,9 @@ body main .cards {
   }
 }
 
-.mainquranReading,
-.maintafsirReading,
-.mainhadithReading {
+.mainQuran_Reading,
+.mainTafsir_Reading,
+.mainHadith_Reading {
   column-gap: 1%;
   display: grid;
   width: 100vw;
@@ -1394,23 +1436,23 @@ body main .cards {
   align-items: start;
   margin: 0;
 }
-.mainquranReading.active,
-.maintafsirReading.active,
-.mainhadithReading.active {
+.mainQuran_Reading.active,
+.mainTafsir_Reading.active,
+.mainHadith_Reading.active {
   grid-template-columns: min-content 1fr min-content;
 }
 @media screen and (max-width: 1200px) {
-  .mainquranReading.active,
-  .maintafsirReading.active,
-  .mainhadithReading.active {
+  .mainQuran_Reading.active,
+  .mainTafsir_Reading.active,
+  .mainHadith_Reading.active {
     grid-template-columns: 1fr;
     grid-template-rows: 7vh 7vh 1fr;
   }
 }
 
-.hadithReading,
-.quranReading,
-.tafsirReading {
+.Hadith_Reading,
+.Quran_Reading,
+.Tafsir_Reading {
   overflow: hidden;
   width: 100vw;
   height: 100vh;

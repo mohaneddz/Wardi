@@ -117,7 +117,12 @@ const userSchema = new mongoose.Schema({
 	confirmpassword: {
 		type: String,
 		required: [true, 'Please confirm your password'],
-		validate: [pass === this.password, 'Passwords are not the same'],
+		validate: {
+			validator: function (value) {
+				return value === this.password;
+			},
+			message: 'Passwords are not the same',
+		},
 	},
 	email: {
 		type: String,
@@ -157,7 +162,7 @@ const userSchema = new mongoose.Schema({
 	},
 	passwordChangedAt: Date,
 	passwordResetExpires: Date,
-	passwordResetToken: String
+	passwordResetToken: String,
 });
 
 export default userSchema;

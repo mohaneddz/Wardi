@@ -1,61 +1,36 @@
+mixin navItem(className, href, text, iconClass)
+    li(class=className)
+        a(href=href) #{text}
+            i(class=iconClass)
+
 header.header
     nav
         ul.topbar
+
             li.header__logo
                 a(href='/' )
                   img(src='/img/LogoHD.png', alt='Logo') 
-
-            li.header__quran
-                a(href='/quran/chapter/2') Quran
-                    i(class="fi fi-rs-book-quran")                
-
-            li.header__hadith
-                a(href='/hadith') Hadith
-                    i(class="fi fi-rs-books")                
-
-            li.header__tafsir
-                a(href='/tafsir/') Tafsir
-                    i(class="fi fi-rs-book-open-cover")                
-
-            li.header__about
-                a(href='/about') About
-                    i(class="fi fi-rs-info")                
-
-            li.header__bookmarks
-                a(href='/user/bookmarks') Bookmarks
-                    i(class="fi fi-rs-wishlist-star")                
-
+            
+            +navItem('header__quran', '/quran/chapter/2', 'Quran', 'fi fi-rs-book-quran')
+            +navItem('header__hadith', '/hadith', 'Hadith', 'fi fi-rs-books')
+            +navItem('header__tafsir', '/tafsir/', 'Tafsir', 'fi fi-rs-book-open-cover')
+            +navItem('header__about', '/about', 'About', 'fi fi-rs-info')
+            +navItem('header__bookmarks', '/user/bookmarks', 'Bookmarks', 'fi fi-rs-wishlist-star')
+            
             li.header__search
                 input(type="text", placeholder="Search..")
                 a(href='/search') 
                     i(class="fi fi-rs-search")
-                
-            li.header__user
-                a(href='/Login') 
-                    i( class="fi fi-rs-user")
+            if !user
+                +navItem('header__user', '/user/signup', '', 'fi fi-rs-user')
+            else
+                +navItem('header__user', '/user/me', '', 'fi fi-rs-user')
 
-            li.header__menu
-                a(href='#')
-                    i( class="fi fi-rr-menu-burger")
-                //- i( class="fi fi-rr-cross")
+            +navItem('header__menu', '#', '', 'fi fi-rr-menu-burger')
 
         ul.Menusidebar
-            li.header__quran
-                a(href='/quran/') Quran
-                    i(class="fi fi-rs-book-quran")                
-
-            li.header__hadith
-                a(href='/hadith') Hadith
-                    i(class="fi fi-rs-books")                
-
-            li.header__tafsir
-                a(href='/tafsir/1') Tafsir
-                    i(class="fi fi-rs-book-open-cover")                
-
-            li.header__about
-                a(href='/about') About
-                    i(class="fi fi-rs-info")                
-
-            li.header__bookmarks
-                a(href='/user/bookmarks') Bookmarks
-                    i(class="fi fi-rs-wishlist-star")                
+            +navItem('header__quran', '/quran/', 'Quran', 'fi fi-rs-book-quran')
+            +navItem('header__hadith', '/hadith', 'Hadith', 'fi fi-rs-books')
+            +navItem('header__tafsir', '/tafsir/1', 'Tafsir', 'fi fi-rs-book-open-cover')
+            +navItem('header__about', '/about', 'About', 'fi fi-rs-info')
+            +navItem('header__bookmarks', '/user/bookmarks', 'Bookmarks', 'fi fi-rs-wishlist-star')

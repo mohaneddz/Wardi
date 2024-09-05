@@ -15,6 +15,7 @@ body {
 		text-shadow: 0.2rem 0.2rem 2rem rgba($primary-color-darker, 0.5);
 		max-width: 100%;
 		padding: 0 1rem;
+		cursor: pointer;
 		&:hover {
 			@include baseHover($tertiary-color);
 		}

@@ -4,13 +4,7 @@ import express from 'express';
 
 const router = express.Router();
 
-// router middleware
-// router.use(viewsController.alerts);
-
 router.get('/', viewsController.getLanding);
 
-// router.get('/', (req, res) => {
-//     res.send('View Routes');
-// });
 
 export default router;

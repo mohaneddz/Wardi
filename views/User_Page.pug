@@ -1,0 +1,11 @@
+extends ./Layout/base
+
+block append head 
+  - var title = 'User'
+  - var bodyClass = 'Userpage'
+  - var mainClass = 'mainUserpage'
+
+block content
+  include ./Content/_User
+
+block footer

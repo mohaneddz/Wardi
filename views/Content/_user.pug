@@ -1,0 +1,42 @@
+.user-profile
+    h2 User Profile
+
+    form(action="/update-profile" method="POST" enctype="multipart/form-data")
+        .user__info
+            h3 Username: 
+            input(type="text" name="username" value=user.username required)
+
+            h3 Email: 
+            input(type="email" name="email" value=user.email required)
+
+            h3 Password: 
+            input(type="password" name="password" placeholder="Enter new password" minlength="8")
+            p Leave blank to keep your current password.
+
+            h3 Confirm Password: 
+            input(type="password" name="confirmpassword" placeholder="Confirm new password" minlength="8")
+
+            h3 Profile Picture: 
+            if user.photo
+                img(src=`/img/users/${user.photo}` alt='Profile photo' width="50" height="50")
+            else 
+                img(src='/img/default-user.png' alt='Profile photo' width="50" height="50")
+            input(type="file" name="photo")
+
+            h3 Preferences
+            label(for="theme") Theme: 
+            select(name="prefrences[theme]" id="theme")
+                option(value="light" selected=user.prefrences.theme === 'light') Light
+                option(value="dark" selected=user.prefrences.theme === 'dark') Dark
+
+            label(for="language") Language: 
+            select(name="prefrences[language]" id="language")
+                option(value="en" selected=user.prefrences.language === 'en') English
+                option(value="ar" selected=user.prefrences.language === 'ar') Arabic
+
+    button(type="submit") Save Changes
+
+    hr
+
+    h4 Bookmarks
+    a(href=`/bookmarks/${user._id}`) View Your Bookmarks

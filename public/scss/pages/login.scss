@@ -18,12 +18,14 @@
 	color: $tertiary-color;
 	font-size: 1.6rem;
 	height: 70%;
-	width: 100%;
+	max-width: 70vw;
 	padding: 2rem;
-
+	z-index: 1;
+	
 	h1 {
-		font-size: 6rem;
+		font-size: 10rem;
 		margin-bottom: 2rem;
+		text-shadow: 0 0 1rem rgba(0, 0, 0, 0.8); 
 	}
 	img {
 		width: 10rem;
@@ -31,58 +33,100 @@
 		border-radius: 100rem;
 	}
 	form {
-		background-color: #ffffff; // $color-white
-		padding: 2rem;
+		background-color: $primary-color-lighter;
+		padding: 4rem 6rem;
 		border-radius: 1rem;
-		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1); // $color-black
-		width: 100%;
-		max-width: 400px; // Limit the form width
-
+		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4); 
+		width: max-content;
+		
 		div {
 			margin-bottom: 2rem;
 
 			label {
 				display: block;
 				margin-bottom: 1rem;
+				font-size: 2.5rem;
+				font-family: 'Times New Roman', Times, serif;
+				font-weight: 700;
+				text-shadow: 0 0 1rem rgba(0, 0, 0, 0.4); 
 			}
 
 			input[type='email'],
 			input[type='password'] {
 				width: 100%;
-				padding: 1rem;
-				font-size: 1.6rem;
+				padding: 1rem 1.5rem;
+				font-size: 2.4rem;
 				border: 1px solid rgba(0, 0, 0, 0.1); // $color-black
 				border-radius: 0.5rem;
+				color: $tertiary-color-dark;
 
 				&:focus {
 					outline: none;
 					border-color: $tertiary-color;
 				}
 				&:invalid {
-					border-color: red;
-                    border-width: 2px;
+					border-color: $tertiary-color;
+					box-shadow: 0 0 15px $tertiary-color;
+					border-width: 2px;
 				}
 				// valid and not empty
-                &:valid:not(:placeholder-shown) {
-                    border-color: $primary-color;
-                    border-width: 2px;
-                }
+				&:valid:not(:placeholder-shown) {
+					border-width: 2px;
+					border-color: green;
+					box-shadow: 0 0 5px green;
+					color: rgb(2, 100, 2);
+				}
 			}
 
 			input[type='submit'] {
 				width: 100%;
-				padding: 1rem;
-				font-size: 1.6rem;
-				background-color: #0d142c; // $color-primary
-				color: #ffffff; // $color-white
+				padding: 1.5rem 2rem;
+				font-size: 3rem;
+				background-color: #0d142c; 
+				color: #ffffff;
 				border: none;
 				border-radius: 0.5rem;
 				cursor: pointer;
 
 				&:hover {
-					background-color: darken(#0d142c, 5%); // darken($color-primary, 5%)
+					background-color: darken(#0d142c, 5%); 
+					scale: 1.1;
+					transition: all 0.2s;
+					box-shadow: 0 0 15px rgba($primary-color-dark, 0.4);
 				}
+				&:active {
+					background-color: darken(#3f4c78, 5%); 
+					scale: 0.95;
+					transition: all 0.2s;
+					box-shadow: 0 0 15px rgba($primary-color-dark, 0.4);
+				}
+			}
+			&.password-container{
+				margin-bottom: 5rem;
 			}
 		}
 	}
+}
+
+.lower {
+    font-size: 2.5rem;
+    background-color: $primary-color-light;
+    color: $secondary-color;
+    padding: 3.5rem 4rem 2rem 4rem;
+    border-radius: 1rem;
+    z-index: -1;
+    translate: 0 -3rem;
+    
+    a {
+        color: $tertiary-color-dark;
+        text-decoration: none;
+
+        &:hover {
+            color: $tertiary-color;
+        }
+
+        &:active {
+            color: $tertiary-color-darker;
+        }
+    }
 }

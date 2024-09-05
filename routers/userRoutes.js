@@ -1,6 +1,6 @@
 import express from 'express';
-import userController from './../controllers/userController';
-import authController from './../controllers/authController';
+import * as userController from './../controllers/userController.js';
+import * as authController from './../controllers/authController.js';
 
 const router = express.Router();
 
@@ -8,8 +8,8 @@ const router = express.Router();
 
 // Basic Auth Routes ------------------------------------------------
 
-router.post('/signup', authController.signup);
-router.post('/login', authController.login);
+router.get('/signup', userController.signupView).post('/signup', authController.signup);
+router.get('/login', userController.loginView).post('/login', authController.login);
 router.get('/logout', authController.logout);
 
 // Password Reset Routes ------------------------------------------------
@@ -18,34 +18,27 @@ router.post('/forgotPassword', authController.forgotPassword);
 router.patch('/resetPassword/:token', authController.resetPassword);
 
 // Protect all routes after this middleware ------------------------------------------------
-router.use(authController.protect);
+
+router.use(authController.protect); // user must be logged in to access the routes below
 
 // Update Password ------------------------------------------------
 
 router.patch('/updateMyPassword', authController.updatePassword);
-router.get('/me', userController.getMe, userController.getUser);
-router.patch(
-  '/updateMe',
-  userController.uploadUserPhoto,
-  userController.resizeUserPhoto,
-  userController.updateMe
-);
+router.get('/me', userController.getMe, userController.getMeView);
+
+// for API -----
+// router.get('/me', userController.getMe, userController.getUser); 
+// router.patch('/updateMe', userController.uploadUserPhoto, userController.resizeUserPhoto, userController.updateMe); // for API
 
 // Delete User ------------------------------------------------
-router.delete('/deleteMe', userController.deleteMe);
+
+// router.delete('/deleteMe', userController.deleteMe);
 
 // Admin Routes ⚡ ---------------------------------------------------------------------------------------------
-router.use(authController.restrictTo('admin'));
 
-router
-  .route('/')
-  .get(userController.getAllUsers)
-  .post(userController.createUser);
+// router.use(authController.restrictTo('admin'));
 
-router
-  .route('/:id')
-  .get(userController.getUser)
-  .patch(userController.updateUser)
-  .delete(userController.deleteUser);
+// router.route('/').get(userController.getAllUsers).post(userController.createUser);
+// router.route('/:id').get(userController.getUser).patch(userController.updateUser).delete(userController.deleteUser);
 
-module.exports = router;
+export default router;

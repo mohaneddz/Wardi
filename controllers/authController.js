@@ -1,10 +1,10 @@
 import crypto from 'crypto';
 import { promisify } from 'util';
 import jwt from 'jsonwebtoken';
-import User from './../models/userModel';
-import catchAsync from './../utils/catchAsync';
-import AppError from './../utils/appError';
-import Email from './../utils/email';
+import User from './../models/userModel.js';
+import catchAsync from './../utils/catchAsync.js';
+import AppError from './../utils/appError.js';
+import Email from './../utils/email.js';
 
 // Token Related Functions ------------------------------------------------
 
@@ -107,7 +107,7 @@ export const protect = catchAsync(async (req, res, next) => {
 });
 
 // Only for rendered pages, no errors! ( no CatchAsync )
-exports.isLoggedIn = async (req, res, next) => {
+export const isLoggedIn = async (req, res, next) => {
 	if (req.cookies.jwt) {
 		try {
 			// 1) verify token
@@ -131,21 +131,20 @@ exports.isLoggedIn = async (req, res, next) => {
 	next();
 };
 
-exports.restrictTo = (...roles) => {
+export const restrictTo = (...roles) => {
 	return (req, res, next) => {
-		
 		// Not sure If I need it for a Quran app yet
 		// roles ['admin', 'user', 'visitor'] | role='user' example
-		if (!roles.includes(req.user.role)) 
+		if (!roles.includes(req.user.role))
 			return next(new AppError('You do not have permission to perform this action', 403));
 
 		next();
 	};
 };
 
-// Password Reset Functions ------------------------------------------------
+// // Password Reset Functions ------------------------------------------------
 
-exports.forgotPassword = catchAsync(async (req, res, next) => {
+export const forgotPassword = catchAsync(async (req, res, next) => {
 	// 1) Get user based on POSTed email
 	const user = await User.findOne({ email: req.body.email });
 	if (!user) {
@@ -158,7 +157,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 
 	// 3) Send it to user's email
 	try {
-		const resetURL = `${req.protocol}://${req.get('host')}/users/resetPassword/${resetToken}`;
+		const resetURL = `${req.protocol}://${req.get('host')}/user/resetPassword/${resetToken}`;
 		await new Email(user, resetURL).sendPasswordReset(); // TODO Implement the Email System in Utils
 
 		res.status(200).json({
@@ -175,7 +174,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 	}
 });
 
-exports.resetPassword = catchAsync(async (req, res, next) => {
+export const resetPassword = catchAsync(async (req, res, next) => {
 	// 1) Get user based on the token [ Creating the Hash - Updating it with token - Turns it into Hex]
 	const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
 
@@ -201,7 +200,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 	createSendToken(user, 200, req, res);
 });
 
-exports.updatePassword = catchAsync(async (req, res, next) => {
+export const updatePassword = catchAsync(async (req, res, next) => {
 	// 1) Get user from collection
 	const user = await User.findById(req.user.id).select('+password');
 

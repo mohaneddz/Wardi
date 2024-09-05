@@ -8,6 +8,7 @@
 		"dev": "nodemon server.js",
 		"start:dev": "npm-run-all --parallel watch:scss dev",
 		"watch:scss": "sass public/scss/main.scss public/css/style.css -w",
+		"build:scss": "sass public/scss/main.scss public/css/style.css",
 		"devserver": "npm-run-all --parallel dev --browser=\"C:/Program Files/Firefox Developer Edition/firefox.exe\"",
 		"start": "npm-run-all --parallel devserver watch:scss",
 		"pugg": "pug -w ./views -o ./public -P",
