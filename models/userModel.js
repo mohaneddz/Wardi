@@ -1,6 +1,34 @@
 import mongoose from 'mongoose';
 import userSchema from './userSchema.js';
 
+// Running the Pre-Save / Pre-Find Middleware ------------------------------------------
+
+userSchema.pre('save', async function (next) {
+	// Only run this function if password was actually modified
+	if (!this.isModified('password')) return next();
+
+	// Hash the password with cost of 12
+	this.password = await bcrypt.hash(this.password, 12);
+
+	// Delete passwordConfirm field
+	this.passwordConfirm = undefined;
+	next();
+});
+
+userSchema.pre('save', function (next) {
+	if (!this.isModified('password') || this.isNew) return next();
+
+	this.passwordChangedAt = Date.now() - 1000;
+	next();
+});
+
+userSchema.pre(/^find/, function (next) {
+	// Only show the active users in the query
+	// this points to the current query
+	this.find({ isActive: { $ne: false } });
+	next();
+});
+
 // Adding the Methods to the Schema ------------------------------------------
 
 userSchema.methods.correctPassword = async function (candidatePassword, userPassword) {
@@ -18,7 +46,6 @@ userSchema.methods.changedPasswordAfter = async function (JWTTimestamp) {
 };
 
 userSchema.methods.createPasswordResetToken = function () {
-
 	const resetToken = crypto.randomBytes(32).toString('hex');
 	this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
 
