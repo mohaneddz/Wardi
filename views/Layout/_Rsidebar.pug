@@ -6,29 +6,36 @@
         a(class="RsearchButton")
             i(class="fi fi-rs-search")
     ul
+        // Quran Section ---------------------------------------------------
         if mode === "QuranChapter"
             for verse in this_chapter.verses
                 li
-                    a(href=`#` class="RsideEntry quranChapterSearch" data-verse=`${verse.verse}` data-chapter=`${readerTitle}`)= verse.verse
-                        i(class="fi fi-rs-heart heart")
+                    a(href=`#` class="RsideEntry quranChapterSearch" data-verse=`${verse.verse}` data-chapter=`${this_chapter.chapter}`)= verse.verse
+                        if fav && fav.includes(verse.verse)
+                            i(class="fi fi-sr-heart heart")
+                        else 
+                            i(class="fi fi-rs-heart heart")
             
         else if mode === "QuranJuz"
             for chapter in chapters
-                if chapter.chapter === this_chapter
+                if chapter.chapter === chapterNumber
                     li
-                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` class="RsideEntry selectedEntry" data-verse=`${verse.verse}` data-chapter=`${readerTitle}`)= info.chapters[chapter.chapter - 1][0].arabicname
+                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` class="RsideEntry selectedEntry" data-chapter=`${chapter.chapter}`)= info.chapters[chapter.chapter - 1][0].arabicname
                             i(class="fi fi-rs-heart heart")
                 else
                     li
-                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` class="RsideEntry" data-verse=`${verse.verse}` data-chapter=`${readerTitle}`)= info.chapters[chapter.chapter - 1][0].arabicname
+                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` class="RsideEntry" data-chapter=`${chapter.chapter}`)= info.chapters[chapter.chapter - 1][0].arabicname
+                            i(class="fi fi-rs-heart heart")
+
 
         else if mode === "QuranPage"
             for verse in this_page.verses
                 // script :
                 li
-                    a(href=`#` class="RsideEntry with_name" data-verse=`${verse.verse}` data-chapter=`${chapter_info[verse.chapter - 1].name}` )= `${verse.verse} ${chapter_info[verse.chapter - 1].name}`
+                    a(href=`#` class="RsideEntry with_name quranChapterSearch" data-verse=`${verse.verse}` data-chapter=`${chapter_info[verse.chapter - 1].number}` )= `${verse.verse} ${chapter_info[verse.chapter - 1].name}`
                         i(class="fi fi-rs-heart heart")
 
+            // Hadith Section ---------------------------------------------------
         else if mode === "HadithChapter"
             - for (var i = 1; i <= this_hadith.hadith_counts; i++)
                 if i === this_hadith.hadith.hadithnumber
@@ -46,14 +53,15 @@
                     a(href=`#` class="RsideEntry Hadith__Section" data-hadith=`${hadith.hadithnumber}` data-book=`${this_hadith.name}`)= `الحديث رقم ${hadith.hadithnumber}`
                         i(class="fi fi-rs-heart heart")
 
+            // Tafsir Section ---------------------------------------------------
         else if mode === "TafsirChapter"
             for verse in this_chapter.verses
                 li
-                    a(href=`#` class="RsideEntry tafsirChapterSearch" data-verse=`${verse.verse}` data-chapter=`${readerTitle}`)= verse.verse
+                    a(href=`#` class="RsideEntry tafsirChapterSearch" data-verse=`${verse.verse}` data-chapter=`${chapter.chapter}`)= verse.verse
                         i(class="fi fi-rs-heart heart")
 
         else if mode === "TafsirBooks"
             for chapter in all_chapters
                 li
-                    a(href=`/tafsir/book/${this_book}/chapters/${chapter.chapter}`  class="RsideEntry nosearch" data-chapter=`${readerTitle}`)= chapter.name
+                    a(href=`/tafsir/book/${this_book}/chapters/${chapter.chapter}`  class="RsideEntry nosearch" data-chapter=`${chapter.chapter}`)= chapter.name
                         i(class="fi fi-rs-heart heart")

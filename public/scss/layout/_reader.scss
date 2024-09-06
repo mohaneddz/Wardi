@@ -3,7 +3,6 @@
 .tafsir {
 	// scroll-behavior: smooth;
 	position: relative;
-	height: 88.5vh;
 	@include reader();
 	.toggle {
 		//TODO : FIXED POSITION WHEN SCROLLING ( sticky / fixed )
@@ -13,8 +12,26 @@
 	}
 }
 
+.quran__page--number {
+	position: fixed;
+	bottom: 2%;
+	right: 45%;
+	opacity: 0.5;
+	backdrop-filter: blur(10px);
+	background-color: rgba(#b0b3c0, 0.5);
+}
+.divider {
+	font-family: 'Divider', serif;
+	font-size: 5rem;
+	color: rgba(black, 0.6);
+	text-align: center;
+	font-weight: 400;
+	margin: 5rem 0rem;
+}
+
 .hadith {
-	h1 {
+	h1,
+	p h1 {
 		font-family: 'Parenthesis', 'amiri', serif;
 		font-weight: 800;
 		font-size: 8rem;
@@ -29,7 +46,8 @@
 		border: 3px solid rgba(0, 0, 0, 0.1);
 		padding: 5rem;
 	}
-	h2 {
+	h2,
+	p h2 {
 		font-family: 'Divider', serif;
 		font-size: 10rem;
 		font-weight: 400;
@@ -48,29 +66,42 @@
 }
 
 .quran {
-	p {
+	p,
+	span {
 		font-family: 'Uthmanic', 'amiri', serif;
 		font-weight: 400;
+		.padds {
+			padding: 1.5rem;
+		}
 	}
 	h1 {
 		font-family: 'Surah', serif;
 		font-weight: 100;
 		font-size: 18rem;
-		margin: 4rem 0rem;
+		margin: 6rem 0rem;
 		color: $tertiary-color;
 		// give stroke
 		-webkit-text-stroke: 1px $primary-color;
 	}
 	h2 {
-		font-family: 'Basmallah', serif;
 		font-weight: 400;
 		font-size: 8rem;
-		margin: 1.5rem 0rem;
+		margin: 3.5rem 0rem;
+		&.quran__istieadha {
+			font-family: 'Istieadha', serif;
+		}
+		&.quran__basmallah {
+			font-family: 'Basmallah', serif;
+		}
 	}
-	p.quran__verse {
+	.quran__verse,
+	span {
 		.selected {
 			color: rgb(98, 98, 205);
 		}
+	}
+	.selected {
+		color: rgb(98, 98, 205);
 	}
 }
 
@@ -85,9 +116,14 @@
 		-webkit-text-stroke: 1px $primary-color;
 	}
 	h2 {
-		font-family: 'Basmallah', serif;
 		font-weight: 400;
 		margin: 1.5rem 0rem;
+		&.quran__istieadha {
+			font-family: 'Istieadha', serif;
+		}
+		&.quran__basmallah {
+			font-family: 'Basmallah', serif;
+		}
 	}
 	p {
 		font-family: 'Uthmanic', 'amiri', serif;
@@ -114,7 +150,7 @@
 			border: 3px solid rgba(0, 0, 0, 0.5);
 			padding: 2rem;
 		}
-		&.selected{
+		&.selected {
 			color: rgb(98, 98, 205);
 		}
 	}
@@ -123,7 +159,7 @@
 	.hadith,
 	.tafsir {
 		h1 {
-			font-size: 8rem;
+			font-size: 12rem;
 		}
 	}
 }
@@ -162,10 +198,10 @@
 		grid-row: 1/4;
 		margin-bottom: 2rem;
 		h1 {
-			font-size: 8rem;
+			font-size: 20rem;
 		}
 		h2 {
-			font-size: 6rem;
+			font-size: 10rem;
 		}
 		p {
 			&.verse {
@@ -192,10 +228,7 @@
 			font-size: 7rem;
 		}
 	}
-}
-
-.quran__page--number {
-	position: absolute;
-	bottom: 0;
-	right: 45%;
+	.quran__page--number {
+		bottom: 2.7%;
+	}
 }

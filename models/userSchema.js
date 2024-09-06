@@ -7,7 +7,7 @@ const VerseSchema = new mongoose.Schema({
 		required: true,
 	},
 	chapter: {
-		type: String,
+		type: Number,
 		required: true,
 	},
 });

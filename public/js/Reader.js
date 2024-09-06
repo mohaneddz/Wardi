@@ -36,7 +36,7 @@ function highlighter(event) {
 }
 
 function quranHighlighter(event) {
-	document.querySelectorAll('.quran__verse span').forEach((span) => {
+	document.querySelectorAll('span').forEach((span) => {
 		span.classList.remove('selected'); // Reset verse highlight
 	});
 
@@ -47,9 +47,7 @@ function quranHighlighter(event) {
 	const chapter = event.target.getAttribute('data-chapter');
 
 	// Step 4: Locate the verse element in the Quran reader
-	const verseElement = document.querySelector(
-		`.quran__verse span[data-verse='${verseNumber}'][data-chapter='${chapter}']`
-	);
+	const verseElement = document.querySelector(`[data-verse='${verseNumber}'][data-chapter='${chapter}']`);
 
 	// Check if the verse element exists
 	if (verseElement) {
@@ -164,7 +162,7 @@ function searchSurah() {
 	});
 }
 
-function searchAyah() {
+function searchAya() {
 	const searchValue = rsearch.value;
 	const ayat = document.querySelectorAll('.RsideEntry');
 
@@ -223,7 +221,7 @@ async function favControl(event) {
 // Event Listeners -------------------------
 sidesbtn.addEventListener('click', toggleSides);
 lsearch.addEventListener('input', searchSurah);
-rsearch.addEventListener('input', searchAyah);
+rsearch.addEventListener('input', searchAya);
 // document.addEventListener('DOMContentLoaded', favCreate);
 document.querySelector('.Rsidebar ul').addEventListener('click', favControl);
 document.querySelector('.Rsidebar ul').addEventListener('click', highlighter);

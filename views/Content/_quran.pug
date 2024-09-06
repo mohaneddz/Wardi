@@ -8,24 +8,47 @@
         // remove basmallah if surah is 9 or 1
         if this_chapter.chapter !== 9 && this_chapter.chapter !== 1
             h2.quran__basmallah 7
+        else
+            h2.quran__istieadha 2
         p.quran__verse
             each verse, index in this_chapter.verses
-                span(data-verse=`${index + 1}` data-chapter=`${readerTitle}`)= `${verse.text} ${index + 1} `.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
+                span(data-verse=`${index + 1}` data-chapter=`${this_chapter.chapter}`)= `${verse.text} ${index + 1} `.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
 
     else if mode === "QuranJuz"
         h1.quran__title= readerTitle
         // remove basmallah if surah is 9 or 1
-        h2.quran__basmallah 7
+        if chapterNumber !== 9 && chapterNumber !== 1
+            h2.quran__basmallah 7
+        else
+            h2.quran__istieadha 2
         p.quran__verse
-            each verse, index in this_juz[0].content
-                if verse.chapter == this_chapter
-                    span(data-verse=`${index + 1}` data-chapter=`${readerTitle}`)= `${verse.text} ${index + 1} `.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
+            each verse in this_juz[0].content
+                if verse.chapter == chapterNumber
+                    span(data-verse=`${verse.verse}` data-chapter=`${chapterNumber}`)= `${verse.text} ${verse.verse} `.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
                     
     else if mode === "QuranPage"
-        // remove basmallah if surah is 9 or 1
-        h2.quran__basmallah 7
+        - let prev = null;
+
+        // Check if basmallah or istieadha should be displayed :)
+
         p.quran__verse
             each verse, index in this_page.verses
-                span(data-verse=`${verse.verse}` data-chapter=`${chapter_info[verse.chapter - 1].name}` )= `${verse.text} ${verse.verse} `.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
+                - const curr = verse.chapter;
+
+                if prev !== curr
+                    if prev !== null
+                        h2.divider 44
+                    h1(class='quran__title padds')= chapter_info[curr - 1].name
+        
+                    if curr !== 9 && curr !== 1 && verse.verse === 1
+                        h2(class='quran__basmallah padds') 7
+                    else
+                        h2(class='quran__istieadha padds') 2
+
+                    - prev = curr;
+
+                span(data-verse=`${verse.verse}` data-chapter=`${verse.chapter}`)= `${verse.text} ${verse.verse}`.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
+
+        // Display the page number at the end
         p.quran__page--number
             span= `${this_page.page_number} الصفحة`

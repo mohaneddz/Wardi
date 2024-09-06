@@ -18,6 +18,12 @@
   font-style: normal;
 }
 @font-face {
+  font-family: "Istieadha";
+  src: url("../fonts/Elgharib-istieadha.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
   font-family: "Divider";
   src: url("../fonts/Elgharib-Dividers.ttf") format("truetype");
   font-weight: normal;
@@ -993,15 +999,15 @@ body {
 .quran,
 .tafsir {
   position: relative;
-  height: 88.5vh;
   background-color: rgba(245, 246, 255, 0.7);
   color: black;
   text-align: center;
   font-size: 4rem;
   line-height: 7rem;
   padding: 2rem;
+  padding-bottom: 8rem;
   border-radius: 2rem;
-  height: 90vh;
+  height: 88vh;
   width: 100%;
   overflow-y: auto;
 }
@@ -1018,13 +1024,33 @@ body {
   background-color: rgba(176, 179, 192, 0.5);
 }
 
-.hadith h1 {
+.quran__page--number {
+  position: fixed;
+  bottom: 2%;
+  right: 45%;
+  opacity: 0.5;
+  backdrop-filter: blur(10px);
+  background-color: rgba(176, 179, 192, 0.5);
+}
+
+.divider {
+  font-family: "Divider", serif;
+  font-size: 5rem;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  font-weight: 400;
+  margin: 5rem 0rem;
+}
+
+.hadith h1,
+.hadith p h1 {
   font-family: "Parenthesis", "amiri", serif;
   font-weight: 800;
   font-size: 8rem;
   margin: 3rem 0rem;
 }
-.hadith h1.selected {
+.hadith h1.selected,
+.hadith p h1.selected {
   color: rgb(98, 98, 205);
 }
 .hadith p {
@@ -1033,13 +1059,15 @@ body {
   border: 3px solid rgba(0, 0, 0, 0.1);
   padding: 5rem;
 }
-.hadith h2 {
+.hadith h2,
+.hadith p h2 {
   font-family: "Divider", serif;
   font-size: 10rem;
   font-weight: 400;
   margin: 1.5rem 0rem;
 }
-.hadith h2.selected {
+.hadith h2.selected,
+.hadith p h2.selected {
   color: rgb(98, 98, 205);
 }
 .hadith .grades p {
@@ -1048,25 +1076,39 @@ body {
   padding: 0rem;
 }
 
-.quran p {
+.quran p,
+.quran span {
   font-family: "Uthmanic", "amiri", serif;
   font-weight: 400;
+}
+.quran p .padds,
+.quran span .padds {
+  padding: 1.5rem;
 }
 .quran h1 {
   font-family: "Surah", serif;
   font-weight: 100;
   font-size: 18rem;
-  margin: 4rem 0rem;
+  margin: 6rem 0rem;
   color: #c72378;
   -webkit-text-stroke: 1px #0D142C;
 }
 .quran h2 {
-  font-family: "Basmallah", serif;
   font-weight: 400;
   font-size: 8rem;
-  margin: 1.5rem 0rem;
+  margin: 3.5rem 0rem;
 }
-.quran p.quran__verse .selected {
+.quran h2.quran__istieadha {
+  font-family: "Istieadha", serif;
+}
+.quran h2.quran__basmallah {
+  font-family: "Basmallah", serif;
+}
+.quran .quran__verse .selected,
+.quran span .selected {
+  color: rgb(98, 98, 205);
+}
+.quran .selected {
   color: rgb(98, 98, 205);
 }
 
@@ -1079,9 +1121,14 @@ body {
   -webkit-text-stroke: 1px #0D142C;
 }
 .tafsir h2 {
-  font-family: "Basmallah", serif;
   font-weight: 400;
   margin: 1.5rem 0rem;
+}
+.tafsir h2.quran__istieadha {
+  font-family: "Istieadha", serif;
+}
+.tafsir h2.quran__basmallah {
+  font-family: "Basmallah", serif;
 }
 .tafsir p {
   font-family: "Uthmanic", "amiri", serif;
@@ -1116,7 +1163,7 @@ body {
 @media screen and (max-width: 1200px) {
   .hadith h1,
   .tafsir h1 {
-    font-size: 8rem;
+    font-size: 12rem;
   }
 }
 @media screen and (max-width: 1200px) {
@@ -1163,12 +1210,12 @@ body {
   .tafsir h1,
   .quran h1,
   .hadith h1 {
-    font-size: 8rem;
+    font-size: 20rem;
   }
   .tafsir h2,
   .quran h2,
   .hadith h2 {
-    font-size: 6rem;
+    font-size: 10rem;
   }
   .tafsir p.verse,
   .quran p.verse,
@@ -1198,13 +1245,10 @@ body {
   .hadith h1 {
     font-size: 7rem;
   }
+  .quran__page--number {
+    bottom: 2.7%;
+  }
 }
-.quran__page--number {
-  position: absolute;
-  bottom: 0;
-  right: 45%;
-}
-
 .alert {
   position: fixed;
   top: 0;
@@ -1461,7 +1505,7 @@ body main .cards {
 
 .mainReading_Quran,
 .mainReading_Tafsir,
-.mainHadith_Reading {
+.mainReading_Hadith {
   column-gap: 1%;
   display: grid;
   width: 100vw;
@@ -1472,19 +1516,19 @@ body main .cards {
 }
 .mainReading_Quran.active,
 .mainReading_Tafsir.active,
-.mainHadith_Reading.active {
+.mainReading_Hadith.active {
   grid-template-columns: min-content 1fr min-content;
 }
 @media screen and (max-width: 1200px) {
   .mainReading_Quran.active,
   .mainReading_Tafsir.active,
-  .mainHadith_Reading.active {
+  .mainReading_Hadith.active {
     grid-template-columns: 1fr;
     grid-template-rows: 7vh 7vh 1fr;
   }
 }
 
-.Hadith_Reading,
+.Reading_Hadith,
 .Reading_Quran,
 .Reading_Tafsir {
   overflow: hidden;
@@ -1503,13 +1547,14 @@ body main .cards {
   color: #b4626a;
   padding: 20px;
   box-sizing: border-box;
+  max-width: 80vw;
 }
 .error__message h1 {
   font-size: 12rem;
   margin-bottom: 1rem;
 }
 .error__message p {
-  font-size: 6rem;
+  font-size: 4rem;
 }
 
 /*# sourceMappingURL=style.css.map */

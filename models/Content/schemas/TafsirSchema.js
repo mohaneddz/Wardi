@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
-const AyahSchema = new mongoose.Schema({
-    ayah: {
+const AyaSchema = new mongoose.Schema({
+    aya: {
         type: Number,
         required: true,
     },
@@ -15,9 +15,9 @@ const AyahSchema = new mongoose.Schema({
     },
 });
 
-const AyahObjectSchema = new mongoose.Schema({
-    ayahs: {
-        type: [AyahSchema],
+const AyaObjectSchema = new mongoose.Schema({
+    ayas: {
+        type: [AyaSchema],
         required: true,
     }
 });
@@ -41,7 +41,7 @@ export const TafsirSchema = new mongoose.Schema(
 			required: true,
 		},
 		ayat: {
-			type: [AyahObjectSchema],
+			type: [AyaObjectSchema],
 			required: true,
 		},
 	},

@@ -10,6 +10,7 @@
             if this_hadith.hadith.grades > 0
                 each grade in this_hadith.hadith.grades
                     p.grade=grade.grade
+                    
     if mode ===  'HadithSection'
         for hadith in this_hadith.hadiths
             h1(class='hadith__title' data-hadith= `${hadith.hadithnumber}` data-book=`${this_hadith.name}` )= `الحديث رقم {${hadith.hadithnumber}}`

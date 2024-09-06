@@ -19,20 +19,22 @@ import AppError from '../../utils/appError.js';
 // // Get all
 // export const getAllChapters = factory.getAll(Chapter);
 // export const getAllPages = factory.getAll(Page);
-// export const getAllJuzs = factory.getAll(Juz);
+// export const get30s = factory.getAll(Juz);
 // export const getAllInfos = factory.getAll(Info);
 
 // For the Single Views--------------------------------------------------------------------------------------------
 
 // For the Quran Chapter View --------------------------------------------
 export const getChapterView = catchAsync(async (req, res, next) => {
+	const all_chapters = await Chapter.find().select('name chapter').lean();
+	const chapterNumber = parseInt(req.params.chapter, 10);
+	const this_chapter = await Chapter.findOne({ chapter: chapterNumber }).lean();
 
 	const user = req.user;
-	
-	
-	const all_chapters = await Chapter.find().lean();
-	const this_chapter = all_chapters[req.params.chapter - 1];
-	
+	const fav = user?.bookmarks?.fav_verses?.filter((aya) => aya.chapter === chapterNumber).map((aya) => aya.verse);
+
+	console.log(fav);
+
 	if (!this_chapter) {
 		return next(new AppError('There is no Chapter with that Number.', 404));
 	}
@@ -42,6 +44,7 @@ export const getChapterView = catchAsync(async (req, res, next) => {
 		this_chapter,
 		all_chapters,
 		readerTitle: this_chapter.name,
+		fav,
 		Ltitle: 'السور',
 		Rtitle: 'الآيات',
 		mode: 'QuranChapter',
@@ -50,15 +53,18 @@ export const getChapterView = catchAsync(async (req, res, next) => {
 
 // For the Quran Juz View --------------------------------------------
 export const getJuzView = catchAsync(async (req, res, next) => {
+	const juzNumber = parseInt(req.params.juz, 10);
+	const this_juz = await Juz.find({ juz: juzNumber });
+
+	const chapterNumber = parseInt(req.params.chapter, 10) || this_juz[0].content[0].chapter;
+
+	let chapterName = await Chapter.findOne({ chapter: chapterNumber }).exec();
+	chapterName = chapterName ? chapterName.name : null;
 
 	const user = req.user;
-	
-	const alljuz = await Juz.find().sort({ juz: 1 }).lean();
-	const this_juz = await Juz.find({ juz: req.params.juz });
-	const juzNumber = req.params.juz;
-	const this_chapter = req.params.chapter;
-	let chapterName = await Chapter.findOne({ chapter: this_chapter }).exec();
-	chapterName = chapterName ? chapterName.name : null;
+	const fav = user?.bookmarks?.fav_chapters
+		?.filter((chapter) => chapter.chapter === juzNumber)
+		.map((chapter) => chapter.verse);
 
 	const chapters = await Juz.aggregate([
 		{
@@ -99,11 +105,11 @@ export const getJuzView = catchAsync(async (req, res, next) => {
 		this_juz,
 		user,
 		juzNumber,
-		this_chapter,
-		alljuz,
+		chapterNumber,
 		chapters,
 		info,
 		readerTitle: chapterName,
+		fav,
 		Ltitle: 'الجزء',
 		Rtitle: 'السور',
 		mode: 'QuranJuz',
@@ -112,12 +118,14 @@ export const getJuzView = catchAsync(async (req, res, next) => {
 
 // For the Quran Page View --------------------------------------------
 export const getPageView = catchAsync(async (req, res, next) => {
-
+	
 	const user = req.user;
+	const fav = user?.bookmarks?.fav_pages?.map((page) => page.page_number);
+
 	// page_number = req.params.page
 	const pageNumber = req.params.page;
 	const this_page = await Page.findOne({ page_number: pageNumber }).sort({ chapter: 1, verses: 1 }).lean();
-	const allpages = await Page.find().sort({  page_number: 1 }).lean();
+	const allpages = await Page.find().select("page_number").sort({ page_number: 1 }).lean();
 	const chapter_info = await ChapterInfo.find().sort({ number: 1 }).lean();
 
 	if (!this_page) {
@@ -129,6 +137,7 @@ export const getPageView = catchAsync(async (req, res, next) => {
 		pageNumber,
 		this_page,
 		user,
+		fav,
 		chapter_info,
 		allpages,
 		readerTitle: `Page ${this_page.page_number}`,
@@ -136,37 +145,36 @@ export const getPageView = catchAsync(async (req, res, next) => {
 		Rtitle: 'الآيات',
 		mode: 'QuranPage',
 	});
-
 });
 
-// For the ALL Views --------------------------------------------------------------------------------------------
-export const getAllPagesView = catchAsync(async (req, res, next) => {
-	const pages = await getAllPages(req, res, next);
-	if (!pages) {
-		return next(new AppError('There are currently no Pages.', 404));
-	}
-	res.status(200).render('Reading_Quran', {
-		title: 'All Pages',
-		pages,
-	});
-});
-export const getAllJuzsView = catchAsync(async (req, res, next) => {
-	const juzs = await getAllJuzs(req, res, next);
-	if (!juzs) {
-		return next(new AppError('There are currently no Juzs.', 404));
-	}
-	res.status(200).render('Reading_Quran', {
-		title: 'All Juzs',
-		juzs,
-	});
-});
-export const getAllChaptersView = catchAsync(async (req, res, next) => {
-	const chapters = await getAllChapters(req, res, next);
-	if (!chapters) {
-		return next(new AppError('There are currently no Chapters.', 404));
-	}
-	res.status(200).render('Home', {
-		title: 'Landing',
-		chapters,
-	});
-});
+// // For the ALL Views -------------------------------------------------------------------------------------------- No need
+// export const getAllPagesView = catchAsync(async (req, res, next) => {
+// 	const pages = await getAllPages(req, res, next);
+// 	if (!pages) {
+// 		return next(new AppError('There are currently no Pages.', 404));
+// 	}
+// 	res.status(200).render('Reading_Quran', {
+// 		title: 'All Pages',
+// 		pages,
+// 	});
+// });
+// export const get30sView = catchAsync(async (req, res, next) => {
+// 	const juzs = await get30s(req, res, next);
+// 	if (!juzs) {
+// 		return next(new AppError('There are currently no Juzs.', 404));
+// 	}
+// 	res.status(200).render('Reading_Quran', {
+// 		title: 'All Juzs',
+// 		juzs,
+// 	});
+// });
+// export const getAllChaptersView = catchAsync(async (req, res, next) => {
+// 	const chapters = await getAllChapters(req, res, next);
+// 	if (!chapters) {
+// 		return next(new AppError('There are currently no Chapters.', 404));
+// 	}
+// 	res.status(200).render('Home', {
+// 		title: 'Landing',
+// 		chapters,
+// 	});
+// });

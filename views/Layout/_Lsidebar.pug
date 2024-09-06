@@ -7,6 +7,7 @@
             i(class="fi fi-rs-search")
     
     ul
+        // Quran Section ---------------------------------------------------
         if mode === "QuranChapter"
             each chapter in all_chapters
                 if chapter.chapter === this_chapter.chapter 
@@ -19,19 +20,17 @@
                             i(class="fi fi-rs-heart heart")
         
         else if mode === "QuranJuz"
-            each juz in alljuz
-                if juz.juz === this_juz.juz
+            -for(let i = 1; i <= 30; i++)
+                if i === this_juz.juz
                     li
-                        a(href=`/quran/juz/${juz.juz}/chapter/${juz.content[0].chapter}` class="LsideEntry selectedEntry")= `${juz.juz} الجزء`
-                            i(class="fi fi-rs-heart heart")
+                        a(href=`/quran/juz/${i}/chapter/` class="LsideEntry selectedEntry")= `${i} الجزء`
                 else
                     li
-                        a(href=`/quran/juz/${juz.juz}/chapter/${juz.content[0].chapter}` class="LsideEntry")= `${juz.juz} الجزء`
-                            i(class="fi fi-rs-heart heart")
+                        a(href=`/quran/juz/${i}/chapter/` class="LsideEntry")= `${i} الجزء`
         
         else if mode === "QuranPage"
             each page in allpages
-                if page.page === this_page.page_number
+                if page.page_number === this_page.page_number
                     li
                         a(href=`/quran/page/${page.page_number}` class="LsideEntry selectedEntry")= `${page.page_number} الصفحة`
                             i(class="fi fi-rs-heart heart")
@@ -40,6 +39,7 @@
                         a(href=`/quran/page/${page.page_number}` class="LsideEntry")= `${page.page_number} الصفحة`
                             i(class="fi fi-rs-heart heart")
 
+            // Hadith Section ---------------------------------------------------
         else if mode === "HadithChapter"
             each book in all_books
                 if book.name === this_hadith.name
@@ -63,6 +63,7 @@
                             a(href=`/hadith/book/${this_hadith.name}/section/${index}` class="LsideEntry resizable")= `${this_hadith.metadata.sections[String(index)]}`
                                 i(class="fi fi-rs-heart heart")
         
+            // Tafsir Section ---------------------------------------------------
         else if mode === "TafsirChapter"
             each chapter in all_chapters
                 if chapter.chapter === this_chapter.chapter
