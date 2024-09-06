@@ -1,5 +1,3 @@
-'use strict';
-
 // Selectors -------------------------
 const sidesbtn = document.querySelector('.toggle');
 const lsidebar = document.querySelector('.Lsidebar');
@@ -47,7 +45,6 @@ function quranHighlighter(event) {
 	// Step 3: Get the verse number and chapter from the clicked sidebar entry's data attributes
 	const verseNumber = event.target.getAttribute('data-verse');
 	const chapter = event.target.getAttribute('data-chapter');
-	console.log(verseNumber, chapter);
 
 	// Step 4: Locate the verse element in the Quran reader
 	const verseElement = document.querySelector(
@@ -182,22 +179,44 @@ function searchAyah() {
 	});
 }
 
-function favControl(event) {
+async function addBookmarkToServer(type, object) {
+	try {
+		const response = await axios.post('/user/bookmarks', {
+			type,
+			object,
+		});
+
+		if (response.status !== 200) {
+			throw new Error('Failed to add bookmark');
+		}
+
+		console.log('Bookmark added:', response.data);
+		return response.data;
+	} catch (error) {
+		console.error('Error adding bookmark:', error);
+	}
+}
+
+async function favControl(event) {
 	if (event.target.classList.contains('heart')) {
 		console.log('Clicked on heart icon');
 		const heart = event.target;
-		const verseId = heart.getAttribute('data-finder');
-		if (favoriteVerses.has(verseId)) {
-			favoriteVerses.delete(verseId);
+		const btn = heart.parentElement;
+		const verse = btn.getAttribute('data-verse');
+		const chapter = btn.getAttribute('data-chapter');
+		if (favoriteVerses.has(verse)) {
+			favoriteVerses.delete(verse);
 			heart.classList.remove('fi-sr-heart', 'favorite', 'heart');
 			heart.classList.add('fi-rs-heart', 'heart');
 		} else {
-			favoriteVerses.add(verseId);
+			favoriteVerses.add(verse);
 
 			heart.classList.remove('fi-rs-heart', 'favorite', 'heart');
 			heart.classList.add('fi-sr-heart', 'favorite', 'heart');
 		}
-		console.log('Favorite Verses:', Array.from(favoriteVerses));
+
+		addBookmarkToServer('verse', { verse, chapter });
+		// console.log( { verse, chapter });
 	}
 }
 

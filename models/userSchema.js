@@ -7,7 +7,7 @@ const VerseSchema = new mongoose.Schema({
 		required: true,
 	},
 	chapter: {
-		type: Number,
+		type: String,
 		required: true,
 	},
 });
@@ -74,31 +74,31 @@ const PrefrencesSchema = new mongoose.Schema({
 const BookmakSchema = new mongoose.Schema({
 	fav_verses: {
 		type: [VerseSchema],
-		default: '',
+		default: [],
 	},
 	fav_chapters: {
 		type: [ChapterSchema],
-		default: '',
+		default: [],
 	},
 	fav_pages: {
 		type: [PageSchema],
-		default: '',
+		default: [],
 	},
 	fav_hadiths: {
 		type: [HadithSchema],
-		default: '',
+		default: [],
 	},
 	fav_books_hadiths: {
 		type: [HadithBooksSchema],
-		default: '',
+		default: [],
 	},
 	fav_books_quran: {
 		type: [QuranBooksSchema],
-		default: '',
+		default: [],
 	},
 	fav_books_tafsir: {
 		type: [TafsirBooksSchema],
-		default: '',
+		default: [],
 	},
 });
 

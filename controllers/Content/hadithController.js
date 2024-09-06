@@ -36,7 +36,7 @@ export const getBooksView = catchAsync(async (req, res) => {
 		},
 	]);
 
-	res.status(200).render('Hadith_Books', {
+	res.status(200).render('Books_Hadith', {
 		title: 'Hadith Books',
 		books,
 	});
@@ -80,9 +80,8 @@ export const getSectionView = catchAsync(async (req, res) => {
 	const hadith_counts = hadithRaw[0].hadiths.length;
 	const this_hadith = hadithRaw[0];
 	const sectionsCount = Object.keys(thisbook.metadata.section_details).length;
-	console.log(sectionsCount);
 
-	res.status(200).render('Hadith_Reading', {
+	res.status(200).render('Reading_Hadith', {
 		title: `Hadith ${this_hadith.metadata.name}`,
 		this_hadith,
 		sectionsCount,
@@ -137,7 +136,7 @@ export const getHadithView = catchAsync(async (req, res) => {
 	]);
 	const this_hadith = hadithRaw[0];
 
-	res.status(200).render('Hadith_Reading', {
+	res.status(200).render('Reading_Hadith', {
 		title: `Hadith ${this_hadith.metadata.name}`,
 		this_hadith,
 		all_books,

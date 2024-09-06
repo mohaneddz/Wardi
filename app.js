@@ -15,7 +15,7 @@ import cors from 'cors'; // cors module ( for cross origin resource sharing )
 
 // Error Handlers-------------------------
 // import AppError from './utils/appError.js'; // AppError class
-// import globalErrorHandler from './controllers/errorController.js';
+import globalErrorHandler from './controllers/errorController.js';
 
 // Routers-------------------------
 import quranRouter from './routers/Content/quranRoutes.js';
@@ -43,19 +43,24 @@ app.use(cors()); // Implementing CORS ( Cross Origin Resource Sharing )
 app.options('*', cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
+// Currently for the favorites
+app.get('/models/Content/schemas/QuranSchema.js', (req, res) => {
+	res.type('application/javascript');
+	res.sendFile(path.join(__dirname, 'models', 'Content', 'schemas', 'QuranSchema.js'));
+  });
 
 // // Setting the MIDDLEWARES! //////////////////////////////
 
 // app.use(helmet()); // Setting the security HTTP headers
 process.env.NODE_ENV === 'development' && app.use(morgan('dev')); // Only for development, logging the requests to console
 const limiter = rateLimit({
-	max: 100, // limiting the requests to 100 per hour
+	max: 1000, // limiting the requests to 100 per hour
 	windowMs: 60 * 60 * 1000, // 60 minutes ( 1 hour )
 	message: 'Too many requests from this IP, please try again in an hour!',
 });
 
 app.use('/', limiter); // limiting the requests to the api
-// app.use(express.json({ limit: '10kb' })); // parsing the json data from the body of the request
+app.use(express.json({ limit: '10kb' })); // parsing the json data from the body of the request
 app.use(express.urlencoded({ extended: true, limit: '10kb' })); // parsing the form data from the body of the request / to parse URL-encoded data from the form
 app.use(cookieParser()); // parsing the cookies from the request
 
@@ -74,9 +79,9 @@ app.use('/user', userRouter); // user routes
 app.use('/tafsir', tafsirRouter); // booking routes
 app.use('/login', userRouter); // login routes
 
-// app.all('*', (req, res, next) => {
-//     next(new AppError(Can't find ${req.originalUrl} on this server!, 404));
-// });
-// app.use(globalErrorHandler); // centralize error handling functions
+app.all('*', (req, res, next) => {
+    next(new AppError(`Can't find ${req.originalUrl} on this server!, 404`));
+});
+app.use(globalErrorHandler); // centralize error handling functions
 
 export default app;

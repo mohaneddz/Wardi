@@ -26,14 +26,19 @@ import AppError from '../../utils/appError.js';
 
 // For the Quran Chapter View --------------------------------------------
 export const getChapterView = catchAsync(async (req, res, next) => {
+
+	const user = req.user;
+	
+	
 	const all_chapters = await Chapter.find().lean();
 	const this_chapter = all_chapters[req.params.chapter - 1];
-
+	
 	if (!this_chapter) {
 		return next(new AppError('There is no Chapter with that Number.', 404));
 	}
-	res.status(200).render('Quran_Reading', {
+	res.status(200).render('Reading_Quran', {
 		title: `${this_chapter.info.arabicname}`,
+		user,
 		this_chapter,
 		all_chapters,
 		readerTitle: this_chapter.name,
@@ -45,6 +50,9 @@ export const getChapterView = catchAsync(async (req, res, next) => {
 
 // For the Quran Juz View --------------------------------------------
 export const getJuzView = catchAsync(async (req, res, next) => {
+
+	const user = req.user;
+	
 	const alljuz = await Juz.find().sort({ juz: 1 }).lean();
 	const this_juz = await Juz.find({ juz: req.params.juz });
 	const juzNumber = req.params.juz;
@@ -86,9 +94,10 @@ export const getJuzView = catchAsync(async (req, res, next) => {
 		return next(new AppError('There is no Juz with that Number.', 404));
 	}
 
-	res.status(200).render('Quran_Reading', {
+	res.status(200).render('Reading_Quran', {
 		title: `Juz ${req.params.juz}`,
 		this_juz,
+		user,
 		juzNumber,
 		this_chapter,
 		alljuz,
@@ -103,6 +112,8 @@ export const getJuzView = catchAsync(async (req, res, next) => {
 
 // For the Quran Page View --------------------------------------------
 export const getPageView = catchAsync(async (req, res, next) => {
+
+	const user = req.user;
 	// page_number = req.params.page
 	const pageNumber = req.params.page;
 	const this_page = await Page.findOne({ page_number: pageNumber }).sort({ chapter: 1, verses: 1 }).lean();
@@ -113,10 +124,11 @@ export const getPageView = catchAsync(async (req, res, next) => {
 		return next(new AppError('There is no Page with that Number.', 404));
 	}
 
-	res.status(200).render('Quran_Reading', {
+	res.status(200).render('Reading_Quran', {
 		title: `Page ${this_page.page_number}`,
 		pageNumber,
 		this_page,
+		user,
 		chapter_info,
 		allpages,
 		readerTitle: `Page ${this_page.page_number}`,
@@ -124,6 +136,7 @@ export const getPageView = catchAsync(async (req, res, next) => {
 		Rtitle: 'الآيات',
 		mode: 'QuranPage',
 	});
+
 });
 
 // For the ALL Views --------------------------------------------------------------------------------------------
@@ -132,7 +145,7 @@ export const getAllPagesView = catchAsync(async (req, res, next) => {
 	if (!pages) {
 		return next(new AppError('There are currently no Pages.', 404));
 	}
-	res.status(200).render('Quran_Reading', {
+	res.status(200).render('Reading_Quran', {
 		title: 'All Pages',
 		pages,
 	});
@@ -142,7 +155,7 @@ export const getAllJuzsView = catchAsync(async (req, res, next) => {
 	if (!juzs) {
 		return next(new AppError('There are currently no Juzs.', 404));
 	}
-	res.status(200).render('Quran_Reading', {
+	res.status(200).render('Reading_Quran', {
 		title: 'All Juzs',
 		juzs,
 	});

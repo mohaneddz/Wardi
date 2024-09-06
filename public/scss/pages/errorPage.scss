@@ -1,0 +1,21 @@
+.error__message {
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    text-align: center;
+    color: #b4626a;
+    padding: 20px;
+    box-sizing: border-box;
+
+    h1 {
+        font-size: 12rem;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-size: 6rem;
+    }
+}

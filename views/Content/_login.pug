@@ -1,9 +1,10 @@
 .Login
     h1= h1
-    form(action="#", method="post")
+    form.form--login
         div
             label(for="email") Email
-            input(type="email", id="email", name="email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
+            input(type="email", id="email", name="email")
+            //- input(type="email", id="email", name="email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
         .password-container
             div
                 label(for="password") Password

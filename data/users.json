@@ -11,10 +11,49 @@
         "isActive": true,
         "photo" : "",
         "roles": ["user"],
-        "preferences": {
-            "language": "en",
-            "theme": "dark"
-        }
+		"prefrences": {
+			"theme": "light",
+			"language": "en"
+		},
+		"bookmarks": {
+			"fav_verses": [
+				{
+					"verse": 255,
+					"chapter": "2"
+				}
+			],
+			"fav_chapters": [
+				{
+					"chapter": 3
+				}
+			],
+			"fav_pages": [
+				{
+					"page": 5
+				}
+			],
+			"fav_hadiths": [
+				{
+					"hadith": 5,
+					"book": 2
+				}
+			],
+			"fav_books_hadiths": [
+				{
+					"book": 2
+				}
+			],
+			"fav_books_quran": [
+				{
+					"book": 2
+				}
+			],
+			"fav_books_tafsir": [
+				{
+					"book": 2
+				}
+			]
+		}
     },
     {
         "id": "12346",
@@ -113,9 +152,48 @@
         "isActive": true,
         "photo" : "",
         "roles": ["user"],
-        "preferences": {
-            "language": "pt",
-            "theme": "dark"
-        }
-    }
+		"prefrences": {
+			"theme": "dark",
+			"language": "ar"
+		},
+		"bookmarks": {
+			"fav_verses": [
+				{
+					"verse": 1,
+					"chapter": "الفاتحة"
+				}
+			],
+			"fav_chapters": [
+				{
+					"chapter": 2
+				}
+			],
+			"fav_pages": [
+				{
+					"page": 1
+				}
+			],
+			"fav_hadiths": [
+				{
+					"hadith": 1,
+					"book": 1
+				}
+			],
+			"fav_books_hadiths": [
+				{
+					"book": 1
+				}
+			],
+			"fav_books_quran": [
+				{
+					"book": 1
+				}
+			],
+			"fav_books_tafsir": [
+				{
+					"book": 1
+				}
+			]
+		}
+	}
 ]

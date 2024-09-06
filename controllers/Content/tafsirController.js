@@ -38,7 +38,7 @@ export const getTafsirChapterView = catchAsync(async (req, res) => {
 		},
 	]);
 
-	res.status(200).render('Tafsir_Reading', {
+	res.status(200).render('Reading_Tafsir', {
 		title: `${this_chapter.info.arabicname}`,
 		all_chapters,
 		this_chapter,
@@ -76,8 +76,8 @@ export const getTafsirBookView = catchAsync(async (req, res) => {
 			},
 		},
 	]);
-	
-	res.status(200).render('Tafsir_Reading', {
+
+	res.status(200).render('Reading_Tafsir', {
 		title: `${this_chapter.info.arabicname}`,
 		all_books,
 		all_chapters,
@@ -94,13 +94,13 @@ export const getTafsirBookView = catchAsync(async (req, res) => {
 });
 
 export const getTafsirBooksView = catchAsync(async (req, res) => {
-
 	const all_books = await Tafsir.aggregate([
 		{
 			$project: {
 				name: 1,
 				image: 1,
 				slug: 1,
+				language_name: 1,
 				'metadata.name': 1,
 			},
 		},
@@ -110,11 +110,11 @@ export const getTafsirBooksView = catchAsync(async (req, res) => {
 			},
 		},
 		{
-			$sort: { 'slug': 1 },
+			$sort: { slug: 1 },
 		},
 	]);
 
-	res.status(200).render('Tafsir_Books', {
+	res.status(200).render('Books_Tafsir', {
 		title: 'Tafsir Books',
 		all_books,
 	});

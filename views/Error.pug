@@ -1,0 +1,13 @@
+extends ./Layout/_base
+
+block append head
+  - var title = 'Error'
+  - var bodyClass = 'Error'
+  - var mainClass = 'mainError'
+
+block content
+  include ./Layout/_Lsidebar
+  include ./Layout/_error_message
+  include ./Layout/_Rsidebar
+
+block footer

@@ -1,7 +1,7 @@
 import User from '../models/userModel.js';
 
-import multer from 'multer';
-import sharp from 'sharp';
+// import multer from 'multer';
+// import sharp from 'sharp';
 
 import catchAsync from './../utils/catchAsync.js';
 import AppError from './../utils/appError.js';
@@ -18,7 +18,7 @@ import * as factory from './handlerFactory.js';
 // // |.....|---------------------------------------------
 
 export const getMe = (req, res, next) => {
-	req.params.id = req.user.id;
+	if (req.user) req.params.id = req.user.id;
 	next();
 };
 
@@ -52,6 +52,28 @@ export const getMeView = (req, res) => {
 
 // ----------------------------------------------
 
+export const addBookmark = catchAsync(async (req, res, next) => {
+
+    if (!req.user) return next(new AppError('Please login to add bookmarks', 400));
+
+    const { type, object } = req.body;
+
+    if (!type || !object) {
+        return next(new AppError('Please provide type and object', 400));
+    }
+
+    const user = await User.findOne({ name: req.user.name });
+
+    // Pass type and object as separate arguments
+    await user.addBookmark(type, object);
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            bookmark: user.bookmarks,
+        },
+    });
+});
 // const multerStorage = multer.diskStorage({
 //   destination: (req, file, cb) => {
 //     cb(null, 'public/img/users');

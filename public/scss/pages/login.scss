@@ -21,11 +21,11 @@
 	max-width: 70vw;
 	padding: 2rem;
 	z-index: 1;
-	
+
 	h1 {
 		font-size: 10rem;
 		margin-bottom: 2rem;
-		text-shadow: 0 0 1rem rgba(0, 0, 0, 0.8); 
+		text-shadow: 0 0 1rem rgba(0, 0, 0, 0.8);
 	}
 	img {
 		width: 10rem;
@@ -36,9 +36,9 @@
 		background-color: $primary-color-lighter;
 		padding: 4rem 6rem;
 		border-radius: 1rem;
-		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4); 
+		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
 		width: max-content;
-		
+
 		div {
 			margin-bottom: 2rem;
 
@@ -48,7 +48,7 @@
 				font-size: 2.5rem;
 				font-family: 'Times New Roman', Times, serif;
 				font-weight: 700;
-				text-shadow: 0 0 1rem rgba(0, 0, 0, 0.4); 
+				text-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
 			}
 
 			input[type='email'],
@@ -82,51 +82,59 @@
 				width: 100%;
 				padding: 1.5rem 2rem;
 				font-size: 3rem;
-				background-color: #0d142c; 
+				background-color: #0d142c;
 				color: #ffffff;
 				border: none;
 				border-radius: 0.5rem;
 				cursor: pointer;
 
 				&:hover {
-					background-color: darken(#0d142c, 5%); 
+					background-color: darken(#0d142c, 5%);
 					scale: 1.1;
 					transition: all 0.2s;
 					box-shadow: 0 0 15px rgba($primary-color-dark, 0.4);
 				}
 				&:active {
-					background-color: darken(#3f4c78, 5%); 
+					background-color: darken(#3f4c78, 5%);
 					scale: 0.95;
 					transition: all 0.2s;
 					box-shadow: 0 0 15px rgba($primary-color-dark, 0.4);
 				}
 			}
-			&.password-container{
+			&.password-container {
 				margin-bottom: 5rem;
 			}
+		}
+	}
+	@media screen and (max-width: 500px) {
+		h1 {
+			font-size: 8rem;
 		}
 	}
 }
 
 .lower {
-    font-size: 2.5rem;
-    background-color: $primary-color-light;
-    color: $secondary-color;
-    padding: 3.5rem 4rem 2rem 4rem;
-    border-radius: 1rem;
-    z-index: -1;
-    translate: 0 -3rem;
-    
-    a {
-        color: $tertiary-color-dark;
-        text-decoration: none;
+	font-size: 2.5rem;
+	background-color: $primary-color-light;
+	color: $secondary-color;
+	padding: 3.5rem 4rem 2rem 4rem;
+	border-radius: 1rem;
+	z-index: -1;
+	translate: 0 -3rem;
 
-        &:hover {
-            color: $tertiary-color;
-        }
+	a {
+		color: $tertiary-color-dark;
+		text-decoration: none;
 
-        &:active {
-            color: $tertiary-color-darker;
-        }
-    }
+		&:hover {
+			color: $tertiary-color;
+		}
+
+		&:active {
+			color: $tertiary-color-darker;
+		}
+	}
+	@media screen and (max-width: 630px) {
+		font-size: 1.8rem;
+	}
 }

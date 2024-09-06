@@ -129,9 +129,9 @@
 }
 
 @media screen and (max-width: 1200px) {
-	.mainQuran_Reading,
-	.mainTafsir_Reading,
-	.mainHadith_Reading {
+	.mainReading_Quran,
+	.mainReading_Tafsir,
+	.mainReading_Hadith {
 		grid-template-columns: 1fr;
 		grid-template-rows: 3fr;
 		margin: 0rem 0rem;

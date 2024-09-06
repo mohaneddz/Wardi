@@ -1,10 +1,10 @@
-extends ./Layout/base
+extends ./Layout/_base
 
 block append head
-  script(src='/source/reader.js' defer )
+  script(src='/js/Reader.js' defer )
   - var title = 'Quran Reading'
-  - var bodyClass = 'Hadith_Reading'
-  - var mainClass = 'mainHadith_Reading'
+  - var bodyClass = 'Reading_Hadith'
+  - var mainClass = 'mainReading_Hadith'
 
 block content
   include ./Layout/_Lsidebar

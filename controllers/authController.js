@@ -9,14 +9,14 @@ import Email from './../utils/email.js';
 // Token Related Functions ------------------------------------------------
 
 export const signToken = (id) => {
-	return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
+	return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: `${process.env.JWT_EXPIRES_IN}d` });
 };
 
 export const createSendToken = (user, statusCode, req, res) => {
 	const token = signToken(user._id);
 
 	res.cookie('jwt', token, {
-		expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
+		expires: new Date(Date.now() + process.env.JWT_EXPIRES_IN * 24 * 60 * 60 * 1000),
 		httpOnly: true,
 		secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
 	});
@@ -65,6 +65,7 @@ export const login = catchAsync(async (req, res, next) => {
 	}
 
 	// 3) If everything ok, send token to client
+	res.locals.user = user;
 	createSendToken(user, 200, req, res);
 });
 
@@ -118,11 +119,14 @@ export const isLoggedIn = async (req, res, next) => {
 			if (!currentUser) return next();
 
 			// 3) Check if user changed password after the token was issued
-			if (currentUser.changedPasswordAfter(decoded.iat)) return next();
+			if (currentUser.changedPasswordAfter(decoded.iat)) {
+				return next();
+			}
 
 			// THERE IS A LOGGED IN USER
+			req.user = currentUser;
 			res.locals.user = currentUser;
-
+			
 			return next();
 		} catch (err) {
 			return next();
