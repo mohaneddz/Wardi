@@ -19,4 +19,15 @@
     p {
         font-size: 4rem;
     }
+
+    @media screen and (max-width: 1500px) {
+        h1 {
+            font-size: 8rem;
+        }
+
+        p {
+            font-size: 2rem;
+        }
+        
+    }
 }

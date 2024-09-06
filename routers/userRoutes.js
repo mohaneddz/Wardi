@@ -11,7 +11,7 @@ const router = express.Router();
 router.get('/signup', userController.signupView).post('/signup', authController.signup);
 router.get('/login', userController.loginView).post('/login', authController.login);
 router.get('/logout', authController.logout);
-router.post('/bookmarks', authController.isLoggedIn, userController.addBookmark);
+router.post('/bookmarks', authController.isLoggedIn, userController.addBookmark).delete('/bookmarks', authController.isLoggedIn, userController.removeBookmark);
 // router.get('/bookmarks', userController.getBookmarksView).post('/bookmarks', authController.isLoggedIn, userController.addBookmark);
 // Password Reset Routes ------------------------------------------------
 

@@ -2,61 +2,55 @@ import mongoose from 'mongoose';
 import validator from 'validator';
 
 const VerseSchema = new mongoose.Schema({
-	verse: {
-		type: Number,
-		required: true,
+		verse: { type: Number, required: true },
+		chapter: { type: Number, required: true },
 	},
-	chapter: {
-		type: Number,
-		required: true,
-	},
-});
+	{ _id: true }
+); // Ensure _id is added
 
 const ChapterSchema = new mongoose.Schema({
-	chapter: {
-		type: Number,
-		required: true,
+		chapter: { type: Number, required: true },
 	},
-});
+	{ _id: true }
+);
 
 const HadithSchema = new mongoose.Schema({
-	hadith: {
-		type: Number,
-		required: true,
+		hadith: { type: Number, required: true },
+		book: { type: Number, required: true },
 	},
-	book: {
-		type: Number,
-		required: true,
-	},
-});
+	{ _id: true }
+);
 
 const PageSchema = new mongoose.Schema({
-	page: {
-		type: Number,
-		required: true,
+		page: { type: Number, required: true },
 	},
-});
+	{ _id: true }
+);
 
 const HadithBooksSchema = new mongoose.Schema({
-	book: {
-		type: Number,
-		required: true,
+		book: { type: Number, required: true },
 	},
-});
+	{ _id: true }
+);
 
 const QuranBooksSchema = new mongoose.Schema({
-	book: {
-		type: Number,
-		required: true,
+		book: { type: Number, required: true },
 	},
-});
+	{ _id: true }
+);
 
 const TafsirBooksSchema = new mongoose.Schema({
-	book: {
-		type: Number,
-		required: true,
+		book: { type: Number, required: true },
 	},
-});
+	{ _id: true }
+);
+
+const HadithSectionSchema = new mongoose.Schema({
+		section: { type: Number, required: true },
+		book: { type: Number, required: true },
+	},
+	{ _id: true }
+);
 
 const PrefrencesSchema = new mongoose.Schema({
 	theme: {
@@ -98,6 +92,10 @@ const BookmakSchema = new mongoose.Schema({
 	},
 	fav_books_tafsir: {
 		type: [TafsirBooksSchema],
+		default: [],
+	},
+	fav_sections_hadith: {
+		type: [HadithSectionSchema],
 		default: [],
 	},
 });

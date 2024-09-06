@@ -18,9 +18,11 @@ import AppError from '../../utils/appError.js';
 // // |.....|---------------------------------------------
 
 export const getTafsirChapterView = catchAsync(async (req, res) => {
+
 	const chapterNumber = parseInt(req.params.chapter);
 	const all_chapters = await Chapter.find().select('name chapter').lean();
 	const this_chapter = await Chapter.findOne({ chapter: chapterNumber }).lean();
+	
 	const tafsir = await Tafsir.aggregate([
 		{
 			$match: { slug: req.params.book },
@@ -77,7 +79,8 @@ export const getTafsirBookView = catchAsync(async (req, res) => {
 		},
 	]);
 
-	res.status(200).render('Reading_Tafsir', {
+	res.
+	status(200).render('Reading_Tafsir', {
 		title: `${this_chapter.info.arabicname}`,
 		all_books,
 		all_chapters,

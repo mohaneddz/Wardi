@@ -1,3 +1,9 @@
+mixin favIcon(item, fav)
+    if fav && fav.includes(item)
+        i(class="fi fi-sr-heart heart")
+    else 
+        i(class="fi fi-rs-heart heart")
+
 .Lsidebar 
     .Sidebar__title
         h1= Ltitle
@@ -12,12 +18,12 @@
             each chapter in all_chapters
                 if chapter.chapter === this_chapter.chapter 
                     li  
-                        a(href=`/quran/chapter/${chapter.chapter}` class="LsideEntry selectedEntry")= chapter.name
-                            i(class="fi fi-rs-heart heart")
+                        a(href=`/quran/chapter/${chapter.chapter}` class="LsideEntry selectedEntry" data-type=`chapter` data-chapter=`${chapter.chapter}`  )= chapter.name
+                            +favIcon(chapter.chapter, fav_chapters)
                 else
                     li  
-                        a(href=`/quran/chapter/${chapter.chapter}` class="LsideEntry")= chapter.name
-                            i(class="fi fi-rs-heart heart")
+                        a(href=`/quran/chapter/${chapter.chapter}` class="LsideEntry" data-type=`chapter` data-chapter=`${chapter.chapter}`  )= chapter.name
+                            +favIcon(chapter.chapter, fav_chapters)
         
         else if mode === "QuranJuz"
             -for(let i = 1; i <= 30; i++)
@@ -32,57 +38,57 @@
             each page in allpages
                 if page.page_number === this_page.page_number
                     li
-                        a(href=`/quran/page/${page.page_number}` class="LsideEntry selectedEntry")= `${page.page_number} الصفحة`
-                            i(class="fi fi-rs-heart heart")
+                        a(href=`/quran/page/${page.page_number}` class="LsideEntry selectedEntry" data-page=`${page.page_number}` data-type=`page`)= `${page.page_number} الصفحة`
+                            +favIcon(page.page_number, fav_pages)
                 else
                     li
-                        a(href=`/quran/page/${page.page_number}` class="LsideEntry")= `${page.page_number} الصفحة`
-                            i(class="fi fi-rs-heart heart")
+                        a(href=`/quran/page/${page.page_number}` class="LsideEntry" data-page=`${page.page_number}`  data-type=`page`)= `${page.page_number} الصفحة`
+                            +favIcon(page.page_number, fav_pages)
 
             // Hadith Section ---------------------------------------------------
         else if mode === "HadithChapter"
             each book in all_books
                 if book.name === this_hadith.name
                     li
-                        a(href=`/hadith/book/${book.name}/hadith/1` class="LsideEntry selectedEntry")= book.metadata.name
-                            i(class="fi fi-rs-heart heart")
+                        a(href=`/hadith/book/${book.name}/hadith/1` class="LsideEntry selectedEntry" data-book=`${book.number}` data-type=`hadith_book`)= book.metadata.name
+                            +favIcon(book.name, fav_books)
                 else
                     li
-                        a(href=`/hadith/book/${book.name}/hadith/1` class="LsideEntry")= book.metadata.name
-                            i(class="fi fi-rs-heart heart")
+                        a(href=`/hadith/book/${book.name}/hadith/1` class="LsideEntry" data-book=`${book.number}` data-type=`hadith_book`)= book.metadata.name
+                            +favIcon(book.name, fav_books)
 
         else if mode === "HadithSection"
             -for(let index = 0; index < sectionsCount; index++)
                 if this_hadith.metadata.sections[String(index)] !== ""
                     if index === sectionNumber
                         li
-                            a(href=`/hadith/book/${this_hadith.name}/section/${index}` class="LsideEntry selectedEntry resizable")= `${this_hadith.metadata.sections[String(index)]}`
-                                i(class="fi fi-rs-heart heart")
+                            a(href=`/hadith/book/${this_hadith.name}/section/${index}`  class="LsideEntry selectedEntry resizable"  data-book=`${this_hadith.number}` data-section=`${index}` data-type=`hadith_section`)= `${this_hadith.metadata.sections[String(index)]}`
+                                +favIcon(index, fav_sections)
                     else
                         li
-                            a(href=`/hadith/book/${this_hadith.name}/section/${index}` class="LsideEntry resizable")= `${this_hadith.metadata.sections[String(index)]}`
-                                i(class="fi fi-rs-heart heart")
+                            a(href=`/hadith/book/${this_hadith.name}/section/${index}`  class="LsideEntry resizable"  data-book=`${this_hadith.number}` data-section=`${index}` data-type=`hadith_section`)= `${this_hadith.metadata.sections[String(index)]}`
+                                +favIcon(index, fav_sections)
         
             // Tafsir Section ---------------------------------------------------
         else if mode === "TafsirChapter"
             each chapter in all_chapters
                 if chapter.chapter === this_chapter.chapter
                     li
-                        a(href=`/tafsir/book/${this_book}/chapter/${chapter.chapter}` class="LsideEntry selectedEntry")= chapter.name
-                            i(class="fi fi-rs-heart heart")
+                        a(href=`/tafsir/book/${this_book}/chapter/${chapter.chapter}` class="LsideEntry selectedEntry" data-type=`chapter`)= chapter.name
+                            +favIcon(chapter.chapter, fav_chapters)
                 else
                     li
-                        a(href=`/tafsir/book/${this_book}/chapter/${chapter.chapter}` class="LsideEntry")= chapter.name
-                            i(class="fi fi-rs-heart heart")
+                        a(href=`/tafsir/book/${this_book}/chapter/${chapter.chapter}` class="LsideEntry" data-type=`chapter`)= chapter.name
+                            +favIcon(chapter.chapter, fav_chapters)
         
         else if mode === "TafsirBooks"
             each book in all_books
                 //- if book.slug.split("-")[0] === lang
                 if book.slug === this_book
                     li
-                        a(href=`/tafsir/book/${book.slug}/chapters/${this_chapter.chapter}` class="LsideEntry selectedEntry resizable")= book.name
-                            i(class="fi fi-rs-heart heart")
+                        a(href=`/tafsir/book/${book.slug}/chapters/${this_chapter.chapter}` class="LsideEntry selectedEntry resizable" data-type=`tafsir_book`)= book.name
+                            +favIcon(book.number, fav_books)
                 else
                     li
-                        a(href=`/tafsir/book/${book.slug}/chapters/${this_chapter.chapter}` class="LsideEntry resizable")= book.name
-                            i(class="fi fi-rs-heart heart")
+                        a(href=`/tafsir/book/${book.slug}/chapters/${this_chapter.chapter}` class="LsideEntry resizable" data-type=`tafsir_book`)= book.name
+                            +favIcon(book.number, fav_books)

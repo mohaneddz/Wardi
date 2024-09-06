@@ -96,7 +96,7 @@ function hadithSectionHighlighter(event) {
 }
 
 function tafsirHighlighter(event) {
-	document.querySelectorAll('.quran__verse span').forEach((span) => {
+	document.querySelectorAll('span').forEach((span) => {
 		span.classList.remove('selected'); // Reset verse highlight
 	});
 
@@ -107,9 +107,7 @@ function tafsirHighlighter(event) {
 	const chapter = event.target.getAttribute('data-chapter');
 
 	// Step 4: Locate the verse element in the Quran reader
-	const verseElement = document.querySelector(
-		`.quran__verse[data-verse='${verseNumber}'][data-chapter='${chapter}']`
-	);
+	const verseElement = document.querySelector(`[data-verse='${verseNumber}'][data-chapter='${chapter}']`);
 	console.log(verseElement, verseNumber, chapter);
 
 	// Check if the verse element exists
@@ -177,6 +175,7 @@ function searchAya() {
 	});
 }
 
+// Bookmark Functions -----------------------------------------------------------
 async function addBookmarkToServer(type, object) {
 	try {
 		const response = await axios.post('/user/bookmarks', {
@@ -195,26 +194,60 @@ async function addBookmarkToServer(type, object) {
 	}
 }
 
-async function favControl(event) {
-	if (event.target.classList.contains('heart')) {
-		console.log('Clicked on heart icon');
-		const heart = event.target;
-		const btn = heart.parentElement;
-		const verse = btn.getAttribute('data-verse');
-		const chapter = btn.getAttribute('data-chapter');
-		if (favoriteVerses.has(verse)) {
-			favoriteVerses.delete(verse);
-			heart.classList.remove('fi-sr-heart', 'favorite', 'heart');
-			heart.classList.add('fi-rs-heart', 'heart');
-		} else {
-			favoriteVerses.add(verse);
+async function removeBookmarkFromServer(type, object) {
+	try {
+		const response = await axios.delete('/user/bookmarks', {
+			data: {
+				type,
+				object,
+			},
+		});
 
-			heart.classList.remove('fi-rs-heart', 'favorite', 'heart');
-			heart.classList.add('fi-sr-heart', 'favorite', 'heart');
+		if (response.status !== 201) {
+			throw new Error('Failed to remove bookmark');
 		}
 
-		addBookmarkToServer('verse', { verse, chapter });
-		// console.log( { verse, chapter });
+		console.log('Bookmark removed:', response.data);
+		return response.data;
+	} catch (error) {
+		console.error('Error removing bookmark:', error);
+	}
+}
+
+async function favControl(event) {
+	if (event.target.classList.contains('heart')) {
+		event.preventDefault();
+		console.log('Clicked on heart icon');
+		// DOM elements
+		const heart = event.target;
+		const btn = heart.parentElement;
+
+		// Attributes...
+		const type = btn.getAttribute('data-type');
+
+		const verse = btn.getAttribute('data-verse');
+		const chapter = btn.getAttribute('data-chapter');
+		const page = btn.getAttribute('data-page');
+		const section = btn.getAttribute('data-section');
+
+		const book = btn.getAttribute('data-book');
+		const hadith = btn.getAttribute('data-hadith');
+
+		// All Bookmarks
+		const bookmark = { verse, chapter, page, section, book, hadith };
+		const filteredBookmark = Object.fromEntries(
+			Object.entries(bookmark).filter(([key, value]) => value !== null && value !== undefined)
+		);
+
+		if (heart.classList.contains('fi-sr-heart')) {
+			heart.classList.remove('fi-sr-heart', 'favorite');
+			heart.classList.add('fi-rs-heart');
+			removeBookmarkFromServer(type, filteredBookmark);
+		} else {
+			heart.classList.remove('fi-rs-heart');
+			heart.classList.add('fi-sr-heart');
+			addBookmarkToServer(type, filteredBookmark);
+		}
 	}
 }
 
@@ -224,4 +257,5 @@ lsearch.addEventListener('input', searchSurah);
 rsearch.addEventListener('input', searchAya);
 // document.addEventListener('DOMContentLoaded', favCreate);
 document.querySelector('.Rsidebar ul').addEventListener('click', favControl);
+document.querySelector('.Lsidebar ul').addEventListener('click', favControl);
 document.querySelector('.Rsidebar ul').addEventListener('click', highlighter);

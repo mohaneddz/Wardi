@@ -4,3 +4,15 @@
 		grid-row: 1 / 2;
 	}
 }
+.mainReading_Hadith {
+	@media screen and (max-width: 1200px) {
+		.Lsidebar {
+			ul a {
+				font-size: 1.5rem;
+			}
+		}
+		.hadith{
+			height: 90vh;
+		}
+	}
+}

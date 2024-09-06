@@ -408,6 +408,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
+  z-index: 20;
   border: 2px solid rgba(1, 2, 5, 0.9);
   border-radius: 1rem;
   transition: all 0.3s;
@@ -504,6 +505,7 @@ body {
 .header nav ul li {
   margin-right: 1rem;
   position: relative;
+  display: block;
 }
 .header nav ul li:last-child {
   margin-right: 0;
@@ -862,6 +864,15 @@ body {
   }
 }
 
+@media screen and (max-width: 1200px) {
+  .mainReading_Hadith .Lsidebar ul a {
+    font-size: 1.5rem;
+  }
+  .mainReading_Hadith .hadith {
+    height: 90vh;
+  }
+}
+
 .Rsidebar {
   background-color: #192653;
   border-radius: 2rem;
@@ -1020,8 +1031,11 @@ body {
 .quran .toggle,
 .tafsir .toggle {
   position: fixed;
-  backdrop-filter: blur(10px);
-  background-color: rgba(176, 179, 192, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgba(176, 179, 192, 0.7);
 }
 
 .quran__page--number {
@@ -1555,6 +1569,14 @@ body main .cards {
 }
 .error__message p {
   font-size: 4rem;
+}
+@media screen and (max-width: 1500px) {
+  .error__message h1 {
+    font-size: 8rem;
+  }
+  .error__message p {
+    font-size: 2rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

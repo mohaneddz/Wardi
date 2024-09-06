@@ -43,13 +43,14 @@ export const getBooksView = catchAsync(async (req, res) => {
 });
 
 export const getSectionView = catchAsync(async (req, res) => {
+	
 	const lang = req.params.book.split('-')[0];
-
 	const sectionNumber = parseInt(req.params.section);
 
-	const section_range = await Hadith.findOne({ name: req.params.book }).select('metadata').lean();
-	const section_start = section_range.metadata.section_details[String(sectionNumber)].hadithnumber_first;
-	const section_end = section_range.metadata.section_details[String(sectionNumber)].hadithnumber_last;
+	const section_range = await Hadith.findOne({ name: req.params.book })?.select('metadata').lean();
+	
+	const section_start = section_range?.metadata.section_details[String(sectionNumber)].hadithnumber_first;
+	const section_end = section_range?.metadata.section_details[String(sectionNumber)].hadithnumber_last;
 
 	const thisbook = await Hadith.findOne({ name: req.params.book }).select('metadata').lean();
 	const hadithRaw = await Hadith.aggregate([
@@ -60,6 +61,7 @@ export const getSectionView = catchAsync(async (req, res) => {
 			$project: {
 				metadata: 1,
 				name: 1,
+				number: 1,
 				hadiths: {
 					$filter: {
 						input: '$hadiths',
@@ -111,6 +113,7 @@ export const getHadithView = catchAsync(async (req, res) => {
 				metadata: {
 					name: 1,
 				},
+				number: 1,
 				name: 1,
 			},
 		},
@@ -130,6 +133,7 @@ export const getHadithView = catchAsync(async (req, res) => {
 				},
 				hadith_counts: 1,
 				name: 1,
+				number: 1,
 				hadith: { $arrayElemAt: ['$hadiths', hadithNumber - 1] },
 			},
 		},

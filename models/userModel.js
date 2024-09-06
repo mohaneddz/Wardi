@@ -57,44 +57,102 @@ userSchema.methods.createPasswordResetToken = function () {
 };
 
 userSchema.methods.addBookmark = async function (type, object) {
-	if (!this.bookmarks) this.bookmarks = {}; // Ensure it's an object if somehow missing
-  
+	if (!this.bookmarks) this.bookmarks = {};
+
+	const addToBookmarks = (arrayName, item) => {
+		this.bookmarks[arrayName] = this.bookmarks[arrayName] || [];
+
+		// Check if item already exists in the array
+		if (
+			!this.bookmarks[arrayName].some(
+				(existingItem) => JSON.stringify(existingItem) === JSON.stringify(item)
+			)
+		) {
+			this.bookmarks[arrayName].push(item);
+		}
+	};
+
 	switch (type) {
-	  case 'verse':
-		this.bookmarks.fav_verses = this.bookmarks.fav_verses || []; // Ensure the array exists
-		this.bookmarks.fav_verses.push(object);
-		break;
-	  case 'chapter':
-		this.bookmarks.fav_chapters = this.bookmarks.fav_chapters || [];
-		this.bookmarks.fav_chapters.push(object);
-		break;
-	  case 'page':
-		this.bookmarks.fav_pages = this.bookmarks.fav_pages || [];
-		this.bookmarks.fav_pages.push(object);
-		break;
-	  case 'hadith':
-		this.bookmarks.fav_hadiths = this.bookmarks.fav_hadiths || [];
-		this.bookmarks.fav_hadiths.push(object);
-		break;
-	  case 'hadith_book':
-		this.bookmarks.fav_books_hadiths = this.bookmarks.fav_books_hadiths || [];
-		this.bookmarks.fav_books_hadiths.push(object);
-		break;
-	  case 'quran_book':
-		this.bookmarks.fav_books_quran = this.bookmarks.fav_books_quran || [];
-		this.bookmarks.fav_books_quran.push(object);
-		break;
-	  case 'tafsir_book':
-		this.bookmarks.fav_books_tafsir = this.bookmarks.fav_books_tafsir || [];
-		this.bookmarks.fav_books_tafsir.push(object);
-		break;
-	  default:
+		case 'verse':
+			addToBookmarks('fav_verses', object);
+			break;
+		case 'chapter':
+			addToBookmarks('fav_chapters', object);
+			break;
+		case 'page':
+			addToBookmarks('fav_pages', object);
+			break;
+		case 'hadith':
+			addToBookmarks('fav_hadiths', object);
+			break;
+		case 'hadith_book':
+			addToBookmarks('fav_books_hadiths', object);
+			break;
+		case 'quran_book':
+			addToBookmarks('fav_books_quran', object);
+			break;
+		case 'tafsir_book':
+			addToBookmarks('fav_books_tafsir', object);
+			break;
+		case 'hadith_section':
+			addToBookmarks('fav_sections_hadith', object);
+			break;
+		default:
+			throw new Error('Invalid bookmark type');
+	}
+	console.log(this.bookmarks);
+	await this.save({ validateBeforeSave: false });
+};
+
+userSchema.methods.removeBookmark = async function (type, object) {
+	// Map of bookmark types to their respective fields in the schema
+	const bookmarkFields = {
+		verse: 'bookmarks.fav_verses',
+		chapter: 'bookmarks.fav_chapters',
+		page: 'bookmarks.fav_pages',
+		hadith: 'bookmarks.fav_hadiths',
+		hadith_book: 'bookmarks.fav_books_hadiths',
+		quran_book: 'bookmarks.fav_books_quran',
+		tafsir_book: 'bookmarks.fav_books_tafsir',
+		hadith_section: 'bookmarks.fav_sections_hadith',
+	};
+
+	const bookmarkField = bookmarkFields[type];
+
+	if (!bookmarkField) {
 		throw new Error('Invalid bookmark type');
 	}
-  
-	await this.save({ validateBeforeSave: false });
-  };
-  
+
+	try {
+		// Construct the match criteria based on the fields available in the object
+		const matchCriteria = {};
+		for (const key in object) {
+			if (object[key] !== undefined) {
+				matchCriteria[key] = object[key];
+			}
+		}
+
+		// Directly use the update operation on the current user instance
+		const result = await this.updateOne(
+			{
+				$pull: {
+					[bookmarkField]: matchCriteria,
+				},
+			},
+			{ new: true, useFindAndModify: false }
+		);
+
+		// Check if any modifications were made
+		if (result.modifiedCount === 0) {
+			console.log('No bookmark matched the criteria for removal.');
+		} else {
+			console.log(`Successfully removed ${type} bookmark matching criteria:`, matchCriteria);
+		}
+	} catch (error) {
+		console.error('Error removing bookmark:', error);
+		throw new Error('Failed to remove bookmark');
+	}
+};
 
 // Exporting the final Model ------------------------------------------
 

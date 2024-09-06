@@ -14,7 +14,7 @@ import compression from 'compression'; // compression module ( for compressing t
 import cors from 'cors'; // cors module ( for cross origin resource sharing )
 
 // Error Handlers-------------------------
-// import AppError from './utils/appError.js'; // AppError class
+import AppError from './utils/appError.js'; // AppError class
 import globalErrorHandler from './controllers/errorController.js';
 
 // Routers-------------------------

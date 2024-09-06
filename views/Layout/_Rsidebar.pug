@@ -1,3 +1,9 @@
+mixin favIcon(item, fav)
+    if fav && fav.includes(item)
+        i(class="fi fi-sr-heart heart")
+    else 
+        i(class="fi fi-rs-heart heart")
+
 .Rsidebar 
     .Sidebar__title
         h1= Rtitle
@@ -10,58 +16,56 @@
         if mode === "QuranChapter"
             for verse in this_chapter.verses
                 li
-                    a(href=`#` class="RsideEntry quranChapterSearch" data-verse=`${verse.verse}` data-chapter=`${this_chapter.chapter}`)= verse.verse
-                        if fav && fav.includes(verse.verse)
-                            i(class="fi fi-sr-heart heart")
-                        else 
-                            i(class="fi fi-rs-heart heart")
+                    a(href=`#` class="RsideEntry quranChapterSearch" data-type=`verse` data-verse=`${verse.verse}` data-chapter=`${this_chapter.chapter}`)= verse.verse
+                        +favIcon(verse.verse, fav)
             
         else if mode === "QuranJuz"
             for chapter in chapters
                 if chapter.chapter === chapterNumber
                     li
-                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` class="RsideEntry selectedEntry" data-chapter=`${chapter.chapter}`)= info.chapters[chapter.chapter - 1][0].arabicname
-                            i(class="fi fi-rs-heart heart")
+                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` data-type=`chapter` class="RsideEntry selectedEntry" data-chapter=`${chapter.chapter}`)= info.chapters[chapter.chapter - 1][0].arabicname
+                            +favIcon(chapter.chapter, fav_chapters)
+
                 else
                     li
-                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` class="RsideEntry" data-chapter=`${chapter.chapter}`)= info.chapters[chapter.chapter - 1][0].arabicname
-                            i(class="fi fi-rs-heart heart")
-
+                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` data-type=`chapter` class="RsideEntry" data-chapter=`${chapter.chapter}`)= info.chapters[chapter.chapter - 1][0].arabicname
+                            +favIcon(chapter.chapter, fav_chapters)
 
         else if mode === "QuranPage"
             for verse in this_page.verses
                 // script :
                 li
-                    a(href=`#` class="RsideEntry with_name quranChapterSearch" data-verse=`${verse.verse}` data-chapter=`${chapter_info[verse.chapter - 1].number}` )= `${verse.verse} ${chapter_info[verse.chapter - 1].name}`
-                        i(class="fi fi-rs-heart heart")
+                    a(href=`#` class="RsideEntry with_name quranChapterSearch" data-type=`verse` data-verse=`${verse.verse}` data-chapter=`${chapter_info[verse.chapter - 1].number}` )= `${verse.verse} ${chapter_info[verse.chapter - 1].name}`
+                        +favIcon(verse.verse, fav_verses)
+            
 
             // Hadith Section ---------------------------------------------------
         else if mode === "HadithChapter"
             - for (var i = 1; i <= this_hadith.hadith_counts; i++)
                 if i === this_hadith.hadith.hadithnumber
                     li
-                        a(href=`/hadith/book/${this_hadith.name}/hadith/${i}` class="RsideEntry selectedEntry nosearch" data-hadith=`${i}` data-book=`${this_hadith.name}`)= `الحديث رقم ${i}`
-                            i(class="fi fi-rs-heart heart")
+                        a(href=`/hadith/book/${this_hadith.name}/hadith/${i}` data-book=`${this_hadith.number}` data-type=`hadith` class="RsideEntry selectedEntry nosearch" data-hadith=`${i}` )= `الحديث رقم ${i}`
+                            +favIcon(i, fav_hadiths)
                 else
                     li
-                        a(href=`/hadith/book/${this_hadith.name}/hadith/${i}` class="RsideEntry nosearch" data-hadith=`${i}`)= `الحديث رقم ${i}`
-                            i(class="fi fi-rs-heart heart")
+                        a(href=`/hadith/book/${this_hadith.name}/hadith/${i}` data-book=`${this_hadith.number}` data-type=`hadith` class="RsideEntry nosearch" data-hadith=`${i}`)= `الحديث رقم ${i}`
+                            +favIcon(i, fav_hadiths)
 
         else if mode === "HadithSection"
             for hadith in this_hadith.hadiths
                 li
-                    a(href=`#` class="RsideEntry Hadith__Section" data-hadith=`${hadith.hadithnumber}` data-book=`${this_hadith.name}`)= `الحديث رقم ${hadith.hadithnumber}`
-                        i(class="fi fi-rs-heart heart")
+                    a(href=`#` class="RsideEntry Hadith__Section" data-type=`hadith` data-hadith=`${hadith.hadithnumber}` data-book=`${this_hadith.number}`)= `الحديث رقم ${hadith.hadithnumber}`
+                        +favIcon(hadith.hadithnumber, fav_hadiths)
 
             // Tafsir Section ---------------------------------------------------
         else if mode === "TafsirChapter"
             for verse in this_chapter.verses
                 li
-                    a(href=`#` class="RsideEntry tafsirChapterSearch" data-verse=`${verse.verse}` data-chapter=`${chapter.chapter}`)= verse.verse
-                        i(class="fi fi-rs-heart heart")
+                    a(href=`#` class="RsideEntry tafsirChapterSearch" data-type=`verse` data-verse=`${verse.verse}` data-chapter=`${chapter.chapter}`)= verse.verse
+                        +favIcon(verse.verse, fav_verses)
 
         else if mode === "TafsirBooks"
             for chapter in all_chapters
                 li
-                    a(href=`/tafsir/book/${this_book}/chapters/${chapter.chapter}`  class="RsideEntry nosearch" data-chapter=`${chapter.chapter}`)= chapter.name
-                        i(class="fi fi-rs-heart heart")
+                    a(href=`/tafsir/book/${this_book}/chapters/${chapter.chapter}`  data-type=`chapter` class="RsideEntry nosearch" data-chapter=`${chapter.chapter}`)= chapter.name
+                        +favIcon(chapter.chapter, fav_chapters)

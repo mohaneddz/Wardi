@@ -7,8 +7,11 @@
 	.toggle {
 		//TODO : FIXED POSITION WHEN SCROLLING ( sticky / fixed )
 		position: fixed;
-		backdrop-filter: blur(10px);
-		background-color: rgba(#b0b3c0, 0.5);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 1rem;
+		background-color: rgba(#b0b3c0, 0.7);
 	}
 }
 
