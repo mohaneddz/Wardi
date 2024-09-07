@@ -1,0 +1,5 @@
+mixin favIcon(item, fav)
+    if fav && fav.includes(item)
+        i(class="fi fi-sr-heart heart")
+    else 
+        i(class="fi fi-rs-heart heart")

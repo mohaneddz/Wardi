@@ -765,6 +765,11 @@ body {
   position: relative;
   text-decoration: none;
 }
+.Lsidebar p {
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgba(176, 179, 192, 0.5411764706);
+}
 @media screen and (max-width: 1200px) {
   .Lsidebar {
     max-height: 7vh;
@@ -773,6 +778,7 @@ body {
     width: 97vw;
     align-items: center;
     padding: 0.5rem;
+    overflow-y: hidden;
   }
   .Lsidebar .Sidebar__title {
     width: 10rem;
@@ -800,6 +806,9 @@ body {
     align-items: center;
     justify-content: center;
     text-decoration: none;
+  }
+  .Lsidebar p {
+    display: none;
   }
 }
 @media screen and (max-width: 1000px) {
@@ -907,6 +916,11 @@ body {
   position: relative;
   text-decoration: none;
 }
+.Rsidebar p {
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgba(176, 179, 192, 0.5411764706);
+}
 @media screen and (max-width: 1200px) {
   .Rsidebar {
     max-height: 7vh;
@@ -915,6 +929,7 @@ body {
     width: 97vw;
     align-items: center;
     padding: 0.5rem;
+    overflow-y: hidden;
   }
   .Rsidebar .Sidebar__title {
     width: 10rem;
@@ -942,6 +957,9 @@ body {
     align-items: center;
     justify-content: center;
     text-decoration: none;
+  }
+  .Rsidebar p {
+    display: none;
   }
 }
 @media screen and (max-width: 1000px) {

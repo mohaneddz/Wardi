@@ -2,13 +2,13 @@
     .toggle
         i(class="fi fi-rr-menu-burger")
     if mode === 'HadithChapter'
-        h1.hadith__title= `الحديث رقم {${this_hadith.hadith.hadithnumber}}`
+        h1.hadith__title= `الحديث رقم {${this_book.hadith.hadithnumber}}`
         h2.hadith__start 13
-        p=this_hadith.hadith.text
+        p=this_book.hadith.text
         br
         .grades
-            if this_hadith.hadith.grades > 0
-                each grade in this_hadith.hadith.grades
+            if this_book.hadith.grades > 0
+                each grade in this_book.hadith.grades
                     p.grade=grade.grade
                     
     if mode ===  'HadithSection'

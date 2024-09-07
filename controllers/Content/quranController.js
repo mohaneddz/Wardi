@@ -31,7 +31,9 @@ export const getChapterView = catchAsync(async (req, res, next) => {
 	const this_chapter = await Chapter.findOne({ chapter: chapterNumber }).lean();
 
 	const user = req.user;
-	const fav_verses = user?.bookmarks?.fav_verses?.filter((aya) => aya.chapter === chapterNumber).map((aya) => aya.verse);
+	const fav_verses = user?.bookmarks?.fav_verses
+		?.filter((aya) => aya.chapter === chapterNumber)
+		.map((aya) => aya.verse);
 
 	if (!this_chapter) {
 		return next(new AppError('There is no Chapter with that Number.', 404));
@@ -56,13 +58,14 @@ export const getJuzView = catchAsync(async (req, res, next) => {
 
 	const chapterNumber = parseInt(req.params.chapter, 10) || this_juz[0].content[0].chapter;
 
-	let chapterName = await Chapter.findOne({ chapter: chapterNumber }).exec();
-	chapterName = chapterName ? chapterName.name : null;
+	let chapter = await Chapter.findOne({ chapter: chapterNumber }).select('name').lean();
+	let chapterName = chapter ? chapter.name : null;
 
 	const user = req.user;
 	const fav_chapters = user?.bookmarks?.fav_chapters?.map((chapter) => chapter.chapter);
 
 	const chapters = await Juz.aggregate([
+		// slow
 		{
 			$match: { juz: Number(req.params.juz) },
 		},
@@ -83,14 +86,24 @@ export const getJuzView = catchAsync(async (req, res, next) => {
 		},
 		{
 			$project: {
-				_id: 0,
 				chapter: 1,
-				text: 1,
 			},
 		},
 	]).exec();
 
-	const info = await Info.findOne();
+	const info = await Info.aggregate([
+		{
+			$project: {
+				arabicname: {
+					$map: {
+						input: '$chapters',
+						as: 'chapter',
+						in: '$$chapter.arabicname',
+					},
+				},
+			},
+		},
+	]);
 
 	if (!this_juz) {
 		return next(new AppError('There is no Juz with that Number.', 404));
@@ -115,22 +128,21 @@ export const getJuzView = catchAsync(async (req, res, next) => {
 // For the Quran Page View --------------------------------------------
 export const getPageView = catchAsync(async (req, res, next) => {
 	const user = req.user;
-	
+
 	// page_number = req.params.page
-	const pageNumber = req.params.page;
+	const pageNumber = parseInt(req.params.page, 10);
 	const this_page = await Page.findOne({ page_number: pageNumber }).sort({ chapter: 1, verses: 1 }).lean();
 	const allpages = await Page.find().select('page_number').sort({ page_number: 1 }).lean();
 	const chapter_info = await ChapterInfo.find().sort({ number: 1 }).lean();
 
-	const fav_pages = user?.bookmarks?.fav_pages?.map((page) => page.page_number);
+	const fav_pages = user?.bookmarks?.fav_pages?.map((page) => page.page);
 	const fav_verses = user?.bookmarks?.fav_verses
-		?.filter((aya) => this_page.verses.includes(aya.chapter))
+		?.filter((aya) => this_page.verses.some((verse) => verse.verse === aya.verse))
 		.map((aya) => aya.verse);
-	
+
 	if (!this_page) {
 		return next(new AppError('There is no Page with that Number.', 404));
 	}
-
 	res.status(200).render('Reading_Quran', {
 		title: `Page ${this_page.page_number}`,
 		pageNumber,

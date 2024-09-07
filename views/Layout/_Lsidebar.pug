@@ -1,8 +1,4 @@
-mixin favIcon(item, fav)
-    if fav && fav.includes(item)
-        i(class="fi fi-sr-heart heart")
-    else 
-        i(class="fi fi-rs-heart heart")
+include _mixin.pug
 
 .Lsidebar 
     .Sidebar__title
@@ -48,14 +44,16 @@ mixin favIcon(item, fav)
             // Hadith Section ---------------------------------------------------
         else if mode === "HadithChapter"
             each book in all_books
-                if book.name === this_hadith.name
+                if book.name === this_book.name
                     li
                         a(href=`/hadith/book/${book.name}/hadith/1` class="LsideEntry selectedEntry" data-book=`${book.number}` data-type=`hadith_book`)= book.metadata.name
-                            +favIcon(book.name, fav_books)
+                            +favIcon(book.number, fav_books)
                 else
                     li
                         a(href=`/hadith/book/${book.name}/hadith/1` class="LsideEntry" data-book=`${book.number}` data-type=`hadith_book`)= book.metadata.name
-                            +favIcon(book.name, fav_books)
+                            +favIcon(book.number, fav_books)
+            li
+                p Only books for your selected language are shown.
 
         else if mode === "HadithSection"
             -for(let index = 0; index < sectionsCount; index++)

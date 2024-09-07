@@ -214,7 +214,8 @@ async function removeBookmarkFromServer(type, object) {
 	}
 }
 
-async function favControl(event) {
+export async function favControl(event) {
+
 	if (event.target.classList.contains('heart')) {
 		event.preventDefault();
 		console.log('Clicked on heart icon');
@@ -252,10 +253,10 @@ async function favControl(event) {
 }
 
 // Event Listeners -------------------------
-sidesbtn.addEventListener('click', toggleSides);
-lsearch.addEventListener('input', searchSurah);
-rsearch.addEventListener('input', searchAya);
-// document.addEventListener('DOMContentLoaded', favCreate);
-document.querySelector('.Rsidebar ul').addEventListener('click', favControl);
-document.querySelector('.Lsidebar ul').addEventListener('click', favControl);
-document.querySelector('.Rsidebar ul').addEventListener('click', highlighter);
+sidesbtn?.addEventListener('click', toggleSides);
+lsearch?.addEventListener('input', searchSurah);
+rsearch?.addEventListener('input', searchAya);
+// document?.addEventListener('DOMContentLoaded', favCreate);
+document.querySelector('.Rsidebar ul')?.addEventListener('click', favControl);
+document.querySelector('.Lsidebar ul')?.addEventListener('click', favControl);
+document.querySelector('.Rsidebar ul')?.addEventListener('click', highlighter);
