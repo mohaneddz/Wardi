@@ -1,0 +1,248 @@
+.Bookmark {
+	grid-column: 1 / -1;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	width: 100%;
+	min-height: 80vh;
+
+	h2 {
+		font-size: 10rem;
+		font-weight: 600;
+		border-radius: 3rem;
+		margin-bottom: 1rem;
+		display: flex;
+		justify-content: center;
+		color: $tertiary-color;
+		background-color: $primary-color-dark;
+		padding: 2rem 8rem;
+		translate: 0 5rem;
+		text-shadow: 0 0 1rem rgba($tertiary-color, 0.8);
+		box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
+
+		&:hover {
+			transform: translateY(-1.5rem);
+			scale: 1.05;
+			box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
+		}
+	}
+
+	.Bookmark__Sections {
+		display: flex;
+		max-width: 100vw;
+		gap: 7rem;
+		flex-wrap: wrap;
+		justify-content: center;
+		background-color: $primary-color-light;
+		border-radius: 3rem;
+		margin-bottom: 10rem;
+		box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.65);
+		padding-top: 5rem;
+		&--link {
+			padding: 4rem;
+			margin: 7rem 4rem;
+			width: 30rem;
+			border-radius: 3rem;
+			background-color: $primary-color;
+			color: white;
+			text-align: center;
+			font-size: 6rem;
+			border: $primary-color-dark 0.15rem solid;
+			text-shadow: 0 0 1rem rgba(255, 251, 251, 0.8);
+			box-shadow:
+				0 2rem 3rem rgba(0, 0, 0, 0.2),
+				inset 0.25rem 0.5rem 0.5rem rgba(#334ca1, 0.3);
+			position: relative;
+			&:hover {
+				cursor: pointer;
+				transform: translateY(-1.1rem);
+				scale: 1.05;
+				background-color: $tertiary-color;
+				box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
+			}
+
+			&:active {
+				transform: translateY(0.5rem);
+				scale: 0.95;
+				background-color: $tertiary-color-dark;
+				box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
+			}
+		}
+		&--entry {
+			padding: 3rem;
+			margin: 5rem 3rem;
+			width: 35rem;
+			border-radius: 2.5rem;
+			background-color: $primary-color;
+			color: white;
+			text-align: center;
+			font-size: 5rem;
+			border: $primary-color-dark 0.15rem solid;
+			position: relative;
+			text-shadow: 0 0 1rem rgba(255, 251, 251, 0.8);
+			box-shadow:
+				0 1.5rem 2.5rem rgba(0, 0, 0, 0.2),
+				inset 0.2rem 0.4rem 0.4rem rgba(#334ca1, 0.3);
+
+			a.Delete {
+				i {
+					color: $tertiary-color;
+					text-decoration: none;
+					position: absolute;
+					top: 1rem;
+					right: 1rem;
+					font-size: 3rem;
+					text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.8);
+					&:hover {
+						color: $tertiary-color-dark;
+						scale: 1.3;
+					}
+				}
+			}
+
+			&:hover {
+				cursor: pointer;
+				transform: translateY(-1rem);
+				scale: 1.05;
+				background-color: $tertiary-color;
+				box-shadow: 0 0 6rem rgba(0, 0, 0, 0.8);
+			}
+
+			&:active {
+				transform: translateY(0.4rem);
+				scale: 0.95;
+				background-color: $tertiary-color-dark;
+				box-shadow: 0 0 6rem rgba(0, 0, 0, 0.8);
+			}
+		}
+	}
+
+	@media (max-width: 1600px) {
+		.Bookmark__Sections {
+			gap: 4rem;
+			width: 95vw;
+			&--link {
+				font-size: 5rem;
+				padding: 2.5rem;
+				width: 25rem;
+			}
+		}
+	}
+
+	@media (max-width: 1400px) {
+		.Bookmark__Sections {
+			gap: 3.5rem;
+			width: 95vw;
+			&--link {
+				font-size: 4.5rem;
+				padding: 2rem;
+				width: 22rem;
+			}
+		}
+	}
+
+	@media (max-width: 1220px) {
+		.Bookmark__Sections {
+			gap: 1rem;
+			width: 95vw;
+		}
+		&--link {
+			font-size: 3rem;
+			padding: 2rem;
+			width: 10rem;
+			margin: 3.5rem 2.5rem;
+		}
+		h2 {
+			font-size: 8rem;
+			margin-bottom: 1rem;
+			padding: 1.5rem 5rem;
+			translate: 0 4.5rem;
+			margin: 3rem 2rem;
+		}
+	}
+
+	@media (max-width: 1000px) {
+		.Bookmark__Sections {
+			width: 95vw;
+			&--link {
+				width: 18rem;
+			}
+		}
+	}
+
+	@media (max-width: 900px) {
+		padding: 0;
+		.Bookmark__Sections {
+			&--link {
+				font-size: 3rem;
+				width: 16rem;
+				margin: 3rem 2rem;
+			}
+		}
+		h2 {
+			font-size: 6rem;
+			padding: 1.5rem 5rem;
+			translate: 0 3.5rem;
+			margin: 2.25rem 1.5rem;
+		}
+	}
+
+	@media (max-width: 660px) {
+		.Bookmark__Sections {
+			gap: 0.5rem;
+			&--link {
+				font-size: 2.25rem;
+				padding: 0.5rem 2.5rem;
+				width: 13rem;
+			}
+		}
+	}
+
+	@media (max-width: 500px) {
+		.Bookmark__Sections {
+			flex-direction: column;
+			align-items: center;
+			max-width: 70vw;
+			&--link {
+				font-size: 4rem;
+				padding: 3rem 4rem;
+				width: 20rem;
+			}
+			h2 {
+				font-size: 8rem;
+				padding: 2rem 5rem;
+				translate: 0 3.5rem;
+				margin: 3rem 2.5rem;
+			}
+		}
+	}
+}
+
+.mainBookmarks {
+	@media (max-width: 1400px) {
+		padding: 0;
+	}
+}
+
+a.DeleteAll {
+	position: fixed;
+	bottom: 2rem;
+	right: 2rem;
+	padding: 2rem;
+	border-radius: 30rem;
+	background-color: $tertiary-color;
+	color: white;
+	font-size: 4rem;
+	&:hover {
+		background-color: $tertiary-color-dark;
+		scale: 1.1;
+		cursor: pointer;
+	}
+	i {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

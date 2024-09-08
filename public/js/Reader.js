@@ -11,8 +11,7 @@ const lsearchbtn = document.querySelector('.LsearchButton');
 const rsearchbtn = document.querySelector('.RsearchButton');
 const lsearch = document.querySelector('.Lsearch');
 const rsearch = document.querySelector('.Rsearch');
-const menubtn = document.querySelector('.header__menu a i');
-const menu = document.querySelector('.Menusidebar');
+
 
 // temporary using this to store the favorite verses
 const favoriteVerses = new Set();
@@ -129,21 +128,6 @@ function tafsirHighlighter(event) {
 
 // ----------------------------------------------
 
-function toggleMenu(e) {
-	e.preventDefault(); // Prevent the default anchor behavior
-	const parent = menubtn.parentElement;
-
-	menu.classList.toggle('open');
-	menubtn.classList.toggle('active');
-
-	if (parent.classList.contains('active')) {
-		parent.classList.remove('active');
-		menubtn.className = 'fi fi-rr-menu-burger';
-	} else {
-		parent.classList.add('active');
-		menubtn.className = 'fi fi-rr-cross';
-	}
-}
 
 function toggleSides() {
 	lsidebar.classList.toggle('active');
@@ -275,4 +259,3 @@ rsearch?.addEventListener('input', searchAya);
 document.querySelector('.Rsidebar ul')?.addEventListener('click', favControl);
 document.querySelector('.Rsidebar ul')?.addEventListener('click', highlighter);
 document.querySelector('.Lsidebar ul')?.addEventListener('click', favControl);
-menubtn.addEventListener('click', toggleMenu);

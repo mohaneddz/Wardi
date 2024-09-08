@@ -10,7 +10,8 @@ const router = express.Router();
 router.get('/signup', userController.redirect, userController.signupView).post('/signup', authController.signup);
 router.get('/login', userController.redirect, userController.loginView).post('/login', authController.login);
 router.get('/logout', authController.logout);
-router.post('/bookmarks', userController.addBookmark).delete('/bookmarks', userController.removeBookmark);
+router.get('/bookmarks/:type', userController.getBookmarks);
+router.get('/bookmarks', userController.bookmarksView).post('/bookmarks', userController.addBookmark).delete('/bookmarks', userController.removeBookmark);
 router.get('/me', userController.getUserPage).patch(
 	'/me',
 	userController.uploadUserPhoto,
@@ -18,6 +19,9 @@ router.get('/me', userController.getUserPage).patch(
 	authController.updatePassword,
 	userController.updateMe
 );
+router.delete('/bookmarks/:type/:info1/:info2?',userController.labelRemovalBookmarks ,userController.removeBookmark);
+
+
 // router.get('/bookmarks', userController.getBookmarksView).post('/bookmarks', authController.isLoggedIn, userController.addBookmark);
 // Password Reset Routes ------------------------------------------------
 

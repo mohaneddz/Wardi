@@ -1,0 +1,12 @@
+.Bookmark
+    h2= title
+    .Bookmark__Sections
+
+        for bookmark in bookmarks
+            .Bookmark__Sections--entry
+                a(href=bookmark.url)= `${info1} ${bookmark.info1}`
+                if info2
+                    p= `${info2} ${bookmark.info2}`
+                a(href=`/deletebookmark/${bookmark._id}` class="Delete" data-type=title data-info1=info1 data-info2=info2)
+                    i(class="fi fi-sr-trash")
+        
