@@ -4,6 +4,10 @@ import catchAsync from '../utils/catchAsync.js';
 import AppError from '../utils/appError.js';
 
 export const getLanding = catchAsync(async (req, res, next) => {
+	
+	const user = req.user
+	const fav_chapters = user?.bookmarks?.fav_chapters?.map((chapter) => chapter.chapter) || [];
+
 	const chapters = await Chapter.aggregate([
 		{
 			$project: {
@@ -24,5 +28,6 @@ export const getLanding = catchAsync(async (req, res, next) => {
 	res.status(200).render('Home', {
 		title: 'Landing',
 		chapters,
+		fav_chapters,
 	});
 });

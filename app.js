@@ -25,6 +25,7 @@ import userRouter from './routers/userRoutes.js';
 import viewRouter from './routers/viewRoutes.js';
 import { fileURLToPath } from 'url';
 
+import * as authController from './controllers/authController.js';
 // Initial Variables-------------------------
 
 const __filename = fileURLToPath(import.meta.url);
@@ -72,6 +73,7 @@ app.use(compression());
 
 // // Setting the routes //////////////////////////////
 
+app.use(authController.isLoggedIn);
 app.use('/', viewRouter); // view routes
 app.use('/quran', quranRouter); // quran routes
 app.use('/hadith', hadithRouter); // hadith routes

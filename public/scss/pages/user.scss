@@ -64,7 +64,7 @@
 						display: none;
 					}
 					&:focus {
-						border-color: $primary-color;
+						border-color: $tertiary-color-dark;
 						outline: none;
 					}
 				}
@@ -85,10 +85,12 @@
 					border: 2px solid $primary-color;
 					width: 100px;
 					height: 100px;
+					position: relative; 
 					&:hover {
 						cursor: pointer;
 						box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-						scale: 1.1;
+						scale: 1.2;
+						opacity: 1;
 					}
 				}
 
@@ -119,7 +121,7 @@
 				}
 				&:active {
 					background-color: $acrive-color;
-					scale: .95;
+					scale: 0.95;
 				}
 				&.logout {
 					background-color: $error;
@@ -130,7 +132,7 @@
 					}
 					&:active {
 						background-color: $error-saturated;
-						scale: .95;
+						scale: 0.95;
 					}
 				}
 			}
@@ -170,4 +172,53 @@
 			font-size: 6rem;
 		}
 	}
+}
+
+
+.user__info--photo {
+    position: relative; 
+    display: inline-block;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 180px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+	bottom: 70%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none; 
+    white-space: nowrap;
+}
+
+.user__info--photo:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.profile-img {
+    border-radius: 50%;
+    border: 2px solid $primary-color;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
 }

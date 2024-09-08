@@ -104,6 +104,10 @@ body {
   text-shadow: 0.4rem 0.4rem 2rem rgba(199, 35, 120, 0.452);
   color: #c72378;
 }
+.title h1:active {
+  transform: scale(0.9);
+  color: #9c1b5e;
+}
 .title h2 {
   display: flex;
   justify-content: center;
@@ -114,11 +118,16 @@ body {
   text-shadow: 0.2rem 0.2rem 0.2rem rgba(199, 35, 120, 0.5);
   max-width: 100%;
   padding: 0 1rem;
+  cursor: pointer;
 }
 .title h2:hover {
   transform: scale(1.2) translateY(-0.5rem);
   text-shadow: 0.4rem 0.4rem 2rem rgba(176, 181, 201, 0.452);
   color: #b0b5c9;
+}
+.title h2:active {
+  transform: scale(0.9);
+  color: #9299b4;
 }
 
 .Lsidebar h1,
@@ -225,6 +234,10 @@ body {
     scale: 1;
   }
 }
+* {
+  transition: all 0.15s ease;
+}
+
 .books__card {
   display: flex;
   flex-direction: column;
@@ -385,6 +398,7 @@ body {
   right: 5%;
   color: #c72378;
   text-decoration: none;
+  z-index: 50;
 }
 .cards > *:hover {
   transform: scale(1.1);
@@ -618,6 +632,21 @@ body {
 .header nav ul li.header__search:hover * {
   color: white;
 }
+.header nav ul li.header__user--image {
+  transform: none;
+}
+.header nav ul li.header__user--image img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+  margin-left: -1.5rem;
+  transform: translateY(1rem);
+}
+.header nav ul li.header__user--image:hover {
+  scale: 1.2;
+  transform: translateY(-0.2rem);
+}
 .header nav ul li a, .header nav ul li:visited {
   text-decoration: none;
   color: #c72378;
@@ -752,6 +781,7 @@ body {
   position: relative;
   height: 88.5vh;
   max-width: 20vw;
+  opacity: 0;
 }
 .Lsidebar h1 {
   font-size: 4rem;
@@ -838,6 +868,7 @@ body {
   justify-content: start;
   align-content: center;
   gap: 1rem;
+  opacity: 1;
 }
 .Lsidebar .search {
   display: flex;
@@ -903,6 +934,7 @@ body {
   position: relative;
   height: 88.5vh;
   max-width: 20vw;
+  opacity: 0;
 }
 .Rsidebar h1 {
   font-size: 4rem;
@@ -989,6 +1021,7 @@ body {
   justify-content: start;
   align-content: center;
   gap: 1rem;
+  opacity: 1;
 }
 .Rsidebar .search {
   display: flex;
@@ -1308,10 +1341,10 @@ body {
   box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
 }
 .alert--success {
-  background-color: #c72378;
+  background-color: #5cb85c;
 }
 .alert--error {
-  background-color: #f53b57;
+  background-color: #c72378;
 }
 
 .Loginpage, .Signuppage {
@@ -1706,7 +1739,7 @@ body main .cards {
 .user form .user__info--bookmarks select:focus, .user form .user__info--password input:focus,
 .user form .user__info--password select:focus, .user form .user__info--confirm_password input:focus,
 .user form .user__info--confirm_password select:focus {
-  border-color: #0D142C;
+  border-color: #9c1b5e;
   outline: none;
 }
 .user form .user__info--photo p, .user form .user__info--username p, .user form .user__info--email p, .user form .user__info--bookmarks p, .user form .user__info--password p, .user form .user__info--confirm_password p {
@@ -1724,11 +1757,13 @@ body main .cards {
   border: 2px solid #0D142C;
   width: 100px;
   height: 100px;
+  position: relative;
 }
 .user form .user__info--photo img:hover, .user form .user__info--username img:hover, .user form .user__info--email img:hover, .user form .user__info--bookmarks img:hover, .user form .user__info--password img:hover, .user form .user__info--confirm_password img:hover {
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  scale: 1.1;
+  scale: 1.2;
+  opacity: 1;
 }
 .user form .user__info--photo input[type=file], .user form .user__info--username input[type=file], .user form .user__info--email input[type=file], .user form .user__info--bookmarks input[type=file], .user form .user__info--password input[type=file], .user form .user__info--confirm_password input[type=file] {
   padding: 0;
@@ -1800,6 +1835,54 @@ body main .cards {
   .user h2 {
     font-size: 6rem;
   }
+}
+
+.user__info--photo {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 180px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 70%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.user__info--photo:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.profile-img {
+  border-radius: 50%;
+  border: 2px solid #0D142C;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -5,7 +5,6 @@
 	position: relative;
 	@include reader();
 	.toggle {
-		//TODO : FIXED POSITION WHEN SCROLLING ( sticky / fixed )
 		position: fixed;
 		display: flex;
 		justify-content: center;

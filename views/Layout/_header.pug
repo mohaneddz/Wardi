@@ -24,7 +24,9 @@ header.header
             if !user
                 +navItem('header__user', '/user/me', '', 'fi fi-rs-user')
             else
-                +navItem('header__user', '/user/me', '', 'fi fi-rs-user')
+                li.header__user--image
+                    a(href='/user/me' )
+                        img(src=`/img/users/${user.photo}`, alt='Logo') 
 
             +navItem('header__menu', '#', '', 'fi fi-rr-menu-burger')
 

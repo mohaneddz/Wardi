@@ -34,8 +34,7 @@ export const createSendToken = (user, statusCode, req, res) => {
 
 // Basic Auth Functions ------------------------------------------------
 
-export const signup = 
-catchAsync(async (req, res, next) => {
+export const signup = catchAsync(async (req, res, next) => {
 	// Trying to create a new user 🤷‍♂️
 	const newUser = await User.create({
 		username: req.body.username,
@@ -133,6 +132,7 @@ export const isLoggedIn = async (req, res, next) => {
 			return next();
 		}
 	}
+
 	next();
 };
 
@@ -206,13 +206,15 @@ export const resetPassword = catchAsync(async (req, res, next) => {
 });
 
 export const updatePassword = catchAsync(async (req, res, next) => {
+	if (!req.body.password || !req.body.newPassword) return next();
+
 	const user = await User.findById(req.user.id).select('+password');
 
-	if (!(await user.correctPassword(req.body.passwordCurrent, user.password)))
+	if (!(await user.correctPassword(req.body.password, user.password)))
 		return next(new AppError('Your current password is wrong.', 401));
 
 	user.password = req.body.password;
-	user.passwordConfirm = req.body.passwordConfirm;
+	user.passwordConfirm = req.body.password;
 	await user.save();
 
 	createSendToken(user, 200, req, res);

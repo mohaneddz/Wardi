@@ -18,10 +18,6 @@ export const getBooksView = catchAsync(async (req, res) => {
 	const user = req.user;
 	const fav_books = user?.bookmarks?.fav_books_hadiths?.map((book) => book.book) || [];
 
-	console.log(user);
-	console.log(user.bookmarks);
-	console.log(user.bookmarks.fav_books_hadiths);
-
 	const books = await Hadith.aggregate([
 		{
 			$project: {

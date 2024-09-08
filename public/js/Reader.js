@@ -11,6 +11,8 @@ const lsearchbtn = document.querySelector('.LsearchButton');
 const rsearchbtn = document.querySelector('.RsearchButton');
 const lsearch = document.querySelector('.Lsearch');
 const rsearch = document.querySelector('.Rsearch');
+const menubtn = document.querySelector('.header__menu a i');
+const menu = document.querySelector('.Menusidebar');
 
 // temporary using this to store the favorite verses
 const favoriteVerses = new Set();
@@ -26,7 +28,7 @@ function highlighter(event) {
 		entry.classList.remove('selectedEntry');
 	});
 
-	if (!event.target || !event.target.matches('.RsideEntry') ) return;
+	if (!event.target || !event.target.matches('.RsideEntry')) return;
 	event.preventDefault();
 
 	// Step 2: Highlight the clicked sidebar entry
@@ -108,7 +110,6 @@ function tafsirHighlighter(event) {
 
 	// Step 4: Locate the verse element in the Quran reader
 	const verseElement = document.querySelector(`[data-verse='${verseNumber}'][data-chapter='${chapter}']`);
-	console.log(verseElement, verseNumber, chapter);
 
 	// Check if the verse element exists
 	if (verseElement) {
@@ -127,6 +128,22 @@ function tafsirHighlighter(event) {
 }
 
 // ----------------------------------------------
+
+function toggleMenu(e) {
+	e.preventDefault(); // Prevent the default anchor behavior
+	const parent = menubtn.parentElement;
+
+	menu.classList.toggle('open');
+	menubtn.classList.toggle('active');
+
+	if (parent.classList.contains('active')) {
+		parent.classList.remove('active');
+		menubtn.className = 'fi fi-rr-menu-burger';
+	} else {
+		parent.classList.add('active');
+		menubtn.className = 'fi fi-rr-cross';
+	}
+}
 
 function toggleSides() {
 	lsidebar.classList.toggle('active');
@@ -215,10 +232,8 @@ async function removeBookmarkFromServer(type, object) {
 }
 
 export async function favControl(event) {
-
 	if (event.target.classList.contains('heart')) {
 		event.preventDefault();
-		console.log('Clicked on heart icon');
 		// DOM elements
 		const heart = event.target;
 		const btn = heart.parentElement;
@@ -260,3 +275,4 @@ rsearch?.addEventListener('input', searchAya);
 document.querySelector('.Rsidebar ul')?.addEventListener('click', favControl);
 document.querySelector('.Rsidebar ul')?.addEventListener('click', highlighter);
 document.querySelector('.Lsidebar ul')?.addEventListener('click', favControl);
+menubtn.addEventListener('click', toggleMenu);

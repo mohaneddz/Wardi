@@ -1,6 +1,8 @@
 extends ./Layout/_base
+include ./Layout/_mixin
 
 block append head
+  script(src="/js/Home.js" defer type="module")
   - var title = 'Quran Reading'
   - var bodyClass = 'Home'
   - var mainClass = 'mainHome'
@@ -26,5 +28,5 @@ block content
                     p.cards__surah__info__ayat #{chapter.verses.length} آيات
                     p.cards__surah__info__type #{chapter.info.revelation}
                     p.cards__surah__info__fav
-                        a(href="#")
-                            i(class="fi fi-rs-heart")
+                        a(data-type='chapter' data-chapter=`${chapter.chapter}` )
+                            +favIcon(chapter.chapter, fav_chapters)

@@ -7,39 +7,30 @@ const router = express.Router();
 // Just like an API, we can create a route for the user ( I can't be more creative ) -------------------------
 
 // Basic Auth Routes ------------------------------------------------
-
-router.get('/signup', authController.isLoggedIn, userController.redirect, userController.signupView).post(
-	'/signup',
-	authController.signup
-);
-router.get('/login', authController.isLoggedIn, userController.redirect, userController.loginView).post(
-	'/login',
-	authController.login
-);
+router.get('/signup', userController.redirect, userController.signupView).post('/signup', authController.signup);
+router.get('/login', userController.redirect, userController.loginView).post('/login', authController.login);
 router.get('/logout', authController.logout);
-router.post('/bookmarks', authController.isLoggedIn, userController.addBookmark).delete(
-	'/bookmarks',
-	authController.isLoggedIn,
-	userController.removeBookmark
-);
-router.get('/me', authController.isLoggedIn, userController.getUserPage).patch(
+router.post('/bookmarks', userController.addBookmark).delete('/bookmarks', userController.removeBookmark);
+router.get('/me', userController.getUserPage).patch(
 	'/me',
-	authController.isLoggedIn,
+	userController.uploadUserPhoto,
+	userController.resizeUserPhoto,
+	authController.updatePassword,
 	userController.updateMe
 );
 // router.get('/bookmarks', userController.getBookmarksView).post('/bookmarks', authController.isLoggedIn, userController.addBookmark);
 // Password Reset Routes ------------------------------------------------
 
-router.post('/forgotPassword', authController.forgotPassword);
-router.patch('/resetPassword/:token', authController.resetPassword);
+// router.post('/forgotPassword', authController.forgotPassword);
+// router.patch('/resetPassword/:token', authController.resetPassword);
 
 // Protect all routes after this middleware ------------------------------------------------
 
-router.use(authController.protect); // user must be logged in to access the routes below
+// router.use(authController.protect); // user must be logged in to access the routes below
 
 // Update Password ------------------------------------------------
 
-router.patch('/updateMyPassword', authController.updatePassword);
+// router.patch('/updateMyPassword', authController.updatePassword);
 
 // for API -----
 // router.get('/me', userController.getMe, userController.getUser);

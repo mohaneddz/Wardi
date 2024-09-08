@@ -19,6 +19,10 @@ body {
 		&:hover {
 			@include baseHover($tertiary-color);
 		}
+		&:active {
+			transform: scale(0.9);
+			color: $tertiary-color-dark;
+		}
 	}
 
 	h2 {
@@ -31,8 +35,13 @@ body {
 		text-shadow: 0.2rem 0.2rem 0.2rem rgba($tertiary-color, 0.5);
 		max-width: 100%;
 		padding: 0 1rem;
+		cursor: pointer;
 		&:hover {
 			@include baseHover($secondary-color);
+		}
+		&:active {
+			transform: scale(0.9);
+			color: $secondary-color-dark;
 		}
 	}
 }

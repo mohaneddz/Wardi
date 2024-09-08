@@ -1,15 +1,16 @@
 .user
     h2 My Account
 
-    form
+    form(enctype="multipart/form-data")
         .user__info
             .user__info--photo
                 h3 Profile Picture: 
                 if user.photo !== ""
-                    img(src=`/img/users/${user.photo}` alt='Profile photo' width="50" height="50" onclick="document.getElementById('photoInput').click()")
+                    img(src=`/img/users/${user.photo}` alt='Profile photo' width="100" height="100" onclick="document.getElementById('photoInput').click()" class="profile-img")
                 else 
-                    img(src='/img/default-user.png' alt='Profile photo' width="50" height="50" onclick="document.getElementById('photoInput').click()")
-                input(type="file" name="photo" id="photoInput" style="display: none;")
+                    img(src='/img/default-user.png' alt='Profile photo' width="100" height="100" onclick="document.getElementById('photoInput').click()" class="profile-img")
+                input(type="file" name="photo" id="photoInput" style="display: none;" accept="image/*")
+                span.tooltip-text Click to change your profile picture.
             .user__info--username
                 h3 Username: 
                 input(type="text" name="username" value=user.username required id="username")
@@ -24,6 +25,12 @@
                 h3 New Password: 
                 input(type="password" name="newPassword" placeholder="Enter a new password" minlength="8" id="newPassword")
 
+            .user__info--bookmarks
+                h3 Bookmarks
+                a(href=`/user/bookmarks` class="buttonlike" id="bookmarksbtn") View Your Bookmarks
+
+            hr
+            
             //- .user__info--preferences
             //-     h3 Preferences
             //-     label(for="theme") Theme: 
@@ -35,13 +42,7 @@
             //- select(name="prefrences[language]" id="language")
             //-     option(value="en" selected=user.prefrences.language === 'en') English
             //-     option(value="ar" selected=user.prefrences.language === 'ar') Arabic
-            .user__info--bookmarks
-                h3 Bookmarks
-                a(href=`/user/bookmarks` class="buttonlike" id="bookmarksbtn") View Your Bookmarks
 
-            hr
-            
+
             button(id="save" class="buttonlike") Save Changes
             button(id="logout" class="buttonlike logout") Logout
-
-

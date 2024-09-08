@@ -33,8 +33,7 @@ userSchema.pre(/^find/, function (next) {
 // Adding the Methods to the Schema ------------------------------------------
 
 userSchema.methods.correctPassword = async function (candidatePassword, userPassword) {
-	// return await bcrypt.compare(candidatePassword, userPassword); // TODO : Return the encrypted password, once real data is available
-	return candidatePassword === userPassword;
+	return await bcrypt.compare(candidatePassword, userPassword);
 };
 
 userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
@@ -100,7 +99,6 @@ userSchema.methods.addBookmark = async function (type, object) {
 		default:
 			throw new Error('Invalid bookmark type');
 	}
-	console.log(this.bookmarks);
 	await this.save({ validateBeforeSave: false });
 };
 

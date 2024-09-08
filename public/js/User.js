@@ -1,11 +1,12 @@
 'use strict';
+import { showAlert } from './Alert.js';
 
 // DOM Elements --------------------------------
 const in_username = document.querySelector('#username');
 const in_email = document.querySelector('#email');
 const in_password = document.querySelector('#password');
-const in_passwordConfirm = document.querySelector('#passwordConfirm');
-const in_image = document.querySelector('#image');
+const in_newPassword = document.querySelector('#newPassword');
+const in_photo = document.querySelector('#photoInput');
 
 const form = document.querySelector('.form');
 const savebtn = document.querySelector('#save');
@@ -19,47 +20,58 @@ function updateUser(e) {
 	const username = in_username?.value;
 	const email = in_email?.value;
 	const password = in_password?.value;
-	const passwordConfirm = in_passwordConfirm?.value;
-	const image = in_image?.files[0];
+	const newPassword = in_newPassword?.value;
+	const image = in_photo?.files[0];
 
-	// using axios
+	// Create a FormData object to handle the file upload
+	const formData = new FormData();
+
+	// Append form fields to FormData
+	if (username) formData.append('username', username);
+	if (email) formData.append('email', email);
+	if (password) formData.append('password', password);
+	if (newPassword) formData.append('newPassword', newPassword);
+	if (image) formData.append('photo', image); // Append the file with the correct key 'photo'
+
+	// Make the request using Axios
 	axios({
 		method: 'PATCH',
 		url: '/user/me',
-		data: {
-			username,
-			email,
-			password,
-			passwordConfirm,
-			image,
+		data: formData,
+		headers: {
+			'Content-Type': 'multipart/form-data', // Set the appropriate headers
 		},
 	})
 		.then((res) => {
 			if (res.data.status === 'success') {
-				alert('User updated successfully');
-				location.assign('/user/me');
+				showAlert('success', 'User updated successfully');
+				window.setTimeout(() => {
+					location.assign('/user/me');
+				}, 1500);
 			}
 		})
 		.catch((err) => {
-			alert('Error updating user');
+			showAlert('error', err.message);
 			console.log(err);
 		});
 }
 
 function logout(e) {
-    e.preventDefault();
+	e.preventDefault();
 	axios({
 		method: 'GET',
 		url: '/user/logout',
 	})
 		.then((res) => {
 			if (res.data.status === 'success') {
-				alert('Logged out successfully');
-				location.assign('/user/login');
+				showAlert('success', 'Logged out successfully');
+				window.setTimeout(() => {
+					location.assign('/user/login');
+				}, 1500);
 			}
 		})
 		.catch((err) => {
-			alert('Error logging out');
+			showAlert(`error', 'Error, ${err.message}`);
 			console.log(err);
 		});
 }

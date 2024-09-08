@@ -78,16 +78,10 @@ export const updateMe = catchAsync(async (req, res, next) => {
 		return next(new AppError('User not found', 404));
 	}
 
-	if (req.body.password !== '' && req.body.passwordConfirm !== '') {
-		updatePassword(req, res, next);
-	}
+	const filteredBody = filterObj(req.body, 'username', 'email');
+	if (req.file) filteredBody.photo = req.file.filename;
 
-	const allowedFields = ['email', 'username'];
-	const updates = filterObj(req.body, ...allowedFields);
-
-	if (req.file) updates.photo = req.file.filename;
-
-	const updatedUser = await User.findByIdAndUpdate(req.user.id, updates, {
+	const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
 		new: true,
 		runValidators: true,
 	});
@@ -168,13 +162,15 @@ export const uploadUserPhoto = upload.single('photo');
 export const resizeUserPhoto = catchAsync(async (req, res, next) => {
 	if (!req.file) return next();
 
-	req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
+	const filename = `user-${req.user.id}-${Date.now()}.jpeg`;
 
 	await sharp(req.file.buffer)
 		.resize(500, 500)
 		.toFormat('jpeg')
 		.jpeg({ quality: 90 })
-		.toFile(`public/img/users/${req.file.filename}`);
+		.toFile(`public/img/users/${filename}`);
+
+	req.file.filename = filename;
 
 	next();
 });
