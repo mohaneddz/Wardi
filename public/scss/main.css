@@ -77,6 +77,10 @@ body {
   background-position: center;
 }
 
+::-moz-selection {
+  background-color: #ced1de;
+}
+
 ::selection {
   background-color: #ced1de;
 }
@@ -321,7 +325,9 @@ body {
   color: white;
   position: relative;
   padding: 2rem 3rem;
+  min-width: -moz-min-content;
   min-width: min-content;
+  min-height: -moz-min-content;
   min-height: min-content;
   border-radius: 1rem;
   margin: 1rem;
@@ -433,7 +439,8 @@ body {
   transition: all 0.3s;
   background-color: rgba(36, 56, 123, 0.2);
   border-radius: 1rem;
-  backdrop-filter: blur(1rem);
+  -webkit-backdrop-filter: blur(1rem);
+          backdrop-filter: blur(1rem);
 }
 .LsideEntry i:hover,
 .RsideEntry i:hover {
@@ -480,7 +487,9 @@ body {
 
 .resizable {
   min-width: 20rem;
+  height: -moz-fit-content;
   height: fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   max-width: 100rem;
   max-height: 100rem;
@@ -646,7 +655,8 @@ body {
   gap: 2rem;
   padding-top: 4rem;
   z-index: 5;
-  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
 }
 .header nav ul.Menusidebar li {
   transform: translateX(5rem);
@@ -1070,7 +1080,8 @@ body {
   bottom: 2%;
   right: 45%;
   opacity: 0.5;
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   background-color: rgba(176, 179, 192, 0.5);
 }
 
@@ -1294,7 +1305,6 @@ body {
   position: fixed;
   top: 0;
   left: 50%;
-  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   z-index: 9999;
   color: #fff;
@@ -1304,7 +1314,6 @@ body {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   padding: 1.6rem 15rem;
-  -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
   box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
 }
 .alert--success {
@@ -1314,24 +1323,24 @@ body {
   background-color: #f53b57;
 }
 
-.Loginpage, .Signuppage {
+.Loginpage {
   display: grid;
   grid-template-rows: auto 1fr;
-  margin-top: -10rem;
 }
 
-.mainLoginpage, .mainSignuppage {
+.mainLoginpage {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: repeat(8, 1fr);
 }
 
-.Login, .Singup {
+.Login {
   display: flex;
   grid-column: 2/8;
   justify-content: start;
   align-items: center;
   flex-direction: column;
+  background-color: #0d142c;
   color: #c72378;
   font-size: 1.6rem;
   height: 70%;
@@ -1339,27 +1348,28 @@ body {
   padding: 2rem;
   z-index: 1;
 }
-.Login h1, .Singup h1 {
+.Login h1 {
   font-size: 10rem;
   margin-bottom: 2rem;
   text-shadow: 0 0 1rem rgba(0, 0, 0, 0.8);
 }
-.Login img, .Singup img {
+.Login img {
   width: 10rem;
   height: 10rem;
   border-radius: 100rem;
 }
-.Login form, .Singup form {
+.Login form {
   background-color: #24387b;
   padding: 4rem 6rem;
   border-radius: 1rem;
-  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
+  width: -moz-max-content;
   width: max-content;
 }
-.Login form div, .Singup form div {
+.Login form div {
   margin-bottom: 2rem;
 }
-.Login form div label, .Singup form div label {
+.Login form div label {
   display: block;
   margin-bottom: 1rem;
   font-size: 2.5rem;
@@ -1367,11 +1377,8 @@ body {
   font-weight: 700;
   text-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
 }
-.Login form div input[type=username],
 .Login form div input[type=email],
-.Login form div input[type=password], .Singup form div input[type=username],
-.Singup form div input[type=email],
-.Singup form div input[type=password] {
+.Login form div input[type=password] {
   width: 100%;
   padding: 1rem 1.5rem;
   font-size: 2.4rem;
@@ -1379,46 +1386,31 @@ body {
   border-radius: 0.5rem;
   color: #9c1b5e;
 }
-.Login form div input[type=username]::placeholder,
-.Login form div input[type=email]::placeholder,
-.Login form div input[type=password]::placeholder, .Singup form div input[type=username]::placeholder,
-.Singup form div input[type=email]::placeholder,
-.Singup form div input[type=password]::placeholder {
-  color: rgba(156, 27, 94, 0.5);
-  font-size: 1.5rem;
-}
-.Login form div input[type=username]:focus,
 .Login form div input[type=email]:focus,
-.Login form div input[type=password]:focus, .Singup form div input[type=username]:focus,
-.Singup form div input[type=email]:focus,
-.Singup form div input[type=password]:focus {
+.Login form div input[type=password]:focus {
   outline: none;
   border-color: #c72378;
 }
-.Login form div input[type=username]:invalid, .Login form div input[type=username]:empty,
 .Login form div input[type=email]:invalid,
-.Login form div input[type=email]:empty,
-.Login form div input[type=password]:invalid,
-.Login form div input[type=password]:empty, .Singup form div input[type=username]:invalid, .Singup form div input[type=username]:empty,
-.Singup form div input[type=email]:invalid,
-.Singup form div input[type=email]:empty,
-.Singup form div input[type=password]:invalid,
-.Singup form div input[type=password]:empty {
+.Login form div input[type=password]:invalid {
   border-color: #c72378;
   box-shadow: 0 0 15px #c72378;
   border-width: 2px;
 }
-.Login form div input[type=username]:valid:not(:placeholder-shown),
-.Login form div input[type=email]:valid:not(:placeholder-shown),
-.Login form div input[type=password]:valid:not(:placeholder-shown), .Singup form div input[type=username]:valid:not(:placeholder-shown),
-.Singup form div input[type=email]:valid:not(:placeholder-shown),
-.Singup form div input[type=password]:valid:not(:placeholder-shown) {
+.Login form div input[type=email]:valid:not(:-moz-placeholder-shown), .Login form div input[type=password]:valid:not(:-moz-placeholder-shown) {
   border-width: 2px;
   border-color: green;
   box-shadow: 0 0 5px green;
   color: rgb(2, 100, 2);
 }
-.Login form div input[type=submit], .Singup form div input[type=submit] {
+.Login form div input[type=email]:valid:not(:placeholder-shown),
+.Login form div input[type=password]:valid:not(:placeholder-shown) {
+  border-width: 2px;
+  border-color: green;
+  box-shadow: 0 0 5px green;
+  color: rgb(2, 100, 2);
+}
+.Login form div input[type=submit] {
   width: 100%;
   padding: 1.5rem 2rem;
   font-size: 3rem;
@@ -1428,23 +1420,23 @@ body {
   border-radius: 0.5rem;
   cursor: pointer;
 }
-.Login form div input[type=submit]:hover, .Singup form div input[type=submit]:hover {
+.Login form div input[type=submit]:hover {
   background-color: #070b18;
   scale: 1.1;
   transition: all 0.2s;
   box-shadow: 0 0 15px rgba(1, 2, 5, 0.4);
 }
-.Login form div input[type=submit]:active, .Singup form div input[type=submit]:active {
+.Login form div input[type=submit]:active {
   background-color: #364167;
   scale: 0.95;
   transition: all 0.2s;
   box-shadow: 0 0 15px rgba(1, 2, 5, 0.4);
 }
-.Login form div.password-container, .Singup form div.password-container {
+.Login form div.password-container {
   margin-bottom: 5rem;
 }
 @media screen and (max-width: 500px) {
-  .Login h1, .Singup h1 {
+  .Login h1 {
     font-size: 8rem;
   }
 }
@@ -1457,8 +1449,6 @@ body {
   border-radius: 1rem;
   z-index: -1;
   translate: 0 -3rem;
-  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
-  text-shadow: 0 0 1rem rgba(0, 0, 0, 0.8);
 }
 .lower a {
   color: #9c1b5e;
@@ -1524,6 +1514,7 @@ body main .title {
   grid-column: center-start/center-end;
   padding: 1rem 3rem;
   transition: all 0.3s;
+  width: -moz-min-content;
   width: min-content;
   display: flex;
   flex-direction: column;
@@ -1553,7 +1544,6 @@ body main .cards {
   background-color: #192653;
   padding: 2rem;
   font-size: 3rem;
-  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
 }
 @media (max-width: 1200px) {
   body main .cards {
@@ -1574,7 +1564,8 @@ body main .cards {
 .mainReading_Quran,
 .mainReading_Tafsir,
 .mainReading_Hadith {
-  column-gap: 1%;
+  -moz-column-gap: 1%;
+       column-gap: 1%;
   display: grid;
   width: 100vw;
   height: 100vh;
@@ -1720,7 +1711,8 @@ body main .cards {
   margin-top: 10px;
   margin-bottom: 2rem;
   border-radius: 50%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border: 2px solid #0D142C;
   width: 100px;
   height: 100px;
@@ -1800,6 +1792,4 @@ body main .cards {
   .user h2 {
     font-size: 6rem;
   }
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=main.css.map */

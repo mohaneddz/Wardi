@@ -8,10 +8,25 @@ const router = express.Router();
 
 // Basic Auth Routes ------------------------------------------------
 
-router.get('/signup', userController.signupView).post('/signup', authController.signup);
-router.get('/login', userController.loginView).post('/login', authController.login);
+router.get('/signup', authController.isLoggedIn, userController.redirect, userController.signupView).post(
+	'/signup',
+	authController.signup
+);
+router.get('/login', authController.isLoggedIn, userController.redirect, userController.loginView).post(
+	'/login',
+	authController.login
+);
 router.get('/logout', authController.logout);
-router.post('/bookmarks', authController.isLoggedIn, userController.addBookmark).delete('/bookmarks', authController.isLoggedIn, userController.removeBookmark);
+router.post('/bookmarks', authController.isLoggedIn, userController.addBookmark).delete(
+	'/bookmarks',
+	authController.isLoggedIn,
+	userController.removeBookmark
+);
+router.get('/me', authController.isLoggedIn, userController.getUserPage).patch(
+	'/me',
+	authController.isLoggedIn,
+	userController.updateMe
+);
 // router.get('/bookmarks', userController.getBookmarksView).post('/bookmarks', authController.isLoggedIn, userController.addBookmark);
 // Password Reset Routes ------------------------------------------------
 
@@ -25,10 +40,9 @@ router.use(authController.protect); // user must be logged in to access the rout
 // Update Password ------------------------------------------------
 
 router.patch('/updateMyPassword', authController.updatePassword);
-router.get('/me', userController.getMe, userController.getMeView);
 
 // for API -----
-// router.get('/me', userController.getMe, userController.getUser); 
+// router.get('/me', userController.getMe, userController.getUser);
 // router.patch('/updateMe', userController.uploadUserPhoto, userController.resizeUserPhoto, userController.updateMe); // for API
 
 // Delete User ------------------------------------------------

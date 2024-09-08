@@ -1,0 +1,25 @@
+.Login
+    h1 Sign Up
+    form.form__signup
+
+        .form__signup--username
+            label(for="username") Username
+            input(type="username", id="username", name="username", placeholder="Enter your Username" required)
+    
+        .form__signup--email
+            label(for="email") Email
+            input(type="email", id="email", name="email", placeholder="Enter your email" required)
+    
+        .password-container
+            div
+                label(for="password") Password
+                input(type="password", id="password", name="password", placeholder="Enter your password" required)
+            div
+                label(for="passwordConfirm") Confirm Password
+                input(type="password", id="passwordConfirm", name="passwordConfirm", placeholder="Confirm your password" required)
+        div
+            input(type="submit", value="Signup!" class="btn--signup")
+    .lower
+        p
+            | Already have an account? 
+            a(href="/user/login") Login

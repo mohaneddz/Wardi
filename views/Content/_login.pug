@@ -1,26 +1,16 @@
 .Login
-    h1= h1
-    form.form--login
-        div
+    h1 Login
+    form.form__login
+        .form
             label(for="email") Email
-            input(type="email", id="email", name="email")
-            //- input(type="email", id="email", name="email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
+            input(type="email", id="email", name="email", placeholder="Enter your email" required)
         .password-container
             div
                 label(for="password") Password
-                input(type="password", id="password", name="password" required)
-            if title === "Sign Up"
-                div
-                    label(for="password2") Confirm Password
-                    input(type="password", id="password2", name="password2" required)
+                input(type="password", id="password", name="password", placeholder="Enter your password" required)
         div
-            input(type="submit", value= mode === "Signup" ? "Signup" : "Login")
+            input(type="submit", value="Login!" class="btn--login")
     .lower
-        if h1 === "Login"
-            p
-                | Don't have an account? 
-                a(href="/user/signup") Signup
-        else
-            p
-                | Already have an account? 
-                a(href="/user/login") Login
+        p
+            | Don't have an account? 
+            a(href="/user/signup") Signup

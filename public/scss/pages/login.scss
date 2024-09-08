@@ -1,20 +1,20 @@
-.Loginpage {
+.Loginpage, .Signuppage {
 	display: grid;
 	grid-template-rows: auto 1fr;
+	margin-top: -10rem;
 }
-.mainLoginpage {
+.mainLoginpage, .mainSignuppage {
 	display: grid;
 	grid-template-rows: 1fr;
 	grid-template-columns: repeat(8, 1fr);
 }
 
-.Login {
+.Login, .Singup {
 	display: flex;
 	grid-column: 2/8;
 	justify-content: start;
 	align-items: center;
 	flex-direction: column;
-	background-color: #0d142c;
 	color: $tertiary-color;
 	font-size: 1.6rem;
 	height: 70%;
@@ -36,7 +36,7 @@
 		background-color: $primary-color-lighter;
 		padding: 4rem 6rem;
 		border-radius: 1rem;
-		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
+		box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
 		width: max-content;
 
 		div {
@@ -51,6 +51,7 @@
 				text-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
 			}
 
+			input[type='username'],
 			input[type='email'],
 			input[type='password'] {
 				width: 100%;
@@ -60,11 +61,15 @@
 				border-radius: 0.5rem;
 				color: $tertiary-color-dark;
 
+				&::placeholder{
+					color: rgba($tertiary-color-dark, 0.5);
+					font-size: 1.5rem;
+				}
 				&:focus {
 					outline: none;
 					border-color: $tertiary-color;
 				}
-				&:invalid {
+				&:invalid, &:empty {
 					border-color: $tertiary-color;
 					box-shadow: 0 0 15px $tertiary-color;
 					border-width: 2px;
@@ -115,12 +120,14 @@
 
 .lower {
 	font-size: 2.5rem;
-	background-color: $primary-color-light;
+	background-color: ($primary-color-light);
 	color: $secondary-color;
 	padding: 3.5rem 4rem 2rem 4rem;
 	border-radius: 1rem;
 	z-index: -1;
 	translate: 0 -3rem;
+	box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
+	text-shadow: 0 0 1rem rgba(0, 0, 0, 0.8);
 
 	a {
 		color: $tertiary-color-dark;

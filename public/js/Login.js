@@ -1,8 +1,9 @@
-import { showAlert } from '../js/Alert.js'; 
+'use strict';
+import { showAlert } from './Alert.js'; 
 
 // DOM Elements --------------------------------------------------------------
 
-const form = document.querySelector('.form--login');
+const form = document.querySelector('.form__login');
 
 // Functions --------------------------------------------------------------
 
@@ -10,7 +11,7 @@ export const login = async (email, password) => {
     try {
         const res = await axios({
             method: 'POST',
-            url: 'http://localhost:3000/user/login',
+            url: `/user/login`, // TODO: Change this to /user/login
             data: {
                 email,
                 password,
@@ -28,18 +29,6 @@ export const login = async (email, password) => {
     }
 };
 
-export const logout = async () => {
-    try {
-        const res = await axios({
-            method: 'GET',
-            url: '/api/v1/users/logout',
-        });
-        if ((res.data.status = 'success')) location.reload(true);
-    } catch (err) {
-        console.log(err.response);
-        showAlert('error', 'Error logging out! Try again.');
-    }
-};
 
 // Event Listeners --------------------------------------------------------------
 

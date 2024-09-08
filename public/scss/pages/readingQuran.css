@@ -1,0 +1,33 @@
+.mainReading_Quran,
+.mainReading_Tafsir,
+.mainReading_Hadith {
+  -moz-column-gap: 1%;
+       column-gap: 1%;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: 1fr;
+  align-items: start;
+  margin: 0;
+}
+.mainReading_Quran.active,
+.mainReading_Tafsir.active,
+.mainReading_Hadith.active {
+  grid-template-columns: min-content 1fr min-content;
+}
+@media screen and (max-width: 1200px) {
+  .mainReading_Quran.active,
+  .mainReading_Tafsir.active,
+  .mainReading_Hadith.active {
+    grid-template-columns: 1fr;
+    grid-template-rows: 7vh 7vh 1fr;
+  }
+}
+
+.Reading_Hadith,
+.Reading_Quran,
+.Reading_Tafsir {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}/*# sourceMappingURL=readingQuran.css.map */

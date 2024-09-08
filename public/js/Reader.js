@@ -26,7 +26,7 @@ function highlighter(event) {
 		entry.classList.remove('selectedEntry');
 	});
 
-	if (!event.target || !event.target.matches('.RsideEntry')) return;
+	if (!event.target || !event.target.matches('.RsideEntry') ) return;
 	event.preventDefault();
 
 	// Step 2: Highlight the clicked sidebar entry
@@ -258,5 +258,5 @@ lsearch?.addEventListener('input', searchSurah);
 rsearch?.addEventListener('input', searchAya);
 // document?.addEventListener('DOMContentLoaded', favCreate);
 document.querySelector('.Rsidebar ul')?.addEventListener('click', favControl);
-document.querySelector('.Lsidebar ul')?.addEventListener('click', favControl);
 document.querySelector('.Rsidebar ul')?.addEventListener('click', highlighter);
+document.querySelector('.Lsidebar ul')?.addEventListener('click', favControl);

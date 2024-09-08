@@ -1,42 +1,47 @@
-.user-profile
-    h2 User Profile
+.user
+    h2 My Account
 
-    form(action="/update-profile" method="POST" enctype="multipart/form-data")
+    form
         .user__info
-            h3 Username: 
-            input(type="text" name="username" value=user.username required)
+            .user__info--photo
+                h3 Profile Picture: 
+                if user.photo !== ""
+                    img(src=`/img/users/${user.photo}` alt='Profile photo' width="50" height="50" onclick="document.getElementById('photoInput').click()")
+                else 
+                    img(src='/img/default-user.png' alt='Profile photo' width="50" height="50" onclick="document.getElementById('photoInput').click()")
+                input(type="file" name="photo" id="photoInput" style="display: none;")
+            .user__info--username
+                h3 Username: 
+                input(type="text" name="username" value=user.username required id="username")
+            .user__info--email
+                h3 Email: 
+                input(type="email" name="email" value=user.email required id="email")
+            .user__info--password
+                h3 Password: 
+                input(type="password" name="password" placeholder="Enter new password" minlength="8" id="password")
+                p Leave blank to keep your current password.
+            .user__info--confirm_password
+                h3 New Password: 
+                input(type="password" name="newPassword" placeholder="Enter a new password" minlength="8" id="newPassword")
 
-            h3 Email: 
-            input(type="email" name="email" value=user.email required)
+            //- .user__info--preferences
+            //-     h3 Preferences
+            //-     label(for="theme") Theme: 
+            //-     select(name="prefrences[theme]" id="theme")
+            //-         option(value="light" selected=user.prefrences.theme === 'light') Light
+            //-         option(value="dark" selected=user.prefrences.theme === 'dark') Dark
 
-            h3 Password: 
-            input(type="password" name="password" placeholder="Enter new password" minlength="8")
-            p Leave blank to keep your current password.
+            //- label(for="language") Language: 
+            //- select(name="prefrences[language]" id="language")
+            //-     option(value="en" selected=user.prefrences.language === 'en') English
+            //-     option(value="ar" selected=user.prefrences.language === 'ar') Arabic
+            .user__info--bookmarks
+                h3 Bookmarks
+                a(href=`/user/bookmarks` class="buttonlike" id="bookmarksbtn") View Your Bookmarks
 
-            h3 Confirm Password: 
-            input(type="password" name="confirmpassword" placeholder="Confirm new password" minlength="8")
+            hr
+            
+            button(id="save" class="buttonlike") Save Changes
+            button(id="logout" class="buttonlike logout") Logout
 
-            h3 Profile Picture: 
-            if user.photo
-                img(src=`/img/users/${user.photo}` alt='Profile photo' width="50" height="50")
-            else 
-                img(src='/img/default-user.png' alt='Profile photo' width="50" height="50")
-            input(type="file" name="photo")
 
-            h3 Preferences
-            label(for="theme") Theme: 
-            select(name="prefrences[theme]" id="theme")
-                option(value="light" selected=user.prefrences.theme === 'light') Light
-                option(value="dark" selected=user.prefrences.theme === 'dark') Dark
-
-            label(for="language") Language: 
-            select(name="prefrences[language]" id="language")
-                option(value="en" selected=user.prefrences.language === 'en') English
-                option(value="ar" selected=user.prefrences.language === 'ar') Arabic
-
-    button(type="submit") Save Changes
-
-    hr
-
-    h4 Bookmarks
-    a(href=`/bookmarks/${user._id}`) View Your Bookmarks

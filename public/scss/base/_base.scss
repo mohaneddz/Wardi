@@ -22,11 +22,11 @@ html {
 	// }
 
 	@media (max-width: 576px) {
-	  font-size: 50%; // Adjust font size for extra small screens
+		font-size: 50%; // Adjust font size for extra small screens
 	}
 
 	@media (max-width: 450px) {
-	  font-size: 45%; // Adjust font size for extra small screens
+		font-size: 45%; // Adjust font size for extra small screens
 	}
 }
 body {
@@ -34,15 +34,22 @@ body {
 	padding: 3rem;
 	width: 100vw;
 	min-height: 100vh;
-	background-size: cover;
 	background-attachment: fixed;
 	position: relative;
 	z-index: 1;
 	margin: 0;
 	padding: 0;
-	background-color: $primary-color;
+	background-color: $primary-color; // Fallback for older browsers
+	background:
+		url('../../img/bg.png') center center / cover no-repeat,
+		linear-gradient(to top, $primary-color-light 0%, $primary-color 100%);
+
 	position: relative;
 	list-style-type: none;
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 ::selection {

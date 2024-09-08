@@ -1,51 +1,59 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
 
-const VerseSchema = new mongoose.Schema({
+const VerseSchema = new mongoose.Schema(
+	{
 		verse: { type: Number, required: true },
 		chapter: { type: Number, required: true },
 	},
 	{ _id: true }
 ); // Ensure _id is added
 
-const ChapterSchema = new mongoose.Schema({
+const ChapterSchema = new mongoose.Schema(
+	{
 		chapter: { type: Number, required: true },
 	},
 	{ _id: true }
 );
 
-const HadithSchema = new mongoose.Schema({
+const HadithSchema = new mongoose.Schema(
+	{
 		hadith: { type: Number, required: true },
 		book: { type: Number, required: true },
 	},
 	{ _id: true }
 );
 
-const PageSchema = new mongoose.Schema({
+const PageSchema = new mongoose.Schema(
+	{
 		page: { type: Number, required: true },
 	},
 	{ _id: true }
 );
 
-const HadithBooksSchema = new mongoose.Schema({
+const HadithBooksSchema = new mongoose.Schema(
+	{
 		book: { type: Number, required: true },
 	},
 	{ _id: true }
 );
 
-const QuranBooksSchema = new mongoose.Schema({
+const QuranBooksSchema = new mongoose.Schema(
+	{
 		book: { type: Number, required: true },
 	},
 	{ _id: true }
 );
 
-const TafsirBooksSchema = new mongoose.Schema({
+const TafsirBooksSchema = new mongoose.Schema(
+	{
 		book: { type: Number, required: true },
 	},
 	{ _id: true }
 );
 
-const HadithSectionSchema = new mongoose.Schema({
+const HadithSectionSchema = new mongoose.Schema(
+	{
 		section: { type: Number, required: true },
 		book: { type: Number, required: true },
 	},
@@ -112,7 +120,7 @@ const userSchema = new mongoose.Schema({
 		minlength: 8,
 		select: false,
 	},
-	confirmpassword: {
+	passwordConfirm: {
 		type: String,
 		required: [true, 'Please confirm your password'],
 		validate: {
@@ -124,14 +132,13 @@ const userSchema = new mongoose.Schema({
 	},
 	email: {
 		type: String,
-		required: true,
+		required: [true, 'Please provide your email'],
 		unique: true,
-		validator: [validator.isEmail, 'Please provide a valid email'],
-		message: 'Invalid email',
+		validate: [validator.isEmail, 'Please provide a valid email'],
 	},
 	photo: {
 		type: String,
-		default: 'default.jpg',
+		default: '',
 	},
 	createdAt: {
 		type: Date,
@@ -153,10 +160,11 @@ const userSchema = new mongoose.Schema({
 	},
 	prefrences: {
 		type: PrefrencesSchema,
+		default: {},
 	},
 	bookmarks: {
 		type: BookmakSchema,
-		default: [],
+		default: {},
 	},
 	passwordChangedAt: Date,
 	passwordResetExpires: Date,

@@ -1,0 +1,173 @@
+// General Styles
+.user {
+	font-family: $font-stack;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 5rem 10rem;
+	background-color: $primary-color-light;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	border-radius: $border-radius;
+
+	grid-column: 2/-2;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	box-shadow: 0 0 15rem rgba(0, 0, 0, 0.7);
+
+	h2 {
+		text-align: center;
+		color: $tertiary-color;
+		margin-bottom: 20px;
+		font-size: 8rem;
+		text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2.5rem;
+
+		.user__info {
+			&--photo,
+			&--username,
+			&--email,
+			&--bookmarks,
+			&--password,
+			&--confirm_password {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 10px;
+
+				h3 {
+					font-size: 2.5rem;
+					color: $secondary-color-dark;
+					margin-bottom: 5px;
+				}
+
+				input,
+				select {
+					padding: 10px;
+					font-size: 14px;
+					border: 1px solid #ccc;
+					background-color: $input-bg;
+					border-radius: $border-radius;
+					width: 100%;
+					border: 2px black solid;
+					box-sizing: border-box;
+					color: $secondary-color-darker;
+					margin-bottom: 3rem;
+					#photoInput {
+						display: none;
+					}
+					&:focus {
+						border-color: $primary-color;
+						outline: none;
+					}
+				}
+
+				p {
+					color: gray;
+					font-size: 12px;
+					margin-top: -3rem;
+					margin-bottom: 2.5rem;
+				}
+
+				img {
+					display: block;
+					margin-top: 10px;
+					margin-bottom: 2rem;
+					border-radius: 50%;
+					object-fit: cover;
+					border: 2px solid $primary-color;
+					width: 100px;
+					height: 100px;
+					&:hover {
+						cursor: pointer;
+						box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+						scale: 1.1;
+					}
+				}
+
+				input[type='file'] {
+					padding: 0;
+				}
+			}
+
+			// Full width for the submit button
+			.buttonlike {
+				grid-column: span 2;
+				display: inline-block;
+				background-color: $primary-color;
+				color: white;
+				border: none;
+				padding: 12px 20px;
+				font-size: 16px;
+				border-radius: $border-radius;
+				cursor: pointer;
+				text-align: center;
+				transition: background-color 0.3s ease;
+				width: 100%;
+				margin-bottom: 2rem;
+				transition: all 0.15s ease;
+				&:hover {
+					background-color: $hover-color;
+					scale: 1.1;
+				}
+				&:active {
+					background-color: $acrive-color;
+					scale: .95;
+				}
+				&.logout {
+					background-color: $error;
+					color: white;
+					&:hover {
+						background-color: $error-dark;
+						scale: 1.1;
+					}
+					&:active {
+						background-color: $error-saturated;
+						scale: .95;
+					}
+				}
+			}
+		}
+
+		hr {
+			margin: 20px 0;
+			border: 0;
+			border-top: 1px solid $secondary-color-dark;
+			grid-column: span 2;
+		}
+
+		h4 {
+			font-size: 18px;
+			color: $primary-color;
+			grid-column: span 2;
+		}
+
+		a {
+			grid-column: span 2;
+			display: inline-block;
+			color: $secondary-color;
+			text-decoration: none;
+			padding: 10px 15px;
+			border-radius: $border-radius;
+			background-color: #f2f2f2;
+			transition: background-color 0.3s ease;
+
+			&:hover {
+				background-color: lighten($secondary-color, 20%);
+			}
+		}
+	}
+	@media screen and (max-width: 800px) {
+		padding: 5rem 6rem;
+		h2 {
+			font-size: 6rem;
+		}
+	}
+}

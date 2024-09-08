@@ -22,7 +22,7 @@ header.header
                 a(href='/search') 
                     i(class="fi fi-rs-search")
             if !user
-                +navItem('header__user', '/user/signup', '', 'fi fi-rs-user')
+                +navItem('header__user', '/user/me', '', 'fi fi-rs-user')
             else
                 +navItem('header__user', '/user/me', '', 'fi fi-rs-user')
 

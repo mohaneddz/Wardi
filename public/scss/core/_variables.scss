@@ -17,6 +17,13 @@ $tertiary-color-lighter: lighten($tertiary-color, 20%);
 $tertiary-color-dark: darken($tertiary-color, 10%);
 $tertiary-color-darker: darken($tertiary-color, 20%);
 
+$error: #b4626a;
+$error-saturated: saturate($error, 20%);
+$error-dark : darken($error, 10%);
+$success: #5cb85c;
+$sucess-saturated: saturate($success, 20%);
+$success-dark: darken($success, 10%);
+
 // Typography //////////////////////////
 $font-family-base: 'Roboto', sans-serif;
 $font-size-base: 16px;
@@ -72,3 +79,13 @@ $button-border-radius: $border-radius;
 $transition-base: 0.3s ease-in-out;
 $transition-fast: 0.1s ease-in-out;
 $transition-slow: 0.5s ease-in-out;
+
+// User //////////////////////////
+
+$input-bg: $primary-color-lighter;
+$border-radius: 8px;
+$hover-color: darken($primary-color, 10%);
+$acrive-color: saturate($primary-color, 40%);
+$font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+

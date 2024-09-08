@@ -28,12 +28,14 @@ import AppError from '../../utils/appError.js';
 export const getChapterView = catchAsync(async (req, res, next) => {
 	const all_chapters = await Chapter.find().select('name chapter').lean();
 	const chapterNumber = parseInt(req.params.chapter, 10);
+
 	const this_chapter = await Chapter.findOne({ chapter: chapterNumber }).lean();
 
 	const user = req.user;
 	const fav_verses = user?.bookmarks?.fav_verses
 		?.filter((aya) => aya.chapter === chapterNumber)
 		.map((aya) => aya.verse);
+	const fav_chapters = user?.bookmarks?.fav_chapters?.map((chapter) => chapter.chapter);
 
 	if (!this_chapter) {
 		return next(new AppError('There is no Chapter with that Number.', 404));
@@ -45,6 +47,7 @@ export const getChapterView = catchAsync(async (req, res, next) => {
 		all_chapters,
 		readerTitle: this_chapter.name,
 		fav_verses,
+		fav_chapters,
 		Ltitle: 'السور',
 		Rtitle: 'الآيات',
 		mode: 'QuranChapter',
