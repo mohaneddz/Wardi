@@ -1817,7 +1817,7 @@ body main .cards {
   color: #0D142C;
   grid-column: span 2;
 }
-.user form a {
+.user form a.buttonlike {
   grid-column: span 2;
   display: inline-block;
   color: #b0b5c9;
@@ -1827,8 +1827,16 @@ body main .cards {
   background-color: #f2f2f2;
   transition: background-color 0.3s ease;
 }
-.user form a:hover {
+.user form a.buttonlike:hover {
   background-color: #edeef2;
+}
+.user form a.link {
+  color: #c72378;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.user form a.link:hover {
+  color: #9c1b5e;
 }
 @media screen and (max-width: 800px) {
   .user {
@@ -1897,7 +1905,8 @@ body main .cards {
   width: 100%;
   min-height: 80vh;
 }
-.Bookmark h2, .Bookmark a.title {
+.Bookmark h2,
+.Bookmark a.title {
   font-size: 10rem;
   font-weight: 600;
   border-radius: 3rem;
@@ -1913,7 +1922,8 @@ body main .cards {
   transform: translateY(1rem);
   text-wrap: nowrap;
 }
-.Bookmark h2:hover, .Bookmark a.title:hover {
+.Bookmark h2:hover,
+.Bookmark a.title:hover {
   transform: translateY(-1.5rem);
   scale: 1.05;
   box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
@@ -1982,13 +1992,19 @@ body main .cards {
   box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.2), inset 0.2rem 0.4rem 0.4rem rgba(51, 76, 161, 0.3);
   position: relative;
 }
+.Bookmark .Bookmark__Sections--entry p.info1,
+.Bookmark .Bookmark__Sections--entry p.info2 {
+  position: relative;
+  z-index: 20;
+  margin: 2rem;
+}
 .Bookmark .Bookmark__Sections--entry .link {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 10;
+  z-index: 100;
   display: block;
   text-decoration: none;
   color: white;

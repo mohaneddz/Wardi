@@ -151,20 +151,32 @@
 			grid-column: span 2;
 		}
 
-		a {
-			grid-column: span 2;
-			display: inline-block;
-			color: $secondary-color;
-			text-decoration: none;
-			padding: 10px 15px;
-			border-radius: $border-radius;
-			background-color: #f2f2f2;
-			transition: background-color 0.3s ease;
+		a{
 
-			&:hover {
-				background-color: lighten($secondary-color, 20%);
+			&.buttonlike {
+				grid-column: span 2;
+				display: inline-block;
+				color: $secondary-color;
+				text-decoration: none;
+				padding: 10px 15px;
+				border-radius: $border-radius;
+				background-color: #f2f2f2;
+				transition: background-color 0.3s ease;
+				
+				&:hover {
+					background-color: lighten($secondary-color, 20%);
+				}
+			}
+			&.link{
+				color: $tertiary-color;
+				text-decoration: none;
+				transition: color 0.3s ease;
+				&:hover {
+					color: $tertiary-color-dark;
+				}
 			}
 		}
+
 	}
 	@media screen and (max-width: 800px) {
 		padding: 5rem 6rem;
