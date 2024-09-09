@@ -5,16 +5,18 @@
         if bookmarks.length !== 0
             for bookmark in bookmarks
 
-                - let bookmark_url = url.replace('info1', bookmark.info1).replace('info2', bookmark.info2)
+                - let bookmark_url = url.replace('info1', bookmark.info1).replace('info2', bookmark.info2).replace('info3', bookmark.info3)
 
                 .Bookmark__Sections--entry
 
                     a(href=`${bookmark_url}` class=`link`)
                     p.info1= `${info1} ${bookmark.info1}`
-                    if info2
+                    if info2 !== ''
                         p.info2= `${info2} ${bookmark.info2}`
-                    a( class="Delete" data-type=title data-info1=info1 data-info2=info2)
-                        i(class="fi fi-sr-trash")
+                    if info3 !== ''
+                        p.info3= `${info3} ${bookmark.info3}`
+                    a( class="Delete" data-type=type data-info1=bookmark.info1 data-info2=bookmark.info2)
+                        i(class="fi fi-sr-trash trash")
 
         else
             a.empty No bookmarks yet :)

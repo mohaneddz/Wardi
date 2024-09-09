@@ -1,17 +1,22 @@
+// Core imports
 @import 'core/_variables.scss';
 @import 'core/mixins.scss';
 
+// Base imports
 @import 'base/imports.scss';
 @import 'base/base.scss';
 @import 'base/typography.scss';
 @import 'base/animations.scss';
 
+// Components imports
 @import 'components/button.scss';
 @import 'components/book.scss';
 @import 'components/cut.scss';
 @import 'components/card.scss';
 @import 'components/sideEntry.scss';
+@import 'components/popup.scss';
 
+// Layout imports
 @import 'layout/navigation.scss';
 @import 'layout/footer.scss';
 @import 'layout/Lsidebar.scss';
@@ -19,10 +24,11 @@
 @import 'layout/reader.scss';
 @import 'layout/alert.scss';
 
+// Pages imports
 @import 'pages/Login.scss';
-@import 'pages/hadithBooks.scss';
+@import 'pages/books.scss';
 @import 'pages/home.scss';
-@import 'pages/readingQuran.scss';
+@import 'pages/reading.scss';
 @import 'pages/errorPage.scss';
 @import 'pages/user.scss';
 @import 'pages/bookmarks.scss';

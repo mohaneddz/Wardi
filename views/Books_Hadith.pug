@@ -1,9 +1,8 @@
 extends ./Layout/_base
 include ./Layout/_mixin.pug
 
-
 block append head
-  script(src="/js/HadithBooks.js" defer type="module")
+  script(src="/js/Books.js" defer type="module")
   - var bodyClass = 'HadithBooks'
   - var mainClass = 'mainHadithBooks'
 
@@ -27,5 +26,5 @@ block content
                         p.books__card__info__language English
                         // TODO : add functionality to the fav button 
                     p.books__card__info__fav
-                        a(href="" data-book=`${book.number}` data-type=`hadith_book`)
-                            +favIcon(book.number, fav_books)
+                        a(data-type=`hadith_book` data-name=book.name data-metadata_name=book.metadata.name )
+                            +favIcon(book.name, fav_books)

@@ -7,6 +7,7 @@ import catchAsync from './../utils/catchAsync.js';
 import AppError from './../utils/appError.js';
 import * as factory from './handlerFactory.js';
 import { updatePassword } from './authController.js';
+import { info } from 'sass';
 
 // export const uploadUserPhoto = upload.single('photo');
 
@@ -207,12 +208,17 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 	const user = req.user;
 	if (!user) return signupView(req, res);
 
-	const { type } = req.params;
+	let { type } = req.params;
 	let bookmarks = [];
 	let title;
 	let info1 = '';
 	let info2 = '';
+	let info3 = '';
 	let url = '';
+
+	function capitalizeFirstLetter(string) {
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	  }
 
 	switch (type) {
 		case 'fav_chapters': {
@@ -220,7 +226,7 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 				info1: chapter.chapter,
 				info2: null,
 			}));
-			title= 'Chapters';
+			title = 'Chapters';
 			info1 = 'Chapter';
 			url = `/quran/chapter/info1`;
 			break;
@@ -247,7 +253,7 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 
 			title = 'Pages';
 			info1 = 'Page';
-			url = `/quran/pages/info1`;
+			url = `/quran/page/info1`;
 			break;
 		}
 
@@ -255,25 +261,26 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 			bookmarks = user.bookmarks.fav_hadiths.map((hadith) => ({
 				info1: hadith.hadith,
 				info2: hadith.book || null,
+				info3: capitalizeFirstLetter(hadith.book.split('-')[1]) + ' ' + capitalizeFirstLetter(hadith.book.split('-')[0]),
 			}));
 			title = 'Hadiths';
 			info1 = 'Hadith';
-			info2 = 'Book';
-			title = 'Chapters';
-			url = `/hadiths/book/info1/info2`;
+			info3 = ' ';
+			url = `/hadith/book/info2/hadith/info1`;
 
 			break;
 		}
 
 		case 'fav_books_hadiths': {
 			bookmarks = user.bookmarks.fav_books_hadiths.map((book) => ({
-				info1: book.book,
-				info2: null,
+				info1: book.metadata_name,
+				info2: book.name,
+				info3: book.name.split('-')[0] === 'ara' ? 'Arabic' : 'English',
 			}));
 			title = 'Hadith Books';
-			info1 = 'Book';
-			url = `/hadiths/books/info1`;
-
+			info1 = ' ';
+			info3 = ' ';
+			url = `/hadith/book/info2/hadith/1`;
 			break;
 		}
 
@@ -281,23 +288,24 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 			bookmarks = user.bookmarks.fav_sections_hadith.map((section) => ({
 				info1: section.section,
 				info2: section.book || null,
+				info3: capitalizeFirstLetter(section.book.split('-')[1]) + ' ' + capitalizeFirstLetter(section.book.split('-')[0]),
 			}));
 			title = 'Hadith Sections';
 			info1 = 'Section';
-			info2 = 'Book';
-			url = `/hadiths/book/info1/sections/info2`;
+			info3 = 'from';
+			url = `/hadith/book/info2/section/info1`;
 
 			break;
 		}
 
 		case 'fav_books_tafsir': {
 			bookmarks = user.bookmarks.fav_books_tafsir.map((book) => ({
-				info1: book.book,
-				info2: null,
+				info1: book.name,
+				info2: book.slug,
 			}));
 			title = 'Tafsir Books';
-			info1 = 'Book';
-			url = `/quran/books/info1`;
+			info1 = ' ';
+			url = `/quran/books/info2/`;
 
 			break;
 		}
@@ -316,7 +324,9 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 		title,
 		info1,
 		info2,
+		info3,
 		bookmarks,
+		type,
 		url,
 	});
 });
@@ -325,17 +335,6 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 
 export const labelRemovalBookmarks = catchAsync(async (req, res, next) => {
 	if (!req.user) return next(new AppError('Please login to remove bookmarks', 400));
-
-	/*
-	verse: 'bookmarks.fav_verses',
-		chapter: 'bookmarks.fav_chapters',
-		page: 'bookmarks.fav_pages',
-		hadith: 'bookmarks.fav_hadiths',
-		hadith_book: 'bookmarks.fav_books_hadiths',
-		quran_book: 'bookmarks.fav_books_quran',
-		tafsir_book: 'bookmarks.fav_books_tafsir',
-		hadith_section: 'bookmarks.fav_sections_hadith',
-	*/
 
 	const { info1, info2 } = req.params;
 	let obj = {};
@@ -365,14 +364,15 @@ export const labelRemovalBookmarks = catchAsync(async (req, res, next) => {
 			break;
 		}
 		case 'fav_books_hadiths': {
-			obj.book = info1;
+			obj.name = info2;
+			obj.metadata_name = info1;
 			type = 'hadith_book';
 			break;
 		}
 		case 'fav_sections_hadith': {
 			obj.section = info1;
-			type = 'hadith_section';
 			obj.book = info2;
+			type = 'hadith_section';
 			break;
 		}
 		case 'fav_books_quran': {
@@ -381,7 +381,8 @@ export const labelRemovalBookmarks = catchAsync(async (req, res, next) => {
 			break;
 		}
 		case 'fav_books_tafsir': {
-			obj.book = info1;
+			obj.name = info1;
+			obj.slug = info2;
 			type = 'tafsir_book';
 			break;
 		}

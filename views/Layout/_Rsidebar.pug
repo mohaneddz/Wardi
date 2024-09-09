@@ -12,14 +12,14 @@ include _mixin.pug
         if mode === "QuranChapter"
             for verse in this_chapter.verses
                 li
-                    a(href=`#` class="RsideEntry quranChapterSearch" data-type=`verse` data-verse=`${verse.verse}` data-chapter=`${this_chapter.chapter}`)= verse.verse
+                    a(href=`#` class="RsideEntry quranChapterSearch" data-type=`verse` erse._id data-verse=`${verse.verse}` data-chapter=`${this_chapter.chapter}`)= verse.verse
                         +favIcon(verse.verse, fav_verses)
             
         else if mode === "QuranJuz"
             for chapter in chapters
                 if chapter.chapter === chapterNumber
                     li
-                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` data-type=`chapter` class="RsideEntry selectedEntry nosearch" data-chapter=`${chapter.chapter}`)= info[0].arabicname[chapter.chapter - 1]
+                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}`  data-type=`chapter` class="RsideEntry selectedEntry nosearch" data-chapter=`${chapter.chapter}`)= info[0].arabicname[chapter.chapter - 1]
                             +favIcon(chapter.chapter, fav_chapters)
 
                 else
@@ -40,18 +40,18 @@ include _mixin.pug
             - for (var i = 1; i <= this_book.hadith_counts; i++)
                 if i === this_book.hadith.hadithnumber
                     li
-                        a(href=`/hadith/book/${this_book.name}/hadith/${i}` data-book=`${this_book.number}` data-type=`hadith` class="RsideEntry selectedEntry nosearch" data-hadith=`${i}` )= `الحديث رقم ${i}`
+                        a(href=`/hadith/book/${this_book.name}/hadith/${i}` data-book=`${this_book.name}` data-type=`hadith` class="RsideEntry selectedEntry nosearch" data-hadith=`${i}` )= `الحديث رقم ${i}`
                             +favIcon(i, fav_hadiths)
 
                 else
                     li
-                        a(href=`/hadith/book/${this_book.name}/hadith/${i}` data-book=`${this_book.number}` data-type=`hadith` class="RsideEntry nosearch" data-hadith=`${i}`)= `الحديث رقم ${i}`
+                        a(href=`/hadith/book/${this_book.name}/hadith/${i}` data-book=`${this_book.name}` data-type=`hadith` class="RsideEntry nosearch" data-hadith=`${i}`)= `الحديث رقم ${i}`
                             +favIcon(i, fav_hadiths)
 
         else if mode === "HadithSection"
             for hadith in this_hadith.hadiths
                 li
-                    a(href=`#` class="RsideEntry Hadith__Section" data-type=`hadith` data-hadith=`${hadith.hadithnumber}` data-book=`${this_hadith.number}`)= `الحديث رقم ${hadith.hadithnumber}`
+                    a(href=`#` class="RsideEntry Hadith__Section" data-type=`hadith` data-hadith=`${hadith.hadithnumber}` data-book=`${this_hadith.name}`)= `الحديث رقم ${hadith.hadithnumber}`
                         +favIcon(hadith.hadithnumber, fav_hadiths)
 
             // Tafsir Section ---------------------------------------------------

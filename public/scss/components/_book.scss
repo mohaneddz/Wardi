@@ -1,5 +1,4 @@
 .books__card {
-
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -35,17 +34,26 @@
 
 		&__fav a {
 			position: absolute;
-			z-index: 60;
 			text-decoration: none;
-			color: $tertiary-color;
-			font-size: 1.5rem;
-			bottom: 3%;
+			bottom: 0;
 			left: 5%;
 			transition: all 0.3s;
+			z-index: 90;
+
+			i {
+				z-index: 100;
+				color: $tertiary-color;
+				font-size: clamp(1.7rem, 2.1vw, 2.5rem);
+			}
 
 			&:hover {
 				color: $tertiary-color-lighter;
-				transform: scale(1.4);
+				scale: 1.4;
+			}
+
+			&:active {
+				color: $tertiary-color-darker;
+				scale: 0.9;
 			}
 		}
 	}

@@ -101,7 +101,8 @@
 			position: relative;
 
 			p.info1,
-			p.info2 {
+			p.info2,
+			p.info3 {
 				position: relative;
 				z-index: 20;
 				margin: 2rem;
@@ -113,31 +114,12 @@
 				width: 100%;
 				height: 100%;
 				z-index: 100;
+				opacity: 0;;
 				display: block;
 				text-decoration: none;
 				color: white;
-
 				&:visited {
 					color: white;
-				}
-			}
-			p {
-				margin-top: -5rem;
-			}
-			a.Delete {
-				z-index: 100;
-				i {
-					color: $tertiary-color-dark;
-					text-decoration: none;
-					position: absolute;
-					top: 1rem;
-					right: 1rem;
-					font-size: 5rem;
-					text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.8);
-					&:hover {
-						color: $tertiary-color-lighter;
-						scale: 1.3;
-					}
 				}
 			}
 			&:hover {
@@ -147,14 +129,39 @@
 				background-color: $tertiary-color;
 				box-shadow: 0 0 6rem rgba(0, 0, 0, 0.8);
 			}
-
 			&:active {
 				transform: translateY(0.4rem);
 				scale: 0.95;
 				background-color: $tertiary-color-dark;
 				box-shadow: 0 0 6rem rgba(0, 0, 0, 0.8);
+				// target the parent element and hide it
+
 			}
-			
+			p {
+				margin-top: -5rem;
+			}
+			a.Delete {
+				z-index: 130;
+				i {
+					color: $tertiary-color-dark;
+					text-decoration: none;
+					position: absolute;
+					z-index: 120;
+					top: 1rem;
+					right: 1rem;
+					font-size: 5rem;
+					text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.8);
+					&:hover {
+						color: $tertiary-color-lighter;
+						scale: 1.3;
+					}
+					&:active {
+						color: $tertiary-color;
+						scale: 0.9;
+					}
+				}
+			}
+
 			@media screen and (max-width: 1220px) {
 				// padding: 1.5rem;
 				margin: 2.5rem 1.5rem;

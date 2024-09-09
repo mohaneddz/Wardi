@@ -12,7 +12,6 @@ const rsearchbtn = document.querySelector('.RsearchButton');
 const lsearch = document.querySelector('.Lsearch');
 const rsearch = document.querySelector('.Rsearch');
 
-
 // temporary using this to store the favorite verses
 const favoriteVerses = new Set();
 
@@ -67,6 +66,7 @@ function quranHighlighter(event) {
 }
 
 function hadithSectionHighlighter(event) {
+
 	document.querySelectorAll('.hadith__title').forEach((section) => {
 		section.classList.remove('selected');
 	});
@@ -127,7 +127,6 @@ function tafsirHighlighter(event) {
 }
 
 // ----------------------------------------------
-
 
 function toggleSides() {
 	lsidebar.classList.toggle('active');
@@ -232,9 +231,13 @@ export async function favControl(event) {
 
 		const book = btn.getAttribute('data-book');
 		const hadith = btn.getAttribute('data-hadith');
+		const name = btn.getAttribute('data-name');
+		const slug = btn.getAttribute('data-slug');
+		// let metadata = {};
+		const metadata_name = btn.getAttribute('data-metadata_name');
 
 		// All Bookmarks
-		const bookmark = { verse, chapter, page, section, book, hadith };
+		const bookmark = { verse, chapter, page, section, book, hadith, name, slug , metadata_name};
 		const filteredBookmark = Object.fromEntries(
 			Object.entries(bookmark).filter(([key, value]) => value !== null && value !== undefined)
 		);

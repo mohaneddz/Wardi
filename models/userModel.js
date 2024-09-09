@@ -97,7 +97,7 @@ userSchema.methods.addBookmark = async function (type, object) {
 			addToBookmarks('fav_sections_hadith', object);
 			break;
 		default:
-			throw new Error('Invalid bookmark type');
+			throw new Error('Invalid bookmark type : ' + type);
 	}
 	await this.save({ validateBeforeSave: false });
 };
@@ -117,18 +117,32 @@ userSchema.methods.removeBookmark = async function (type, object) {
 
 	const bookmarkField = bookmarkFields[type];
 
-	  if (!bookmarkField) {
-		throw new Error('Invalid bookmark type');
-	}
+	if (!bookmarkField) throw new Error('Invalid bookmark type');
 
 	try {
-		// Construct the match criteria based on the fields available in the object
 		const matchCriteria = {};
-		for (const key in object) {
-			if (object[key] !== undefined) {
-				matchCriteria[key] = object[key];
+
+		// Function to flatten nested objects
+		const flattenObject = (obj, prefix = '') => {
+			for (const key in obj) {
+				if (obj[key] !== undefined) {
+					if (
+						typeof obj[key] === 'object' &&
+						obj[key] !== null &&
+						key.startsWith('metadata')
+					) {
+						// Recursively flatten if the key starts with "metadata"
+						flattenObject(obj[key], `${prefix}${key}.`);
+					} else {
+						// Otherwise, add the key to matchCriteria
+						matchCriteria[`${prefix}${key}`] = obj[key];
+					}
+				}
 			}
-		}
+		};
+
+		// Flatten the provided object
+		flattenObject(object);
 
 		// Directly use the update operation on the current user instance
 		const result = await this.updateOne(

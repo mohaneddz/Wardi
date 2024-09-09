@@ -44,6 +44,10 @@ export const TafsirSchema = new mongoose.Schema(
 			type: [AyaObjectSchema],
 			required: true,
 		},
+		number: {
+			type: Number,
+			required: true,
+		},
 	},
 	{
 		toJson: { virtuals: true },

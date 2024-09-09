@@ -7,6 +7,7 @@ const router = express.Router();
 // Just like an API, we can create a route for the user ( I can't be more creative ) -------------------------
 
 // Basic Auth Routes ------------------------------------------------
+router.delete('/bookmarks/:type/:info1/:info2?',userController.labelRemovalBookmarks);
 router.get('/signup', userController.redirect, userController.signupView).post('/signup', authController.signup);
 router.get('/login', userController.redirect, userController.loginView).post('/login', authController.login);
 router.get('/logout', authController.logout);
@@ -19,7 +20,6 @@ router.get('/me', userController.getUserPage).patch(
 	authController.updatePassword,
 	userController.updateMe
 );
-router.delete('/bookmarks/:type/:info1/:info2?',userController.labelRemovalBookmarks ,userController.removeBookmark);
 
 
 // router.get('/bookmarks', userController.getBookmarksView).post('/bookmarks', authController.isLoggedIn, userController.addBookmark);

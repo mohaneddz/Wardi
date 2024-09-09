@@ -19,7 +19,7 @@ const ChapterSchema = new mongoose.Schema(
 const HadithSchema = new mongoose.Schema(
 	{
 		hadith: { type: Number, required: true },
-		book: { type: Number, required: true },
+		book: { type: String, required: true },
 	},
 	{ _id: true }
 );
@@ -33,21 +33,26 @@ const PageSchema = new mongoose.Schema(
 
 const HadithBooksSchema = new mongoose.Schema(
 	{
-		book: { type: Number, required: true },
+		name: { type: String, required: true },
+		metadata_name: {
+			type: String,
+			default: '',
+		},
 	},
 	{ _id: true }
 );
 
 const QuranBooksSchema = new mongoose.Schema(
 	{
-		book: { type: Number, required: true },
+		name: { type: String, required: true },
 	},
 	{ _id: true }
 );
 
 const TafsirBooksSchema = new mongoose.Schema(
 	{
-		book: { type: Number, required: true },
+		name: { type: String, required: true },
+		slug: { type: String, required: true },
 	},
 	{ _id: true }
 );
@@ -55,7 +60,7 @@ const TafsirBooksSchema = new mongoose.Schema(
 const HadithSectionSchema = new mongoose.Schema(
 	{
 		section: { type: Number, required: true },
-		book: { type: Number, required: true },
+		book: { type: String, required: true },
 	},
 	{ _id: true }
 );

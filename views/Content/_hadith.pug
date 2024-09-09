@@ -13,7 +13,7 @@
                     
     if mode ===  'HadithSection'
         for hadith in this_hadith.hadiths
-            h1(class='hadith__title' data-hadith= `${hadith.hadithnumber}` data-book=`${this_hadith.number}` )= `الحديث رقم {${hadith.hadithnumber}}`
+            h1(class='hadith__title' data-hadith= `${hadith.hadithnumber}` data-book=`${this_hadith.name}` )= `الحديث رقم {${hadith.hadithnumber}}`
             h2(class=`hadith__start` data-hadith-under= `${hadith.hadithnumber}` ) 13
             p=hadith.text
             br

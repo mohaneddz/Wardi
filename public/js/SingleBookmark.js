@@ -3,41 +3,60 @@
 var bookmarks = document.querySelector('.Bookmark__Sections');
 
 function deletebookmark(event) {
-	const bookmark = event.target.parentElement;
+	// Target the closest .Delete element to get the correct dataset attributes
+	const bookmark = event.target.closest('.Delete');
+	if (!bookmark) return; // Safety check to ensure the target is found correctly
+
 	const info1 = bookmark.dataset.info1;
-	const info2 = bookmark.dataset.info2;
-	const type = bookmark.dataset.type;
+	const info2 = bookmark.dataset.info2; // Optional parameter
+	const type = bookmark.dataset.type.toLowerCase();
+	let url = '';
+	if (type != 'quran_book' && type != 'tafsir_book' && type != 'hadith_book')
+		info2
+			? (url = `/user/bookmarks/${type}/${info1}/${info2}`)
+			: (url = `/user/bookmarks/${type}/${info1}`);
+    else
+        url = `/user/bookmarks/${type}/${info2}`;
 
-	// Construct the URL for the DELETE request
-	const url = `/user/bookmarks/:type`;
+	console.log('Request URL:', url);
 
-	// Send the DELETE request to the server
-	fetch(url, {
-		method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ info1, info2, type }),
+	axios.delete(url, {
+		data: { info1, info2, type },
+		headers: {
+			'Content-Type': 'application/json',
+		},
 	})
 		.then((response) => {
-			if (!response.ok) {
+			if (response.status !== 201) {
 				throw new Error('Network response was not ok');
 			}
-			return response.json();
+			return response.data;
 		})
 		.then((data) => {
-			if (data.success) {
-				// Remove the bookmark element from the DOM
-				bookmark.remove();
+			if (data.status === 'success') {
+				bookmark.parentElement.remove();
+				if (bookmarks.children.length === 0) {
+					// a.empty No bookmarks yet :)
+					const empty = document.createElement('a');
+					empty.classList.add('empty');
+					empty.textContent = 'No bookmarks yet :)';
+					bookmarks.appendChild(empty);
+				}
 			} else {
 				console.error('Failed to delete the bookmark:', data.message);
 			}
 		})
 		.catch((error) => {
-			console.error('There was a problem with the fetch operation:', error);
+			if (error.response) {
+				console.error('Server responded with an error:', error.response.data);
+			} else if (error.request) {
+				console.error('No response received:', error.request);
+			} else {
+				console.error('Error in setting up the request:', error.message);
+			}
 		});
 }
 
 bookmarks.addEventListener('click', (e) => {
-	if (e.target.classList.contains('Delete')) deletebookmark(e);
+	if (e.target.classList.contains('trash')) deletebookmark(e);
 });

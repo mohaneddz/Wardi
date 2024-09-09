@@ -2,6 +2,7 @@ extends ./Layout/_base
 include ./Layout/_mixin.pug
 
 block append head
+  script(src="/js/Books.js" defer type="module")
   - var bodyClass = 'HadithBooks'
   - var mainClass = 'mainHadithBooks'
 
@@ -15,9 +16,9 @@ block content
             .books__card.hidden
                 a.books__card__link(href=`/tafsir/book/${book.slug}/chapters/1`)
                 img(src=`${book.image}`, alt="Book Cover")
-                h3.books__card__name #{book.name}
                 .books__card__info
-                    p.books__card__info__hadiths= book.author_name
+                    h3(class='books__card__name TafsirTitle') #{book.name}
+                    p.books__card__info__tafsir= book.author_name
                     //- if the name starts with ara- then it is arabic / else it is english ✅
                     if book.language_name === "arabic"
                         p.books__card__info__language عربي
@@ -25,5 +26,5 @@ block content
                         p.books__card__info__language English
                         // TODO : add functionality to the fav button 
                     p.books__card__info__fav
-                        a(href="")
-                            i(class="fi fi-rs-heart")
+                        a(data-type="tafsir_book" data-slug=book.slug data-name=book.name )
+                            +favIcon(book.slug, fav_books)

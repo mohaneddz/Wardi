@@ -25,7 +25,7 @@ export const getTafsirChapterView = catchAsync(async (req, res) => {
 	
 	const tafsir = await Tafsir.aggregate([
 		{
-			$match: { slug: req.params.book },
+			$match: { slug: req.params.slug },
 		},
 		{
 			$project: {
@@ -55,12 +55,18 @@ export const getTafsirChapterView = catchAsync(async (req, res) => {
 });
 
 export const getTafsirBookView = catchAsync(async (req, res) => {
+
+	const user = req.user;
+
 	const this_book = req.params.book;
 	const chapterNumber = parseInt(req.params.chapter);
+
 	const all_books = await Tafsir.find().select('name slug').lean();
 	const all_chapters = await Chapter.find().select('name chapter').lean();
 	const this_chapter = await Chapter.findOne({ chapter: chapterNumber }).lean();
 	const lang = this_book.split('-')[0];
+	
+	const fav_books = user?.bookmarks?.fav_books_tafsir?.map((book) => book.slug) || [];
 
 	const tafsir = await Tafsir.aggregate([
 		{
@@ -70,11 +76,10 @@ export const getTafsirBookView = catchAsync(async (req, res) => {
 			$project: {
 				_id: 0,
 				name: 1,
+				slug: 1,
 				ayat: {
-					// the ayat[chapterNumber - 1]
 					$arrayElemAt: ['$ayat', chapterNumber - 1],
 				},
-				slug: 1,
 			},
 		},
 	]);
@@ -86,6 +91,7 @@ export const getTafsirBookView = catchAsync(async (req, res) => {
 		all_chapters,
 		this_chapter,
 		tafsir,
+		fav_books,
 		lang,
 		chapterNumber,
 		readerTitle: this_chapter.name,
@@ -97,12 +103,15 @@ export const getTafsirBookView = catchAsync(async (req, res) => {
 });
 
 export const getTafsirBooksView = catchAsync(async (req, res) => {
+	const user = req.user;
+	const fav_books = user?.bookmarks?.fav_books_tafsir?.map((book) => book.slug) || [];
 	const all_books = await Tafsir.aggregate([
 		{
 			$project: {
 				name: 1,
 				image: 1,
 				slug: 1,
+				number: 1,
 				language_name: 1,
 				'metadata.name': 1,
 			},
@@ -116,9 +125,11 @@ export const getTafsirBooksView = catchAsync(async (req, res) => {
 			$sort: { slug: 1 },
 		},
 	]);
-
+	console.log(all_books);
+	
 	res.status(200).render('Books_Tafsir', {
 		title: 'Tafsir Books',
+		fav_books,
 		all_books,
 	});
 });

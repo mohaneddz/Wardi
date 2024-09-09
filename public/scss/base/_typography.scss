@@ -88,12 +88,21 @@ body {
 		}
 	}
 	h3 {
-		font-size: 3rem;
+		font-size: clamp(2rem, 1.8vw, 3.5rem);
+		text-wrap: nowrap;
 		text-align: center;
+		max-width: 80%;
 		color: $tertiary-color;
 		text-shadow: 0.2rem 0.2rem 0.2rem rgba($primary-color-darker, 0.5);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		&.TafsirTitle {
+			margin-left: 2rem;
+		}
 	}
 	.books__card__info {
+		padding-top: 1.25rem;
 		display: flex;
 		width: 100%;
 		&__hadiths {

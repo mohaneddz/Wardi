@@ -35,7 +35,6 @@
 		background-color: rgba($primary-color-lighter, 0.2);
 		border-radius: 1rem;
 		backdrop-filter: blur(1rem);
-
 		&:hover {
 			opacity: 1;
 			transform: scale(1.3);
@@ -77,4 +76,5 @@
 	max-width: 100rem;
 	max-height: 100rem;
 	white-space: wrap;
+	text-align: center;
 }

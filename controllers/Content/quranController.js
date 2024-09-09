@@ -10,17 +10,17 @@ import AppError from '../../utils/appError.js';
 
 // Getters -------------------------------------------- [ Factory Functions  | If turn it into an API ]
 
-// export const getInfo = factory.getOne(Info);
+export const getInfo = factory.getOne(Info);
 
-// export const getChapter = factory.getOne(Chapter);
-// export const getPage = factory.getOne(Page);
-// export const getJuz = factory.getOne(Juz);
+export const getChapter = factory.getOne(Chapter);
+export const getPage = factory.getOne(Page);
+export const getJuz = factory.getOne(Juz);
 
-// // Get all
-// export const getAllChapters = factory.getAll(Chapter);
-// export const getAllPages = factory.getAll(Page);
-// export const get30s = factory.getAll(Juz);
-// export const getAllInfos = factory.getAll(Info);
+// Get all
+export const getAllChapters = factory.getAll(Chapter);
+export const getAllPages = factory.getAll(Page);
+export const get30s = factory.getAll(Juz);
+export const getAllInfos = factory.getAll(Info);
 
 // For the Single Views--------------------------------------------------------------------------------------------
 
@@ -161,35 +161,3 @@ export const getPageView = catchAsync(async (req, res, next) => {
 		mode: 'QuranPage',
 	});
 });
-
-// // For the ALL Views -------------------------------------------------------------------------------------------- No need
-// export const getAllPagesView = catchAsync(async (req, res, next) => {
-// 	const pages = await getAllPages(req, res, next);
-// 	if (!pages) {
-// 		return next(new AppError('There are currently no Pages.', 404));
-// 	}
-// 	res.status(200).render('Reading_Quran', {
-// 		title: 'All Pages',
-// 		pages,
-// 	});
-// });
-// export const get30sView = catchAsync(async (req, res, next) => {
-// 	const juzs = await get30s(req, res, next);
-// 	if (!juzs) {
-// 		return next(new AppError('There are currently no Juzs.', 404));
-// 	}
-// 	res.status(200).render('Reading_Quran', {
-// 		title: 'All Juzs',
-// 		juzs,
-// 	});
-// });
-// export const getAllChaptersView = catchAsync(async (req, res, next) => {
-// 	const chapters = await getAllChapters(req, res, next);
-// 	if (!chapters) {
-// 		return next(new AppError('There are currently no Chapters.', 404));
-// 	}
-// 	res.status(200).render('Home', {
-// 		title: 'Landing',
-// 		chapters,
-// 	});
-// });

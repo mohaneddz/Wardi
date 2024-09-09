@@ -46,12 +46,12 @@ include _mixin.pug
             each book in all_books
                 if book.name === this_book.name
                     li
-                        a(href=`/hadith/book/${book.name}/hadith/1` class="LsideEntry selectedEntry" data-book=`${book.number}` data-type=`hadith_book`)= book.metadata.name
-                            +favIcon(book.number, fav_books)
+                        a(href=`/hadith/book/${book.name}/hadith/1` class="LsideEntry selectedEntry" data-name=`${book.name}` data-metadata_name=book.metadata.name data-type=`hadith_book`)= book.metadata.name
+                            +favIcon(book.name, fav_books)
                 else
-                    li
-                        a(href=`/hadith/book/${book.name}/hadith/1` class="LsideEntry" data-book=`${book.number}` data-type=`hadith_book`)= book.metadata.name
-                            +favIcon(book.number, fav_books)
+                    lib
+                        a(href=`/hadith/book/${book.name}/hadith/1` class="LsideEntry" data-name=`${book.name}` data-metadata_name=book.metadata.name data-type=`hadith_book`)= book.metadata.name
+                            +favIcon(book.name, fav_books)
             li
                 p Only books for your selected language are shown.
 
@@ -60,11 +60,11 @@ include _mixin.pug
                 if this_hadith.metadata.sections[String(index)] !== ""
                     if index === sectionNumber
                         li
-                            a(href=`/hadith/book/${this_hadith.name}/section/${index}`  class="LsideEntry selectedEntry resizable"  data-book=`${this_hadith.number}` data-section=`${index}` data-type=`hadith_section`)= `${this_hadith.metadata.sections[String(index)]}`
+                            a(href=`/hadith/book/${this_hadith.name}/section/${index}`  class="LsideEntry selectedEntry resizable"  data-book=`${this_hadith.name}` data-section=`${index}` data-type=`hadith_section`)= `${this_hadith.metadata.sections[String(index)]}`
                                 +favIcon(index, fav_sections)
                     else
                         li
-                            a(href=`/hadith/book/${this_hadith.name}/section/${index}`  class="LsideEntry resizable"  data-book=`${this_hadith.number}` data-section=`${index}` data-type=`hadith_section`)= `${this_hadith.metadata.sections[String(index)]}`
+                            a(href=`/hadith/book/${this_hadith.name}/section/${index}`  class="LsideEntry resizable"  data-book=`${this_hadith.name}` data-section=`${index}` data-type=`hadith_section`)= `${this_hadith.metadata.sections[String(index)]}`
                                 +favIcon(index, fav_sections)
         
             // Tafsir Section ---------------------------------------------------
@@ -84,9 +84,9 @@ include _mixin.pug
                 //- if book.slug.split("-")[0] === lang
                 if book.slug === this_book
                     li
-                        a(href=`/tafsir/book/${book.slug}/chapters/${this_chapter.chapter}` class="LsideEntry selectedEntry resizable" data-type=`tafsir_book`)= book.name
-                            +favIcon(book.number, fav_books)
+                        a(href=`/tafsir/book/${book.slug}/chapters/${this_chapter.chapter}` data-name=book.name data-slug=book.slug  class="LsideEntry selectedEntry resizable" data-type=`tafsir_book`)= book.name
+                            +favIcon(book.slug, fav_books)
                 else
                     li
-                        a(href=`/tafsir/book/${book.slug}/chapters/${this_chapter.chapter}` class="LsideEntry resizable" data-type=`tafsir_book`)= book.name
-                            +favIcon(book.number, fav_books)
+                        a(href=`/tafsir/book/${book.slug}/chapters/${this_chapter.chapter}` data-name=book.name data-slug=book.slug class="LsideEntry resizable" data-type=`tafsir_book`)= book.name
+                            +favIcon(book.slug, fav_books)

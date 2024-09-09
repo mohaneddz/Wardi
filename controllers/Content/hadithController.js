@@ -16,7 +16,7 @@ import AppError from '../../utils/appError.js';
 
 export const getBooksView = catchAsync(async (req, res) => {
 	const user = req.user;
-	const fav_books = user?.bookmarks?.fav_books_hadiths?.map((book) => book.book) || [];
+	const fav_books = user?.bookmarks?.fav_books_hadiths?.map((book) => book.name) || [];
 
 	const books = await Hadith.aggregate([
 		{
@@ -47,7 +47,7 @@ export const getBooksView = catchAsync(async (req, res) => {
 });
 
 export const getSectionView = catchAsync(async (req, res) => {
-	
+
 	const lang = req.params.book.split('-')[0];
 	const sectionNumber = parseInt(req.params.section);
 
@@ -55,18 +55,18 @@ export const getSectionView = catchAsync(async (req, res) => {
 	const section_start = section_range?.metadata.section_details[String(sectionNumber)].hadithnumber_first;
 	const section_end = section_range?.metadata.section_details[String(sectionNumber)].hadithnumber_last;
 
-	const this_book = await Hadith.findOne({ name: req.params.book }).select('metadata number').lean();
+	const this_book = await Hadith.findOne({ name: req.params.book }).select('metadata number name').lean();
 
 	const user = req.user;
-	
+
 	const fav_sections =
 		user?.bookmarks?.fav_sections_hadith
-			.filter((section) => section.book === this_book.number)
+			.filter((section) => section.book === this_book.name)
 			.map((section) => section.section) || [];
 
 	const fav_hadiths =
 		user?.bookmarks?.fav_hadiths
-			.filter((hadith) => hadith.book === this_book.number)
+			.filter((hadith) => hadith.book === this_book.name)
 			.map((hadith) => hadith.hadith) || [];
 
 	const hadithRaw = await Hadith.aggregate([
@@ -160,10 +160,10 @@ export const getHadithView = catchAsync(async (req, res) => {
 	const this_book = hadithRaw[0];
 
 	const user = req.user;
-	const fav_books = user?.bookmarks?.fav_books_hadiths?.map((book) => book.book) || [];
+	const fav_books = user?.bookmarks?.fav_books_hadiths?.map((book) => book.name) || [];
 	const fav_hadiths =
 		user?.bookmarks?.fav_hadiths
-			.filter((hadith) => hadith.book === this_book.number)
+			.filter((hadith) => hadith.book === this_book.name)
 			.map((hadith) => hadith.hadith) || [];
 
 	res.status(200).render('Reading_Hadith', {
