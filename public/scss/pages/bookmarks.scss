@@ -97,15 +97,19 @@
 			box-shadow:
 			0 1.5rem 2.5rem rgba(0, 0, 0, 0.2),
 			inset 0.2rem 0.4rem 0.4rem rgba(#334ca1, 0.3);
+			position: relative;
 			
-			a.link, p {
-				// padding: 3rem;
+			.link {
+				position: absolute;
+				top: 0;
+				left: 0;
 				width: 100%;
-				z-index: 50;
-				padding: 3rem;
-				text-decoration: none;
+				height: 100%;
+				z-index: 10;
 				display: block;
+				text-decoration: none;
 				color: white;
+	
 				&:visited {
 					color: white;
 				}
