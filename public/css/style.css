@@ -1656,14 +1656,15 @@ body main .cards {
   margin-bottom: 1rem;
 }
 .error__message p {
-  font-size: 4rem;
+  font-size: clamp(1.5rem, 2.5vw, 4rem);
+  hyphens: auto;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 95vw;
 }
 @media screen and (max-width: 1500px) {
   .error__message h1 {
     font-size: 8rem;
-  }
-  .error__message p {
-    font-size: 2rem;
   }
 }
 
@@ -1896,7 +1897,7 @@ body main .cards {
   width: 100%;
   min-height: 80vh;
 }
-.Bookmark h2 {
+.Bookmark h2, .Bookmark a.title {
   font-size: 10rem;
   font-weight: 600;
   border-radius: 3rem;
@@ -1909,15 +1910,27 @@ body main .cards {
   translate: 0 5rem;
   text-shadow: 0 0 1rem rgba(199, 35, 120, 0.8);
   box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
+  transform: translateY(1rem);
+  text-wrap: nowrap;
 }
-.Bookmark h2:hover {
+.Bookmark h2:hover, .Bookmark a.title:hover {
   transform: translateY(-1.5rem);
   scale: 1.05;
   box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
 }
+.Bookmark a.title {
+  text-decoration: none;
+  color: yellow;
+}
+.Bookmark a.title:active {
+  transform: translateY(0.5rem);
+  scale: 0.95;
+  box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
+  color: rgb(154, 154, 95);
+}
 .Bookmark .Bookmark__Sections {
   display: flex;
-  max-width: 100vw;
+  width: 95vw;
   gap: 7rem;
   flex-wrap: wrap;
   justify-content: center;
@@ -1940,6 +1953,7 @@ body main .cards {
   text-shadow: 0 0 1rem rgba(255, 251, 251, 0.8);
   box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2), inset 0.25rem 0.5rem 0.5rem rgba(51, 76, 161, 0.3);
   position: relative;
+  text-decoration: none;
 }
 .Bookmark .Bookmark__Sections--link:hover {
   cursor: pointer;
@@ -1955,7 +1969,6 @@ body main .cards {
   box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
 }
 .Bookmark .Bookmark__Sections--entry {
-  padding: 3rem;
   margin: 5rem 3rem;
   width: 35rem;
   border-radius: 2.5rem;
@@ -1968,17 +1981,34 @@ body main .cards {
   text-shadow: 0 0 1rem rgba(255, 251, 251, 0.8);
   box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.2), inset 0.2rem 0.4rem 0.4rem rgba(51, 76, 161, 0.3);
 }
+.Bookmark .Bookmark__Sections--entry a.link, .Bookmark .Bookmark__Sections--entry p {
+  width: 100%;
+  z-index: 50;
+  padding: 3rem;
+  text-decoration: none;
+  display: block;
+  color: white;
+}
+.Bookmark .Bookmark__Sections--entry a.link:visited, .Bookmark .Bookmark__Sections--entry p:visited {
+  color: white;
+}
+.Bookmark .Bookmark__Sections--entry p {
+  margin-top: -5rem;
+}
+.Bookmark .Bookmark__Sections--entry a.Delete {
+  z-index: 100;
+}
 .Bookmark .Bookmark__Sections--entry a.Delete i {
-  color: #c72378;
+  color: #9c1b5e;
   text-decoration: none;
   position: absolute;
   top: 1rem;
   right: 1rem;
-  font-size: 3rem;
+  font-size: 5rem;
   text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.8);
 }
 .Bookmark .Bookmark__Sections--entry a.Delete i:hover {
-  color: #9c1b5e;
+  color: #e56baa;
   scale: 1.3;
 }
 .Bookmark .Bookmark__Sections--entry:hover {
@@ -1993,6 +2023,26 @@ body main .cards {
   scale: 0.95;
   background-color: #9c1b5e;
   box-shadow: 0 0 6rem rgba(0, 0, 0, 0.8);
+}
+@media screen and (max-width: 1220px) {
+  .Bookmark .Bookmark__Sections--entry {
+    margin: 2.5rem 1.5rem;
+    width: 25rem;
+    font-size: 3.5rem;
+  }
+}
+@media screen and (max-width: 900px) {
+  .Bookmark .Bookmark__Sections--entry {
+    margin: 2rem 1rem;
+    width: 23rem;
+    font-size: 2.5rem;
+  }
+}
+.Bookmark .Bookmark__Sections a.empty {
+  font-size: clamp(3rem, 5vw, 10rem);
+  padding: 2rem;
+  color: #c72378;
+  text-shadow: 0 0 1rem rgba(199, 35, 120, 0.8);
 }
 @media (max-width: 1600px) {
   .Bookmark .Bookmark__Sections {

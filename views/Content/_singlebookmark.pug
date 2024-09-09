@@ -1,12 +1,15 @@
 .Bookmark
-    h2= title
+    a(class='title' href='/user/bookmarks')= title
     .Bookmark__Sections
-
-        for bookmark in bookmarks
-            .Bookmark__Sections--entry
-                a(href=bookmark.url)= `${info1} ${bookmark.info1}`
-                if info2
-                    p= `${info2} ${bookmark.info2}`
-                a(href=`/deletebookmark/${bookmark._id}` class="Delete" data-type=title data-info1=info1 data-info2=info2)
-                    i(class="fi fi-sr-trash")
-        
+        if bookmarks.length !== 0
+            for bookmark in bookmarks
+                - let bookmark_url = url.replace('info1', bookmark.info1).replace('info2', bookmark.info2)
+                .Bookmark__Sections--entry
+                    a(href=`${bookmark_url}` class="link")
+                    p.info1= `${info1} ${bookmark.info1}`
+                    a( class="Delete" data-type=title data-info1=info1 data-info2=info2)
+                        i(class="fi fi-sr-trash")
+                    if info2
+                        p.info2= `${info2} ${bookmark.info2}`
+        else
+            a.empty No bookmarks yet :)

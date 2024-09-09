@@ -17,16 +17,16 @@
     }
 
     p {
-        font-size: 4rem;
+        font-size: clamp(1.5rem, 2.5vw, 4rem);
+        hyphens: auto;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        max-width: 95vw;
     }
 
     @media screen and (max-width: 1500px) {
         h1 {
             font-size: 8rem;
-        }
-
-        p {
-            font-size: 2rem;
         }
         
     }

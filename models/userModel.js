@@ -117,7 +117,7 @@ userSchema.methods.removeBookmark = async function (type, object) {
 
 	const bookmarkField = bookmarkFields[type];
 
-	if (!bookmarkField) {
+	  if (!bookmarkField) {
 		throw new Error('Invalid bookmark type');
 	}
 

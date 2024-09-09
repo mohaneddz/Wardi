@@ -212,6 +212,7 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 	let title;
 	let info1 = '';
 	let info2 = '';
+	let url = '';
 
 	switch (type) {
 		case 'fav_chapters': {
@@ -219,8 +220,9 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 				info1: chapter.chapter,
 				info2: null,
 			}));
-			title = 'Chapters';
+			title= 'Chapters';
 			info1 = 'Chapter';
+			url = `/quran/chapter/info1`;
 			break;
 		}
 
@@ -232,6 +234,8 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 			title = 'Verses';
 			info1 = 'Verse';
 			info2 = 'Chapter';
+			url = `/quran/chapter/info2`;
+
 			break;
 		}
 
@@ -240,8 +244,10 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 				info1: page.page,
 				info2: null,
 			}));
+
 			title = 'Pages';
 			info1 = 'Page';
+			url = `/quran/pages/info1`;
 			break;
 		}
 
@@ -253,6 +259,9 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 			title = 'Hadiths';
 			info1 = 'Hadith';
 			info2 = 'Book';
+			title = 'Chapters';
+			url = `/hadiths/book/info1/info2`;
+
 			break;
 		}
 
@@ -263,6 +272,8 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 			}));
 			title = 'Hadith Books';
 			info1 = 'Book';
+			url = `/hadiths/books/info1`;
+
 			break;
 		}
 
@@ -274,6 +285,8 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 			title = 'Hadith Sections';
 			info1 = 'Section';
 			info2 = 'Book';
+			url = `/hadiths/book/info1/sections/info2`;
+
 			break;
 		}
 
@@ -284,6 +297,8 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 			}));
 			title = 'Tafsir Books';
 			info1 = 'Book';
+			url = `/quran/books/info1`;
+
 			break;
 		}
 
@@ -302,6 +317,7 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 		info1,
 		info2,
 		bookmarks,
+		url,
 	});
 });
 
