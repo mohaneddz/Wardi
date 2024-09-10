@@ -597,6 +597,8 @@ body {
   left: 0;
   width: 100%;
   z-index: 1000;
+  height: 7vh;
+  margin-bottom: 1rem;
 }
 .header nav {
   padding: 1rem 0;
@@ -1168,9 +1170,9 @@ body {
   font-size: 4rem;
   line-height: 7rem;
   padding: 2rem;
-  padding-bottom: 8rem;
+  padding-bottom: 1rem;
   border-radius: 2rem;
-  height: 88vh;
+  height: 90vh;
   width: 100%;
   overflow-y: auto;
 }
@@ -1191,10 +1193,9 @@ body {
 }
 
 .quran__page--number {
-  position: fixed;
-  bottom: 2%;
-  right: 45%;
+  position: static;
   opacity: 0.5;
+  margin-top: 5rem;
   backdrop-filter: blur(10px);
   background-color: rgba(176, 179, 192, 0.5);
 }
@@ -1359,7 +1360,7 @@ body {
   .mainReading_Hadith.active .tafsir,
   .mainReading_Hadith.active .quran,
   .mainReading_Hadith.active .hadith {
-    height: 72vh;
+    height: 73vh;
   }
   .Lsidebar,
   .Rsidebar {
@@ -1368,7 +1369,7 @@ body {
   .tafsir,
   .quran,
   .hadith {
-    height: 88.5vh;
+    height: 91.5vh;
     width: 97vw;
     grid-row: 1/4;
     margin-bottom: 2rem;

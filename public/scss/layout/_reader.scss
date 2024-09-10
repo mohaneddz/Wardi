@@ -15,10 +15,10 @@
 }
 
 .quran__page--number {
-	position: fixed;
-	bottom: 2%;
-	right: 45%;
+	position: static;
 	opacity: 0.5;
+	margin-top: 5rem;
+
 	backdrop-filter: blur(10px);
 	background-color: rgba(#b0b3c0, 0.5);
 }
@@ -183,7 +183,7 @@
 			.tafsir,
 			.quran,
 			.hadith {
-				height: 72vh;
+				height: 73vh;
 			}
 		}
 	}
@@ -195,7 +195,7 @@
 	.tafsir,
 	.quran,
 	.hadith {
-		height: 88.5vh;
+		height: 91.5vh;
 		width: 97vw;
 		grid-row: 1/4;
 		margin-bottom: 2rem;

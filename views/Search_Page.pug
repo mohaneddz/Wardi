@@ -1,0 +1,11 @@
+extends ./Layout/_base
+
+block append head 
+  - var bodyClass = 'Userpage'
+  - var mainClass = 'mainUserpage'
+//-   script(src="/js/User.js" defer type="module") 
+
+block content
+  include ./Content/_search
+
+block footer

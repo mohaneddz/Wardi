@@ -1,0 +1,16 @@
+.search
+    .search__container
+        .search__header
+        h1.search__title Search
+        .search__form
+        form.search__form--form(action="/search" method="GET")
+            input.search__form--input(type="text" name="q" placeholder="Search")
+            button.search__form--button(type="submit") Search
+        .search__results
+        if results.length
+            each result in results
+            .search__result
+                h2.search__result--title= result.title
+                p.search__result--description= result.description
+        else
+            p.search__no-results No results found
