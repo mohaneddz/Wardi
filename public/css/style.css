@@ -525,8 +525,6 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  visibility: hidden;
-  opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -576,6 +574,11 @@ body {
 .Popup .Popup__Content .Popup__Buttons button:active {
   scale: 0.9;
   filter: brightness(80%);
+}
+
+.invisible {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .header {

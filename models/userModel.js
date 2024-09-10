@@ -33,8 +33,6 @@ userSchema.pre(/^find/, function (next) {
 // Adding the Methods to the Schema ------------------------------------------
 
 userSchema.methods.correctPassword = async function (candidatePassword, userPassword) {
-	// log the bycrypted password and the user password
-	console.log(bcrypt.hash(candidatePassword, 12), userPassword);
 	return await bcrypt.compare(candidatePassword, userPassword);
 };
 
@@ -168,6 +166,10 @@ userSchema.methods.removeBookmark = async function (type, object) {
 	}
 };
 
+userSchema.methods.removeBookmarkAll = async function () {
+	this.bookmarks = {};
+	await this.save({ validateBeforeSave: false });
+}
 // Exporting the final Model ------------------------------------------
 
 const User = mongoose.model('User', userSchema);

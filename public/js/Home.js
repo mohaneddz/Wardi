@@ -1,6 +1,6 @@
 'use strict';
-import { favControl } from './Reader.js';
-const hearts = document.querySelectorAll('.heart');
+import {favControl} from './Fav.js';
+
 const cards = document.querySelector('.cards');
 
 cards.addEventListener('click', (e) => {

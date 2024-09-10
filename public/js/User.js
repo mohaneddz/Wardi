@@ -47,7 +47,7 @@ function updateUser(e) {
 				showAlert('success', 'User updated successfully');
 				window.setTimeout(() => {
 					location.assign('/user/me');
-				}, 1500);
+				}, 500);
 			}
 		})
 		.catch((err) => {
@@ -67,7 +67,7 @@ function logout(e) {
 				showAlert('success', 'Logged out successfully');
 				window.setTimeout(() => {
 					location.assign('/user/login');
-				}, 1500);
+				}, 500);
 			}
 		})
 		.catch((err) => {

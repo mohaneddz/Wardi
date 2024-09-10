@@ -21,9 +21,9 @@
 a.DeleteAll 
     i(class="fi fi-sr-trash")
 
-.Popup
+.Popup.invisible
     .Popup__Content
         h2 Are you sure you want to delete all bookmarks?
         .Popup__Buttons
-            button.no No
-            button.yes Yes
+            button.no(id="No") No
+            button.yes(id="Yes") Yes

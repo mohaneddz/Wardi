@@ -123,14 +123,14 @@ export const removeBookmark = catchAsync(async (req, res, next) => {
 	if (!req.user) return next(new AppError('Please login to remove bookmarks', 400));
 
 	const { type, object } = req.body;
-
-	if (!type || !object) {
-		return next(new AppError('Please provide type and object', 400));
-	}
 	const user = await User.findOne({ name: req.user.name });
 
-	// Pass type and object as separate arguments
-	await user.removeBookmark(type, object);
+	if (type === 'All') await user.removeBookmarkAll();
+	else {
+		if (!type || !object) return next(new AppError('Please provide type and object', 400));
+
+		await user.removeBookmark(type, object);
+	}
 
 	res.status(201).json({
 		status: 'success',
@@ -218,7 +218,7 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 
 	function capitalizeFirstLetter(string) {
 		return string.charAt(0).toUpperCase() + string.slice(1);
-	  }
+	}
 
 	switch (type) {
 		case 'fav_chapters': {
@@ -261,7 +261,10 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 			bookmarks = user.bookmarks.fav_hadiths.map((hadith) => ({
 				info1: hadith.hadith,
 				info2: hadith.book || null,
-				info3: capitalizeFirstLetter(hadith.book.split('-')[1]) + ' ' + capitalizeFirstLetter(hadith.book.split('-')[0]),
+				info3:
+					capitalizeFirstLetter(hadith.book.split('-')[1]) +
+					' ' +
+					capitalizeFirstLetter(hadith.book.split('-')[0]),
 			}));
 			title = 'Hadiths';
 			info1 = 'Hadith';
@@ -288,7 +291,10 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 			bookmarks = user.bookmarks.fav_sections_hadith.map((section) => ({
 				info1: section.section,
 				info2: section.book || null,
-				info3: capitalizeFirstLetter(section.book.split('-')[1]) + ' ' + capitalizeFirstLetter(section.book.split('-')[0]),
+				info3:
+					capitalizeFirstLetter(section.book.split('-')[1]) +
+					' ' +
+					capitalizeFirstLetter(section.book.split('-')[0]),
 			}));
 			title = 'Hadith Sections';
 			info1 = 'Section';
