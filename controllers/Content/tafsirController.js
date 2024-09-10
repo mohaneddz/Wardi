@@ -23,9 +23,13 @@ export const getTafsirChapterView = catchAsync(async (req, res) => {
 	const all_chapters = await Chapter.find().select('name chapter').lean();
 	const this_chapter = await Chapter.findOne({ chapter: chapterNumber }).lean();
 	
+	const user = req.user;
+	const fav_chapters = user?.bookmarks?.fav_chapters?.map((chapter) => chapter.chapter) || [];
+	const fav_verses = user?.bookmarks?.fav_verses?.map((verse) => verse.verse) || [];
+
 	const tafsir = await Tafsir.aggregate([
 		{
-			$match: { slug: req.params.slug },
+			$match: { slug: req.params.book },
 		},
 		{
 			$project: {
@@ -44,6 +48,8 @@ export const getTafsirChapterView = catchAsync(async (req, res) => {
 		title: `${this_chapter.info.arabicname}`,
 		all_chapters,
 		this_chapter,
+		fav_chapters,
+		fav_verses,
 		tafsir,
 		chapterNumber,
 		this_book: req.params.book,
@@ -67,6 +73,7 @@ export const getTafsirBookView = catchAsync(async (req, res) => {
 	const lang = this_book.split('-')[0];
 	
 	const fav_books = user?.bookmarks?.fav_books_tafsir?.map((book) => book.slug) || [];
+	const fav_chapters = user?.bookmarks?.fav_chapters?.map((chapter) => chapter.chapter) || [];
 
 	const tafsir = await Tafsir.aggregate([
 		{
@@ -90,6 +97,7 @@ export const getTafsirBookView = catchAsync(async (req, res) => {
 		all_books,
 		all_chapters,
 		this_chapter,
+		fav_chapters,
 		tafsir,
 		fav_books,
 		lang,

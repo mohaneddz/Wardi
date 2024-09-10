@@ -57,7 +57,7 @@ include _mixin.pug
         else if mode === "TafsirChapter"
             for verse in this_chapter.verses
                 li
-                    a(href=`#` class="RsideEntry tafsirChapterSearch" data-type=`verse` data-verse=`${verse.verse}` data-chapter=`${chapter.chapter}`)= verse.verse
+                    a(href=`#` class="RsideEntry tafsirChapterSearch" data-type=`verse` data-verse=`${verse.verse}` data-chapter=`${this_chapter.chapter}`)= verse.verse
                         +favIcon(verse.verse, fav_verses)
 
         else if mode === "TafsirBooks"

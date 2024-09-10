@@ -109,6 +109,7 @@
 
 	// ----------------------------------------------
 	&.active {
+		box-shadow: 0 0 2rem rgba(black, 0.5);
 		display: flex;
 		justify-content: start;
 		align-content: center;

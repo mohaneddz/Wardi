@@ -305,7 +305,7 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 			}));
 			title = 'Tafsir Books';
 			info1 = ' ';
-			url = `/quran/books/info2/`;
+			url = `/tafsir/book/info2/chapters/1`;
 
 			break;
 		}

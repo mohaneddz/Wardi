@@ -6,11 +6,11 @@ import AppError from '../../utils/appError.js';
 
 // // Getters -------------------------------------------- [ Factory Functions  | If turn it into an API ]
 
-// // export const getHadith = factory.getOne(Hadith);
-// // export const getAllHadiths = factory.getAll(Hadith);
-// // export const createHadith = factory.createOne(Hadith);
-// // export const updateHadith = factory.updateOne(Hadith);
-// // export const deleteHadith = factory.deleteOne(Hadith);
+export const getHadith = factory.getOne(Hadith);
+export const getAllHadiths = factory.getAll(Hadith);
+export const createHadith = factory.createOne(Hadith);
+export const updateHadith = factory.updateOne(Hadith);
+export const deleteHadith = factory.deleteOne(Hadith);
 
 // // |.....|---------------------------------------------
 
@@ -20,6 +20,11 @@ export const getBooksView = catchAsync(async (req, res) => {
 
 	const books = await Hadith.aggregate([
 		{
+			$match: {
+				name: { $not: /1$/ },
+			},
+		},
+		{
 			$project: {
 				book: 1,
 				number: 1,
@@ -27,11 +32,6 @@ export const getBooksView = catchAsync(async (req, res) => {
 				image: 1,
 				'metadata.name': 1,
 				hadith_counts: { $size: '$hadiths' },
-			},
-		},
-		{
-			$match: {
-				name: { $not: /1$/ },
 			},
 		},
 		{
@@ -47,7 +47,6 @@ export const getBooksView = catchAsync(async (req, res) => {
 });
 
 export const getSectionView = catchAsync(async (req, res) => {
-
 	const lang = req.params.book.split('-')[0];
 	const sectionNumber = parseInt(req.params.section);
 
@@ -119,7 +118,7 @@ export const getHadithView = catchAsync(async (req, res) => {
 	// check if it is english or arabic
 	const lang = req.params.book.split('-')[0];
 
-	const hadithNumber = parseFloat(req.params.hadith,10);
+	const hadithNumber = parseFloat(req.params.hadith, 10);
 	const all_books = await Hadith.aggregate([
 		{
 			// check if it starts with lang and not end with the number 1 ( 1 is for search versions )
@@ -127,12 +126,13 @@ export const getHadithView = catchAsync(async (req, res) => {
 		},
 		{
 			$project: {
-				metadata: {
-					name: 1,
-				},
+				'metadata.name': 1,
 				number: 1,
 				name: 1,
 			},
+		},
+		{
+			$sort: { 'metadata.name': 1 },
 		},
 	]);
 
@@ -170,7 +170,7 @@ export const getHadithView = catchAsync(async (req, res) => {
 			$project: {
 				hadiths: {
 					hadithnumber: 1,
-				}
+				},
 			},
 		},
 	]);

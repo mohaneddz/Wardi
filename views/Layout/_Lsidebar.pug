@@ -72,11 +72,11 @@ include _mixin.pug
             each chapter in all_chapters
                 if chapter.chapter === this_chapter.chapter
                     li
-                        a(href=`/tafsir/book/${this_book}/chapter/${chapter.chapter}` class="LsideEntry selectedEntry" data-type=`chapter`)= chapter.name
+                        a(href=`/tafsir/book/${this_book}/chapter/${chapter.chapter}` data-chapter=chapter.chapter class="LsideEntry selectedEntry" data-type=`chapter`)= chapter.name
                             +favIcon(chapter.chapter, fav_chapters)
                 else
                     li
-                        a(href=`/tafsir/book/${this_book}/chapter/${chapter.chapter}` class="LsideEntry" data-type=`chapter`)= chapter.name
+                        a(href=`/tafsir/book/${this_book}/chapter/${chapter.chapter}` data-chapter=chapter.chapter class="LsideEntry" data-type=`chapter`)= chapter.name
                             +favIcon(chapter.chapter, fav_chapters)
         
         else if mode === "TafsirBooks"
