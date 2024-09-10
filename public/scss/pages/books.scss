@@ -13,6 +13,7 @@ main {
 		background-color: $primary-color-light;
 		padding: 2rem;
 		font-size: 3rem;
+		box-shadow: 0 0 5rem rgba(0, 0, 0, 0.5);
 		
 		@media (max-width: 1000px) {
 			grid-template-columns: repeat(3, minmax(14rem, 1fr));

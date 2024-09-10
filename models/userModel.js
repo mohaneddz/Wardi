@@ -61,10 +61,15 @@ userSchema.methods.addBookmark = async function (type, object) {
 	const addToBookmarks = (arrayName, item) => {
 		this.bookmarks[arrayName] = this.bookmarks[arrayName] || [];
 
-		// Check if item already exists in the array
+		const removeId = (obj) => {
+			const { _id, ...rest } = obj;
+			return rest;
+		};
+
 		if (
 			!this.bookmarks[arrayName].some(
-				(existingItem) => JSON.stringify(existingItem) === JSON.stringify(item)
+				(existingItem) =>
+					JSON.stringify(removeId(existingItem)) === JSON.stringify(removeId(item))
 			)
 		) {
 			this.bookmarks[arrayName].push(item);
@@ -169,7 +174,7 @@ userSchema.methods.removeBookmark = async function (type, object) {
 userSchema.methods.removeBookmarkAll = async function () {
 	this.bookmarks = {};
 	await this.save({ validateBeforeSave: false });
-}
+};
 // Exporting the final Model ------------------------------------------
 
 const User = mongoose.model('User', userSchema);

@@ -205,6 +205,7 @@ export const bookmarksView = (req, res) => {
 };
 
 export const getBookmarks = catchAsync(async (req, res, next) => {
+	
 	const user = req.user;
 	if (!user) return signupView(req, res);
 
@@ -325,13 +326,24 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 		if (a.info1 > b.info1) return 1;
 		return 0;
 	});
+	// Removing duplicates
+	const seen = new Set();
+	const uniqueBookmarks = bookmarks.filter((bookmark) => {
+		const key = `${bookmark.info1}-${bookmark.info2}-${bookmark.info3}`;
+		if (seen.has(key)) {
+			return false;
+		} else {
+			seen.add(key);
+			return true;
+		}
+	});
 
 	res.status(200).render('SingleBookmark_Page', {
 		title,
 		info1,
 		info2,
 		info3,
-		bookmarks,
+		bookmarks: uniqueBookmarks,
 		type,
 		url,
 	});

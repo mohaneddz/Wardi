@@ -144,35 +144,42 @@ body {
   transition: all 0.3s;
 }
 
-.HadithBooks .title h2 {
+.HadithBooks .title h2, .TafsirBooks .title h2 {
   width: 80vw;
-  font-size: 7rem;
+  font-size: 19rem;
   text-align: center;
+  margin-bottom: 4rem;
 }
-.HadithBooks .title h2:hover {
+.HadithBooks .title h2:hover, .TafsirBooks .title h2:hover {
   cursor: pointer;
   color: #010205;
   text-shadow: 0 0 10px #c72378;
 }
+@media (max-width: 1500px) {
+  .HadithBooks .title h2, .TafsirBooks .title h2 {
+    font-size: 14rem;
+    margin-bottom: -1rem;
+  }
+}
+@media (max-width: 1200px) {
+  .HadithBooks .title h2, .TafsirBooks .title h2 {
+    font-size: 12.5rem;
+    margin-bottom: -2rem;
+  }
+}
 @media (max-width: 1000px) {
-  .HadithBooks .title h2 {
-    font-size: 5.5rem;
+  .HadithBooks .title h2, .TafsirBooks .title h2 {
+    font-size: 10rem;
     margin-bottom: -3rem;
   }
 }
 @media (max-width: 800px) {
-  .HadithBooks .title h2 {
-    font-size: 4.5rem;
-    margin-bottom: -3.5rem;
-  }
-}
-@media (max-width: 400px) {
-  .HadithBooks .title h2 {
-    font-size: 4rem;
+  .HadithBooks .title h2, .TafsirBooks .title h2 {
+    font-size: 6.5rem;
     margin-bottom: -4rem;
   }
 }
-.HadithBooks h3 {
+.HadithBooks h3, .TafsirBooks h3 {
   font-size: clamp(2rem, 1.8vw, 3.5rem);
   text-wrap: nowrap;
   text-align: center;
@@ -183,24 +190,24 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.HadithBooks h3.TafsirTitle {
+.HadithBooks h3.TafsirTitle, .TafsirBooks h3.TafsirTitle {
   margin-left: 2rem;
 }
-.HadithBooks .books__card__info {
+.HadithBooks .books__card__info, .TafsirBooks .books__card__info {
   padding-top: 1.25rem;
   display: flex;
   width: 100%;
 }
-.HadithBooks .books__card__info__hadiths {
+.HadithBooks .books__card__info__hadiths, .TafsirBooks .books__card__info__hadiths {
   font-size: 2rem;
   color: #dee2e6;
   display: flex;
 }
-.HadithBooks .books__card__info__fav a {
+.HadithBooks .books__card__info__fav a, .TafsirBooks .books__card__info__fav a {
   text-decoration: none;
   color: #c72378;
 }
-.HadithBooks .books__card__info__language {
+.HadithBooks .books__card__info__language, .TafsirBooks .books__card__info__language {
   position: absolute;
   font-size: 2rem;
   color: #dee2e6;
@@ -1607,6 +1614,7 @@ main .books {
   background-color: #192653;
   padding: 2rem;
   font-size: 3rem;
+  box-shadow: 0 0 5rem rgba(0, 0, 0, 0.5);
 }
 @media (max-width: 1000px) {
   main .books {
@@ -2011,6 +2019,7 @@ body main .cards {
   transform: translateY(-1.5rem);
   scale: 1.05;
   box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
+  cursor: pointer;
 }
 .Bookmark a.title {
   text-decoration: none;

@@ -3,12 +3,12 @@ include ./Layout/_mixin.pug
 
 block append head
   script(src="/js/Books.js" defer type="module")
-  - var bodyClass = 'HadithBooks'
-  - var mainClass = 'mainHadithBooks'
+  - var bodyClass = 'TafsirBooks'
+  - var mainClass = 'mainTafsirBooks'
 
 block content
     .title
-        h2.title__sub كتب تفسير القرآن الكريم
+        h2.title__sub تفسير القرآن الكريم
 
     .books
         //- card for each surah : this is a template as of now
@@ -24,7 +24,6 @@ block content
                         p.books__card__info__language عربي
                     else
                         p.books__card__info__language English
-                        // TODO : add functionality to the fav button 
                     p.books__card__info__fav
                         a(data-type="tafsir_book" data-slug=book.slug data-name=book.name )
                             +favIcon(book.slug, fav_books)
