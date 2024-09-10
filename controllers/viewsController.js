@@ -1,3 +1,4 @@
+import { ChaptersSearch } from '../models/Content/Quran/quranChaptersModel.js';
 import Chapter from '../models/Content/Quran/quranChaptersModel.js';
 
 import catchAsync from '../utils/catchAsync.js';
@@ -32,16 +33,40 @@ export const getLanding = catchAsync(async (req, res, next) => {
 });
 
 export const getSearch = catchAsync(async (req, res, next) => {
+	const query = 'قل هو'; // The search query
 
-	const query = "الله"; 
-	const searchResults = await Chapter.find({ $text: { $search: query } }).select('name').lean();
-  
-	// Return the results
-	res.status(200).json({
-	  status: 'success',
-	  results: searchResults.length,
-	  data: {
-		search: searchResults,
-	  },
+	// MongoDB text search filter
+	const filter = {
+		$text: { $search: query, $caseSensitive: false, $diacriticSensitive: false },
+	};
+
+	// Perform the search
+	const result = await ChaptersSearch.find(filter)
+		.select({ score: { $meta: 'textScore' }, _id: 0, name: 1, verses: 1 })
+		.sort({ score: { $meta: 'textScore' } })
+		// .limit(10)
+		.lean();
+
+	// Filter only the verses that include the query
+	const filteredResults = result.map((chapter) => {
+		return {
+			name: chapter.name,
+			verses: chapter.verses
+				.filter((verse) => verse.text.includes(query))
+				.filter((verse) => verse.text?.length > 0), // Only include verses containing the query
+		};
 	});
-  });
+
+	// Return the filtered results
+	res.status(200).json({
+		status: 'success',
+		results: filteredResults.length,
+		data: filteredResults,
+	});
+});
+
+export const searchView = catchAsync(async (req, res, next) => {
+	res.status(200).render('Search_Page', {
+		title: 'Search',
+	});
+});

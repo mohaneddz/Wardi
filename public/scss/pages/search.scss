@@ -1,0 +1,30 @@
+// .SearchPage{
+//     display:
+// }
+.mainSearchPage {
+	display: initial;
+	padding: 0;
+}
+.search {
+	display: grid;
+	grid-template-columns: [center-start] repeat(12, [col-start] minmax(min-content, 100rem) [col-end]) [center-end];
+	min-height: 90vh;
+	overflow-y: scroll;
+}
+
+input[type='radio'] {
+	display: none;
+
+	&:checked + label {
+		background-color: $tertiary-color;
+		color: $primary-color-lighter;
+		box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
+		transform: scale(1.05);
+	}
+}
+
+.invisible {
+	opacity: 0;
+	visibility: hidden;
+	display: none;
+}

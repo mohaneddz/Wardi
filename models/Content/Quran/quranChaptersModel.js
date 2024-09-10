@@ -36,5 +36,6 @@ ChapterSchema.virtual('versesCount').get(function () {
 ChapterSchema.index({ 'verses.text': 'text' });
 
 const Chapter = mongoose.model('Chapter', ChapterSchema);
+export const ChaptersSearch = mongoose.model('chapters.searchs', ChapterSchema);
 
 export default Chapter;

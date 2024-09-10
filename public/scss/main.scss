@@ -23,6 +23,8 @@
 @import 'layout/Rsidebar.scss';
 @import 'layout/reader.scss';
 @import 'layout/alert.scss';
+@import 'layout/search_options.scss';
+@import 'layout/search_results.scss';
 
 // Pages imports
 @import 'pages/Login.scss';
@@ -32,3 +34,4 @@
 @import 'pages/errorPage.scss';
 @import 'pages/user.scss';
 @import 'pages/bookmarks.scss';
+@import 'pages/search.scss';

@@ -5,6 +5,7 @@ import express from 'express';
 const router = express.Router();
 
 router.get('/', viewsController.getLanding);
-router.get('/search', viewsController.getSearch);
+router.get('/search/:query', viewsController.getSearch);
+router.get('/search/', viewsController.searchView);
 
 export default router;

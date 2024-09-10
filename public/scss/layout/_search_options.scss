@@ -1,0 +1,138 @@
+.options {
+	background-color: $primary-color-light;
+	grid-column: -4/-1;
+	height: inherit;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 5rem;
+	padding: 2rem 1rem;
+	box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
+    z-index: 50;
+	overflow-y: scroll;
+	border-radius: 1rem;
+
+	h2 {
+		font-size: 5rem;
+		color: $tertiary-color;
+		text-align: center;
+		display: block;
+		position: relative;
+		width: 100%;
+		z-index: 10;
+		margin-top: 4rem;
+		text-shadow:
+			-1px -1px 0.5rem $primary-color-dark,
+			1px -1px 0.5rem $primary-color-dark,
+			-1px 1px 0.5rem $primary-color-dark,
+			1px 1px 0.5rem $primary-color-dark,
+			-2px -2px 0.5rem $primary-color-dark,
+			2px -2px 0.5rem $primary-color-dark,
+			-2px 2px 0.5rem $primary-color-dark,
+			2px 2px 0.5rem $primary-color-dark;
+
+		border-bottom: 3px solid $primary-color-darker;
+		line-height: 0.1em;
+		span {
+			background: $primary-color-darker;
+			padding: 0 10px;
+		}
+	}
+	h3 {
+		font-size: 4rem;
+		color: $secondary-color;
+		text-align: center;
+		margin: 2rem;
+		display: block;
+
+		border-bottom: 3px solid $primary-color;
+		line-height: 0.1em;
+		margin: 5rem 0;
+
+		text-shadow:
+			-1px -1px 0.5rem $primary-color,
+			1px -1px 0.5rem $primary-color,
+			-1px 1px 0.5rem $primary-color,
+			1px 1px 0.5rem $primary-color,
+			-2px -2px 0.5rem $primary-color,
+			2px -2px 0.5rem $primary-color,
+			-2px 2px 0.5rem $primary-color,
+			2px 2px 0.5rem $primary-color;
+		span {
+			background: $primary-color;
+			padding: 0 10px;
+		}
+	}
+	h4 {
+		font-size: 3rem;
+		color: $tertiary-color;
+		text-align: center;
+		margin: 1rem;
+		display: block;
+		text-shadow: 0 0 1rem rgba(0, 0, 0, 0.8);
+		text-decoration: underline;
+	}
+	label {
+		font-size: 1.5rem;
+		color: $secondary-color;
+		text-align: center;
+		background-color: $primary-color-dark;
+		padding: 1rem 0rem;
+		margin: 2rem;
+		border-radius: 3rem;
+		box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
+		&:hover {
+			cursor: pointer;
+			transform: translateY(-0.5rem);
+			scale: 1.05;
+			box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
+			background-color: $primary-color;
+		}
+		&:active {
+			transform: translateY(0.5rem);
+			scale: 0.95;
+			box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
+			background-color: $primary-color-lighter;
+		}
+	}
+	&__type,
+	&__collection {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	&__type > label,
+	&__collection > label {
+		flex: 1 1 calc(33.333% - 1rem);
+		margin: 0.5rem;
+		box-sizing: border-box;
+	}
+	&__sub {
+		&--hadith,
+		&--tafsir {
+			&--collection,
+			&--language {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+			&--collection > label,
+			&--language > label {
+				flex: 1 1 calc(33.333% - 1rem);
+				margin: 0.5rem;
+				box-sizing: border-box;
+				align-content: center;
+			}
+		}
+		&--quran {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		&--quran > label {
+			flex: 1 1 calc(33.333% - 1rem);
+			margin: 0.5rem;
+			box-sizing: border-box;
+		}
+	}
+}

@@ -1258,12 +1258,13 @@ body {
   font-size: 18rem;
   margin: 6rem 0rem;
   color: #c72378;
-  -webkit-text-stroke: 1px #0D142C;
+  text-shadow: 0 2px 0.2rem rgba(0, 0, 0, 0.9);
 }
 .quran h2 {
   font-weight: 400;
   font-size: 8rem;
   margin: 3.5rem 0rem;
+  text-shadow: 0 2px 0.5rem rgba(0, 0, 0, 0.5);
 }
 .quran h2.quran__istieadha {
   font-family: "Istieadha", serif;
@@ -1438,6 +1439,175 @@ body {
 }
 .alert--error {
   background-color: #c72378;
+}
+
+.options {
+  background-color: #192653;
+  grid-column: -4/-1;
+  height: inherit;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding: 2rem 1rem;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
+  z-index: 50;
+  overflow-y: scroll;
+  border-radius: 1rem;
+}
+.options h2 {
+  font-size: 5rem;
+  color: #c72378;
+  text-align: center;
+  display: block;
+  position: relative;
+  width: 100%;
+  z-index: 10;
+  margin-top: 4rem;
+  text-shadow: -1px -1px 0.5rem #010205, 1px -1px 0.5rem #010205, -1px 1px 0.5rem #010205, 1px 1px 0.5rem #010205, -2px -2px 0.5rem #010205, 2px -2px 0.5rem #010205, -2px 2px 0.5rem #010205, 2px 2px 0.5rem #010205;
+  border-bottom: 3px solid black;
+  line-height: 0.1em;
+}
+.options h2 span {
+  background: black;
+  padding: 0 10px;
+}
+.options h3 {
+  font-size: 4rem;
+  color: #b0b5c9;
+  text-align: center;
+  margin: 2rem;
+  display: block;
+  border-bottom: 3px solid #0D142C;
+  line-height: 0.1em;
+  margin: 5rem 0;
+  text-shadow: -1px -1px 0.5rem #0D142C, 1px -1px 0.5rem #0D142C, -1px 1px 0.5rem #0D142C, 1px 1px 0.5rem #0D142C, -2px -2px 0.5rem #0D142C, 2px -2px 0.5rem #0D142C, -2px 2px 0.5rem #0D142C, 2px 2px 0.5rem #0D142C;
+}
+.options h3 span {
+  background: #0D142C;
+  padding: 0 10px;
+}
+.options h4 {
+  font-size: 3rem;
+  color: #c72378;
+  text-align: center;
+  margin: 1rem;
+  display: block;
+  text-shadow: 0 0 1rem rgba(0, 0, 0, 0.8);
+  text-decoration: underline;
+}
+.options label {
+  font-size: 1.5rem;
+  color: #b0b5c9;
+  text-align: center;
+  background-color: #010205;
+  padding: 1rem 0rem;
+  margin: 2rem;
+  border-radius: 3rem;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
+}
+.options label:hover {
+  cursor: pointer;
+  transform: translateY(-0.5rem);
+  scale: 1.05;
+  box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
+  background-color: #0D142C;
+}
+.options label:active {
+  transform: translateY(0.5rem);
+  scale: 0.95;
+  box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
+  background-color: #24387b;
+}
+.options__type, .options__collection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.options__type > label, .options__collection > label {
+  flex: 1 1 calc(33.333% - 1rem);
+  margin: 0.5rem;
+  box-sizing: border-box;
+}
+.options__sub--hadith--collection, .options__sub--hadith--language, .options__sub--tafsir--collection, .options__sub--tafsir--language {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.options__sub--hadith--collection > label, .options__sub--hadith--language > label, .options__sub--tafsir--collection > label, .options__sub--tafsir--language > label {
+  flex: 1 1 calc(33.333% - 1rem);
+  margin: 0.5rem;
+  box-sizing: border-box;
+  align-content: center;
+}
+.options__sub--quran {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.options__sub--quran > label {
+  flex: 1 1 calc(33.333% - 1rem);
+  margin: 0.5rem;
+  box-sizing: border-box;
+}
+
+.results {
+  grid-column: 1/-4;
+  height: inherit;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(176, 181, 201, 0.7);
+  padding: 2rem;
+  gap: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+.results__item {
+  background: linear-gradient(135deg, #192653 0%, #010205 100%);
+  padding: 1.5rem;
+  border-radius: 3rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.results__item--quran, .results__item--hadith, .results__item--tafsir {
+  padding: 1.5rem;
+  border-left: 5px solid #192653;
+  margin-bottom: 1.5rem;
+  border-radius: 1rem;
+  background-color: rgba(36, 56, 123, 0.2);
+}
+.results__item--quran--text, .results__item--hadith--text, .results__item--tafsir--text {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #edeef2;
+}
+.results__item--quran--ayah, .results__item--quran--collection, .results__item--quran--collection, .results__item--hadith--ayah, .results__item--hadith--collection, .results__item--hadith--collection, .results__item--tafsir--ayah, .results__item--tafsir--collection, .results__item--tafsir--collection {
+  font-weight: bold;
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+  color: #c72378;
+  text-shadow: 0 0 0.5rem black;
+  text-decoration: underline;
+}
+.results__item--quran:hover, .results__item--hadith:hover, .results__item--tafsir:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 1rem 0 2rem rgb(0, 0, 0);
+  scale: 1.01;
+}
+.results__item--quran {
+  border-left-color: #010205;
+}
+.results__item--hadith {
+  border-left-color: #b0b5c9;
+}
+.results__item--tafsir {
+  border-left-color: #c72378;
 }
 
 .Loginpage, .Signuppage {
@@ -2284,6 +2454,34 @@ a.DeleteAll i {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.mainSearchPage {
+  display: initial;
+  padding: 0;
+}
+
+.search {
+  display: grid;
+  grid-template-columns: [center-start] repeat(12, [col-start] minmax(min-content, 100rem) [col-end]) [center-end];
+  min-height: 90vh;
+  overflow-y: scroll;
+}
+
+input[type=radio] {
+  display: none;
+}
+input[type=radio]:checked + label {
+  background-color: #c72378;
+  color: #24387b;
+  box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
+}
+
+.invisible {
+  opacity: 0;
+  visibility: hidden;
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

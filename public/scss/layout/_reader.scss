@@ -82,13 +82,13 @@
 		font-size: 18rem;
 		margin: 6rem 0rem;
 		color: $tertiary-color;
-		// give stroke
-		-webkit-text-stroke: 1px $primary-color;
+		text-shadow: 0 2px 0.2rem rgba(black, 0.9);
 	}
 	h2 {
 		font-weight: 400;
 		font-size: 8rem;
 		margin: 3.5rem 0rem;
+		text-shadow: 0 2px 0.5rem rgba(black, 0.5);
 		&.quran__istieadha {
 			font-family: 'Istieadha', serif;
 		}

@@ -1,0 +1,76 @@
+// $secondary-color-dark: #2c3e50; // Replace with the desired color value
+// $primary-color-light: #ecf0f1; // Light primary color
+// $primary-color-dark: #34495e; // Dark primary color
+// $secondary-color: #3498db; // Secondary color
+// $tertiary-color: #e74c3c; // Tertiary color
+
+.results {
+	grid-column: 1/-4;
+	height: inherit;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	background-color: rgba($secondary-color, 0.7);
+	padding: 2rem;
+	gap: 1.5rem;
+	border-radius: 1rem;
+	box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+	overflow-y: scroll;
+    margin-right: 1rem;
+    margin-left: 1rem;
+
+	&__item {
+		background: linear-gradient(135deg, $primary-color-light 0%, $primary-color-dark 100%);
+		padding: 1.5rem;
+		border-radius: 3rem;
+		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+		margin-bottom: 1.5rem;
+		transition:
+			transform 0.3s,
+			box-shadow 0.3s;
+		cursor: pointer;
+
+		&--quran,
+		&--hadith,
+		&--tafsir {
+			padding: 1.5rem;
+			border-left: 5px solid $primary-color-light;
+			margin-bottom: 1.5rem;
+			border-radius: 1rem;
+			background-color: rgba($primary-color-lighter, 0.2);
+			&--text {
+				font-size: 1.2rem;
+				line-height: 1.6;
+				color: $secondary-color-lighter;
+			}
+
+			&--ayah,
+			&--collection,
+			&--collection {
+				font-weight: bold;
+				font-size: 2.4rem;
+				margin-bottom: 2rem;
+				color: $tertiary-color;
+				text-shadow: 0 0 0.5rem black;
+				text-decoration: underline;
+			}
+
+			&:hover {
+				transform: translateY(-0.5rem);
+				box-shadow: 1rem 0 2rem rgba(0, 0, 0, 1);
+                scale: 1.01;
+			}
+		}
+		&--quran {
+			border-left-color: $primary-color-dark;
+		}
+
+		&--hadith {
+			border-left-color: $secondary-color;
+		}
+
+		&--tafsir {
+			border-left-color: $tertiary-color;
+		}
+	}
+}
