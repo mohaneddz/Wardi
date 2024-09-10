@@ -33,6 +33,8 @@ userSchema.pre(/^find/, function (next) {
 // Adding the Methods to the Schema ------------------------------------------
 
 userSchema.methods.correctPassword = async function (candidatePassword, userPassword) {
+	// log the bycrypted password and the user password
+	console.log(bcrypt.hash(candidatePassword, 12), userPassword);
 	return await bcrypt.compare(candidatePassword, userPassword);
 };
 
