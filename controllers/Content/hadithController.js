@@ -119,12 +119,11 @@ export const getHadithView = catchAsync(async (req, res) => {
 	// check if it is english or arabic
 	const lang = req.params.book.split('-')[0];
 
-	const hadithNumber = req.params.hadith;
+	const hadithNumber = parseFloat(req.params.hadith,10);
 	const all_books = await Hadith.aggregate([
 		{
-			// check if it starts with lang and not end with the number 1
+			// check if it starts with lang and not end with the number 1 ( 1 is for search versions )
 			$match: { name: { $regex: lang, $not: /1$/ } },
-			// $match: { name: { $regex: lang, $not: /1$/ } }, // Older version for same language
 		},
 		{
 			$project: {
@@ -152,13 +151,31 @@ export const getHadithView = catchAsync(async (req, res) => {
 				hadith_counts: 1,
 				name: 1,
 				number: 1,
-				hadith: { $arrayElemAt: ['$hadiths', hadithNumber - 1] },
+				hadith: {
+					$filter: {
+						input: '$hadiths',
+						as: 'hadith',
+						cond: { $eq: ['$$hadith.hadithnumber', hadithNumber] },
+					},
+				},
+			},
+		},
+	]);
+
+	const all_hadiths = await Hadith.aggregate([
+		{
+			$match: { name: req.params.book },
+		},
+		{
+			$project: {
+				hadiths: {
+					hadithnumber: 1,
+				}
 			},
 		},
 	]);
 
 	const this_book = hadithRaw[0];
-
 	const user = req.user;
 	const fav_books = user?.bookmarks?.fav_books_hadiths?.map((book) => book.name) || [];
 	const fav_hadiths =
@@ -172,6 +189,8 @@ export const getHadithView = catchAsync(async (req, res) => {
 		fav_books,
 		fav_hadiths,
 		all_books,
+		all_hadiths,
+		hadithNumber,
 		Ltitle: 'الكتاب',
 		Rtitle: 'الحديث',
 		lang,

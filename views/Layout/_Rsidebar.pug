@@ -37,16 +37,15 @@ include _mixin.pug
 
             // Hadith Section ---------------------------------------------------
         else if mode === "HadithChapter"
-            - for (var i = 1; i <= this_book.hadith_counts; i++)
-                if i === this_book.hadith.hadithnumber
+            for hadith in all_hadiths[0].hadiths
+                if hadith.hadithnumber === this_book.hadith.hadithnumber
                     li
-                        a(href=`/hadith/book/${this_book.name}/hadith/${i}` data-book=`${this_book.name}` data-type=`hadith` class="RsideEntry selectedEntry nosearch" data-hadith=`${i}` )= `الحديث رقم ${i}`
-                            +favIcon(i, fav_hadiths)
-
+                        a(href=`/hadith/book/${this_book.name}/hadith/${hadith.hadithnumber}` data-book=`${this_book.name}` data-type=`hadith` class="RsideEntry selectedEntry nosearch" data-hadith=`${hadith.hadithnumber}`)= `الحديث رقم ${hadith.hadithnumber}`
+                            +favIcon(hadith.hadithnumber, fav_hadiths)
                 else
                     li
-                        a(href=`/hadith/book/${this_book.name}/hadith/${i}` data-book=`${this_book.name}` data-type=`hadith` class="RsideEntry nosearch" data-hadith=`${i}`)= `الحديث رقم ${i}`
-                            +favIcon(i, fav_hadiths)
+                        a(href=`/hadith/book/${this_book.name}/hadith/${hadith.hadithnumber}` data-book=`${this_book.name}` data-type=`hadith` class="RsideEntry nosearch" data-hadith=`${hadith.hadithnumber}`)= `الحديث رقم ${hadith.hadithnumber}`
+                            +favIcon(hadith.hadithnumber, fav_hadiths)
 
         else if mode === "HadithSection"
             for hadith in this_hadith.hadiths

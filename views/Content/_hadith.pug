@@ -2,9 +2,9 @@
     .toggle
         i(class="fi fi-rr-menu-burger")
     if mode === 'HadithChapter'
-        h1.hadith__title= `الحديث رقم {${this_book.hadith.hadithnumber}}`
+        h1.hadith__title= `الحديث رقم {${this_book.hadith[0] ? this_book.hadith[0].arabicnumber : 'Not Found'}}`
         h2.hadith__start 13
-        p=this_book.hadith.text
+        p=this_book.hadith[0] ? this_book.hadith[0].text : 'No Hadith Matched Your Search'  
         br
         .grades
             if this_book.hadith.grades > 0
