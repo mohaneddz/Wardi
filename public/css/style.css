@@ -1246,6 +1246,7 @@ body {
 .quran p,
 .quran span {
   font-family: "Uthmanic", "amiri", serif;
+  font-size: 5rem;
   font-weight: 400;
 }
 .quran p .padds,
@@ -1255,15 +1256,15 @@ body {
 .quran h1 {
   font-family: "Surah", serif;
   font-weight: 100;
-  font-size: 18rem;
-  margin: 6rem 0rem;
+  font-size: 27rem;
+  margin: 8rem 0rem;
   color: #c72378;
   text-shadow: 0 2px 0.2rem rgba(0, 0, 0, 0.9);
 }
 .quran h2 {
   font-weight: 400;
-  font-size: 8rem;
-  margin: 3.5rem 0rem;
+  font-size: 13rem;
+  margin: 13rem 0rem;
   text-shadow: 0 2px 0.5rem rgba(0, 0, 0, 0.5);
 }
 .quran h2.quran__istieadha {
@@ -1385,6 +1386,11 @@ body {
   .hadith h2 {
     font-size: 10rem;
   }
+  .tafsir h2.quran__basamallah,
+  .quran h2.quran__basamallah,
+  .hadith h2.quran__basamallah {
+    margin: 5rem 0rem;
+  }
   .tafsir p.verse,
   .quran p.verse,
   .hadith p.verse {
@@ -1454,6 +1460,7 @@ body {
   z-index: 50;
   overflow-y: scroll;
   border-radius: 1rem;
+  height: 90vh;
 }
 .options h2 {
   font-size: 5rem;
@@ -1501,7 +1508,7 @@ body {
   color: #b0b5c9;
   text-align: center;
   background-color: #010205;
-  padding: 1rem 0rem;
+  padding: 1rem 0.5rem;
   margin: 2rem;
   border-radius: 3rem;
   box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
@@ -1550,10 +1557,52 @@ body {
   margin: 0.5rem;
   box-sizing: border-box;
 }
+@media screen and (max-width: 1450px) {
+  .options h2 {
+    font-size: 4rem;
+  }
+  .options h3 {
+    font-size: 3.5rem;
+  }
+  .options h4 {
+    font-size: 2.5rem;
+  }
+  .options label {
+    font-size: 1.3rem;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .options h2 {
+    font-size: 3rem;
+  }
+  .options h3 {
+    font-size: 3rem;
+  }
+  .options h4 {
+    font-size: 2rem;
+  }
+  .options label {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 850px) {
+  .options h2 {
+    font-size: 2rem;
+  }
+  .options h3 {
+    font-size: 2.5rem;
+  }
+  .options h4 {
+    font-size: 1.5rem;
+  }
+  .options label {
+    font-size: 1rem;
+  }
+}
 
 .results {
   grid-column: 1/-4;
-  height: inherit;
+  height: 90vh;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -1561,7 +1610,7 @@ body {
   padding: 2rem;
   gap: 1.5rem;
   border-radius: 1rem;
-  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.8);
   overflow-y: scroll;
   margin-right: 1rem;
   margin-left: 1rem;
@@ -1575,17 +1624,45 @@ body {
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
 }
+.results__item--counter, .results__item--counter--error {
+  background-color: #0D142C;
+  color: #5cb85c;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+.results__item--counter--error, .results__item--counter--error--error {
+  color: #b4626a;
+}
 .results__item--quran, .results__item--hadith, .results__item--tafsir {
   padding: 1.5rem;
   border-left: 5px solid #192653;
   margin-bottom: 1.5rem;
   border-radius: 1rem;
   background-color: rgba(36, 56, 123, 0.2);
+  position: relative;
+}
+.results__item--quran a, .results__item--hadith a, .results__item--tafsir a {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+.results__item--quran a:hover, .results__item--hadith a:hover, .results__item--tafsir a:hover {
+  transform: translateY(-0.5rem);
+  scale: 1.01;
 }
 .results__item--quran--text, .results__item--hadith--text, .results__item--tafsir--text {
-  font-size: 1.2rem;
+  font-size: 2rem;
   line-height: 1.6;
-  color: #edeef2;
+  color: #b0b5c9;
 }
 .results__item--quran--ayah, .results__item--quran--collection, .results__item--quran--collection, .results__item--hadith--ayah, .results__item--hadith--collection, .results__item--hadith--collection, .results__item--tafsir--ayah, .results__item--tafsir--collection, .results__item--tafsir--collection {
   font-weight: bold;
@@ -2456,16 +2533,19 @@ a.DeleteAll i {
   align-items: center;
 }
 
+.SearchPage {
+  overflow-y: hidden;
+}
+
 .mainSearchPage {
   display: initial;
   padding: 0;
 }
 
-.search {
+.search_page {
   display: grid;
   grid-template-columns: [center-start] repeat(12, [col-start] minmax(min-content, 100rem) [col-end]) [center-end];
-  min-height: 90vh;
-  overflow-y: scroll;
+  height: 90vh;
 }
 
 input[type=radio] {
@@ -2478,7 +2558,7 @@ input[type=radio]:checked + label {
   transform: scale(1.05);
 }
 
-.invisible {
+label.invisible, .invisible {
   opacity: 0;
   visibility: hidden;
   display: none;

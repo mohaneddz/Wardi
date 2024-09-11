@@ -1,7 +1,10 @@
-.search
+.search_page
     .results
         .results__item
+            .results__item--counter
+                | 1 results found
             .results__item--quran
+                a(href="/quran/chapter/1")
                 .results__item--quran--ayah
                     | Hafs | Chapter 1  -  Ayah 1
                 .results__item--quran--text
@@ -16,75 +19,87 @@
                     | Tafsir Ibn Kathir | Chapter 1  -  Ayah 1
                 .results__item--tafsir--text
                     | بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+            .results__item--quran
+                a(href="/quran/chapter/1")
+                .results__item--quran--ayah
+                    | Hafs | Chapter 1  -  Ayah 1
+                .results__item--quran--text
+                    | بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+            .results__item--hadith
+                .results__item--hadith--collection
+                    | Sahih Bukhari | Hadith Number #1
+                .results__item--hadith--text
+                    | حَدَّثَنَا مُحَمَّدُ بْنُ يَحْيَى، حَدَّثَنَا سُفْيَانُ، عَنْ عَمْرِو بْنِ دِينَارٍ، عَنْ عَبْدِ اللَّهِ بْنِ عُمَرَ، قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏ "‏ بُنِيَ الإِسْلاَمُ عَلَى خَمْسٍ شَهَادَةِ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ وَإِقَامِ الصَّلاَةِ وَإِيتَاءِ الزَّكَاةِ وَالْحَجِّ وَصَوْمِ رَمَضَانَ ‏"‏‏.‏
+            .results__item--tafsir
+                .results__item--tafsir--collection
+                    | Tafsir Ibn Kathir | Chapter 1  -  Ayah 1
+                .results__item--tafsir--text
+                    | بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+            .results__item--quran
+                a(href="/quran/chapter/1")
+                .results__item--quran--ayah
+                    | Hafs | Chapter 1  -  Ayah 1
+                .results__item--quran--text
+                    | بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+            .results__item--hadith
+                .results__item--hadith--collection
+                    | Sahih Bukhari | Hadith Number #1
+                .results__item--hadith--text
+                    | حَدَّثَنَا مُحَمَّدُ بْنُ يَحْيَى، حَدَّثَنَا سُفْيَانُ، عَنْ عَمْرِو بْنِ دِينَارٍ، عَنْ عَبْدِ اللَّهِ بْنِ عُمَرَ، قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏ "‏ بُنِيَ الإِسْلاَمُ عَلَى خَمْسٍ شَهَادَةِ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ وَإِقَامِ الصَّلاَةِ وَإِيتَاءِ الزَّكَاةِ وَالْحَجِّ وَصَوْمِ رَمَضَانَ ‏"‏‏.‏
+            .results__item--tafsir
+                .results__item--tafsir--collection
+                    | Tafsir Ibn Kathir | Chapter 1  -  Ayah 1
+                .results__item--tafsir--text
+                    | بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+        
     .options
         h2.hidden The-Search-Options
+
         .options__type.hidden
             input#quran(type="radio" name="searchType" value="Quran" checked)
             label(for="quran") Quran
             input#hadith(type="radio" name="searchType" value="Hadith")
             label(for="hadith") Hadith
-            input#user(type="radio" name="searchType" value="User")
-            label(for="user") User
+            input#tafsir(type="radio" name="searchType" value="Tafsir")
+            label(for="tafsir") Tafsir
+
         .options__sub
             h3.hidden Quran
             .options__sub--quran.hidden
-                input#arabic-quran(type="radio" name="quran_language" value="Arabic" checked)
+                input#arabic-quran(type="radio" name="quran_language" value="ara" checked)
                 label(for="arabic-quran") Arabic
-                input#english-quran(type="radio" name="quran_language" value="English")
+                input#english-quran(type="radio" name="quran_language" value="eng")
                 label(for="english-quran") English
+
             h3.hidden Hadith
-            .options__sub--hadith.hidden
+
+            .options__sub--hadith.hidden.invisible
                 h4.hidden Language
                 .options__sub--hadith--language
-                    input#arabic-hadith(type="radio" name="hadith_lang" value="Arabic" checked)
+                    input#arabic-hadith(type="radio" name="hadith_language" value="ara" checked)
                     label(for="arabic-hadith") Arabic
-                    input#english-hadith(type="radio" name="hadith_lang" value="English")
+                    input#english-hadith(type="radio" name="hadith_language" value="eng")
                     label(for="english-hadith") English
                 h4.hidden Collection
-                .options__sub--hadith--collection.hidden
-                    input#sahih-bukhari(type="radio" name="hadith_collection" value="Sahih Bukhari" checked)
-                    label(for="sahih-bukhari") Sahih Bukhari
-                    input#sahih-muslim(type="radio" name="hadith_collection" value="Sahih Muslim")
-                    label(for="sahih-muslim") Sahih Muslim
-                    input#sunan-abu-dawood(type="radio" name="hadith_collection" value="Sunan Abu Dawood")
-                    label(for="sunan-abu-dawood") Sunan Abu Dawood
-                    input#sunan-an-nasai(type="radio" name="hadith_collection" value="Sunan An-Nasa'i")
-                    label(for="sunan-an-nasai") Sunan An-Nasa'i
-                    input#sunan-at-tirmidhi(type="radio" name="hadith_collection" value="Sunan At-Tirmidhi")
-                    label(for="sunan-at-tirmidhi") Sunan At-Tirmidhi
-                    input#sunan-ibn-majah(type="radio" name="hadith_collection" value="Sunan Ibn Majah")
-                    label(for="sunan-ibn-majah") Sunan Ibn Majah
-                    input#muwatta-malik(type="radio" name="hadith_collection" value="Muwatta Malik")
-                    label(for="muwatta-malik") Muwatta Malik
-                    input#forty-hadith-qudsi(type="radio" name="hadith_collection" value="Forty Hadith Qudsi")
-                    label(for="forty-hadith-qudsi") Forty Hadith Qudsi
-                    input#forty-hadith-nawawi(type="radio" name="hadith_collection" value="Forty Hadith Nawawi")
-                    label(for="forty-hadith-nawawi") Forty Hadith Nawawi
+
+                .options__sub--hadith--collection.hidden.invisible
+                    for hadith_book in all_hadith_books
+                        input(type="radio" name="hadith_collection" id=hadith_book.name value=hadith_book.name)
+                        label(for=hadith_book.name) #{hadith_book.metadata.name}
+
             h3.hidden Tafsir
-            .options__sub--tafsir.hidden
+
+            .options__sub--tafsir.hidden.invisible
                 h4.hidden Language
                 .options__sub--tafsir--language.hidden
-                    input#arabic-tafsir(type="radio" name="tafsir_language" value="Arabic" checked)
+                    input#arabic-tafsir(type="radio" name="tafsir_language" value="ara" checked)
                     label(for="arabic-tafsir") Arabic
-                    input#english-tafsir(type="radio" name="tafsir_language" value="English")
+                    input#english-tafsir(type="radio" name="tafsir_language" value="eng")
                     label(for="english-tafsir") English
+
                 h4.hidden Collection
-                .options__sub--tafsir--collection.hidden
-                    input#tafsir-ibn-kathir(type="radio" name="tafsir_collection" value="Tafsir Ibn Kathir" checked)
-                    label(for="tafsir-ibn-kathir") Tafsir Ibn Kathir
-                    input#tafsir-al-jalalayn(type="radio" name="tafsir_collection" value="Tafsir Al-Jalalayn")
-                    label(for="tafsir-al-jalalayn") Tafsir Al-Jalalayn
-                    input#tafsir-al-muyassar(type="radio" name="tafsir_collection" value="Tafsir Al-Muyassar")
-                    label(for="tafsir-al-muyassar") Tafsir Al-Muyassar
-                    input#tafsir-as-sadi(type="radio" name="tafsir_collection" value="Tafsir As-Sa'di")
-                    label(for="tafsir-as-sadi") Tafsir As-Sa'di
-                    input#tafsir-al-qurtubi(type="radio" name="tafsir_collection" value="Tafsir Al-Qurtubi")
-                    label(for="tafsir-al-qurtubi") Tafsir Al-Qurtubi
-                    input#tafsir-al-tabari(type="radio" name="tafsir_collection" value="Tafsir Al-Tabari")
-                    label(for="tafsir-al-tabari") Tafsir Al-Tabari
-                    input#tafsir-al-baghawi(type="radio" name="tafsir_collection" value="Tafsir Al-Baghawi")
-                    label(for="tafsir-al-baghawi") Tafsir Al-Baghawi
-                    input#tafsir-al-mazhari(type="radio" name="tafsir_collection" value="Tafsir Al-Mazhari")
-                    label(for="tafsir-al-mazhari") Tafsir Al-Mazhari
-                    input#tafsir-al-maturidi(type="radio" name="tafsir_collection" value="Tafsir Al-Maturidi")
-                    label(for="tafsir-al-maturidi") Tafsir Al-Maturidi
+
+                .options__sub--tafsir--collection.hidden.invisible
+                    for tafsir_book in all_tafsir_books
+                        input(type="radio" name="tafsir_collection" id=tafsir_book.slug value=tafsir_book.slug)
+                        label(for=tafsir_book.slug language=tafsir_book.language) #{tafsir_book.name}

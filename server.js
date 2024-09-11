@@ -3,12 +3,13 @@ import app from './app.js';
 import mongoose from 'mongoose';
 
 dotenv.config({ path: './config.env' });
+
 const connections = {};
 const DATABASE_URI = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
 
 mongoose.connect(DATABASE_URI, {
-    serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
-    socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+    serverSelectionTimeoutMS: 60000, // 60 seconds for connection timeout
+    socketTimeoutMS: 120000, // 120 seconds for query response timeout
     dbName: 'Content',
 })
     .then(() => {

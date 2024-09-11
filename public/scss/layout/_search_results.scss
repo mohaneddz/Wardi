@@ -6,7 +6,7 @@
 
 .results {
 	grid-column: 1/-4;
-	height: inherit;
+	height: 90vh;
 	margin: 0;
 	display: flex;
 	flex-direction: column;
@@ -14,10 +14,10 @@
 	padding: 2rem;
 	gap: 1.5rem;
 	border-radius: 1rem;
-	box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 2rem rgba(0, 0, 0, 0.8);
 	overflow-y: scroll;
-    margin-right: 1rem;
-    margin-left: 1rem;
+	margin-right: 1rem;
+	margin-left: 1rem;
 
 	&__item {
 		background: linear-gradient(135deg, $primary-color-light 0%, $primary-color-dark 100%);
@@ -29,7 +29,22 @@
 			transform 0.3s,
 			box-shadow 0.3s;
 		cursor: pointer;
-
+		&--counter,
+		&--counter--error {
+			background-color: $primary-color;
+			color: $success;
+			font-size: 3rem;
+			font-weight: 800;
+			margin-bottom: 1.5rem;
+			padding: 0.5rem 1rem;
+			border-radius: 0.5rem;
+			text-align: center;
+			box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+			z-index: 100;
+			&--error {
+				color: $error;
+			}
+		}
 		&--quran,
 		&--hadith,
 		&--tafsir {
@@ -38,10 +53,23 @@
 			margin-bottom: 1.5rem;
 			border-radius: 1rem;
 			background-color: rgba($primary-color-lighter, 0.2);
+			position: relative;
+			a {
+				top: 0;
+				left: 0;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				z-index: 100;
+				&:hover {
+					transform: translateY(-0.5rem);
+					scale: 1.01;
+				}
+			}
 			&--text {
-				font-size: 1.2rem;
+				font-size: 2rem;
 				line-height: 1.6;
-				color: $secondary-color-lighter;
+				color: $secondary-color;
 			}
 
 			&--ayah,
@@ -58,7 +86,7 @@
 			&:hover {
 				transform: translateY(-0.5rem);
 				box-shadow: 1rem 0 2rem rgba(0, 0, 0, 1);
-                scale: 1.01;
+				scale: 1.01;
 			}
 		}
 		&--quran {

@@ -1,15 +1,14 @@
-// .SearchPage{
-//     display:
-// }
+.SearchPage{
+	overflow-y: hidden;
+}
 .mainSearchPage {
 	display: initial;
 	padding: 0;
 }
-.search {
+.search_page {
 	display: grid;
 	grid-template-columns: [center-start] repeat(12, [col-start] minmax(min-content, 100rem) [col-end]) [center-end];
-	min-height: 90vh;
-	overflow-y: scroll;
+	height: 90vh;
 }
 
 input[type='radio'] {
@@ -23,7 +22,7 @@ input[type='radio'] {
 	}
 }
 
-.invisible {
+label.invisible, .invisible {
 	opacity: 0;
 	visibility: hidden;
 	display: none;

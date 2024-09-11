@@ -18,9 +18,14 @@ header.header
             +navItem('header__bookmarks', '/user/bookmarks', 'Bookmarks', 'fi fi-rs-wishlist-star')
             
             li.header__search
-                input(type="text", placeholder="Search..")
-                a(href='/search') 
-                    i(class="fi fi-rs-search")
+                if !search
+                    input(type="text", placeholder="Click for search page" id="searchField" readonly)
+                    a(href='/search' id="searchButton") 
+                            i(class="fi fi-rs-search")
+                else
+                    input(type="text", placeholder="Search.." id="searchField")
+                    a(href='#' id="searchButton") 
+                            i(class="fi fi-rs-search")
             if !user
                 +navItem('header__user', '/user/me', '', 'fi fi-rs-user')
             else
