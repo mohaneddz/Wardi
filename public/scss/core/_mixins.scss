@@ -160,12 +160,13 @@
 }
 
 @mixin reader() {
-	background-color: rgba(rgb(245, 246, 255), 0.7);
+	background-color: rgba(rgb(245, 246, 255), 0.65);
+	box-shadow: 0 0 15rem rgba(pink, 1) inset;
 	color: black;
 	text-align: center;
 	font-size: 4rem;
 	line-height: 7rem;
-	padding: 2rem;
+	padding: 2rem 8rem;
 	padding-bottom: 1rem;
 	border-radius: 2rem;
 	height: 90vh;

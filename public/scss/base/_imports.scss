@@ -1,6 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Ruwudu:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 @font-face {
     font-family: 'Uthmanic';
     src: url('../fonts/Uthmanic-V22.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Uthmanic2';
+    src: url('../fonts/Elgharib-A594.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -30,8 +39,19 @@
 }
 @font-face {
     font-family: 'Parenthesis';
-    src: url('../fonts/Elgharib-A002.ttf') format('truetype');
+    src: url('../fonts/Elgharib-Parenthesis.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
-@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@font-face {
+    font-family: 'English';
+    src: url('../fonts/Philosopher-Regular @Am9li9.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Kufi';
+    src: url('../fonts/KFGQPC-KufiStyV14.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

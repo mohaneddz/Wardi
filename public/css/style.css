@@ -1,7 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Ruwudu:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @font-face {
   font-family: "Uthmanic";
   src: url("../fonts/Uthmanic-V22.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Uthmanic2";
+  src: url("../fonts/Elgharib-A594.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -31,7 +38,19 @@
 }
 @font-face {
   font-family: "Parenthesis";
-  src: url("../fonts/Elgharib-A002.ttf") format("truetype");
+  src: url("../fonts/Elgharib-Parenthesis.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "English";
+  src: url("../fonts/Philosopher-Regular @Am9li9.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Kufi";
+  src: url("../fonts/KFGQPC-KufiStyV14.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -67,8 +86,8 @@ body {
   z-index: 1;
   margin: 0;
   padding: 0;
-  background-color: #0D142C;
-  background: url("../../img/bg.png") center center/cover no-repeat, linear-gradient(to top, #192653 0%, #0D142C 100%);
+  background-color: #0d142c;
+  background: url("../../img/bg.png") center center/cover no-repeat, linear-gradient(to top, #192653 0%, #0d142c 100%);
   position: relative;
   list-style-type: none;
   background-attachment: fixed;
@@ -137,7 +156,7 @@ body {
   font-weight: bold;
   margin: 2rem 2rem;
   padding: 0.5em;
-  background-color: #0D142C;
+  background-color: #0d142c;
   color: #c72378;
   border: 2px solid rgba(1, 2, 5, 0.9);
   border-radius: 1rem;
@@ -254,6 +273,48 @@ body {
   transition: all 0.15s ease;
 }
 
+@keyframes configure-clockwise {
+  0% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes configure-xclockwise {
+  0% {
+    transform: rotate(45deg);
+  }
+  25% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(-135deg);
+  }
+  75% {
+    transform: rotate(-225deg);
+  }
+  100% {
+    transform: rotate(-315deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
 .books__card {
   display: flex;
   flex-direction: column;
@@ -316,7 +377,7 @@ body {
 .books__card:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  background-color: #0D142C;
+  background-color: #0d142c;
   border: 2px solid #701444;
 }
 
@@ -353,7 +414,7 @@ body {
 }
 
 .cards > * {
-  background-color: #0D142C;
+  background-color: #0d142c;
   color: white;
   position: relative;
   padding: 2rem 3rem;
@@ -586,6 +647,36 @@ body {
 .invisible {
   visibility: hidden;
   opacity: 0;
+}
+
+.spinner-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  align-self: center;
+}
+
+.circle-core {
+  width: 100%;
+  height: 100%;
+  background-color: #192653;
+  border-radius: 50%;
+}
+
+.circle-border {
+  width: 150px;
+  height: 150px;
+  padding: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #5cb85c;
+  background: linear-gradient(0deg, #c72378 33%, #0d142c 100%);
+  animation: spin 0.8s linear 0s infinite;
 }
 
 .header {
@@ -1164,12 +1255,13 @@ body {
 .quran,
 .tafsir {
   position: relative;
-  background-color: rgba(245, 246, 255, 0.7);
+  background-color: rgba(245, 246, 255, 0.65);
+  box-shadow: 0 0 15rem pink inset;
   color: black;
   text-align: center;
   font-size: 4rem;
   line-height: 7rem;
-  padding: 2rem;
+  padding: 2rem 8rem;
   padding-bottom: 1rem;
   border-radius: 2rem;
   height: 90vh;
@@ -1189,7 +1281,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  background-color: rgba(176, 179, 192, 0.7);
+  margin-left: -6rem;
 }
 
 .quran__page--number {
@@ -1211,10 +1303,12 @@ body {
 
 .hadith h1,
 .hadith p h1 {
-  font-family: "Parenthesis", "amiri", serif;
+  font-family: "Kufi", "amiri", serif;
   font-weight: 800;
   font-size: 8rem;
   margin: 3rem 0rem;
+  color: #24387b;
+  text-shadow: 0 2px 0.2rem rgba(0, 0, 0, 0.9);
 }
 .hadith h1.selected,
 .hadith p h1.selected {
@@ -1222,9 +1316,11 @@ body {
 }
 .hadith p {
   font-family: "amiri", serif;
-  font-weight: 400;
+  font-weight: 700;
   border: 3px solid rgba(0, 0, 0, 0.1);
   padding: 5rem;
+  text-align: justify;
+  direction: rtl;
 }
 .hadith h2,
 .hadith p h2 {
@@ -1232,6 +1328,7 @@ body {
   font-size: 10rem;
   font-weight: 400;
   margin: 1.5rem 0rem;
+  color: #24387b;
 }
 .hadith h2.selected,
 .hadith p h2.selected {
@@ -1248,16 +1345,29 @@ body {
   font-family: "Uthmanic", "amiri", serif;
   font-size: 5rem;
   font-weight: 400;
+  line-height: 7rem;
+  text-align: justify;
+  direction: rtl;
+}
+.quran p .ayah_number,
+.quran span .ayah_number {
+  font-family: "Uthmanic", "amiri", serif;
+  color: rgba(0, 0, 0, 0.5);
 }
 .quran p .padds,
 .quran span .padds {
   padding: 1.5rem;
+}
+.quran p.quran__page--number,
+.quran span.quran__page--number {
+  text-align: center;
 }
 .quran h1 {
   font-family: "Surah", serif;
   font-weight: 100;
   font-size: 27rem;
   margin: 8rem 0rem;
+  margin-top: 15rem;
   color: #c72378;
   text-shadow: 0 2px 0.2rem rgba(0, 0, 0, 0.9);
 }
@@ -1284,14 +1394,16 @@ body {
 .tafsir h1 {
   font-family: "Surah", serif;
   font-weight: 100;
-  font-size: 18rem;
-  margin: 4rem 0rem;
+  font-size: 27rem;
+  margin: 8rem 0rem;
   color: #c72378;
-  -webkit-text-stroke: 1px #0D142C;
+  text-shadow: 0 2px 0.2rem rgba(0, 0, 0, 0.9);
 }
 .tafsir h2 {
   font-weight: 400;
-  margin: 1.5rem 0rem;
+  font-size: 13rem;
+  margin: 13rem 0rem;
+  text-shadow: 0 2px 0.5rem rgba(0, 0, 0, 0.5);
 }
 .tafsir h2.quran__istieadha {
   font-family: "Istieadha", serif;
@@ -1303,7 +1415,8 @@ body {
   font-family: "Uthmanic", "amiri", serif;
   font-weight: 400;
   margin: 1.5rem 0rem;
-  text-align: end;
+  text-align: justify;
+  direction: rtl;
 }
 .tafsir p.explanation {
   border: 3px solid rgba(0, 0, 0, 0.1);
@@ -1312,6 +1425,9 @@ body {
   padding: 2rem;
   color: rgba(0, 0, 0, 0.6);
   font-family: "amiri", serif;
+}
+.tafsir p.explanation.eng {
+  direction: ltr;
 }
 .tafsir p.seperator {
   font-family: "Divider", serif;
@@ -1380,16 +1496,18 @@ body {
   .quran h1,
   .hadith h1 {
     font-size: 20rem;
+    margin: 0;
+    margin-top: 10rem;
   }
   .tafsir h2,
   .quran h2,
   .hadith h2 {
     font-size: 10rem;
   }
-  .tafsir h2.quran__basamallah,
-  .quran h2.quran__basamallah,
-  .hadith h2.quran__basamallah {
-    margin: 5rem 0rem;
+  .tafsir h2.quran__basmallah,
+  .quran h2.quran__basmallah,
+  .hadith h2.quran__basmallah {
+    margin: 7rem 0rem;
   }
   .tafsir p.verse,
   .quran p.verse,
@@ -1423,6 +1541,23 @@ body {
     bottom: 2.7%;
   }
 }
+.line__divider {
+  font-family: "Divider", serif;
+  font-size: 5rem;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  font-weight: 400;
+  margin: 5rem 0rem;
+}
+.line__divider.upsidedown {
+  transform: rotate(180deg);
+}
+
+.eng {
+  font-family: "English", serif !important;
+  direction: ltr !important;
+}
+
 .alert {
   position: fixed;
   top: 0;
@@ -1485,13 +1620,14 @@ body {
   text-align: center;
   margin: 2rem;
   display: block;
-  border-bottom: 3px solid #0D142C;
+  border-bottom: 3px solid black;
   line-height: 0.1em;
   margin: 5rem 0;
-  text-shadow: -1px -1px 0.5rem #0D142C, 1px -1px 0.5rem #0D142C, -1px 1px 0.5rem #0D142C, 1px 1px 0.5rem #0D142C, -2px -2px 0.5rem #0D142C, 2px -2px 0.5rem #0D142C, -2px 2px 0.5rem #0D142C, 2px 2px 0.5rem #0D142C;
+  box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.8);
+  text-shadow: -1px -1px 0.5rem #0d142c, 1px -1px 0.5rem #0d142c, -1px 1px 0.5rem #0d142c, 1px 1px 0.5rem #0d142c, -2px -2px 0.5rem #0d142c, 2px -2px 0.5rem #0d142c, -2px 2px 0.5rem #0d142c, 2px 2px 0.5rem #0d142c;
 }
 .options h3 span {
-  background: #0D142C;
+  background: #0d142c;
   padding: 0 10px;
 }
 .options h4 {
@@ -1506,6 +1642,7 @@ body {
 .options label {
   font-size: 1.5rem;
   color: #b0b5c9;
+  font-weight: 700;
   text-align: center;
   background-color: #010205;
   padding: 1rem 0.5rem;
@@ -1518,7 +1655,7 @@ body {
   transform: translateY(-0.5rem);
   scale: 1.05;
   box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
-  background-color: #0D142C;
+  background-color: #0d142c;
 }
 .options label:active {
   transform: translateY(0.5rem);
@@ -1585,6 +1722,14 @@ body {
     font-size: 1.2rem;
   }
 }
+@media screen and (max-width: 1000px) {
+  .options h2 {
+    font-size: 2.2rem;
+  }
+  .options h3 {
+    font-size: 2.5rem;
+  }
+}
 @media screen and (max-width: 850px) {
   .options h2 {
     font-size: 2rem;
@@ -1606,6 +1751,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: rgba(176, 181, 201, 0.7);
   padding: 2rem;
   gap: 1.5rem;
@@ -1616,16 +1762,17 @@ body {
   margin-left: 1rem;
 }
 .results__item {
-  background: linear-gradient(135deg, #192653 0%, #010205 100%);
+  background: linear-gradient(100deg, #192653 0%, #010205 100%);
   padding: 1.5rem;
   border-radius: 3rem;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
   margin-bottom: 1.5rem;
   transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%;
   cursor: pointer;
 }
 .results__item--counter, .results__item--counter--error {
-  background-color: #0D142C;
+  background-color: #0d142c;
   color: #5cb85c;
   font-size: 3rem;
   font-weight: 800;
@@ -1633,7 +1780,8 @@ body {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   text-align: center;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
+  text-shadow: 0 0 0.5rem black;
   z-index: 100;
 }
 .results__item--counter--error, .results__item--counter--error--error {
@@ -1644,7 +1792,7 @@ body {
   border-left: 5px solid #192653;
   margin-bottom: 1.5rem;
   border-radius: 1rem;
-  background-color: rgba(36, 56, 123, 0.2);
+  background-color: rgba(36, 56, 123, 0.3);
   position: relative;
 }
 .results__item--quran a, .results__item--hadith a, .results__item--tafsir a {
@@ -1663,6 +1811,9 @@ body {
   font-size: 2rem;
   line-height: 1.6;
   color: #b0b5c9;
+}
+.results__item--quran--text span.match, .results__item--hadith--text span.match, .results__item--tafsir--text span.match {
+  color: #45cf45;
 }
 .results__item--quran--ayah, .results__item--quran--collection, .results__item--quran--collection, .results__item--hadith--ayah, .results__item--hadith--collection, .results__item--hadith--collection, .results__item--tafsir--ayah, .results__item--tafsir--collection, .results__item--tafsir--collection {
   font-weight: bold;
@@ -2096,7 +2247,7 @@ body main .cards {
   margin-bottom: 2rem;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #0D142C;
+  border: 2px solid #0d142c;
   width: 100px;
   height: 100px;
   position: relative;
@@ -2113,7 +2264,7 @@ body main .cards {
 .user form .user__info .buttonlike {
   grid-column: span 2;
   display: inline-block;
-  background-color: #0D142C;
+  background-color: #0d142c;
   color: white;
   border: none;
   padding: 12px 20px;
@@ -2154,7 +2305,7 @@ body main .cards {
 }
 .user form h4 {
   font-size: 18px;
-  color: #0D142C;
+  color: #0d142c;
   grid-column: span 2;
 }
 .user form a.buttonlike {
@@ -2229,7 +2380,7 @@ body main .cards {
 
 .profile-img {
   border-radius: 50%;
-  border: 2px solid #0D142C;
+  border: 2px solid #0d142c;
   cursor: pointer;
   width: 100px;
   height: 100px;
@@ -2296,7 +2447,7 @@ body main .cards {
   margin: 7rem 4rem;
   width: 30rem;
   border-radius: 3rem;
-  background-color: #0D142C;
+  background-color: #0d142c;
   color: white;
   text-align: center;
   font-size: 6rem;
@@ -2323,7 +2474,7 @@ body main .cards {
   margin: 5rem 3rem;
   width: 35rem;
   border-radius: 2.5rem;
-  background-color: #0D142C;
+  background-color: #0d142c;
   color: white;
   text-align: center;
   font-size: 5rem;
@@ -2535,6 +2686,9 @@ a.DeleteAll i {
 
 .SearchPage {
   overflow-y: hidden;
+}
+.SearchPage * {
+  transition: all 0.3s;
 }
 
 .mainSearchPage {

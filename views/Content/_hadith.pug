@@ -3,7 +3,7 @@
         i(class="fi fi-rr-menu-burger")
     if mode === 'HadithChapter'
         h1.hadith__title= `الحديث رقم {${this_book.hadith[0] ? this_book.hadith[0].arabicnumber : 'Not Found'}}`
-        h2.hadith__start 13
+        h2.line__divider 13
         p=this_book.hadith[0] ? this_book.hadith[0].text : 'No Hadith Matched Your Search'  
         br
         .grades
@@ -14,7 +14,7 @@
     if mode ===  'HadithSection'
         for hadith in this_hadith.hadiths
             h1(class='hadith__title' data-hadith= `${hadith.hadithnumber}` data-book=`${this_hadith.name}` )= `الحديث رقم {${hadith.hadithnumber}}`
-            h2(class=`hadith__start` data-hadith-under= `${hadith.hadithnumber}` ) 13
+            h2(class=`line__divider` data-hadith-under= `${hadith.hadithnumber}` ) 13
             p=hadith.text
             br
             .grades

@@ -12,16 +12,16 @@
 .hidden {
 	opacity: 0;
 	scale: 0.3;
-    filter: blur(10px);
-    transform: translateY(100%);
+	filter: blur(10px);
+	transform: translateY(100%);
 	transition: all 1s ease;
 }
 
 .animate {
 	opacity: 1;
 	scale: 1;
-    filter: blur(0);
-    transform: translateY(0);
+	filter: blur(0);
+	transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -34,3 +34,51 @@
 * {
 	transition: all 0.15s ease;
 }
+
+// Loading Box
+
+@keyframes configure-clockwise {
+	0% {
+		transform: rotate(0);
+	}
+	25% {
+		transform: rotate(90deg);
+	}
+	50% {
+		transform: rotate(180deg);
+	}
+	75% {
+		transform: rotate(270deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes configure-xclockwise {
+	0% {
+		transform: rotate(45deg);
+	}
+	25% {
+		transform: rotate(-45deg);
+	}
+	50% {
+		transform: rotate(-135deg);
+	}
+	75% {
+		transform: rotate(-225deg);
+	}
+	100% {
+		transform: rotate(-315deg);
+	}
+}
+
+@keyframes spin {
+	from {
+	  transform: rotate(0);
+	}
+	to{
+	  transform: rotate(359deg);
+	}
+  }
+  

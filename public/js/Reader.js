@@ -72,7 +72,7 @@ function hadithSectionHighlighter(event) {
 	document.querySelectorAll('.hadith__title').forEach((section) => {
 		section.classList.remove('selected');
 	});
-	document.querySelectorAll('.hadith__start').forEach((section) => {
+	document.querySelectorAll('.line__divider').forEach((section) => {
 		section.classList.remove('selected');
 	});
 
@@ -84,7 +84,7 @@ function hadithSectionHighlighter(event) {
 	const sectionElement = document.querySelector(
 		`.hadith__title[data-hadith='${hadithNumber}'][data-book='${bookName}']`
 	);
-	const sectionUnder = document.querySelector(`.hadith__start[data-hadith-under='${hadithNumber}']`);
+	const sectionUnder = document.querySelector(`.line__divider[data-hadith-under='${hadithNumber}']`);
 
 	if (sectionElement) {
 		const readerContainer = document.querySelector('.hadith');

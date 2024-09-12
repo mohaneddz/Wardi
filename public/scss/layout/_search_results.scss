@@ -10,6 +10,7 @@
 	margin: 0;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	background-color: rgba($secondary-color, 0.7);
 	padding: 2rem;
 	gap: 1.5rem;
@@ -19,15 +20,17 @@
 	margin-right: 1rem;
 	margin-left: 1rem;
 
+
 	&__item {
-		background: linear-gradient(135deg, $primary-color-light 0%, $primary-color-dark 100%);
+		background: linear-gradient(100deg, $primary-color-light 0%, $primary-color-dark 100%);
 		padding: 1.5rem;
 		border-radius: 3rem;
-		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
 		margin-bottom: 1.5rem;
 		transition:
 			transform 0.3s,
 			box-shadow 0.3s;
+		width: 100%;
 		cursor: pointer;
 		&--counter,
 		&--counter--error {
@@ -39,7 +42,8 @@
 			padding: 0.5rem 1rem;
 			border-radius: 0.5rem;
 			text-align: center;
-			box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+			box-shadow: 0 0 1rem rgba(0, 0, 0, 0.9);
+			text-shadow: 0 0 0.5rem black;
 			z-index: 100;
 			&--error {
 				color: $error;
@@ -52,7 +56,7 @@
 			border-left: 5px solid $primary-color-light;
 			margin-bottom: 1.5rem;
 			border-radius: 1rem;
-			background-color: rgba($primary-color-lighter, 0.2);
+			background-color: rgba($primary-color-lighter, 0.3);
 			position: relative;
 			a {
 				top: 0;
@@ -70,6 +74,9 @@
 				font-size: 2rem;
 				line-height: 1.6;
 				color: $secondary-color;
+				span.match{
+					color: $sucess-saturated;
+				}
 			}
 
 			&--ayah,

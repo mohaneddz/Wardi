@@ -9,11 +9,11 @@ import AppError from '../../utils/appError.js';
 
 // // Getters -------------------------------------------- [ Factory Functions  | If turn it into an API ]
 
-// export const getTafsir = factory.getOne(Tafsir);
-// export const getAllTafsirs = factory.getAll(Tafsir);
-// export const createTafsir = factory.createOne(Tafsir);
-// export const updateTafsir = factory.updateOne(Tafsir);
-// export const deleteTafsir = factory.deleteOne(Tafsir);
+export const getTafsir = factory.getOne(Tafsir);
+export const getAllTafsirs = factory.getAll(Tafsir);
+export const createTafsir = factory.createOne(Tafsir);
+export const updateTafsir = factory.updateOne(Tafsir);
+export const deleteTafsir = factory.deleteOne(Tafsir);
 
 // // |.....|---------------------------------------------
 
@@ -26,7 +26,7 @@ export const getTafsirChapterView = catchAsync(async (req, res) => {
 	const user = req.user;
 	const fav_chapters = user?.bookmarks?.fav_chapters?.map((chapter) => chapter.chapter) || [];
 	const fav_verses = user?.bookmarks?.fav_verses?.map((verse) => verse.verse) || [];
-
+	const lang = req.params.book.split('-')[0];
 	const tafsir = await Tafsir.aggregate([
 		{
 			$match: { slug: req.params.book },
@@ -51,6 +51,7 @@ export const getTafsirChapterView = catchAsync(async (req, res) => {
 		fav_chapters,
 		fav_verses,
 		tafsir,
+		lang,
 		chapterNumber,
 		this_book: req.params.book,
 		readerTitle: this_chapter.name,

@@ -10,7 +10,7 @@
 		justify-content: center;
 		align-items: center;
 		padding: 1rem;
-		background-color: rgba(#b0b3c0, 0.7);
+		margin-left: -6rem;
 	}
 }
 
@@ -18,7 +18,6 @@
 	position: static;
 	opacity: 0.5;
 	margin-top: 5rem;
-
 	backdrop-filter: blur(10px);
 	background-color: rgba(#b0b3c0, 0.5);
 }
@@ -34,19 +33,23 @@
 .hadith {
 	h1,
 	p h1 {
-		font-family: 'Parenthesis', 'amiri', serif;
+		font-family: 'Kufi', 'amiri', serif;
 		font-weight: 800;
 		font-size: 8rem;
 		margin: 3rem 0rem;
+		color: $primary-color-lighter;
+		text-shadow: 0 2px 0.2rem rgba(black, 0.9);
 		&.selected {
 			color: rgb(98, 98, 205);
 		}
 	}
 	p {
 		font-family: 'amiri', serif;
-		font-weight: 400;
+		font-weight: 700;
 		border: 3px solid rgba(0, 0, 0, 0.1);
 		padding: 5rem;
+		text-align: justify;
+		direction: rtl;
 	}
 	h2,
 	p h2 {
@@ -54,6 +57,7 @@
 		font-size: 10rem;
 		font-weight: 400;
 		margin: 1.5rem 0rem;
+		color: $primary-color-lighter;
 		&.selected {
 			color: rgb(98, 98, 205);
 		}
@@ -73,8 +77,18 @@
 		font-family: 'Uthmanic', 'amiri', serif;
 		font-size: 5rem;
 		font-weight: 400;
+		line-height: 7rem;
+		text-align: justify;
+		direction: rtl;
+		.ayah_number {
+			font-family: 'Uthmanic', 'amiri', serif;
+			color: rgba(black, 0.5);
+		}
 		.padds {
 			padding: 1.5rem;
+		}
+		&.quran__page--number {
+			text-align: center;
 		}
 	}
 	h1 {
@@ -82,6 +96,7 @@
 		font-weight: 100;
 		font-size: 27rem;
 		margin: 8rem 0rem;
+		margin-top: 15rem;
 		color: $tertiary-color;
 		text-shadow: 0 2px 0.2rem rgba(black, 0.9);
 	}
@@ -112,15 +127,16 @@
 	h1 {
 		font-family: 'Surah', serif;
 		font-weight: 100;
-		font-size: 18rem;
-		margin: 4rem 0rem;
+		font-size: 27rem;
+		margin: 8rem 0rem;
 		color: $tertiary-color;
-		// give stroke
-		-webkit-text-stroke: 1px $primary-color;
+		text-shadow: 0 2px 0.2rem rgba(black, 0.9);
 	}
 	h2 {
 		font-weight: 400;
-		margin: 1.5rem 0rem;
+		font-size: 13rem;
+		margin: 13rem 0rem;
+		text-shadow: 0 2px 0.5rem rgba(black, 0.5);
 		&.quran__istieadha {
 			font-family: 'Istieadha', serif;
 		}
@@ -132,7 +148,9 @@
 		font-family: 'Uthmanic', 'amiri', serif;
 		font-weight: 400;
 		margin: 1.5rem 0rem;
-		text-align: end;
+		text-align: justify;
+		direction: rtl;
+
 		&.explanation {
 			border: 3px solid rgba(0, 0, 0, 0.1);
 			font-size: 3rem;
@@ -140,6 +158,9 @@
 			padding: 2rem;
 			color: rgba(black, 0.6);
 			font-family: 'amiri', serif;
+			&.eng {
+				direction: ltr;
+			}
 		}
 		&.seperator {
 			font-family: 'Divider', serif;
@@ -202,11 +223,13 @@
 		margin-bottom: 2rem;
 		h1 {
 			font-size: 20rem;
+			margin: 0;
+			margin-top: 10rem;
 		}
 		h2 {
 			font-size: 10rem;
-			&.quran__basamallah {
-				margin: 5rem 0rem;
+			&.quran__basmallah {
+				margin: 7rem 0rem;
 			}
 		}
 		p {
@@ -237,4 +260,20 @@
 	.quran__page--number {
 		bottom: 2.7%;
 	}
+}
+
+.line__divider {
+	font-family: 'Divider', serif;
+	font-size: 5rem;
+	color: rgba(black, 0.6);
+	text-align: center;
+	font-weight: 400;
+	margin: 5rem 0rem;
+	&.upsidedown {
+		transform: rotate(180deg);
+	}
+}
+.eng {
+	font-family: 'English', serif !important;
+	direction: ltr !important;
 }

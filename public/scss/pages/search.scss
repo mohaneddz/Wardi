@@ -1,5 +1,8 @@
 .SearchPage{
 	overflow-y: hidden;
+	*  {
+		transition: all 0.3s;
+	}
 }
 .mainSearchPage {
 	display: initial;

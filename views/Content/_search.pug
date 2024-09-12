@@ -1,56 +1,14 @@
+- let sectors = 24;
+- let lines = 4;
+- let size = 32;
+- let viewBox = "0 0 " + size + " " + size;
+- let sizePx = size + "px";
+- let center = size / 2;
+- let centerCoords = center + "," + center;
+
 .search_page
     .results
         .results__item
-            .results__item--counter
-                | 1 results found
-            .results__item--quran
-                a(href="/quran/chapter/1")
-                .results__item--quran--ayah
-                    | Hafs | Chapter 1  -  Ayah 1
-                .results__item--quran--text
-                    | بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-            .results__item--hadith
-                .results__item--hadith--collection
-                    | Sahih Bukhari | Hadith Number #1
-                .results__item--hadith--text
-                    | حَدَّثَنَا مُحَمَّدُ بْنُ يَحْيَى، حَدَّثَنَا سُفْيَانُ، عَنْ عَمْرِو بْنِ دِينَارٍ، عَنْ عَبْدِ اللَّهِ بْنِ عُمَرَ، قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏ "‏ بُنِيَ الإِسْلاَمُ عَلَى خَمْسٍ شَهَادَةِ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ وَإِقَامِ الصَّلاَةِ وَإِيتَاءِ الزَّكَاةِ وَالْحَجِّ وَصَوْمِ رَمَضَانَ ‏"‏‏.‏
-            .results__item--tafsir
-                .results__item--tafsir--collection
-                    | Tafsir Ibn Kathir | Chapter 1  -  Ayah 1
-                .results__item--tafsir--text
-                    | بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-            .results__item--quran
-                a(href="/quran/chapter/1")
-                .results__item--quran--ayah
-                    | Hafs | Chapter 1  -  Ayah 1
-                .results__item--quran--text
-                    | بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-            .results__item--hadith
-                .results__item--hadith--collection
-                    | Sahih Bukhari | Hadith Number #1
-                .results__item--hadith--text
-                    | حَدَّثَنَا مُحَمَّدُ بْنُ يَحْيَى، حَدَّثَنَا سُفْيَانُ، عَنْ عَمْرِو بْنِ دِينَارٍ، عَنْ عَبْدِ اللَّهِ بْنِ عُمَرَ، قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏ "‏ بُنِيَ الإِسْلاَمُ عَلَى خَمْسٍ شَهَادَةِ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ وَإِقَامِ الصَّلاَةِ وَإِيتَاءِ الزَّكَاةِ وَالْحَجِّ وَصَوْمِ رَمَضَانَ ‏"‏‏.‏
-            .results__item--tafsir
-                .results__item--tafsir--collection
-                    | Tafsir Ibn Kathir | Chapter 1  -  Ayah 1
-                .results__item--tafsir--text
-                    | بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-            .results__item--quran
-                a(href="/quran/chapter/1")
-                .results__item--quran--ayah
-                    | Hafs | Chapter 1  -  Ayah 1
-                .results__item--quran--text
-                    | بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-            .results__item--hadith
-                .results__item--hadith--collection
-                    | Sahih Bukhari | Hadith Number #1
-                .results__item--hadith--text
-                    | حَدَّثَنَا مُحَمَّدُ بْنُ يَحْيَى، حَدَّثَنَا سُفْيَانُ، عَنْ عَمْرِو بْنِ دِينَارٍ، عَنْ عَبْدِ اللَّهِ بْنِ عُمَرَ، قَالَ قَالَ رَسُولُ اللَّهِ صلى الله عليه وسلم ‏ "‏ بُنِيَ الإِسْلاَمُ عَلَى خَمْسٍ شَهَادَةِ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ وَإِقَامِ الصَّلاَةِ وَإِيتَاءِ الزَّكَاةِ وَالْحَجِّ وَصَوْمِ رَمَضَانَ ‏"‏‏.‏
-            .results__item--tafsir
-                .results__item--tafsir--collection
-                    | Tafsir Ibn Kathir | Chapter 1  -  Ayah 1
-                .results__item--tafsir--text
-                    | بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
         
     .options
         h2.hidden The-Search-Options
@@ -84,7 +42,7 @@
 
                 .options__sub--hadith--collection.hidden.invisible
                     for hadith_book in all_hadith_books
-                        input(type="radio" name="hadith_collection" id=hadith_book.name value=hadith_book.name)
+                        input(type="radio" name="hadith_collection" id=hadith_book.name value=hadith_book.name checked)
                         label(for=hadith_book.name) #{hadith_book.metadata.name}
 
             h3.hidden Tafsir
@@ -101,5 +59,9 @@
 
                 .options__sub--tafsir--collection.hidden.invisible
                     for tafsir_book in all_tafsir_books
-                        input(type="radio" name="tafsir_collection" id=tafsir_book.slug value=tafsir_book.slug)
+                        input(type="radio" name="tafsir_collection" id=tafsir_book.slug value=tafsir_book.slug checked)
                         label(for=tafsir_book.slug language=tafsir_book.language) #{tafsir_book.name}
+                        
+        .spinner-box
+            .circle-border
+                .circle-core

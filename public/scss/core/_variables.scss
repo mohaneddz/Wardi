@@ -1,5 +1,5 @@
 // Color Palette //////////////////////////
-$primary-color: #0D142C;
+$primary-color: #0d142c;
 $primary-color-light: lighten($primary-color, 10%); // Lightened by 10%
 $primary-color-lighter: lighten($primary-color, 20%); // Lightened by 20%
 $primary-color-dark: darken($primary-color, 10%); // Darkened by 10%
@@ -19,7 +19,7 @@ $tertiary-color-darker: darken($tertiary-color, 20%);
 
 $error: #b4626a;
 $error-saturated: saturate($error, 20%);
-$error-dark : darken($error, 10%);
+$error-dark: darken($error, 10%);
 $success: #5cb85c;
 $sucess-saturated: saturate($success, 20%);
 $success-dark: darken($success, 10%);
@@ -87,5 +87,3 @@ $border-radius: 8px;
 $hover-color: darken($primary-color, 10%);
 $acrive-color: saturate($primary-color, 40%);
 $font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-

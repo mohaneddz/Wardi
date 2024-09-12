@@ -5,10 +5,13 @@
         h1.quran__title= this_chapter.name
         h2.quran__basmallah 1
         -for(let i = 0; i < this_chapter.verses.length; i++)
-            p(class=`quran__verse` data-book=`${this_book}` data-verse=`${i + 1}` data-chapter=`${readerTitle}`)= `${this_chapter.verses[i].text} ${i+1}`.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
+            p(class=`quran__verse` data-book=`${this_book}` data-verse=`${i + 1}` data-chapter=`${this_chapter.chapter}`)= `${this_chapter.verses[i].text} ${i+1}`.replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d])
             //- p.explanation= tafsir.ayat
             if tafsir[0].ayat.ayahs[i] 
-                p.explanation= tafsir[0].ayat.ayahs[i].text
+                if lang === "ara"
+                    p.explanation= tafsir[0].ayat.ayahs[i].text
+                else
+                    p.explanation.eng= tafsir[0].ayat.ayahs[i].text
             else
                 p.explanation= "No Tafsir available for this verse in this book"
             p.seperator 51

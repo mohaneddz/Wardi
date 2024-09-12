@@ -1,13 +1,16 @@
 'use strict';
+import { showAlert } from './Alert.js';
 
 // DOM elements --------------------------------------------------------------
 
 const searchbtn = document.getElementById('searchButton');
 const searchInput = document.getElementById('searchField');
+const loading = document.querySelector('.spinner-box');
 
 // options -------------------------
 
 const quranSubOptions = document.querySelector('.options__sub--quran');
+const quranCheckbox = document.querySelector('input[name="quran"]');
 
 const hadithSubOptions = document.querySelector('.options__sub--hadith');
 const hadithCollectionSubOptions = document.querySelector('.options__sub--hadith--collection');
@@ -18,7 +21,7 @@ const tafsirCollectionSubOptions = document.querySelector('.options__sub--tafsir
 let selectedValues = getAllSelectedRadioValues();
 
 const arab_tafsirs = document.querySelectorAll('label[language="ara"]');
-const english_tafsirs = document.querySelectorAll('label[language="en"]');
+const english_tafsirs = document.querySelectorAll('label[language="eng"]');
 
 // results -------------------------
 
@@ -59,28 +62,31 @@ function search() {
 			break;
 		}
 	}
-	console.log('search', url, book, query);
-
+	loading.classList.remove('invisible');
+	resultsContainer.innerHTML = '<div class="results__item--counter">Searching In Progress..</div>';
 	// axios post request to search
 	axios.post(url, {
 		query,
 		book,
 	})
 		.then((res) => {
-			console.log(res.data);
 			switch (searchType) {
 				case 'Quran':
-					displayQuranResults(res.data.data, res.data.results);
+					displayQuranResults(res.data.data, res.data.results, query);
 					break;
 				case 'Hadith':
-					displayHadithResults(res.data.data, res.data.results);
+					displayHadithResults(res.data.data, res.data.results, query);
 					break;
 				case 'Tafsir':
-					displayTafsirResults(res.data.data, res.data.results, book);
+					displayTafsirResults(res.data.data, res.data.results, book, query);
 			}
+			loading.classList.add('invisible');
 		})
 		.catch((err) => {
-			console.log(err);
+			loading.classList.add('invisible');
+			showAlert('error', err.response.data.message);
+			resultsContainer.innerHTML =
+				'<div class="results__item--counter">Please Try Again with different parameters</div>';
 		});
 }
 
@@ -132,11 +138,17 @@ function toggleOptions(type) {
 	}
 }
 
+function Init() {
+	resultsContainer.innerHTML = '<div class="results__item--counter">Search for something</div>';
+	selectedValues = getAllSelectedRadioValues();
+	toggleOptions(selectedValues.searchType);
+	loading.classList.add('invisible');
+}
+
 // Display results ---------------
 
-const displayQuranResults = (surahs, number) => {
+const displayQuranResults = (surahs, number, query) => {
 	// Clear previous results if any
-	console.log('displayQuranResults', surahs);
 	if (number > 1)
 		resultsContainer.innerHTML = `<div class="results__item--counter"> ${number} Results Found</div>`;
 	else if (number === 1) resultsContainer.innerHTML = `<div class="results__item--counter"> 1 Result Found</div>`;
@@ -161,10 +173,14 @@ const displayQuranResults = (surahs, number) => {
 					surahInfo.textContent = `Chapter ${surah.chapter || ''} - Ayah ${verse.verse || ''} : ${surah.name || ''}`;
 					verseContainer.appendChild(surahInfo);
 
-					// Display verse text
+					// Display verse text with query highlighted
 					const verseTextContainer = document.createElement('div');
 					verseTextContainer.classList.add('results__item--quran--text');
-					verseTextContainer.textContent = verse.text || '';
+					const highlightedText = verse.text.replace(
+						new RegExp(query, 'gi'),
+						(match) => `<span class="match">${match}</span>`
+					);
+					verseTextContainer.innerHTML = highlightedText;
 					verseContainer.appendChild(verseTextContainer);
 
 					// Append the individual verse container to the results
@@ -180,9 +196,8 @@ const displayQuranResults = (surahs, number) => {
 	}
 };
 
-const displayHadithResults = (hadiths, number) => {
+const displayHadithResults = (hadiths, number, query) => {
 	// // Clear previous results if any
-	console.log('Results : ', hadiths);
 	if (number > 1)
 		resultsContainer.innerHTML = `<div class="results__item--counter"> ${number} Results Found</div>`;
 	else if (number === 1) resultsContainer.innerHTML = `<div class="results__item--counter"> 1 Result Found</div>`;
@@ -209,6 +224,11 @@ const displayHadithResults = (hadiths, number) => {
 			const hadithTextContainer = document.createElement('div');
 			hadithTextContainer.classList.add('results__item--hadith--text');
 			hadithTextContainer.textContent = hadith.text || '';
+			const highlightedText = hadith.text.replace(
+				new RegExp(query, 'gi'),
+				(match) => `<span class="match">${match}</span>`
+			);
+			hadithTextContainer.innerHTML = highlightedText;
 			hadithContainer.appendChild(hadithTextContainer);
 
 			// Append the individual hadith container to the results
@@ -220,9 +240,8 @@ const displayHadithResults = (hadiths, number) => {
 	}
 };
 
-const displayTafsirResults = (tafsirs, number, book) => {
+const displayTafsirResults = (tafsirs, number, book, query) => {
 	// Clear previous results if any
-	console.log('displayTafsirResults', tafsirs);
 	if (number > 1)
 		resultsContainer.innerHTML = `<div class="results__item--counter"> ${number} Results Found</div>`;
 	else if (number === 1) resultsContainer.innerHTML = `<div class="results__item--counter"> 1 Result Found</div>`;
@@ -249,7 +268,11 @@ const displayTafsirResults = (tafsirs, number, book) => {
 				// Display tafsir text
 				const tafsirTextContainer = document.createElement('div');
 				tafsirTextContainer.classList.add('results__item--tafsir--text');
-				tafsirTextContainer.textContent = ayah.text;
+				const highlightedText = ayah.text.replace(
+					new RegExp(query, 'gi'),
+					(match) => `<span class="match">${match}</span>`
+				);
+				tafsirTextContainer.textContent = highlightedText;
 				surahContainer.appendChild(tafsirTextContainer);
 
 				// Append the link and the tafsir container to the results
@@ -277,8 +300,7 @@ searchbtn.addEventListener('click', (e) => {
 
 // Init ---------------------------------------------------------------------
 
-console.log(selectedValues);
-resultsContainer.innerHTML = '<div class="results__item--counter">Search for something</div>';
+Init();
 
 /*
 - searchType: "Quran"

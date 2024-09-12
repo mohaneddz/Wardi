@@ -46,10 +46,10 @@
 		margin: 2rem;
 		display: block;
 
-		border-bottom: 3px solid $primary-color;
+		border-bottom: 3px solid $primary-color-darker;
 		line-height: 0.1em;
 		margin: 5rem 0;
-
+		box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.8);
 		text-shadow:
 			-1px -1px 0.5rem $primary-color,
 			1px -1px 0.5rem $primary-color,
@@ -76,12 +76,14 @@
 	label {
 		font-size: 1.5rem;
 		color: $secondary-color;
+		font-weight: 700;
 		text-align: center;
 		background-color: $primary-color-dark;
 		padding: 1rem 0.5rem;
 		margin: 2rem;
 		border-radius: 3rem;
 		box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
+
 		&:hover {
 			cursor: pointer;
 			transform: translateY(-0.5rem);
@@ -162,6 +164,14 @@
 		}
 		label {
 			font-size: 1.2rem;
+		}
+	}
+	@media screen and (max-width: 1000px) {
+		h2 {
+			font-size: 2.2rem;
+		}
+		h3 {
+			font-size: 2.5rem;
 		}
 	}
 	@media screen and (max-width: 850px) {
