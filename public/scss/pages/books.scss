@@ -1,5 +1,4 @@
 main {
-
 	.books {
 		grid-column: 3/-3;
 		display: grid;
@@ -14,7 +13,7 @@ main {
 		padding: 2rem;
 		font-size: 3rem;
 		box-shadow: 0 0 5rem rgba(0, 0, 0, 0.5);
-		
+
 		@media (max-width: 1000px) {
 			grid-template-columns: repeat(3, minmax(14rem, 1fr));
 		}
@@ -23,6 +22,19 @@ main {
 		}
 		@media (max-width: 400px) {
 			grid-template-columns: repeat(1, minmax(14rem, 1fr));
+		}
+	}
+}
+
+.mainHadithBooks,
+.mainTafsirBooks {
+	.title {
+		h2 {
+			font-size: clamp(5rem, 10vw, 19rem);
+		}
+		@media screen and (max-width: 1000px) {
+			margin-top: -15rem;
+			margin-bottom: -15rem;
 		}
 	}
 }

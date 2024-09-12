@@ -2,9 +2,9 @@
 
 // Define Intersection Observer options
 const options = {
-    root: null, // Use the viewport as the root
-    rootMargin: '0px', // No extra margin
-    threshold: 0.8, // Trigger when 80% of the element is visible
+    root: null,
+    rootMargin: '300px',
+    threshold: 0.1,
 };
 
 // Initialize Intersection Observer

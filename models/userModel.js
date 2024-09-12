@@ -175,6 +175,7 @@ userSchema.methods.removeBookmarkAll = async function () {
 	this.bookmarks = {};
 	await this.save({ validateBeforeSave: false });
 };
+
 // Exporting the final Model ------------------------------------------
 
 const User = mongoose.model('User', userSchema);

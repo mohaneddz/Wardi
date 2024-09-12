@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.get('/', viewsController.getLanding);
 router.get('/search/', viewsController.searchView);
-router.post('/search/:type', viewsController.getSearch);
+router.get('/emailtest', viewsController.sendWelcome);
 
 export default router;

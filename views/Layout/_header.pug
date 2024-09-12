@@ -1,7 +1,8 @@
 mixin navItem(className, href, text, iconClass)
     li(class=className)
-        a(href=href) #{text}
+        a(href=href) 
             i(class=iconClass)
+            | #{text}
 
 header.header
     nav

@@ -44,7 +44,7 @@ body {
 	background:
 		url('../../img/bg.png') center center / cover no-repeat,
 		linear-gradient(to top, $primary-color-light 0%, $primary-color 100%);
-
+	text-shadow: 0 0 2px rgba(0, 0, 0, 0.245);
 	position: relative;
 	list-style-type: none;
 	background-attachment: fixed;

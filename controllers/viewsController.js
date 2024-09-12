@@ -2,6 +2,7 @@ import Chapter from '../models/Content/Quran/quranChaptersModel.js';
 import Hadith from '../models/Content/Hadith/hadithModel.js';
 import Tafsir from '../models/Content/Tafsir/tafsirModel.js';
 
+import email from '../utils/email.js';
 import { queryQuran, queryHadith, queryTafsir } from '../utils/queue/seachQueries.js';
 
 import catchAsync from '../utils/catchAsync.js';
@@ -83,5 +84,17 @@ export const searchView = catchAsync(async (req, res, next) => {
 		all_tafsir_books,
 		title: 'Search',
 		search,
+	});
+});
+
+export const sendWelcome= catchAsync(async (req, res, next) => {
+
+	const user = req.user;
+	const url = 'https://quran.com';
+
+	await new email(user, url).sendWelcome();
+	res.status(200).json({
+		status: 'success',
+		message: 'Welcome email sent',
 	});
 });
