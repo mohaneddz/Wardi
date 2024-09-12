@@ -1,0 +1,37 @@
+.floatingButton {
+	z-index: 1000;
+	position: fixed;
+	bottom: 3rem;
+	right: 3rem;
+	padding: 2rem;
+	border-radius: 30rem;
+	background-color: $tertiary-color;
+	color: white;
+	font-size: 4rem;
+	box-shadow: 0 0 1rem rgba(black, 0.4);
+	i {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&:hover {
+		background-color: $tertiary-color-light;
+		scale: 1.1;
+		cursor: pointer;
+	}
+	&:active {
+		background-color: $tertiary-color-darker;
+		scale: 0.9;
+	}
+}
+// .readingMod {
+// 		i {
+// 			font-size: inherit;
+// 			color: white;
+// 			scale: 3.5;
+// 			&:hover {
+// 				cursor: pointer;
+// 			}
+// 		}
+// 	}
+// }

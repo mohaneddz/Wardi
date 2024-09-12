@@ -38,6 +38,7 @@
 		font-size: 8rem;
 		margin: 3rem 0rem;
 		color: $primary-color-lighter;
+		margin-top: 15rem;
 		text-shadow: 0 2px 0.2rem rgba(black, 0.9);
 		&.selected {
 			color: rgb(98, 98, 205);
@@ -80,6 +81,7 @@
 		line-height: 7rem;
 		text-align: justify;
 		direction: rtl;
+		z-index: 5;
 		.ayah_number {
 			font-family: 'Uthmanic', 'amiri', serif;
 			color: rgba(black, 0.5);
@@ -91,6 +93,14 @@
 			text-align: center;
 		}
 	}
+	// TODO : Ayah Hovering effect
+	// span:hover {
+	// 	cursor: pointer;
+	// 	z-index: 1;
+	// 	background-color: rgba(169, 117, 117, 1);
+	// 	border: rgba(169, 117, 117, 0.7);
+	// 	padding: 0;
+	// }
 	h1 {
 		font-family: 'Surah', serif;
 		font-weight: 100;
@@ -129,6 +139,7 @@
 		font-weight: 100;
 		font-size: 27rem;
 		margin: 8rem 0rem;
+		margin-top: 15rem;
 		color: $tertiary-color;
 		text-shadow: 0 2px 0.2rem rgba(black, 0.9);
 	}

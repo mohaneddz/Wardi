@@ -1,4 +1,81 @@
-.Floating
-    // a button that remains in place to show the different reading modes
-    button#floatingButton(type='button' aria-label='Change reading mode')
-        i.fas.fa-book-reader
+.floatingButton.readingMod
+    i(class='fi fi-rs-book-alt')
+
+.Popup.invisible
+    .Popup__Content
+        h2 Select your reading mode
+        .Popup__Buttons
+
+
+
+            if mode === 'HadithChapter' || mode === 'HadithSection'
+
+                if mode === 'HadithChapter'
+                    a(href=`/hadith/book/${(this_book && this_book.name) || (this_hadith && this_hadith.name) || 'ara-nawawi'}/hadith/${hadithNumber || 1}` class='readingOption currentMode') Chapters
+                        i(class='fi fi-sr-comment-alt')
+                else
+                    a(href=`/hadith/book/${(this_book && this_book.name) || (this_hadith && this_hadith.name)  || 'ara-nawawi'}/hadith/${hadithNumber || 1}` class='readingOption') Hadiths
+                        i(class='fi fi-sr-comment-alt')
+
+                if mode === 'HadithSection'
+                    a(href=`/hadith/book/${(this_hadith && this_hadith.name) || (this_book && this_book.name)|| 'ara-nawawi'}/section/${sectionNumber || 1}` class='readingOption currentMode') Sections
+                        i(class='fi fi-sr-diary-bookmarks')
+                else
+                    a(href=`/hadith/book/${(this_hadith && this_hadith.name) || (this_book && this_book.name) || 'ara-nawawi'}/section/${sectionNumber || 1}` class='readingOption') Sections
+                        i(class='fi fi-sr-diary-bookmarks')
+
+
+
+            else if mode === "QuranChapter" || mode === "QuranPage" || mode === "QuranJuz"
+
+
+                if mode === "QuranChapter"
+                    a(href=`/quran/chapter/${chapterNumber || 1}` class='readingOption currentMode') Chapters
+                        i(class='fi fi-sr-memo')
+                else 
+                    a(href=`/quran/chapter/${chapterNumber || 1}` class='readingOption') Chapters
+                        i(class='fi fi-sr-memo')
+
+
+                if juzNumber
+                    if mode === "QuranJuz"
+                        a(href=`/quran/juz/${juzNumber}/chapter/${chapterNumber || ''}` class='readingOption currentMode') Juzs
+                            i(class='fi fi-sr-quill-pen-story')
+                    else
+                        a(href=`/quran/juz/${juzNumber}/chapter/${chapterNumber || ''}` class='readingOption') Juzs
+                            i(class='fi fi-sr-quill-pen-story')
+
+
+                else
+                    if mode === "QuranJuz"
+                        a(href='/quran/juz/1/chapter/1' class='readingOption currentMode') Juzs
+                            i(class='fi fi-sr-quill-pen-story')
+                    else
+                        a(href='/quran/juz/1/chapter/1' class='readingOption') Juzs
+                            i(class='fi fi-sr-quill-pen-story')
+                            
+                            
+                if mode === "QuranPage"
+                    a(href=`/quran/page/${pageNumber || 1}` class='readingOption currentMode') Pages
+                        i(class='fi fi-sr-file')
+                else
+                    a(href=`/quran/page/${pageNumber || 1}` class='readingOption') Pages
+                        i(class='fi fi-sr-file')
+
+
+
+            else if mode === "TafsirChapter" || mode === "TafsirBooks"
+
+                if mode === "TafsirChapter"
+                    a(href=`/tafsir/book/${this_book || 'ara-tafsir-muyassar'}/chapter/${chapterNumber || 1}` class='readingOption currentMode') Chapters
+                        i(class='fi fi-sr-memo')
+                else
+                    a(href=`/tafsir/book/${this_book || 'ara-tafsir-muyassar'}/chapter/${chapterNumber || 1}` class='readingOption') Chapters
+                        i(class='fi fi-sr-memo')
+                
+                if mode === "TafsirBooks"
+                    a(href=`/tafsir/book/${this_book || 'ara-tafsir-muyassar'}/chapters/` class='readingOption currentMode') Books
+                        i(class='fi fi-sr-books')
+                else
+                    a(href=`/tafsir/book/${this_book || 'ara-tafsir-muyassar'}/chapters/${chapterNumber || 1}` class='readingOption') Books
+                        i(class='fi fi-sr-books')

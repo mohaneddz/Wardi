@@ -9,7 +9,9 @@
 	justify-content: center;
 	align-items: center;
 	z-index: 100;
-
+	text-align: center;
+	box-shadow: 0 0 5rem black;
+	z-index: 1000;
 	.Popup__Content {
 		padding: 2rem 3rem;
 		border-radius: 2.5rem;
@@ -20,7 +22,7 @@
 			inset 0.2rem 0.4rem 0.4rem rgba($primary-color-lighter, 0.3);
 		h2 {
 			color: $secondary-color;
-			font-size: 3rem;
+			font-size: 5rem;
 			margin-bottom: 2rem;
 		}
 		.Popup__Buttons {
@@ -54,6 +56,62 @@
 				&:active {
 					scale: 0.9;
 					filter: brightness(80%);
+				}
+			}
+			a {
+				padding-top: 2rem;
+				text-decoration: none;
+				color: #c72378;
+				font-size: 3rem;
+				width: 25rem;
+				height: 30rem;
+				border: 3px solid $tertiary-color-dark;
+				border-radius: 5rem;
+				font-weight: 700;
+				text-shadow: 0 0 1rem black;
+				box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+				i {
+					display: block;
+					font-size: 15rem;
+					text-shadow: 0 0 1rem black;
+				}
+				&:hover,
+				&.currentMode {
+					cursor: pointer;
+					transform: translateY(-1.1rem);
+					scale: 1.05;
+					background-color: $tertiary-color;
+					box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
+					color: white;
+					i {
+						color: white;
+					}
+				}
+				&.currentMode {
+					pointer-events: none;
+				}
+				&:active {
+					transform: translateY(0.5rem);
+					scale: 0.95;
+					background-color: $tertiary-color-dark;
+					box-shadow: 0 0 7rem rgba(0, 0, 0, 0.8);
+					color: white;
+					i {
+						color: white;
+					}
+				}
+			}
+		}
+		@media screen and (max-width: 1000px) {
+			h2{
+				font-size: 4rem;
+			}
+			a {
+				font-size: 2rem;
+				width: 17rem;
+				height: 20rem;
+				i {
+					font-size: 10rem;
 				}
 			}
 		}

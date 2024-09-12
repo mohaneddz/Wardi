@@ -12,7 +12,6 @@
 		0 0 1rem rgba(0, 0, 0, 0.1);
 	transition: all 0.3s;
 	animation: listscroll linear;
-	animation-timeline: view(100px);
 
 	.cards__surah {
 		position: relative;
@@ -27,7 +26,9 @@
 		text-decoration: none;
 		z-index: 20;
 	}
-
+	.cards__surah__info{
+		margin-top: 1rem;
+	}
 	// Order and Name
 	p.cards__surah__info__order,
 	h3.cards__surah__name {
@@ -77,7 +78,7 @@
 	// Link Styling
 	a {
 		position: absolute;
-		top: 5%;
+		top: 20%;
 		right: 5%;
 		color: $tertiary-color;
 		text-decoration: none;

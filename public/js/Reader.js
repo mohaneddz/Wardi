@@ -1,4 +1,4 @@
-import {favControl} from './Fav.js';
+import { favControl } from './Fav.js';
 
 // Selectors -------------------------
 const sidesbtn = document.querySelector('.toggle');
@@ -14,12 +14,20 @@ const rsearchbtn = document.querySelector('.RsearchButton');
 const lsearch = document.querySelector('.Lsearch');
 const rsearch = document.querySelector('.Rsearch');
 
+const RightUl = document.querySelector('.Rsidebar ul');
+const LeftUl = document.querySelector('.Lsidebar ul');
+
+const readingbtn = document.querySelector('.readingMod');
+const popupContent = document.querySelector('.Popup__Content');
+
+const popup = document.querySelector('.Popup');
 // temporary using this to store the favorite verses
 const favoriteVerses = new Set();
 
-// Functions ---------------------------------------------------
+// Highlighter Functions ---------------------------------------------------
 
 // Highlighter Function -------------------------
+
 function highlighter(event) {
 	if (event.target && event.target.classList.contains('nosearch')) return;
 
@@ -68,7 +76,6 @@ function quranHighlighter(event) {
 }
 
 function hadithSectionHighlighter(event) {
-
 	document.querySelectorAll('.hadith__title').forEach((section) => {
 		section.classList.remove('selected');
 	});
@@ -128,7 +135,7 @@ function tafsirHighlighter(event) {
 	}
 }
 
-// ----------------------------------------------
+// Reading Functions ----------------------------------------------
 
 function toggleSides() {
 	lsidebar.classList.toggle('active');
@@ -177,11 +184,21 @@ function searchAya() {
 	});
 }
 
+export function closePopupFromOutside(e) {
+	if (!popupContent.contains(e.target) && !readingbtn.contains(e.target)) {
+		popup.classList.add('invisible');
+	}
+}
+
 // Event Listeners -------------------------
 sidesbtn?.addEventListener('click', toggleSides);
 lsearch?.addEventListener('input', searchSurah);
 rsearch?.addEventListener('input', searchAya);
 // document?.addEventListener('DOMContentLoaded', favCreate);
-document.querySelector('.Rsidebar ul')?.addEventListener('click', favControl);
-document.querySelector('.Rsidebar ul')?.addEventListener('click', highlighter);
-document.querySelector('.Lsidebar ul')?.addEventListener('click', favControl);
+RightUl?.addEventListener('click', favControl);
+RightUl?.addEventListener('click', highlighter);
+LeftUl?.addEventListener('click', favControl);
+readingbtn.addEventListener('click', () => {
+	popup.classList.toggle('invisible');
+});
+document.addEventListener('click', closePopupFromOutside);

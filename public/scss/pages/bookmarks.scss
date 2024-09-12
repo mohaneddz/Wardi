@@ -290,24 +290,3 @@
 		padding: 0;
 	}
 }
-
-a.DeleteAll {
-	position: fixed;
-	bottom: 2rem;
-	right: 2rem;
-	padding: 2rem;
-	border-radius: 30rem;
-	background-color: $tertiary-color;
-	color: white;
-	font-size: 4rem;
-	&:hover {
-		background-color: $tertiary-color-dark;
-		scale: 1.1;
-		cursor: pointer;
-	}
-	i {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-}

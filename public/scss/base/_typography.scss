@@ -10,8 +10,9 @@ body {
 		transition: all 0.3s;
 		margin-top: -3rem;
 		margin-bottom: -2rem;
-		font-size: 20rem;
+		font-size: 33rem;
 		color: $tertiary-color;
+		font-family: 'Amjed', 'amiri', serif;
 		text-shadow: 0.2rem 0.2rem 2rem rgba($primary-color-darker, 0.5);
 		max-width: 100%;
 		padding: 0 1rem;
@@ -23,6 +24,10 @@ body {
 			transform: scale(0.9);
 			color: $tertiary-color-dark;
 		}
+		@media screen and (max-width: 800px) {
+			font-size: 20rem;
+			
+		}
 	}
 
 	h2 {
@@ -30,12 +35,15 @@ body {
 		justify-content: center;
 		align-items: center;
 		transition: all 0.3s;
-		font-size: 5rem;
+		font-size: 8rem;
+		z-index: 100;
 		color: $secondary-color;
 		text-shadow: 0.2rem 0.2rem 0.2rem rgba($tertiary-color, 0.5);
+		font-family: 'Amjed', 'amiri', serif;
 		max-width: 100%;
 		padding: 0 1rem;
 		cursor: pointer;
+
 		&:hover {
 			@include baseHover($secondary-color);
 		}
@@ -62,7 +70,8 @@ body {
 	}
 }
 
-.HadithBooks, .TafsirBooks {
+.HadithBooks,
+.TafsirBooks {
 	.title {
 		h2 {
 			width: 80vw;

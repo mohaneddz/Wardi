@@ -1,1 +1,40 @@
-// TODO custommize the scrollbar
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: inherit;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: $secondary-color-dark;
+    border-radius: inherit;
+    border: 2px solid transparent;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: $primary-color;
+}
+
+*::-webkit-scrollbar:hover {
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: $primary-color;
+}
+
+*::-webkit-scrollbar-track:hover {
+    background-color: $primary-color-lighter;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba($primary-color, 0.5) transparent;
+}
+
+*:hover::-webkit-scrollbar-track {
+    background-color: transparent;
+}

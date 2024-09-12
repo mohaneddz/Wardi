@@ -2,6 +2,7 @@
 
 const trash = document.querySelector('.DeleteAll');
 const popup = document.querySelector('.Popup');
+const popupContent = document.querySelector('.Popup__Content');
 const Yes = document.getElementById('Yes');
 const No = document.getElementById('No');
 
@@ -30,9 +31,16 @@ function DeleteAll(event) {
 }
 
 function showPopup(e) {
-    popup.classList.toggle('invisible');
+	popup.classList.toggle('invisible');
 }
 
-trash.addEventListener('click', showPopup);
-Yes.addEventListener('click', DeleteAll);
-No.addEventListener('click', showPopup);
+function closePopupFromOutside(e, btn) {
+	if(!popupContent.contains(e.target) && !btn.contains(e.target)) {
+		popup.classList.add('invisible');
+	}
+}
+
+trash?.addEventListener('click', showPopup);
+Yes?.addEventListener('click', DeleteAll);
+No?.addEventListener('click', showPopup);
+document.addEventListener('click', (e) => closePopupFromOutside(e, trash));

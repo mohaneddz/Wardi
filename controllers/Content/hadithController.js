@@ -15,6 +15,7 @@ export const deleteHadith = factory.deleteOne(Hadith);
 // // |.....|---------------------------------------------
 
 export const getBooksView = catchAsync(async (req, res) => {
+	
 	const user = req.user;
 	const fav_books = user?.bookmarks?.fav_books_hadiths?.map((book) => book.name) || [];
 
