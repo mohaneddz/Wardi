@@ -54,7 +54,6 @@ userSchema.methods.createPasswordResetToken = function () {
 	const resetToken = crypto.randomBytes(32).toString('hex');
 	this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
 
-	// console.log({ resetToken }, this.passwordResetToken);
 	this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
 
 	return resetToken;
@@ -164,12 +163,6 @@ userSchema.methods.removeBookmark = async function (type, object) {
 			{ new: true, useFindAndModify: false }
 		);
 
-		// Check if any modifications were made
-		if (result.modifiedCount === 0) {
-			console.log('No bookmark matched the criteria for removal.');
-		} else {
-			console.log(`Successfully removed ${type} bookmark matching criteria:`, matchCriteria);
-		}
 	} catch (error) {
 		console.error('Error removing bookmark:', error);
 		throw new Error('Failed to remove bookmark');

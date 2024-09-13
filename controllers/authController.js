@@ -58,7 +58,6 @@ export const signup = async (req, res, next) => {
 		// Send a welcome email with the verification link
 		await new Email(newUser, url).Confirmation();
 
-		console.log('Email Sent!');
 
 		res.status(200).json({
 			status: 'success',

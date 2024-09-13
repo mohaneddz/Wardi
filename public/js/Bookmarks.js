@@ -8,7 +8,6 @@ const Yes = document.getElementById('Yes');
 const No = document.getElementById('No');
 
 function DeleteAll(event) {
-	console.log('Delete All');
 
 	event.preventDefault();
 	const type = 'All';
