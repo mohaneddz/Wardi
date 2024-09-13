@@ -1,6 +1,6 @@
 'use strict';
 
-import { showAlert } from "./Alert";
+import { showAlert } from "./Alert.js";
 
 export async function removeBookmarkFromServer(type, object) {
 	try {
