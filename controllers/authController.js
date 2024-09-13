@@ -118,7 +118,7 @@ export const verifyEmail = catchAsync(async (req, res, next) => {
 	user.isActive = true;
 	await user.save({ validateBeforeSave: false }); // just in case
 
-	const url = `${req.protocol}://${req.get('host')}/login`;
+	const url = `${req.protocol}://${req.get('host')}/user/login`;
 	await new Email(user, url).sendWelcome();
 
 	createSendToken(user, 201, req, res);

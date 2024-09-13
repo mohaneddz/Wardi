@@ -223,6 +223,7 @@ body {
 }
 
 .HadithBooks .title h2,
+.QuranBooks .title h2,
 .TafsirBooks .title h2 {
   width: 80vw;
   font-size: 19rem;
@@ -230,6 +231,7 @@ body {
   margin-bottom: 4rem;
 }
 .HadithBooks .title h2:hover,
+.QuranBooks .title h2:hover,
 .TafsirBooks .title h2:hover {
   cursor: pointer;
   color: #010205;
@@ -237,6 +239,7 @@ body {
 }
 @media (max-width: 1500px) {
   .HadithBooks .title h2,
+  .QuranBooks .title h2,
   .TafsirBooks .title h2 {
     font-size: 14rem;
     margin-bottom: -1rem;
@@ -244,6 +247,7 @@ body {
 }
 @media (max-width: 1200px) {
   .HadithBooks .title h2,
+  .QuranBooks .title h2,
   .TafsirBooks .title h2 {
     font-size: 12.5rem;
     margin-bottom: -2rem;
@@ -251,6 +255,7 @@ body {
 }
 @media (max-width: 1000px) {
   .HadithBooks .title h2,
+  .QuranBooks .title h2,
   .TafsirBooks .title h2 {
     font-size: 10rem;
     margin-bottom: -3rem;
@@ -258,12 +263,14 @@ body {
 }
 @media (max-width: 800px) {
   .HadithBooks .title h2,
+  .QuranBooks .title h2,
   .TafsirBooks .title h2 {
     font-size: 6.5rem;
     margin-bottom: -4rem;
   }
 }
 .HadithBooks h3,
+.QuranBooks h3,
 .TafsirBooks h3 {
   font-size: clamp(2rem, 1.8vw, 3.5rem);
   text-wrap: nowrap;
@@ -276,27 +283,32 @@ body {
   white-space: nowrap;
 }
 .HadithBooks h3.TafsirTitle,
+.QuranBooks h3.TafsirTitle,
 .TafsirBooks h3.TafsirTitle {
   margin-left: 2rem;
 }
 .HadithBooks .books__card__info,
+.QuranBooks .books__card__info,
 .TafsirBooks .books__card__info {
   padding-top: 1.25rem;
   display: flex;
   width: 100%;
 }
 .HadithBooks .books__card__info__hadiths,
+.QuranBooks .books__card__info__hadiths,
 .TafsirBooks .books__card__info__hadiths {
   font-size: 2rem;
   color: #dee2e6;
   display: flex;
 }
 .HadithBooks .books__card__info__fav a,
+.QuranBooks .books__card__info__fav a,
 .TafsirBooks .books__card__info__fav a {
   text-decoration: none;
   color: #c72378;
 }
 .HadithBooks .books__card__info__language,
+.QuranBooks .books__card__info__language,
 .TafsirBooks .books__card__info__language {
   position: absolute;
   font-size: 2rem;
@@ -1196,7 +1208,7 @@ body {
 }
 .footer__content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
   gap: 2rem;
 }
 .footer__section {
@@ -1270,7 +1282,11 @@ body {
   border-top: 1px solid #444;
   padding-top: 4rem;
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
+  .footer__content {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 2rem;
+  }
   .footer__content, .footer__section, .footer__social-icons, .footer__bottom {
     gap: 1rem;
   }
@@ -1278,7 +1294,7 @@ body {
     font-size: 1.5rem;
   }
   .footer__content h2, .footer__section h2, .footer__social-icons h2, .footer__bottom h2 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
   .footer__content a, .footer__section a, .footer__social-icons a, .footer__bottom a {
     font-size: 1.5rem;
@@ -1707,7 +1723,7 @@ body {
 }
 .quran p.ara,
 .quran span.ara {
-  direction: rtl;
+  direction: rtl !important;
   font-family: "Uthmanic", "amiri", serif;
 }
 .quran p.eng,
@@ -1734,6 +1750,7 @@ body {
   margin: 8rem 0rem;
   margin-top: 15rem;
   color: #c72378;
+  text-align: center;
   text-shadow: 0 2px 0.2rem rgba(0, 0, 0, 0.9);
 }
 .quran h2 {
@@ -1741,6 +1758,7 @@ body {
   font-size: 13rem;
   margin: 13rem 0rem;
   text-shadow: 0 2px 0.5rem rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 .quran h2.quran__istieadha {
   font-family: "Istieadha", serif;
@@ -1761,9 +1779,22 @@ body {
   text-shadow: 0 2px 0.1rem rgba(0, 0, 0, 0.9);
   filter: brightness(0.8);
 }
-.quran .quran__verse .selected,
-.quran span .selected {
+.quran .quran__verse .selected {
   color: rgb(98, 98, 205);
+}
+.quran .quran__verse,
+.quran span {
+  text-align: justify;
+}
+.quran .quran__verse.ara,
+.quran span.ara {
+  direction: rtl !important;
+  font-family: "Uthmanic", "amiri", serif;
+}
+.quran .quran__verse.eng,
+.quran span.eng {
+  font-family: "English", serif;
+  direction: ltr !important;
 }
 .quran .selected {
   color: rgb(98, 98, 205);
@@ -2460,15 +2491,26 @@ main .books {
   }
 }
 
+.mainQuranBooks .title h2,
 .mainHadithBooks .title h2,
 .mainTafsirBooks .title h2 {
   font-size: clamp(5rem, 10vw, 19rem);
 }
 @media screen and (max-width: 1000px) {
+  .mainQuranBooks .title,
   .mainHadithBooks .title,
   .mainTafsirBooks .title {
     margin-top: -15rem;
     margin-bottom: -15rem;
+  }
+}
+
+.mainQuranBooks .books {
+  grid-template-columns: repeat(3, minmax(14rem, 1fr));
+}
+@media (max-width: 800px) {
+  .mainQuranBooks .books {
+    grid-template-columns: repeat(1, minmax(14rem, 1fr));
   }
 }
 

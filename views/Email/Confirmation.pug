@@ -1,8 +1,64 @@
 doctype html
-html
+html(lang="en")
   head
-    title Welcome to Wardi!
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Email Verification
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #b0b5c9;
+        color: #0d142c;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #0d142c;
+        font-size: 26px;
+        text-align: center;
+      }
+      p {
+        color: #0d142c;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .button {
+        display: block;
+        width: fit-content;
+        padding: 15px 30px;
+        margin: 20px auto;
+        background-color: #c72378;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 16px;
+        text-align: center;
+      }
+      .footer {
+        margin-top: 40px;
+        text-align: center;
+        font-size: 14px;
+        color: #b0b5c9;
+      }
+      .footer a {
+        color: #c72378;
+        text-decoration: none;
+      }
+
   body
-    h1 Welcome #{firstName}!
-    p Thanks for signing up. Please click the link below to verify your email:
-    a(href=url) Verify Email
+    .container
+      h1 Welcome #{firstName}!
+      p Thanks for signing up with Wardi! Before you can dive into all the amazing features we have to offer, please verify your email address by clicking the button below:
+      a.button(href=url) Verify Email
+      .footer
+        p Need help? 
+          a(href="mailto:support@wardi-website.com") Reach out to our team
+        p © 2024 Wardi, All Rights Reserved.

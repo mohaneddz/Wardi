@@ -30,6 +30,7 @@ router.get('/resetPassword',authController.resetPassword ).post(
 	authController.resetPassword,
 	userController.newPasswordView
 );
+// TODO : add verification for changing email
 
 
 

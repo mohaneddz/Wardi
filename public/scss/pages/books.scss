@@ -25,7 +25,7 @@ main {
 		}
 	}
 }
-
+.mainQuranBooks,
 .mainHadithBooks,
 .mainTafsirBooks {
 	.title {
@@ -35,6 +35,15 @@ main {
 		@media screen and (max-width: 1000px) {
 			margin-top: -15rem;
 			margin-bottom: -15rem;
+		}
+	}
+}
+
+.mainQuranBooks {
+	.books {
+		grid-template-columns: repeat(3, minmax(14rem, 1fr));
+		@media (max-width: 800px) {
+			grid-template-columns: repeat(1, minmax(14rem, 1fr));
 		}
 	}
 }

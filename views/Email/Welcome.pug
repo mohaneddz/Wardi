@@ -3,61 +3,65 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title Welcome to Wardi
+    title Welcome to Wardi!
     style.
       body {
         font-family: Arial, sans-serif;
-        background-color: #b0b5c9; 
-        color: #0d142c; 
+        background-color: #b0b5c9;
+        color: #0d142c;
         margin: 0;
         padding: 0;
       }
       .container {
         max-width: 600px;
         margin: 0 auto;
-        padding: 20px;
+        padding: 30px;
         background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
       h1 {
-        color: #0d142c; 
-        font-size: 24px;
+        color: #c72378;
+        font-size: 28px;
+        text-align: center;
       }
       p {
-        color: #0d142c; 
-        font-size: 16px;
-        line-height: 1.6;
+        color: #0d142c;
+        font-size: 18px;
+        line-height: 1.8;
+        text-align: center;
       }
       .button {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
+        display: block;
+        margin: 30px auto;
+        padding: 15px 30px;
+        background-color: #c72378;
         color: #ffffff;
-        background-color: #c72378; 
         text-decoration: none;
-        border-radius: 5px;
-        margin-top: 20px;
+        border-radius: 6px;
+        font-size: 18px;
+        text-align: center;
       }
       .footer {
         margin-top: 40px;
         text-align: center;
         font-size: 14px;
-        color: #b0b5c9; 
+        color: #b0b5c9;
       }
       .footer a {
-        color: #c72378; 
+        color: #c72378;
         text-decoration: none;
       }
 
   body
     .container
-      h1 Welcome to Wardi!
-      p We're excited to have you on board. Wardi is your gateway to exploring the Quran, Hadith, Tafsir, and more. Whether you're here for personal reflection or deeper study, we're here to support you every step of the way.
-      p Get started by exploring your favorite content, saving bookmarks, and enjoying a seamless reading experience.
-      a.button(href="http://localhost:3000/") Start Exploring
+      h1 Welcome to Wardi, #{firstName}!
+      p We're thrilled to welcome you to Wardi, your gateway to exploring the rich and timeless treasures of the Quran, Hadith, Tafsir, and more. We're excited for you to embark on this journey with us.
+      p Let us guide you through a seamless and personalized experience. Start exploring your favorite content, save bookmarks, and make the most of your study time with Wardi’s intuitive tools.
+      a.button(href=url) Start Your Journey
 
       .footer
-        p If you have any questions, feel free to 
-          a(href="mailto:support@wardi-website.com") contact us
+        p Have any questions? We're always here for you!
+        p Contact us at 
+          a(href="mailto:support@wardi-website.com") support@wardi-website.com
         p © 2024 Wardi, All Rights Reserved.
