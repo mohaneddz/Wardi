@@ -11,12 +11,19 @@ header.header
             li.header__logo
                 a(href='/' )
                   img(src='/img/LogoHD.png', alt='Logo') 
-            
-            +navItem('header__quran', '/quran', 'Quran', 'fi fi-rs-book-quran')
-            +navItem('header__hadith', '/hadith', 'Hadith', 'fi fi-rs-books')
-            +navItem('header__tafsir', '/tafsir', 'Tafsir', 'fi fi-rs-book-open-cover')
-            +navItem('header__about', '/about', 'About', 'fi fi-rs-info')
-            +navItem('header__bookmarks', '/user/bookmarks', 'Bookmarks', 'fi fi-rs-wishlist-star')
+            if seach 
+                +navItem('header__quran', '/quran', 'Quran', 'fi fi-rs-book-quran')
+                +navItem('header__hadith', '/hadith', 'Hadith', 'fi fi-rs-books')
+                +navItem('header__tafsir', '/tafsir', 'Tafsir', 'fi fi-rs-book-open-cover')
+                +navItem('header__about', '/about', 'About', 'fi fi-rs-info')
+                +navItem('header__bookmarks', '/user/bookmarks', 'Bookmarks', 'fi fi-rs-wishlist-star')
+            else 
+                +navItem('header__quran toLeft', '/quran', 'Quran', 'fi fi-rs-book-quran')
+                +navItem('header__hadith toLeft', '/hadith', 'Hadith', 'fi fi-rs-books')
+                +navItem('header__tafsir toLeft', '/tafsir', 'Tafsir', 'fi fi-rs-book-open-cover')
+                +navItem('header__about toLeft', '/about', 'About', 'fi fi-rs-info')
+                +navItem('header__bookmarks toLeft', '/user/bookmarks', 'Bookmarks', 'fi fi-rs-wishlist-star')
+
             
             li.header__search
                 if !search
@@ -24,7 +31,7 @@ header.header
                     a(href='/search' id="searchButton") 
                             i(class="fi fi-rs-search")
                 else
-                    input(type="text", placeholder="Search.." id="searchField")
+                    input(type="text", placeholder="Search.." id="searchField" class="shown")
                     a(href='#' id="searchButton") 
                             i(class="fi fi-rs-search")
             

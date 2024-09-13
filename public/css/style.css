@@ -994,7 +994,7 @@ body {
 .header nav ul li.header__menu {
   transform: translateX(-2rem) translateY(0.5rem);
   display: none;
-  z-index: 10;
+  z-index: 1000;
 }
 @media (max-width: 1300px) {
   .header nav ul li.header__menu {
@@ -1017,6 +1017,10 @@ body {
   color: #c72378;
   font-size: 1.6rem;
   transition: all 0.3s ease;
+  display: none;
+}
+.header nav ul li.header__search input.shown {
+  display: block;
 }
 .header nav ul li.header__search input:focus {
   color: white;
@@ -1063,7 +1067,6 @@ body {
   font-size: 1.6rem;
 }
 .header nav ul.topbar li.header__quran, .header nav ul.topbar li.header__hadith, .header nav ul.topbar li.header__tafsir, .header nav ul.topbar li.header__about, .header nav ul.topbar li.header__bookmarks {
-  transform: translateX(15rem);
   display: block;
 }
 .header nav ul.topbar li.header__quran a, .header nav ul.topbar li.header__hadith a, .header nav ul.topbar li.header__tafsir a, .header nav ul.topbar li.header__about a, .header nav ul.topbar li.header__bookmarks a {
@@ -1076,6 +1079,9 @@ body {
   .header nav ul.topbar li.header__quran, .header nav ul.topbar li.header__hadith, .header nav ul.topbar li.header__tafsir, .header nav ul.topbar li.header__about, .header nav ul.topbar li.header__bookmarks {
     display: none;
   }
+}
+.header nav ul.topbar li.header__quran.toLeft, .header nav ul.topbar li.header__hadith.toLeft, .header nav ul.topbar li.header__tafsir.toLeft, .header nav ul.topbar li.header__about.toLeft, .header nav ul.topbar li.header__bookmarks.toLeft {
+  transform: translateX(5rem);
 }
 .header nav ul.Menusidebar {
   margin-right: 0;

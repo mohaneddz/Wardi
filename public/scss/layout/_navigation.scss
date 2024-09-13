@@ -95,9 +95,9 @@
 					transform: translateX(-1rem);
 				}
 				&.header__menu {
-					transform: translateX(-2rem)  translateY(0.5rem);
+					transform: translateX(-2rem) translateY(0.5rem);
 					display: none;
-					z-index: 10;
+					z-index: 1000;
 					@media (max-width: 1300px) {
 						display: flex;
 					}
@@ -117,6 +117,10 @@
 						color: $tertiary-color;
 						font-size: 1.6rem;
 						transition: all 0.3s ease;
+						display: none;
+						&.shown {
+							display: block;
+						}
 						&:focus {
 							color: white;
 							outline: none;
@@ -175,7 +179,6 @@
 					&.header__tafsir,
 					&.header__about,
 					&.header__bookmarks {
-						transform: translateX(15rem);
 						display: block;
 						a {
 							font-size: 2rem;
@@ -185,6 +188,9 @@
 						}
 						@media (max-width: 1300px) {
 							display: none;
+						}
+						&.toLeft {
+							transform: translateX(5rem);
 						}
 					}
 				}

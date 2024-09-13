@@ -56,7 +56,7 @@ app.get('/models/Content/schemas/QuranSchema.js', (req, res) => {
 process.env.NODE_ENV === 'development' && app.use(morgan('dev')); // Only for development, logging the requests to console
 const limiter = rateLimit({
 	max: 1000, // limiting the requests to 100 per hour
-	windowMs: 60 * 60 * 1000, // 60 minutes ( 1 hour )
+	windowMs: 7 * 60 * 1000, // 7 Minutes ( to prevent DDOS attacks )
 	message: 'Too many requests from this IP, please try again in an hour!',
 });
 
@@ -67,7 +67,7 @@ app.use(cookieParser()); // parsing the cookies from the request
 
 app.use(mongoSanitize()); // Data sanitization against NoSQL query injection
 app.use(xss()); // Data sanitization against XSS ( Cross Site Scripting )
-app.use(hpp({ whitelist: [''] })); // allow duplicates for certain parameters // TODO : add the whitelist
+app.use(hpp({ whitelist: [''] })); 
 
 app.use(compression());
 
