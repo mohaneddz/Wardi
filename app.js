@@ -57,7 +57,7 @@ process.env.NODE_ENV === 'development' && app.use(morgan('dev')); // Only for de
 const limiter = rateLimit({
 	max: 1000, // limiting the requests to 100 per hour
 	windowMs: 7 * 60 * 1000, // 7 Minutes ( to prevent DDOS attacks )
-	message: 'Too many requests from this IP, please try again in an hour!',
+	message: 'Too many requests from this IP, please try again later!',
 });
 
 app.use('/', limiter); // limiting the requests to the api
