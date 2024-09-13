@@ -8,35 +8,57 @@ footer.footer
       h2 Quick Links
       ul
         li 
-          a(href='/') Home
+          a(href='/')
+            i(class='fi fi-rr-home')
+            |      Home
         li 
-          a(href='/quran') Quran
+          a(href='/quran')
+            i(class='fi fi-rs-book-quran')
+            |      Quran
         li 
-          a(href='/hadith') Hadith
+          a(href='/hadith')
+            i(class='fi fi-rs-books')
+            |      Hadith
         li 
-          a(href='/tafsir') Tafsir
-        li 
-          a(href='/about') About
+          a(href='/tafsir')
+            i(class='fi fi-rs-book-open-cover')
+            |      Tafsir
       
     .footer__section.footer__section--contact
+
       h2 Contact Us
-      p Email: info@wardi.com
-      p Phone: +123 456 7890
-      p Address: 123 Islamic Street, Does not exist :)
-      
+
+      a(href='mailto:')
+        i(class='fi fi-sr-mail')
+          | mohaned.manaa.dev@gmail.com
+
+      a(href='https://www.google.com/maps/search/?api=1&query=Algeria,Constantine,25000' target='_blank')
+        i(class='fi fi-sr-location')
+        | Algeria, Constantine 25000
+
     .footer__section.footer__section--social
       h2 Follow Us
       ul.footer__social-icons
-      // TODO: Add social media icons
-        //- li 
-        //-   a(href='#')
-        //-     img(src='path/to/facebook-icon.png' alt='Facebook')
-        //- li 
-        //-   a(href='#')
-        //-     img(src='path/to/twitter-icon.png' alt='Twitter')
-        //- li 
-        //-   a(href='#')
-        //-     img(src='path/to/instagram-icon.png' alt='Instagram')
+        li 
+          a(href='https://github.com/mohaneddz') 
+            i(class='fi fi-brands-github')
+              |      Github
+        li 
+          a(href='https://www.linkedin.com/in/mohaned-manaa-491483295/')
+            i(class='fi fi-brands-linkedin')
+              |      LinkedIn
+        li
+          a(href='https://www.instagram.com/mohaned.himself/') 
+            i(class='fi fi-brands-instagram')
+              |      Instagram
+        li 
+          a(href='https://www.facebook.com/profile.php?id=61558410783901')
+            i(class='fi fi-brands-facebook')
+              |      Facebook
+        li
+          a(href='https://x.com/DzMohaned') 
+            i(class='fi fi-brands-twitter-alt-circle')
+              |      Twitter
   
   .footer__bottom
     p &copy; 2024 وردى. All Rights Reserved.

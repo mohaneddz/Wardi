@@ -98,7 +98,7 @@
 					transform: translateX(-2rem)  translateY(0.5rem);
 					display: none;
 					z-index: 10;
-					@media (max-width: 1150px) {
+					@media (max-width: 1300px) {
 						display: flex;
 					}
 				}
@@ -154,7 +154,7 @@
 						border-radius: 50%;
 						margin-right: 1rem;
 						margin-left: -1.5rem;
-						transform: translateY(1rem);
+						transform: translateY(0.5rem);
 					}
 					&:hover {
 						scale: 1.2;
@@ -224,7 +224,7 @@
 				}
 				&.open {
 					display: flex;
-					@media (min-width: 1150px) {
+					@media (min-width: 1300px) {
 						display: none;
 					}
 					@media (max-width: 400px) {

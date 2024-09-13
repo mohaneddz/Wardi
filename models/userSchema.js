@@ -45,6 +45,8 @@ const HadithBooksSchema = new mongoose.Schema(
 const QuranBooksSchema = new mongoose.Schema(
 	{
 		name: { type: String, required: true },
+		slug: { type: String, required: true },
+
 	},
 	{ _id: true }
 );

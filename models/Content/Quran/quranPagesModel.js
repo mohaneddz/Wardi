@@ -12,6 +12,8 @@ const quranPagesModel = new mongoose.Schema({
 	},
 });
 
-const Page = mongoose.model('Pages', quranPagesModel);
+export const PageHafs = mongoose.model('Quran.Hafs.Pages', quranPagesModel);
+export const PageWarsh = mongoose.model('Quran.Warsh.Pages', quranPagesModel);
+export const PageEnglish = mongoose.model('Quran.English.Pages', quranPagesModel);
 
-export default Page;
+export default PageHafs;

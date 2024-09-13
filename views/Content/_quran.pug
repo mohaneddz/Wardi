@@ -10,10 +10,10 @@
             h2.quran__basmallah 7
         else
             h2.quran__istieadha 2
-        p.quran__verse
+        div(class=`quran__verse ${language}`)
             each verse, index in this_chapter.verses
-                span(data-verse=`${index + 1}` data-chapter=`${this_chapter.chapter}`)
-                    | !{`${verse.text} ${index + 1} `.replace(/\d+/g, d => `<span class="ayah_number">${d.split('').map(digit => '٠١٢٣٤٥٦٧٨٩'[digit]).join('')} </span>`)}
+                span(data-verse=`${index + 1}` data-chapter=`${this_chapter.chapter}` class=`${language}`)
+                    | !{`${verse.text} ${index + 1} `.replace(/\d+/g, d => `<span class="ayah_number">${d.split('').map(digit => '٠١٢٣٤٥٦٧٨٩'[digit]).join('')}</span>`)}
 
     else if mode === "QuranJuz"
         h1.quran__title= readerTitle
@@ -22,18 +22,18 @@
             h2.quran__basmallah 7
         else
             h2.quran__istieadha 2
-        p.quran__verse
+        div(class=`quran__verse ${language}`)
             each verse in this_juz[0].content
                 if verse.chapter == chapterNumber
-                    span(data-verse=`${verse.verse}` data-chapter=`${verse.chapter}`)
-                        | !{`${verse.text} ${verse.verse}`.replace(/\d+/g, d => `<span class="ayah_number">${d.split('').map(digit => '٠١٢٣٤٥٦٧٨٩'[digit]).join('')} </span>`)}
+                    span(data-verse=`${verse.verse}` data-chapter=`${verse.chapter}` class=`${language}`)
+                        | !{`${verse.text} ${verse.verse}`.replace(/\d+/g, d => `<span class="ayah_number ${language}">${d.split('').map(digit => '٠١٢٣٤٥٦٧٨٩'[digit]).join('')}</span>`)}
                     
     else if mode === "QuranPage"
         - let prev = null;
 
         // Check if basmallah or istieadha should be displayed :)
 
-        p.quran__verse
+        div(class=`quran__verse ${language}`)
             each verse, index in this_page.verses
                 - const curr = verse.chapter;
 
@@ -49,8 +49,8 @@
 
                     - prev = curr;
 
-                span(data-verse=`${verse.verse}` data-chapter=`${verse.chapter}`)
-                    | !{`${verse.text} ${verse.verse} `.replace(/\d+/g, d => `<span class="ayah_number">${d.split('').map(digit => '٠١٢٣٤٥٦٧٨٩'[digit]).join('')} </span>`)}
+                span(data-verse=`${verse.verse}` data-chapter=`${verse.chapter}` class=`${language}`)
+                    | !{`${verse.text} ${verse.verse} `.replace(/\d+/g, d => `<span class="ayah_number ${language}">${d.split('').map(digit => '٠١٢٣٤٥٦٧٨٩'[digit]).join('')}</span>`)}
 
             // Display the page number at the end   
             p.quran__page--number

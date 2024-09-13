@@ -1,0 +1,218 @@
+.about {
+	min-height: 93vh;
+	max-width: 100vw;
+	min-width: 85vw;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	grid-column: 2/-2;
+}
+
+body.Aboutpage {
+	background-color: $primary-color;
+	color: $secondary-color;
+	font-family: 'Helvetica', sans-serif;
+}
+
+.mainAboutpage {
+	padding: 3rem 1.5rem;
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		gap: 20rem;
+
+		.text-content {
+			max-width: 140rem;
+			margin-bottom: 4rem;
+			padding: 5rem;
+			padding-top: 3rem;
+			background-color: $primary-color-lighter;
+			border-radius: 2rem;
+			box-shadow: 0 1rem 15px rgba(0, 0, 0, 0.1);
+		}
+
+		.image {
+			max-width: 40vw;
+			margin-bottom: 2rem;
+			position: relative;
+			overflow: visible;
+			margin: 2rem 5rem;
+			img {
+				max-width: 30vw;
+                min-width: 20vw;
+				height: auto;
+				border-radius: 2rem;
+				display: block;
+				transition: transform 0.2s ease-in-out;
+				will-change: transform;
+				animation: float 4s ease-in-out infinite;
+				box-shadow: 0 5px 1.2rem rgba(0, 0, 0, 0.4);
+
+				&:hover {
+					transform: scale(1.1);
+					transition: transform 0.5s;
+				}
+			}
+		}
+
+		// Flex alignment for alternating sections
+		.section {
+			&__intro,
+			&__modern-interface,
+			&__reading-options,
+			&__custom-user-page,
+			&__resources,
+			&__security,
+			&__performance,
+			&__ux-animations,
+			&__bookmarking-system,
+			&__cloud-sync,
+			&__design-ease {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 4rem;
+
+				&:nth-child(even) {
+					flex-direction: row-reverse;
+				}
+
+				h1,
+				h2 {
+					color: $tertiary-color;
+					text-align: left;
+					font-size: 5rem;
+					text-decoration: underline;
+					padding-bottom: 1rem;
+					font-family: 'Motion', 'amiri', serif;
+				}
+
+				p {
+					color: $secondary-color-dark;
+					font-size: 3.5rem;
+					line-height: 1.8;
+					text-align: left;
+					.highlight {
+						color: $tertiary-color;
+						font-weight: 700;
+					}
+				}
+
+				ul {
+					border: 1px solid $primary-color-dark;
+					box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+					list-style: none;
+					padding: 3rem;
+					margin-top: 4rem;
+
+					li {
+						color: $secondary-color-darker;
+						font-size: 2rem;
+						font-weight: 700;
+						margin-bottom: 1.5rem;
+
+						&::before {
+							content: '→ ';
+							color: $tertiary-color-dark;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 1200px) {
+		padding: 2rem 1rem;
+
+		.container {
+            gap: 10rem;
+			.text-content {
+				padding: 3rem;
+			}
+
+			.section {
+				&__intro,
+				&__modern-interface,
+				&__reading-options,
+				&__custom-user-page,
+				&__resources,
+				&__security,
+				&__performance,
+				&__ux-animations,
+				&__bookmarking-system,
+				&__cloud-sync,
+				&__design-ease {
+					flex-direction: column;
+
+					.image {
+						margin-bottom: 3rem;
+                        max-width: 80vw;
+						img {
+                            max-width: 80vw;
+                            max-height: 50vh;
+							min-width: 80%;
+						}
+					}
+                    &:nth-child(even) {
+                        flex-direction: column;
+                    }
+					h1,
+					h2 {
+						font-size: 4.5rem;
+					}
+
+					p {
+						font-size: 2.5rem;
+					}
+
+					ul {
+						padding: 4rem;
+						li {
+							font-size: 1.8rem;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 800px) {
+		padding: 1.5rem;
+
+		.container {
+			.text-content {
+				padding: 2rem;
+			}
+
+			.intro-section,
+			.mission-section,
+			.vision-section,
+			.why-wardi-section,
+			.behind-project-section,
+			.future-plans-section,
+			.call-to-action-section {
+				h1,
+				h2 {
+					font-size: 2.8rem;
+				}
+
+				p {
+					font-size: 1.6rem;
+				}
+
+				ul {
+					padding: 1.5rem;
+					li {
+						font-size: 1.4rem;
+					}
+				}
+
+				.image img {
+					max-width: 90vw;
+				}
+			}
+		}
+	}
+}

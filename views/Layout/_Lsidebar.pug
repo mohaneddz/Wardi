@@ -14,31 +14,31 @@ include _mixin.pug
             each chapter in all_chapters
                 if chapter.chapter === this_chapter.chapter 
                     li  
-                        a(href=`/quran/chapter/${chapter.chapter}` class="LsideEntry selectedEntry" data-type=`chapter` data-chapter=`${chapter.chapter}`  )= chapter.name
+                        a(href=`/quran/book/${this_book}/chapter/${chapter.chapter}` class="LsideEntry selectedEntry" data-type=`chapter` data-chapter=`${chapter.chapter}`  )= chapter.name
                             +favIcon(chapter.chapter, fav_chapters)
                 else
                     li  
-                        a(href=`/quran/chapter/${chapter.chapter}` class="LsideEntry" data-type=`chapter` data-chapter=`${chapter.chapter}`  )= chapter.name
+                        a(href=`/quran/book/${this_book}/chapter/${chapter.chapter}` class="LsideEntry" data-type=`chapter` data-chapter=`${chapter.chapter}`  )= chapter.name
                             +favIcon(chapter.chapter, fav_chapters)
         
         else if mode === "QuranJuz"
             -for(let i = 1; i <= 30; i++)
                 if i === this_juz.juz
                     li
-                        a(href=`/quran/juz/${i}/chapter/` class="LsideEntry selectedEntry")= `${i} الجزء`
+                        a(href=`/quran/book/${this_book}/juz/${i}/chapter/` class="LsideEntry selectedEntry")= `${i} الجزء`
                 else
                     li
-                        a(href=`/quran/juz/${i}/chapter/` class="LsideEntry")= `${i} الجزء`
+                        a(href=`/quran/book/${this_book}/juz/${i}/chapter/` class="LsideEntry")= `${i} الجزء`
         
         else if mode === "QuranPage"
             each page in allpages
                 if page.page_number === this_page.page_number
                     li
-                        a(href=`/quran/page/${page.page_number}` class="LsideEntry selectedEntry" data-page=`${page.page_number}` data-type=`page`)= `${page.page_number} الصفحة`
+                        a(href=`/quran/book/${this_book}/page/${page.page_number}` class="LsideEntry selectedEntry" data-page=`${page.page_number}` data-type=`page`)= `${page.page_number} الصفحة`
                             +favIcon(page.page_number, fav_pages)
                 else
                     li
-                        a(href=`/quran/page/${page.page_number}` class="LsideEntry" data-page=`${page.page_number}`  data-type=`page`)= `${page.page_number} الصفحة`
+                        a(href=`/quran/book/${this_book}/page/${page.page_number}` class="LsideEntry" data-page=`${page.page_number}`  data-type=`page`)= `${page.page_number} الصفحة`
                             +favIcon(page.page_number, fav_pages)
 
             // Hadith Section ---------------------------------------------------

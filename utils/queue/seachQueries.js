@@ -1,18 +1,19 @@
-import { ChaptersSearch } from '../../models/Content/Quran/quranChaptersModel.js';
+import { ChaptersSearch, ChapterEnglish } from '../../models/Content/Quran/quranChaptersModel.js';
 import Hadith from '../../models/Content/Hadith/HadithModel.js';
 import Tafsir from '../../models/Content/Tafsir/TafsirModel.js';
 
 import catchAsync from '../catchAsync.js';
 import AppError from '../appError.js';
 
-export const queryQuran = catchAsync(async (req, res) => {
+export const queryQuran = catchAsync(async (req, res, lang) => {
 	const query = req.body.query;
 
 	const filter = {
 		$text: { $search: query, $caseSensitive: false, $diacriticSensitive: false },
 	};
+	const Chapter = lang === 'eng' ? ChapterEnglish : ChaptersSearch;
 
-	const result = await ChaptersSearch.find(filter)
+	const result = await Chapter.find(filter)
 		.select({ score: { $meta: 'textScore' }, _id: 0, name: 1, verses: 1, chapter: 1 })
 		.sort({ score: { $meta: 'textScore' } })
 		// .limit(10)
@@ -39,7 +40,7 @@ export const queryQuran = catchAsync(async (req, res) => {
 	});
 });
 
-export const queryHadith = catchAsync(async (req, res) => {
+export const queryHadith = catchAsync(async (req, res, lang) => {
 	const query = req.body.query;
 	const book = req.body.book;
 
@@ -72,7 +73,7 @@ export const queryHadith = catchAsync(async (req, res) => {
 	});
 });
 
-export const queryTafsir = catchAsync(async (req, res) => {
+export const queryTafsir = catchAsync(async (req, res, lang) => {
 	const query = req.body.query;
 	const book = req.body.book;
 

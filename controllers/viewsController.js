@@ -38,10 +38,10 @@ export const getLanding = catchAsync(async (req, res, next) => {
 
 export const getSearch = catchAsync(async (req, res, next) => {
 	const type = req.params.type;
-
+	const lang = req.body.book;
 	switch (type) {
 		case 'quran':
-			queryQuran(req, res);
+			queryQuran(req, res, lang);
 			break;
 		case 'hadith':
 			queryHadith(req, res);
@@ -96,5 +96,11 @@ export const sendWelcome= catchAsync(async (req, res, next) => {
 	res.status(200).json({
 		status: 'success',
 		message: 'Welcome email sent',
+	});
+});
+
+export const getAbout = catchAsync(async (req, res, next) => {
+	res.status(200).render('About', {
+		title: 'About',
 	});
 });

@@ -19,12 +19,12 @@ include _mixin.pug
             for chapter in chapters
                 if chapter.chapter === chapterNumber
                     li
-                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}`  data-type=`chapter` class="RsideEntry selectedEntry nosearch" data-chapter=`${chapter.chapter}`)= info[0].arabicname[chapter.chapter - 1]
+                        a(href=`/quran/book/${this_book}/juz/${juzNumber}/chapter/${chapter.chapter}`  data-type=`chapter` class="RsideEntry selectedEntry nosearch" data-chapter=`${chapter.chapter}`)= info[0].arabicname[chapter.chapter - 1]
                             +favIcon(chapter.chapter, fav_chapters)
 
                 else
                     li
-                        a(href=`/quran/juz/${juzNumber}/chapter/${chapter.chapter}` data-type=`chapter` class="RsideEntry nosearch" data-chapter=`${chapter.chapter}`)= info[0].arabicname[chapter.chapter - 1]
+                        a(href=`/quran/book/${this_book}/juz/${juzNumber}/chapter/${chapter.chapter}` data-type=`chapter` class="RsideEntry nosearch" data-chapter=`${chapter.chapter}`)= info[0].arabicname[chapter.chapter - 1]
                             +favIcon(chapter.chapter, fav_chapters)
 
         else if mode === "QuranPage"

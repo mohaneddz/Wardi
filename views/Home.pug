@@ -12,15 +12,15 @@ block content
         h2.title__sub شَفِيعُ دَربِي
 
     .cuts
-        .cuts__quran اِقْرَأِ القُرْآنَ
-        .cuts__hadith اِقْرَأِ الحَدِيثَ
-        .cuts__tafsir اِقْرَأِ التَّفْسِيرَ
+        a.cuts__quran(href="quran/") اِقْرَأِ القُرْآنَ
+        a.cuts__hadith(href="hadith/") اِقْرَأِ الحَدِيثَ
+        a.cuts__tafsir(href="tafsir/") اِقْرَأِ التَّفْسِيرَ
             
     .cards
         //- card for each surah : this is a template as of now
         for chapter in chapters
             .cards__surah.hidden
-                a.cards__surah__link(href=`/quran/chapter/${chapter.chapter}`)
+                a.cards__surah__link(href=`/quran/book/hafs/chapter/${chapter.chapter}`)
                 p.cards__surah__info__order #{chapter.chapter}
                 h3.cards__surah__name #{chapter.name}
                 .cards__surah__info

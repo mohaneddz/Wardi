@@ -35,7 +35,11 @@ ChapterSchema.virtual('versesCount').get(function () {
 // Indexing for search ✅
 ChapterSchema.index({ 'verses.text': 'text' });
 
-const Chapter = mongoose.model('Chapter', ChapterSchema);
+// const Chapter = mongoose.model('Chapter', ChapterSchema);
 export const ChaptersSearch = mongoose.model('chapters.searches', ChapterSchema);
 
-export default Chapter;
+export const ChapterHafs = mongoose.model('Quran.Hafs.Chapters', ChapterSchema);
+export const ChapterWarsh = mongoose.model('Quran.Warsh.Chapters', ChapterSchema);
+export const ChapterEnglish= mongoose.model('Quran.English.Chapters', ChapterSchema);
+
+export default ChapterHafs;

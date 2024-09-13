@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import crypto, { verify } from 'crypto';
 import { promisify } from 'util';
 import jwt from 'jsonwebtoken';
 import User from './../models/userModel.js';
@@ -125,8 +125,6 @@ export const verifyEmail = catchAsync(async (req, res, next) => {
 	res.redirect('/user/login');
 });
 
-// Protection Functions ------------------------------------------------
-
 export const protect = catchAsync(async (req, res, next) => {
 	// 1) Getting token and check of it's there
 	let token;
@@ -229,9 +227,11 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
 
 export const resetPassword = catchAsync(async (req, res, next) => {
 	// 1) Get user based on the token [ Creating the Hash - Updating it with token - Turns it into Hex]
-	const user = req.user;
+	let user = req.user;
+	const token = req.query.token;
 	if (!user) {
-		const hashedToken = crypto.createHash('sha256').update(req.body.token).digest('hex');
+		if (!token) return next(new AppError('Please provide a token', 400));
+		const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
 
 		user = await User.findOne({
 			passwordResetToken: hashedToken,
@@ -240,17 +240,31 @@ export const resetPassword = catchAsync(async (req, res, next) => {
 
 		// 2) If token has not expired, and there is user, set the new password
 		if (!user) return next(new AppError('Token is invalid or has expired', 400));
-	}
-	// Updating the user credentials
-	user.password = req.body.password;
-	user.passwordConfirm = req.body.passwordConfirm;
-	// reset the passwordResetToken and passwordResetExpires again
-	user.passwordResetToken = undefined;
-	user.passwordResetExpires = undefined;
-	user.passwordChangedAt = Date.now();
-	await user.save({ validateBeforeSave: false });
+		else{
+			createSendToken(user, 200, req, res);
+			res.locals.user = user;
+			res.status(200).render('NewPassword_Page', {
+				title: 'Reset Password',
+				h1: 'Reset Password',
+			});
+		} 
 
-	createSendToken(user, 200, req, res);
+	} else {
+		// Updating the user credentials
+		user.password = req.body.password;
+		user.passwordConfirm = req.body.passwordConfirm;
+		// reset the passwordResetToken and passwordResetExpires again
+		user.passwordResetToken = undefined;
+		user.passwordResetExpires = undefined;
+		user.passwordChangedAt = Date.now();
+		await user.save({ validateBeforeSave: false });
+
+		createSendToken(user, 200, req, res);
+		res.status(200).json({
+			status: 'success',
+			message: 'Password updated successfully!',
+		});
+	}
 });
 
 export const updatePassword = catchAsync(async (req, res, next) => {

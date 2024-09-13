@@ -1,0 +1,28 @@
+extends ./Layout/_base
+include ./Layout/_mixin.pug
+
+block append head
+  script(src="/js/Books.js" defer type="module")
+  - var bodyClass = 'HadithBooks'
+  - var mainClass = 'mainHadithBooks'
+
+block content
+    .title
+        h2.title__sub القرآن الكريم
+
+    .books
+        //- card for each surah : this is a template as of now
+        for book in books
+            .books__card.hidden
+                a.books__card__link(href=`/quran/book/${book.slug}/chapter/1`)
+                img(src=`${book.image}`, alt="Book Cover")
+                h3.books__card__name #{book.name}
+                .books__card__info
+                    //- if the name starts with ara- then it is arabic / else it is english ✅
+                    if book.language === 'ara'
+                        p.books__card__info__language عربي
+                    else
+                        p.books__card__info__language English
+                    p.books__card__info__fav
+                        a(data-type=`quran_book` data-name=book.name data-slug=book.slug )
+                            +favIcon(book.name, fav_books)

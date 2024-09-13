@@ -1,4 +1,5 @@
 'use strict';
+import { showAlert } from './Alert.js';
 
 const trash = document.querySelector('.DeleteAll');
 const popup = document.querySelector('.Popup');
@@ -21,12 +22,13 @@ function DeleteAll(event) {
 			if (response.status !== 201) {
 				throw new Error('Failed to remove bookmarks');
 			}
-			console.log('All bookmarks removed:', response.data);
-			//reload the page to show the changes
-			location.reload();
+			showAlert('success', 'All bookmarks removed successfully');
+			window.setTimeout(() => {
+				location.reload();
+			}, 1500);
 		})
 		.catch((error) => {
-			console.error('Error removing bookmarks:', error);
+			showAlert('error', error.response.data.message);
 		});
 }
 

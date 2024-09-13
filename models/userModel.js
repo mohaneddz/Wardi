@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import userSchema from './userSchema.js';
 import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
 
 // Running the Pre-Save / Pre-Find Middleware ------------------------------------------
 

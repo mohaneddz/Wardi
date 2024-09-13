@@ -42,7 +42,7 @@ function search() {
 	switch (searchType) {
 		case 'Quran': {
 			url = `/search/quran`;
-			// book = quran_language
+			book = quran_language
 			break;
 		}
 		case 'Hadith': {
@@ -72,7 +72,7 @@ function search() {
 		.then((res) => {
 			switch (searchType) {
 				case 'Quran':
-					displayQuranResults(res.data.data, res.data.results, query);
+					displayQuranResults(res.data.data, res.data.results, query, book);
 					break;
 				case 'Hadith':
 					displayHadithResults(res.data.data, res.data.results, query);
@@ -84,7 +84,7 @@ function search() {
 		})
 		.catch((err) => {
 			loading.classList.add('invisible');
-			showAlert('error', err.response.data.message);
+			showAlert('error', err.message);
 			resultsContainer.innerHTML =
 				'<div class="results__item--counter">Please Try Again with different parameters</div>';
 		});
@@ -147,7 +147,7 @@ function Init() {
 
 // Display results ---------------
 
-const displayQuranResults = (surahs, number, query) => {
+const displayQuranResults = (surahs, number, query, book) => {
 	// Clear previous results if any
 	if (number > 1)
 		resultsContainer.innerHTML = `<div class="results__item--counter"> ${number} Results Found</div>`;
@@ -165,7 +165,7 @@ const displayQuranResults = (surahs, number, query) => {
 					verseContainer.classList.add('results__item--quran');
 
 					const hadithLink = document.createElement('a');
-					hadithLink.href = `/quran/chapter/${surah.chapter}`;
+					hadithLink.href = `/quran/book/${book === 'ara' ? 'hafs' : 'mustafakhattaba'}/chapter/${surah.chapter}`;
 
 					// Display surah details
 					const surahInfo = document.createElement('div');

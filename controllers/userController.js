@@ -96,7 +96,15 @@ export const updateMe = catchAsync(async (req, res, next) => {
 });
 
 export const newPasswordView = (req, res) => {
-	if (!req.user) return signupView(req, res);
+
+	if (!req.user)
+		return res.status(200).json({
+			status: 'success',
+			data: {
+				message: 'Check your email for the reset link',
+			},
+		});
+
 	res.status(200).render('NewPassword_Page', {
 		title: 'Forgot your password?',
 		h1: 'Forgot Password',
@@ -236,7 +244,7 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 			}));
 			title = 'Chapters';
 			info1 = 'Chapter';
-			url = `/quran/chapter/info1`;
+			url = `/quran/book/hafs/chapter/info1`;
 			break;
 		}
 
@@ -248,7 +256,7 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 			title = 'Verses';
 			info1 = 'Verse';
 			info2 = 'Chapter';
-			url = `/quran/chapter/info2`;
+			url = `/quran/book/hafs/chapter/info2`;
 
 			break;
 		}
@@ -261,7 +269,7 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 
 			title = 'Pages';
 			info1 = 'Page';
-			url = `/quran/page/info1`;
+			url = `/quran/book/hafs/page/info1`;
 			break;
 		}
 
@@ -320,6 +328,18 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 			title = 'Tafsir Books';
 			info1 = ' ';
 			url = `/tafsir/book/info2/chapters/1`;
+
+			break;
+		}
+
+		case 'fav_books_quran': {
+			bookmarks = user.bookmarks.fav_books_quran.map((book) => ({
+				info1: book.name,
+				info2: book.slug,
+			}));
+			title = 'Quran Books';
+			info1 = ' ';
+			url = `/quran/book/info2/chapter/1`;
 
 			break;
 		}

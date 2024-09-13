@@ -30,36 +30,36 @@
 
 
                 if mode === "QuranChapter"
-                    a(href=`/quran/chapter/${chapterNumber || 1}` class='readingOption currentMode') Chapters
+                    a(href=`/quran/book/${this_book}/chapter/${chapterNumber || 1}` class='readingOption currentMode') Chapters
                         i(class='fi fi-sr-memo')
                 else 
-                    a(href=`/quran/chapter/${chapterNumber || 1}` class='readingOption') Chapters
+                    a(href=`/quran/book/${this_book}/chapter/${chapterNumber || 1}` class='readingOption') Chapters
                         i(class='fi fi-sr-memo')
 
 
                 if juzNumber
                     if mode === "QuranJuz"
-                        a(href=`/quran/juz/${juzNumber}/chapter/${chapterNumber || ''}` class='readingOption currentMode') Juzs
+                        a(href=`/quran/book/${this_book}/juz/${juzNumber}/chapter/${chapterNumber || ''}` class='readingOption currentMode') Juzs
                             i(class='fi fi-sr-quill-pen-story')
                     else
-                        a(href=`/quran/juz/${juzNumber}/chapter/${chapterNumber || ''}` class='readingOption') Juzs
+                        a(href=`/quran/book/${this_book}/juz/${juzNumber}/chapter/${chapterNumber || ''}` class='readingOption') Juzs
                             i(class='fi fi-sr-quill-pen-story')
 
 
                 else
                     if mode === "QuranJuz"
-                        a(href='/quran/juz/1/chapter/1' class='readingOption currentMode') Juzs
+                        a(href=`/quran/book/${this_book}/juz/1/chapter/1` class='readingOption currentMode') Juzs
                             i(class='fi fi-sr-quill-pen-story')
                     else
-                        a(href='/quran/juz/1/chapter/1' class='readingOption') Juzs
+                        a(href=`/quran/book/${this_book}/juz/1/chapter/1` class='readingOption') Juzs
                             i(class='fi fi-sr-quill-pen-story')
                             
                             
                 if mode === "QuranPage"
-                    a(href=`/quran/page/${pageNumber || 1}` class='readingOption currentMode') Pages
+                    a(href=`/quran/book/${this_book}/page/${pageNumber || 1}` class='readingOption currentMode') Pages
                         i(class='fi fi-sr-file')
                 else
-                    a(href=`/quran/page/${pageNumber || 1}` class='readingOption') Pages
+                    a(href=`/quran/book/${this_book}/page/${pageNumber || 1}` class='readingOption') Pages
                         i(class='fi fi-sr-file')
 
 

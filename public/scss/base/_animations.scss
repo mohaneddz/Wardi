@@ -75,10 +75,21 @@
 
 @keyframes spin {
 	from {
-	  transform: rotate(0);
+		transform: rotate(0);
 	}
-	to{
-	  transform: rotate(359deg);
+	to {
+		transform: rotate(359deg);
 	}
-  }
-  
+}
+
+@keyframes float {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-10px); 
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}

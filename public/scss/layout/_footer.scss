@@ -4,7 +4,6 @@
 	padding: 2rem;
 	text-align: center;
 	width: 100%;
-	// align to the end of the grid row
 	align-self: end;
 
 	&__content {
@@ -15,20 +14,35 @@
 
 	&__section {
 		margin-bottom: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
 		h2 {
 			margin-bottom: 1rem;
-			font-size: 1.5rem;
+			font-size: 4rem;
+			color: $secondary-color-dark;
+		}
+		a {
+			color: #fff;
+			text-decoration: none;
+			font-size: 2rem;
+
+			&:hover {
+				text-decoration: underline;
+			}
 		}
 		p,
 		ul {
-			font-size: 1rem;
+			font-size: 2rem;
 			margin: 0;
 		}
 		ul {
 			list-style-type: none;
+			text-align: start;
+			align-items: start;
 			padding: 0;
-
 			li {
+				padding-left: 35%;
 				margin-bottom: 0.5rem;
 
 				a {
@@ -41,6 +55,18 @@
 				}
 			}
 		}
+		&.footer__section--about {
+			p {
+				padding: 1rem 3rem;
+			}
+		}
+		&.footer__section--links {
+			ul {
+				display: flex;
+				flex-direction: column;
+				gap: 1.5rem;
+			}
+		}
 	}
 
 	&__social-icons {
@@ -48,8 +74,13 @@
 		padding: 0;
 		display: flex;
 		justify-content: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 		gap: 1rem;
-		li a img {
+		li a i {
+			margin-right: 1rem;
 			width: 32px;
 			height: 32px;
 		}
@@ -59,6 +90,24 @@
 		margin-top: 2rem;
 		font-size: 0.875rem;
 		border-top: 1px solid #444;
-		padding-top: 1rem;
+		padding-top: 4rem;
+	}
+
+	@media screen and (max-width: 1000px) {
+		&__content,
+		&__section,
+		&__social-icons,
+		&__bottom {
+			gap: 1rem;
+			p {
+				font-size: 1.5rem;
+			}
+			h2 {
+				font-size: 3rem;
+			}
+			a {
+				font-size: 1.5rem;
+			}
+		}
 	}
 }
