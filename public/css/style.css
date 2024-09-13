@@ -1,15 +1,8 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Ruwudu:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @font-face {
   font-family: "Uthmanic";
   src: url("../fonts/Uthmanic-V22.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Uthmanic2";
-  src: url("../fonts/Elgharib-A594.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -56,32 +49,8 @@
   font-style: normal;
 }
 @font-face {
-  font-family: "TitleB";
-  src: url("../fonts/ZakhrfaBlk.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Title";
-  src: url("../fonts/Zakhrfa.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "KaleemB";
-  src: url("../fonts/Kaleem Bold.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
   font-family: "Kaleem";
   src: url("../fonts/Kaleem.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Tashabuk";
-  src: url("../fonts/tashabuk.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
@@ -92,14 +61,14 @@
   font-style: normal;
 }
 @font-face {
-  font-family: "Tawasul";
-  src: url("../fonts/tawasul-regular.ttf") format("truetype");
+  font-family: "KungFU";
+  src: url("../fonts/KungFuMaster-K7vrX.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: "Motion";
-  src: url("../fonts/KungFuMaster-K7vrX.otf") format("opentype");
+  font-family: "Freshman";
+  src: url("../fonts/Freshman.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -3263,7 +3232,7 @@ body.Aboutpage {
   font-size: 5rem;
   text-decoration: underline;
   padding-bottom: 1rem;
-  font-family: "Motion", "amiri", serif;
+  font-family: "Freshman", sans-serif;
 }
 .mainAboutpage .container .section__intro p, .mainAboutpage .container .section__modern-interface p, .mainAboutpage .container .section__reading-options p, .mainAboutpage .container .section__custom-user-page p, .mainAboutpage .container .section__resources p, .mainAboutpage .container .section__security p, .mainAboutpage .container .section__performance p, .mainAboutpage .container .section__ux-animations p, .mainAboutpage .container .section__bookmarking-system p, .mainAboutpage .container .section__cloud-sync p, .mainAboutpage .container .section__design-ease p {
   color: #9299b4;

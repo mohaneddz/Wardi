@@ -3,7 +3,7 @@ import { showAlert } from './Alert.js';
 
 // DOM Elements --------------------------------------------------------------
 
-const form = document.querySelector('.form__login');
+const Loginform = document.querySelector('.form__login');
 const forgotPasswordForm = document.getElementById('forgotten');
 
 // Functions --------------------------------------------------------------
@@ -54,14 +54,14 @@ export const forgottenPassword = async (email) => {
 
 // Event Listeners --------------------------------------------------------------
 
-form.addEventListener('submit', e => {
+Loginform?.addEventListener('submit', e => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     login(email, password);
 });
 
-forgotPasswordForm.addEventListener('click', e => {
+forgotPasswordForm?.addEventListener('click', e => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     if (!email)

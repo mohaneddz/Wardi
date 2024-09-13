@@ -67,7 +67,7 @@ app.use(cookieParser()); // parsing the cookies from the request
 
 app.use(mongoSanitize()); // Data sanitization against NoSQL query injection
 app.use(xss()); // Data sanitization against XSS ( Cross Site Scripting )
-app.use(hpp({ whitelist: [''] })); // allow duplicates for certain parameters // TODO : add the whitelist
+app.use(hpp({ whitelist: [''] })); // allow duplicates for certain parameters | Disabled alongside the API 
 
 app.use(compression());
 

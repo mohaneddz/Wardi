@@ -8,7 +8,6 @@ const Yes = document.getElementById('Yes');
 const No = document.getElementById('No');
 
 function DeleteAll(event) {
-	console.log('Delete All');
 
 	event.preventDefault();
 	const type = 'All';
@@ -45,4 +44,4 @@ function closePopupFromOutside(e, btn) {
 trash?.addEventListener('click', showPopup);
 Yes?.addEventListener('click', DeleteAll);
 No?.addEventListener('click', showPopup);
-document.addEventListener('click', (e) => closePopupFromOutside(e, trash));
+document?.addEventListener('click', (e) => closePopupFromOutside(e, trash));

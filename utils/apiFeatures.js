@@ -1,3 +1,4 @@
+// Not needed, once I removed the API capabilities
 class APIFeatures {
 	constructor(query, queryString) {
 		this.query = query;

@@ -52,7 +52,6 @@ function updateUser(e) {
 		})
 		.catch((err) => {
 			showAlert('error', err.message);
-			console.log(err);
 		});
 }
 
@@ -72,7 +71,6 @@ function logout(e) {
 		})
 		.catch((err) => {
 			showAlert(`error', 'Error, ${err.message}`);
-			console.log(err);
 		});
 }
 

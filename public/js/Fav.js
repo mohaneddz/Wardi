@@ -1,5 +1,5 @@
 'use strict';
-
+import { showAlert } from './Alert.js';
 export async function removeBookmarkFromServer(type, object) {
 	try {
 		const response = await axios.delete('/user/bookmarks', {
@@ -13,10 +13,9 @@ export async function removeBookmarkFromServer(type, object) {
 			throw new Error('Failed to remove bookmark');
 		}
 
-		console.log('Bookmark removed:', response.data);
 		return response.data;
 	} catch (error) {
-		console.error('Error removing bookmark:', error);
+		showAlert('error', error.response.data.message);
 	}
 }
 
@@ -31,7 +30,7 @@ export async function addBookmarkToServer(type, object) {
 			throw new Error('Failed to add bookmark');
 		}
 
-		console.log('Bookmark added:', response.data);
+		showAlert('error', error.response.data.message);
 		return response.data;
 	} catch (error) {
 		console.error('Error adding bookmark:', error);

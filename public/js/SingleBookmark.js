@@ -18,8 +18,6 @@ function deletebookmark(event) {
     else
         url = `/user/bookmarks/${type}/${info2}`;
 
-	console.log('Request URL:', url);
-
 	axios.delete(url, {
 		data: { info1, info2, type },
 		headers: {
@@ -57,6 +55,6 @@ function deletebookmark(event) {
 		});
 }
 
-bookmarks.addEventListener('click', (e) => {
+bookmarks?.addEventListener('click', (e) => {
 	if (e.target.classList.contains('trash')) deletebookmark(e);
 });

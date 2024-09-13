@@ -198,7 +198,7 @@ rsearch?.addEventListener('input', searchAya);
 RightUl?.addEventListener('click', favControl);
 RightUl?.addEventListener('click', highlighter);
 LeftUl?.addEventListener('click', favControl);
-readingbtn.addEventListener('click', () => {
+readingbtn?.addEventListener('click', () => {
 	popup.classList.toggle('invisible');
 });
-document.addEventListener('click', closePopupFromOutside);
+document?.addEventListener('click', closePopupFromOutside);

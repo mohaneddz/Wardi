@@ -134,7 +134,6 @@ export const getTafsirBooksView = catchAsync(async (req, res) => {
 			$sort: { slug: 1 },
 		},
 	]);
-	console.log(all_books);
 	
 	res.status(200).render('Books_Tafsir', {
 		title: 'Tafsir Books',

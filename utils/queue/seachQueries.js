@@ -103,7 +103,6 @@ export const queryTafsir = catchAsync(async (req, res, lang) => {
 			// Return only the ayahs that match the query
 			return {
 				ayahs: filteredAyahs,
-				// ...aya, // Include other properties of aya if necessary
 			};
 		})
 		.filter((aya) => aya.ayahs.length > 0); // Filter out ayat without any matching ayahs

@@ -17,4 +17,4 @@ function toggleMenu(e) {
 	}
 }
 
-menubtn.addEventListener('click', toggleMenu);
+menubtn?.addEventListener('click', toggleMenu);

@@ -3,7 +3,7 @@ import { showAlert } from './Alert.js';
 
 // DOM Elements --------------------------------------------------------------
 
-const form = document.querySelector('.form__signup');
+const Signupform = document.querySelector('.form__signup');
 
 // Functions --------------------------------------------------------------
 
@@ -32,7 +32,7 @@ const signup = async (username, email, password, passwordConfirm) => {
 
 // Event Listeners --------------------------------------------------------------
 
-form.addEventListener('submit', (e) => {
+Signupform?.addEventListener('submit', (e) => {
     e.preventDefault();
     const username = document.querySelector('#username').value.trim();
     const email = document.querySelector('#email').value.trim();

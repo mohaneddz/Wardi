@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-straight/css/uicons-regular-straight.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.5.1/uicons-solid-rounded/css/uicons-solid-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
+    <script src="/js/myAOS.js" defer></script>
+    <script src="/js/Menu.js" defer></script>
+    <title>Wardi | </title>
+    <script src="/js/About.js" defer type="module"></script>
+  </head>
+  <body class="Aboutpage" data-alert="">
+    <!-- HEADER-->
+    <header class="header">
+      <nav>
+        <ul class="topbar">
+          <li class="header__logo"><a href="/"><img src="/img/LogoHD.png" alt="Logo"></a></li>
+              <li class="header__quran"><a href="/quran"> <i class="fi fi-rs-book-quran"></i>Quran</a></li>
+              <li class="header__hadith"><a href="/hadith"> <i class="fi fi-rs-books"></i>Hadith</a></li>
+              <li class="header__tafsir"><a href="/tafsir"> <i class="fi fi-rs-book-open-cover"></i>Tafsir</a></li>
+              <li class="header__about"><a href="/about"> <i class="fi fi-rs-info"></i>About</a></li>
+              <li class="header__bookmarks"><a href="/user/bookmarks"> <i class="fi fi-rs-wishlist-star"></i>Bookmarks</a></li>
+          <li class="header__search">
+            <input type="text" placeholder="Click for search page" id="searchField" readonly><a href="/search" id="searchButton"> <i class="fi fi-rs-search"></i></a>
+          </li>
+              <li class="header__user nologin"><a href="/user/me"> <i class="fi fi-rs-user"></i></a></li>
+              <li class="header__menu"><a href="#"> <i class="fi fi-rr-menu-burger"></i></a></li>
+        </ul>
+        <ul class="Menusidebar">
+              <li class="header__quran"><a href="/quran"> <i class="fi fi-rs-book-quran"></i>Quran</a></li>
+              <li class="header__hadith"><a href="/hadith"> <i class="fi fi-rs-books"></i>Hadith</a></li>
+              <li class="header__tafsir"><a href="/tafsir"> <i class="fi fi-rs-book-open-cover"></i>Tafsir</a></li>
+              <li class="header__about"><a href="/about"> <i class="fi fi-rs-info"></i>About</a></li>
+              <li class="header__bookmarks"><a href="/user/bookmarks"> <i class="fi fi-rs-wishlist-star"></i>Bookmarks</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="mainAboutpage">
+      <!-- CONTENT-->
+      <div class="about">
+        <div class="container">
+          <div class="section__intro">
+            <div class="text-content">
+              <h1>About Wardi</h1>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;Wardi is a modern, minimalistic platform designed to make accessing and exploring <span class="highlight">Quran</span>, <span class="highlight">Hadith</span>, and <span class="highlight">Tafsir</span> seamless and engaging. We combine spiritual enrichment with cutting-edge technology to create a tailored experience for everyone, no matter where you are in your spiritual journey.</p>
+            </div>
+            <div class="image"><img src="img/about/1.png" alt="Wardi platform illustration"></div>
+          </div>
+          <div class="section__modern-interface">
+            <div class="text-content">
+              <h2>Modern & Minimal Interface</h2>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;Wardi’s sleek, clean design keeps the interface simple, allowing users to focus on what truly matters: the <span class="highlight">content</span>. We’ve designed it with an easy-on-the-eyes approach, ensuring that you can immerse yourself in the texts without distractions. </p>
+            </div>
+            <div class="image"><img src="img/about/2.png" alt="Modern Interface illustration"></div>
+          </div>
+          <div class="section__reading-options">
+            <div class="text-content">
+              <h2>Tailored Reading Options</h2>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;We understand that everyone engages with the <span class="highlight">Quran</span>, <span class="highlight">Hadith</span>, and <span class="highlight">Tafsir</span> in different ways. That’s why Wardi allows you to customize your reading experience with options like reading by<b> chapters, juzs, sections, </b> or even <b> Pages! </b> With <span class="highlight">flexible</span> fonts that adjusts to your devices preferred settings, and personalized reading progress with bookmarks!. Your experience is truly yours to shape.</p>
+            </div>
+            <div class="image"><img src="img/about/3.png" alt="Reading Options illustration"></div>
+          </div>
+          <div class="section__custom-user-page">
+            <div class="text-content">
+              <h2>Customizable User Pages</h2>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;Your Wardi account is your personal space. Customize your user profile, including <span class="highlight">profile pictures</span> and personal information, and track your <span class="highlight">spiritual journey</span>. Wardi keeps your preferences synced across all devices, ensuring a smooth experience every time you log in.</p>
+            </div>
+            <div class="image"><img src="img/about/4.png" alt="User Profile illustration"></div>
+          </div>
+          <div class="section__resources">
+            <div class="text-content">
+              <h2>Extensive Resources</h2>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;Wardi provides a vast library of <span class="highlight">Quran</span>, <span class="highlight">Hadith</span>, and <span class="highlight">Tafsir</span> resources available in both <span class="highlight">Arabic</span> and <span class="highlight">English</span>, with more languages to come in the future. Whether you’re searching for deep tafsir or looking for specific hadith, Wardi’s resources cater to every need.</p>
+            </div>
+            <div class="image"><img src="img/about/5.png" alt="Resources illustration"></div>
+          </div>
+          <div class="section__security">
+            <div class="text-content">
+              <h2>Secure & Private</h2>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;Wardi takes your <span class="highlight">security</span> and <span class="highlight">privacy</span> seriously. We provide secure inbox mail for registration and password recovery, ensuring your account is safe. <span class="highlight">Passwords</span> are encrypted, and our platform offers easy recovery options in case you ever lose access.</p>
+            </div>
+            <div class="image"><img src="img/about/6.png" alt="Security illustration"></div>
+          </div>
+          <div class="section__performance">
+            <div class="text-content">
+              <h2>Fast & Responsive Interface</h2>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;Whether you’re on a <span class="highlight">smartphone</span>, <span class="highlight">tablet</span>, or <span class="highlight">desktop</span>, Wardi’s interface is designed to be fast and responsive. Our platform adapts to all screen sizes and resolutions, providing a smooth experience on any device.</p>
+            </div>
+            <div class="image"><img src="img/about/7.png" alt="Performance illustration"></div>
+          </div>
+          <div class="section__ux-animations">
+            <div class="text-content">
+              <h2>Beautiful Animations & Visual Feedback</h2>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;From smooth animations to subtle visual feedback, Wardi enhances your <span class="highlight">user experience</span> every step of the way. These dynamic elements not only provide a polished look but also help guide users through their journey seamlessly.</p>
+            </div>
+            <div class="image"><img src="img/about/8.png" alt="UX and Animations illustration"></div>
+          </div>
+          <div class="section__bookmarking-system">
+            <div class="text-content">
+              <h2>Advanced Bookmarking System</h2>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;Wardi’s unique <span class="highlight">bookmarking system</span> allows you to save and organize content across <span class="highlight">Quran</span>, <span class="highlight">Hadith</span>, and <span class="highlight">Tafsir</span>. Bookmark specific verses, chapters, hadiths, or even full books, and access them whenever you need, all stored securely in the cloud.</p>
+            </div>
+            <div class="image"><img src="img/about/9.png" alt="Bookmarking System illustration"></div>
+          </div>
+          <div class="section__cloud-sync">
+            <div class="text-content">
+              <h2>Seamless Sync Across Devices</h2>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;Your progress, bookmarks, and preferences are stored securely in the <span class="highlight">cloud</span>, allowing you to pick up right where you left off, no matter what device you're using. Wardi ensures a synchronized experience, so your data is available to you anytime, anywhere.</p>
+            </div>
+            <div class="image"><img src="img/about/10.png" alt="Cloud Sync illustration"></div>
+          </div>
+          <div class="section__design-ease">
+            <div class="text-content">
+              <h2>Intuitive Design for Ease of Use</h2>
+              <p>&nbsp;&nbsp;&nbsp;&nbsp;Wardi is built with <span class="highlight">usability</span> in mind. Our intuitive design ensures that even the most advanced features are easy to access. Whether you’re browsing the Quran, saving important hadiths, or adjusting your reading preferences, everything is designed to be straightforward.</p>
+            </div>
+            <div class="image"><img src="img/about/11.png" alt="Design for Ease illustration"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- FOOTER-->
+    <footer class="footer">
+      <div class="footer__content">
+        <div class="footer__section footer__section--about">
+          <h2>About وردي</h2>
+          <p>Wardi is your daily source of spiritual nourishment, offering Quranic readings, Hadith, and Tafsir. Join us on the path of enlightenment.</p>
+        </div>
+        <div class="footer__section footer__section--links">
+          <h2>Quick Links</h2>
+          <ul>
+            <li> <a href="/"><i class="fi fi-rr-home"></i>     Home</a></li>
+            <li> <a href="/quran"><i class="fi fi-rs-book-quran"></i>     Quran</a></li>
+            <li> <a href="/hadith"><i class="fi fi-rs-books"></i>     Hadith</a></li>
+            <li> <a href="/tafsir"><i class="fi fi-rs-book-open-cover"></i>     Tafsir</a></li>
+          </ul>
+        </div>
+        <div class="footer__section footer__section--contact">
+          <h2>Contact Us</h2><a href="https://github.com/mohaneddz/Wardi" target="_blank"><i class="fi fi-sr-location"></i>Official Repository ( Leave us a star ⭐ )</a><a href="mailto:"><i class="fi fi-sr-mail">mohaned.manaa.dev@gmail.com</i></a><a href="https://www.google.com/maps/search/?api=1&amp;query=Algeria,Constantine,25000" target="_blank"><i class="fi fi-sr-location"></i>Algeria, Constantine 25000</a>
+        </div>
+        <div class="footer__section footer__section--social">
+          <h2>Follow Us</h2>
+          <ul class="footer__social-icons">
+            <li> <a href="https://github.com/mohaneddz"> <i class="fi fi-brands-github">     Github</i></a></li>
+            <li> <a href="https://www.linkedin.com/in/mohaned-manaa-491483295/"><i class="fi fi-brands-linkedin">     LinkedIn</i></a></li>
+            <li><a href="https://www.instagram.com/mohaned.himself/"> <i class="fi fi-brands-instagram">     Instagram</i></a></li>
+            <li> <a href="https://www.facebook.com/profile.php?id=61558410783901"><i class="fi fi-brands-facebook">     Facebook</i></a></li>
+            <li><a href="https://x.com/DzMohaned"> <i class="fi fi-brands-twitter-alt-circle">     Twitter</i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2024 وردى. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -3,7 +3,7 @@ import { showAlert } from './Alert.js';
 
 // DOM Elements --------------------------------------------------------------
 
-const form = document.querySelector('.form__login');
+const Loginform = document.querySelector('.form__login');
 
 // Functions --------------------------------------------------------------
 
@@ -31,7 +31,7 @@ export const reset = async (password) => {
 
 // Event Listeners --------------------------------------------------------------
 
-form.addEventListener('submit', e => {
+Loginform?.addEventListener('submit', e => {
     e.preventDefault();
     const password = document.getElementById('password').value;
     const passwordConfirm = document.getElementById('passwordConfirm').value;

@@ -40,7 +40,7 @@ body.Aboutpage {
 			margin: 2rem 5rem;
 			img {
 				max-width: 30vw;
-                min-width: 20vw;
+				min-width: 20vw;
 				height: auto;
 				border-radius: 2rem;
 				display: block;
@@ -86,7 +86,7 @@ body.Aboutpage {
 					font-size: 5rem;
 					text-decoration: underline;
 					padding-bottom: 1rem;
-					font-family: 'Motion', 'amiri', serif;
+					font-family: 'Freshman', sans-serif;
 				}
 
 				p {
@@ -127,7 +127,7 @@ body.Aboutpage {
 		padding: 2rem 1rem;
 
 		.container {
-            gap: 10rem;
+			gap: 10rem;
 			.text-content {
 				padding: 3rem;
 			}
@@ -148,16 +148,16 @@ body.Aboutpage {
 
 					.image {
 						margin-bottom: 3rem;
-                        max-width: 80vw;
+						max-width: 80vw;
 						img {
-                            max-width: 80vw;
-                            max-height: 50vh;
+							max-width: 80vw;
+							max-height: 50vh;
 							min-width: 80%;
 						}
 					}
-                    &:nth-child(even) {
-                        flex-direction: column;
-                    }
+					&:nth-child(even) {
+						flex-direction: column;
+					}
 					h1,
 					h2 {
 						font-size: 4.5rem;

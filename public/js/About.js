@@ -16,6 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   
     // Listen to scroll events
-    window.addEventListener('scroll', applyScrollEffect);
+    window?.addEventListener('scroll', applyScrollEffect);
   });
   

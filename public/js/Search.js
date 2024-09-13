@@ -288,12 +288,12 @@ const displayTafsirResults = (tafsirs, number, book, query) => {
 
 // Event listeners -----------------------------------------------------------
 
-document.querySelector('.options').addEventListener('change', () => {
+document?.querySelector('.options').addEventListener('change', () => {
 	selectedValues = getAllSelectedRadioValues();
 	toggleOptions(selectedValues.searchType);
 });
 
-searchbtn.addEventListener('click', (e) => {
+searchbtn?.addEventListener('click', (e) => {
 	e.preventDefault();
 	search();
 });
@@ -301,12 +301,3 @@ searchbtn.addEventListener('click', (e) => {
 // Init ---------------------------------------------------------------------
 
 Init();
-
-/*
-- searchType: "Quran"
-- quran_language: "Arabic"
-- hadith_language: "Arabic"
-- tafsir_language: "Arabic"
-- hadith_collection: "Sahih Bukhari"
-- tafsir_collection: "Tafsir Al-Qurtubi"
-*/

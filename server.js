@@ -8,8 +8,8 @@ const connections = {};
 const DATABASE_URI = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
 
 mongoose.connect(DATABASE_URI, {
-    serverSelectionTimeoutMS: 60000, // 60 seconds for connection timeout
-    socketTimeoutMS: 120000, // 120 seconds for query response timeout
+    serverSelectionTimeoutMS: 60000, // 60 seconds
+    socketTimeoutMS: 120000, // 120 seconds
     dbName: 'Content',
 })
     .then(() => {
@@ -28,4 +28,4 @@ async function startServer() {
 
 startServer();
 
-export { connections }; // Export connections as a named export
+export { connections }; 

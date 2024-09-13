@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-straight/css/uicons-regular-straight.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.5.1/uicons-solid-rounded/css/uicons-solid-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
+    <script src="/js/myAOS.js" defer></script>
+    <script src="/js/Menu.js" defer></script>
+    <title>Wardi | </title>
+    <script src="/js/Bookmarks.js" type="module" defer></script>
+  </head>
+  <body class="Bookmarks" data-alert="">
+    <!-- HEADER-->
+    <header class="header">
+      <nav>
+        <ul class="topbar">
+          <li class="header__logo"><a href="/"><img src="/img/LogoHD.png" alt="Logo"></a></li>
+              <li class="header__quran"><a href="/quran"> <i class="fi fi-rs-book-quran"></i>Quran</a></li>
+              <li class="header__hadith"><a href="/hadith"> <i class="fi fi-rs-books"></i>Hadith</a></li>
+              <li class="header__tafsir"><a href="/tafsir"> <i class="fi fi-rs-book-open-cover"></i>Tafsir</a></li>
+              <li class="header__about"><a href="/about"> <i class="fi fi-rs-info"></i>About</a></li>
+              <li class="header__bookmarks"><a href="/user/bookmarks"> <i class="fi fi-rs-wishlist-star"></i>Bookmarks</a></li>
+          <li class="header__search">
+            <input type="text" placeholder="Click for search page" id="searchField" readonly><a href="/search" id="searchButton"> <i class="fi fi-rs-search"></i></a>
+          </li>
+              <li class="header__user nologin"><a href="/user/me"> <i class="fi fi-rs-user"></i></a></li>
+              <li class="header__menu"><a href="#"> <i class="fi fi-rr-menu-burger"></i></a></li>
+        </ul>
+        <ul class="Menusidebar">
+              <li class="header__quran"><a href="/quran"> <i class="fi fi-rs-book-quran"></i>Quran</a></li>
+              <li class="header__hadith"><a href="/hadith"> <i class="fi fi-rs-books"></i>Hadith</a></li>
+              <li class="header__tafsir"><a href="/tafsir"> <i class="fi fi-rs-book-open-cover"></i>Tafsir</a></li>
+              <li class="header__about"><a href="/about"> <i class="fi fi-rs-info"></i>About</a></li>
+              <li class="header__bookmarks"><a href="/user/bookmarks"> <i class="fi fi-rs-wishlist-star"></i>Bookmarks</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="mainBookmarks">
+      <!-- CONTENT-->
+      <div class="Bookmark">
+        <!-- Quran Section-->
+        <h2>Quran</h2>
+        <div class="Bookmark__Sections"><a class="Bookmark__Sections--link" href="/user/bookmarks/fav_chapters">Chapters</a><a class="Bookmark__Sections--link" href="/user/bookmarks/fav_verses">Verses</a><a class="Bookmark__Sections--link" href="/user/bookmarks/fav_pages">Page</a></div>
+        <!-- Hadith Section-->
+        <h2>Hadith</h2>
+        <div class="Bookmark__Sections"> <a class="Bookmark__Sections--link" href="/user/bookmarks/fav_hadiths">Hadiths</a><a class="Bookmark__Sections--link" href="/user/bookmarks/fav_sections_hadith">Sections</a></div>
+        <!-- Books Section-->
+        <h2>Books</h2>
+        <div class="Bookmark__Sections"><a class="Bookmark__Sections--link" href="/user/bookmarks/fav_books_quran">Quran</a><a class="Bookmark__Sections--link" href="/user/bookmarks/fav_books_tafsir">Tafsir</a><a class="Bookmark__Sections--link" href="/user/bookmarks/fav_books_hadiths">Hadith</a></div>
+      </div><a class="DeleteAll floatingButton"> <i class="fi fi-sr-trash"></i></a>
+      <div class="Popup invisible">
+        <div class="Popup__Content">
+          <h2>Are you sure you want to delete all bookmarks?</h2>
+          <div class="Popup__Buttons">
+            <button class="no" id="No">No</button>
+            <button class="yes" id="Yes">Yes</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- FOOTER-->
+  </body>
+</html>
