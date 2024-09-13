@@ -14,7 +14,6 @@
 		"pugg": "pug -w ./views -o ./public -P",
 		"view": "npm-run-all --parallel pugg watch:scss",
 		"build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
-
 	},
 	"author": "Mohaned Manaa",
 	"license": "ISC",
@@ -22,6 +21,7 @@
 		"axios": "^1.7.7",
 		"bcryptjs": "^2.4.3",
 		"body-parser": "^1.20.2",
+		"cloudinary": "^2.4.0",
 		"compression": "^1.7.4",
 		"cookie-parser": "^1.4.6",
 		"core-js": "^3.38.1",

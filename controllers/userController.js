@@ -8,6 +8,7 @@ import AppError from './../utils/appError.js';
 import * as factory from './handlerFactory.js';
 import { updatePassword } from './authController.js';
 import { info } from 'sass';
+import { v2 as cloudinary } from 'cloudinary';
 
 // export const uploadUserPhoto = upload.single('photo');
 
@@ -96,7 +97,6 @@ export const updateMe = catchAsync(async (req, res, next) => {
 });
 
 export const newPasswordView = (req, res) => {
-
 	if (!req.user)
 		return res.status(200).json({
 			status: 'success',
@@ -452,3 +452,41 @@ export const labelRemovalBookmarks = catchAsync(async (req, res, next) => {
 		},
 	});
 });
+
+export const uploadToCloud = catchAsync(async function (image) {
+	// Configuration
+	cloudinary.config({
+		cloud_name: 'dtizipxds',
+		api_key: '915946631476451',
+		api_secret: CLOUD_API_SECRET,
+	});
+
+	// Upload an image
+	const uploadResult = await cloudinary.uploader
+		.upload('https://res.cloudinary.com/demo/image/upload/getting-started/shoes.jpg', {
+			public_id: 'shoes',
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+
+	console.log(uploadResult);
+
+	// Optimize delivery by resizing and applying auto-format and auto-quality
+	const optimizeUrl = cloudinary.url('shoes', {
+		fetch_format: 'auto',
+		quality: 'auto',
+	});
+
+	console.log(optimizeUrl);
+
+	// Transform the image: auto-crop to square aspect_ratio
+	const autoCropUrl = cloudinary.url('shoes', {
+		crop: 'auto',
+		gravity: 'auto',
+		width: 500,
+		height: 500,
+	});
+
+	console.log(autoCropUrl);
+})();

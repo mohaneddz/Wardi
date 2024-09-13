@@ -26,7 +26,7 @@
             each verse in this_juz[0].content
                 if verse.chapter == chapterNumber
                     span(data-verse=`${verse.verse}` data-chapter=`${verse.chapter}` class=`${language}`)
-                        | !{`${verse.text} ${verse.verse}`.replace(/\d+/g, d => `<span class="ayah_number ${language}">${d.split('').map(digit => '٠١٢٣٤٥٦٧٨٩'[digit]).join('')}</span>`)}
+                        | !{`${verse.text} ${verse.verse}`.replace(/\d+/g, d => `<span class="ayah_number">${d.split('').map(digit => '٠١٢٣٤٥٦٧٨٩'[digit]).join('')}</span>`)}
                     
     else if mode === "QuranPage"
         - let prev = null;
@@ -50,7 +50,7 @@
                     - prev = curr;
 
                 span(data-verse=`${verse.verse}` data-chapter=`${verse.chapter}` class=`${language}`)
-                    | !{`${verse.text} ${verse.verse} `.replace(/\d+/g, d => `<span class="ayah_number ${language}">${d.split('').map(digit => '٠١٢٣٤٥٦٧٨٩'[digit]).join('')}</span>`)}
+                    | !{`${verse.text} ${verse.verse} `.replace(/\d+/g, d => `<span class="ayah_number">${d.split('').map(digit => '٠١٢٣٤٥٦٧٨٩'[digit]).join('')}</span>`)}
 
             // Display the page number at the end   
             p.quran__page--number
