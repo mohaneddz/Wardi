@@ -20,7 +20,9 @@ router.get('/me', userController.getUserPage).patch(
 	authController.updatePassword,
 	userController.updateMe
 );
-
+router.get('/verifyEmail', authController.verifyEmail);
+router.get('/forgotPassword', userController.newPasswordView).post('/forgotPassword', authController.forgotPassword);
+router.post('/resetPassword',authController.isLoggedIn,authController.resetPassword, userController.newPasswordView);
 
 // router.get('/bookmarks', userController.getBookmarksView).post('/bookmarks', authController.isLoggedIn, userController.addBookmark);
 // Password Reset Routes ------------------------------------------------

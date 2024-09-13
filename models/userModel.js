@@ -24,8 +24,12 @@ userSchema.pre('save', function (next) {
 });
 
 userSchema.pre(/^find/, function (next) {
-	// Only show the active users in the query
-	// this points to the current query
+	// Check if the bypassMiddleware option is set
+	if (this.getOptions().bypassMiddleware) {
+		return next();
+	}
+
+	// Apply the middleware logic
 	this.find({ isActive: { $ne: false } });
 	next();
 });

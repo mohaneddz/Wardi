@@ -1,6 +1,6 @@
 import Chapter from '../models/Content/Quran/quranChaptersModel.js';
-import Hadith from '../models/Content/Hadith/hadithModel.js';
-import Tafsir from '../models/Content/Tafsir/tafsirModel.js';
+import Hadith from '../models/Content/Hadith/HadithModel.js';
+import Tafsir from '../models/Content/Tafsir/TafsirModel.js';
 
 import email from '../utils/email.js';
 import { queryQuran, queryHadith, queryTafsir } from '../utils/queue/seachQueries.js';

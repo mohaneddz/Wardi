@@ -973,11 +973,14 @@ body {
 .header nav ul li.header__user a i, .header nav ul li.header__menu a i {
   transform: translate(-1rem, -1rem);
 }
+.header nav ul li.header__user.nologin a, .header nav ul li.header__menu.nologin a {
+  transform: translateY(0.5rem);
+}
 .header nav ul li.header__user, .header nav ul li.header__menu, .header nav ul li.header__search {
   transform: translateX(-1rem);
 }
 .header nav ul li.header__menu {
-  transform: translateX(-2rem);
+  transform: translateX(-2rem) translateY(0.5rem);
   display: none;
   z-index: 10;
 }
@@ -1090,7 +1093,7 @@ body {
   text-shadow: 0.4rem 0.4rem 2rem rgba(255, 255, 255, 0.452);
 }
 .header nav ul.Menusidebar li a {
-  margin-left: 2rem;
+  margin-left: -3rem;
 }
 .header nav ul.Menusidebar li a i {
   left: -7%;
@@ -2127,19 +2130,22 @@ body {
   border-left-color: #c72378;
 }
 
-.Loginpage, .Signuppage {
+.Loginpage,
+.Signuppage {
   display: grid;
   grid-template-rows: auto 1fr;
   margin-top: -10rem;
 }
 
-.mainLoginpage, .mainSignuppage {
+.mainLoginpage,
+.mainSignuppage {
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: repeat(8, 1fr);
 }
 
-.Login, .Singup {
+.Login,
+.Singup {
   display: flex;
   grid-column: 2/8;
   justify-content: start;
@@ -2152,27 +2158,32 @@ body {
   padding: 2rem;
   z-index: 1;
 }
-.Login h1, .Singup h1 {
+.Login h1,
+.Singup h1 {
   font-size: 10rem;
   margin-bottom: 2rem;
   text-shadow: 0 0 1rem rgba(0, 0, 0, 0.8);
 }
-.Login img, .Singup img {
+.Login img,
+.Singup img {
   width: 10rem;
   height: 10rem;
   border-radius: 100rem;
 }
-.Login form, .Singup form {
+.Login form,
+.Singup form {
   background-color: #24387b;
   padding: 4rem 6rem;
   border-radius: 1rem;
   box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
   width: max-content;
 }
-.Login form div, .Singup form div {
+.Login form div,
+.Singup form div {
   margin-bottom: 2rem;
 }
-.Login form div label, .Singup form div label {
+.Login form div label,
+.Singup form div label {
   display: block;
   margin-bottom: 1rem;
   font-size: 2.5rem;
@@ -2182,7 +2193,8 @@ body {
 }
 .Login form div input[type=username],
 .Login form div input[type=email],
-.Login form div input[type=password], .Singup form div input[type=username],
+.Login form div input[type=password],
+.Singup form div input[type=username],
 .Singup form div input[type=email],
 .Singup form div input[type=password] {
   width: 100%;
@@ -2194,7 +2206,8 @@ body {
 }
 .Login form div input[type=username]::placeholder,
 .Login form div input[type=email]::placeholder,
-.Login form div input[type=password]::placeholder, .Singup form div input[type=username]::placeholder,
+.Login form div input[type=password]::placeholder,
+.Singup form div input[type=username]::placeholder,
 .Singup form div input[type=email]::placeholder,
 .Singup form div input[type=password]::placeholder {
   color: rgba(156, 27, 94, 0.5);
@@ -2202,7 +2215,8 @@ body {
 }
 .Login form div input[type=username]:focus,
 .Login form div input[type=email]:focus,
-.Login form div input[type=password]:focus, .Singup form div input[type=username]:focus,
+.Login form div input[type=password]:focus,
+.Singup form div input[type=username]:focus,
 .Singup form div input[type=email]:focus,
 .Singup form div input[type=password]:focus {
   outline: none;
@@ -2212,7 +2226,9 @@ body {
 .Login form div input[type=email]:invalid,
 .Login form div input[type=email]:empty,
 .Login form div input[type=password]:invalid,
-.Login form div input[type=password]:empty, .Singup form div input[type=username]:invalid, .Singup form div input[type=username]:empty,
+.Login form div input[type=password]:empty,
+.Singup form div input[type=username]:invalid,
+.Singup form div input[type=username]:empty,
 .Singup form div input[type=email]:invalid,
 .Singup form div input[type=email]:empty,
 .Singup form div input[type=password]:invalid,
@@ -2223,7 +2239,8 @@ body {
 }
 .Login form div input[type=username]:valid:not(:placeholder-shown),
 .Login form div input[type=email]:valid:not(:placeholder-shown),
-.Login form div input[type=password]:valid:not(:placeholder-shown), .Singup form div input[type=username]:valid:not(:placeholder-shown),
+.Login form div input[type=password]:valid:not(:placeholder-shown),
+.Singup form div input[type=username]:valid:not(:placeholder-shown),
 .Singup form div input[type=email]:valid:not(:placeholder-shown),
 .Singup form div input[type=password]:valid:not(:placeholder-shown) {
   border-width: 2px;
@@ -2231,7 +2248,8 @@ body {
   box-shadow: 0 0 5px green;
   color: rgb(2, 100, 2);
 }
-.Login form div input[type=submit], .Singup form div input[type=submit] {
+.Login form div input[type=submit],
+.Singup form div input[type=submit] {
   width: 100%;
   padding: 1.5rem 2rem;
   font-size: 3rem;
@@ -2241,23 +2259,58 @@ body {
   border-radius: 0.5rem;
   cursor: pointer;
 }
-.Login form div input[type=submit]:hover, .Singup form div input[type=submit]:hover {
+.Login form div input[type=submit]:hover,
+.Singup form div input[type=submit]:hover {
   background-color: #070b18;
   scale: 1.1;
   transition: all 0.2s;
   box-shadow: 0 0 15px rgba(1, 2, 5, 0.4);
 }
-.Login form div input[type=submit]:active, .Singup form div input[type=submit]:active {
+.Login form div input[type=submit]:active,
+.Singup form div input[type=submit]:active {
   background-color: #364167;
   scale: 0.95;
   transition: all 0.2s;
   box-shadow: 0 0 15px rgba(1, 2, 5, 0.4);
 }
-.Login form div.password-container, .Singup form div.password-container {
+.Login form div.password-container,
+.Singup form div.password-container {
   margin-bottom: 5rem;
 }
+.Login form p,
+.Singup form p {
+  color: gray;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+.Login form a.buttonlike,
+.Singup form a.buttonlike {
+  grid-column: span 2;
+  display: inline-block;
+  color: #b0b5c9;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  transition: background-color 0.3s ease;
+}
+.Login form a.buttonlike:hover,
+.Singup form a.buttonlike:hover {
+  background-color: #edeef2;
+}
+.Login form a.link,
+.Singup form a.link {
+  color: #c72378;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.Login form a.link:hover,
+.Singup form a.link:hover {
+  color: #9c1b5e;
+}
 @media screen and (max-width: 500px) {
-  .Login h1, .Singup h1 {
+  .Login h1,
+  .Singup h1 {
     font-size: 8rem;
   }
 }

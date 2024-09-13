@@ -7,25 +7,24 @@ const form = document.querySelector('.form__login');
 
 // Functions --------------------------------------------------------------
 
-export const login = async (email, password) => {
+export const reset = async (password) => {
     try {
         const res = await axios({
             method: 'POST',
-            url: `/user/login`, 
+            url: `/user/resetPassword`, 
             data: {
-                email,
                 password,
             }, 
         });
 
         if (res.data.status === 'success') {
-            showAlert('success', 'Logged in successfully!');
+            showAlert('success', 'Password Changed Successfully!');
             window.setTimeout(() => {
                 location.assign('/');
             }, 1500);
         }
     } catch (err) {
-        showAlert('error', err);
+        showAlert('error', err.message);
     }
 };
 
@@ -34,7 +33,11 @@ export const login = async (email, password) => {
 
 form.addEventListener('submit', e => {
     e.preventDefault();
-    const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    login(email, password);
+    const passwordConfirm = document.getElementById('passwordConfirm').value;
+    if(password !== passwordConfirm) {
+        showAlert('error', 'Passwords do not match!');
+        return;
+    }
+    reset(password);
 });

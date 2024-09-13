@@ -19,15 +19,14 @@ const signup = async (username, email, password, passwordConfirm) => {
                 passwordConfirm,
             },
         });
-
         if (res.data.status === 'success') {
-            showAlert('success', 'Signed up successfully!');
+            showAlert('success', 'Check your inbox to finish registration');
             window.setTimeout(() => {
-                location.assign('/');
+                location.assign('/user/login');
             }, 1500);
         }
     } catch (err) {
-        showAlert('error', err.message);
+        showAlert('error', err.response.data.message);
     }
 };
 

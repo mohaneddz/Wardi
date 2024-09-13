@@ -1,15 +1,18 @@
-.Loginpage, .Signuppage {
+.Loginpage,
+.Signuppage {
 	display: grid;
 	grid-template-rows: auto 1fr;
 	margin-top: -10rem;
 }
-.mainLoginpage, .mainSignuppage {
+.mainLoginpage,
+.mainSignuppage {
 	display: grid;
 	grid-template-rows: 1fr;
 	grid-template-columns: repeat(8, 1fr);
 }
 
-.Login, .Singup {
+.Login,
+.Singup {
 	display: flex;
 	grid-column: 2/8;
 	justify-content: start;
@@ -61,7 +64,7 @@
 				border-radius: 0.5rem;
 				color: $tertiary-color-dark;
 
-				&::placeholder{
+				&::placeholder {
 					color: rgba($tertiary-color-dark, 0.5);
 					font-size: 1.5rem;
 				}
@@ -69,7 +72,8 @@
 					outline: none;
 					border-color: $tertiary-color;
 				}
-				&:invalid, &:empty {
+				&:invalid,
+				&:empty {
 					border-color: $tertiary-color;
 					box-shadow: 0 0 15px $tertiary-color;
 					border-width: 2px;
@@ -108,6 +112,35 @@
 			}
 			&.password-container {
 				margin-bottom: 5rem;
+			}
+		}
+		p {
+			color: gray;
+			margin-top: 1rem;
+			font-size: 1.5rem;
+		}
+		a {
+			&.buttonlike {
+				grid-column: span 2;
+				display: inline-block;
+				color: $secondary-color;
+				text-decoration: none;
+				padding: 10px 15px;
+				border-radius: $border-radius;
+				background-color: #f2f2f2;
+				transition: background-color 0.3s ease;
+
+				&:hover {
+					background-color: lighten($secondary-color, 20%);
+				}
+			}
+			&.link {
+				color: $tertiary-color;
+				text-decoration: none;
+				transition: color 0.3s ease;
+				&:hover {
+					color: $tertiary-color-dark;
+				}
 			}
 		}
 	}

@@ -95,6 +95,14 @@ export const updateMe = catchAsync(async (req, res, next) => {
 	});
 });
 
+export const newPasswordView = (req, res) => {
+	if (!req.user) return signupView(req, res);
+	res.status(200).render('NewPassword_Page', {
+		title: 'Forgot your password?',
+		h1: 'Forgot Password',
+	});
+};
+
 // Bookmarks ----------------------------------------------
 
 export const addBookmark = catchAsync(async (req, res, next) => {
@@ -205,7 +213,6 @@ export const bookmarksView = (req, res) => {
 };
 
 export const getBookmarks = catchAsync(async (req, res, next) => {
-	
 	const user = req.user;
 	if (!user) return signupView(req, res);
 

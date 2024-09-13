@@ -23,31 +23,53 @@ export const createSendToken = (user, statusCode, req, res) => {
 
 	// Remove password from output
 	user.password = undefined;
-	res.status(statusCode).json({
-		status: 'success',
-		token,
-		data: {
-			user,
-		},
-	});
+	// res.status(statusCode).json({
+	// 	status: 'success',
+	// 	token,
+	// 	data: {
+	// 		user,
+	// 	},
+	// });
 };
 
 // Basic Auth Functions ------------------------------------------------
 
-export const signup = catchAsync(async (req, res, next) => {
+export const signup = async (req, res, next) => {
 	// Trying to create a new user 🤷‍♂️
-	const newUser = await User.create({
-		username: req.body.username,
-		email: req.body.email,
-		password: req.body.password,
-		passwordConfirm: req.body.passwordConfirm,
-	});
+	try {
+		const user = await User.findOne({ email: req.body.email });
+		if (user) return next(new AppError('User already exists', 400));
 
-	const url = `${req.protocol}://${req.get('host')}/me`;
-	// await new Email(newUser, url).sendWelcome(); // TODO Implement the Email System
+		const { username, email, password, passwordConfirm } = req.body;
+		const newUser = await User.create({
+			username,
+			email,
+			password,
+			passwordConfirm,
+			isActive: false,
+		});
 
-	createSendToken(newUser, 201, req, res);
-});
+		// Generate a token for email verification (or other purposes)
+		const token = signToken(newUser._id);
+
+		// Create the verification URL
+		const url = `${req.protocol}://${req.get('host')}/user/verifyEmail?token=${token}`;
+
+		// Send a welcome email with the verification link
+		await new Email(newUser, url).Confirmation();
+
+		console.log('Email Sent!');
+
+		res.status(200).json({
+			status: 'success',
+			data: {
+				user: newUser,
+			},
+		});
+	} catch (err) {
+		next(err);
+	}
+};
 
 export const login = catchAsync(async (req, res, next) => {
 	const { email, password } = req.body;
@@ -67,6 +89,10 @@ export const login = catchAsync(async (req, res, next) => {
 	// 3) If everything ok, send token to client
 	res.locals.user = user;
 	createSendToken(user, 200, req, res);
+
+	res.status(200).json({
+		status: 'success',
+	});
 });
 
 export const logout = (req, res) => {
@@ -76,6 +102,28 @@ export const logout = (req, res) => {
 	});
 	res.status(200).json({ status: 'success' });
 };
+
+export const verifyEmail = catchAsync(async (req, res, next) => {
+	// 1) Get the token from the query parameters
+	const { token } = req.query;
+
+	// 2) Verify the token
+	const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+	// 3) Find the user and activate them, bypassing the isActive check
+	const user = await User.findById(decoded.id).setOptions({ bypassMiddleware: true });
+
+	if (!user) return next(new AppError('User not found', 404));
+
+	user.isActive = true;
+	await user.save({ validateBeforeSave: false }); // just in case
+
+	const url = `${req.protocol}://${req.get('host')}/login`;
+	await new Email(user, url).sendWelcome();
+
+	createSendToken(user, 201, req, res);
+	res.redirect('/user/login');
+});
 
 // Protection Functions ------------------------------------------------
 
@@ -162,8 +210,8 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
 
 	// 3) Send it to user's email
 	try {
-		const resetURL = `${req.protocol}://${req.get('host')}/user/resetPassword/${resetToken}`;
-		await new Email(user, resetURL).sendPasswordReset(); // TODO Implement the Email System in Utils
+		const resetURL = `${req.protocol}://${req.get('host')}/user/resetPassword?token=${resetToken}`;
+		await new Email(user, resetURL).sendPasswordReset();
 
 		res.status(200).json({
 			status: 'success',
@@ -181,18 +229,18 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
 
 export const resetPassword = catchAsync(async (req, res, next) => {
 	// 1) Get user based on the token [ Creating the Hash - Updating it with token - Turns it into Hex]
-	const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
-
-	const user = await User.findOne({
-		passwordResetToken: hashedToken,
-		passwordResetExpires: { $gt: Date.now() },
-	});
-
-	// 2) If token has not expired, and there is user, set the new password
+	const user = req.user;
 	if (!user) {
-		return next(new AppError('Token is invalid or has expired', 400));
-	}
+		const hashedToken = crypto.createHash('sha256').update(req.body.token).digest('hex');
 
+		user = await User.findOne({
+			passwordResetToken: hashedToken,
+			passwordResetExpires: { $gt: Date.now() },
+		});
+
+		// 2) If token has not expired, and there is user, set the new password
+		if (!user) return next(new AppError('Token is invalid or has expired', 400));
+	}
 	// Updating the user credentials
 	user.password = req.body.password;
 	user.passwordConfirm = req.body.passwordConfirm;
@@ -200,7 +248,7 @@ export const resetPassword = catchAsync(async (req, res, next) => {
 	user.passwordResetToken = undefined;
 	user.passwordResetExpires = undefined;
 	user.passwordChangedAt = Date.now();
-	await user.save();
+	await user.save({ validateBeforeSave: false });
 
 	createSendToken(user, 200, req, res);
 });
@@ -218,4 +266,9 @@ export const updatePassword = catchAsync(async (req, res, next) => {
 	await user.save();
 
 	createSendToken(user, 200, req, res);
+
+	res.status(200).json({
+		status: 'success',
+		message: 'Password updated successfully!',
+	});
 });

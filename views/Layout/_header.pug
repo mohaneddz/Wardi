@@ -28,11 +28,11 @@ header.header
                     a(href='#' id="searchButton") 
                             i(class="fi fi-rs-search")
             if !user
-                +navItem('header__user', '/user/me', '', 'fi fi-rs-user')
+                +navItem('header__user nologin', '/user/me', '', 'fi fi-rs-user')
             else
                 li.header__user--image
                     a(href='/user/me' )
-                        img(src=`/img/users/${user.photo}`, alt='Logo') 
+                        img(src=`/img/users/${user.photo || 'default-user.png'}`, alt='Logo') 
 
             +navItem('header__menu', '#', '', 'fi fi-rr-menu-burger')
 

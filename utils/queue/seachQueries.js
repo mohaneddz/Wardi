@@ -1,5 +1,5 @@
 import { ChaptersSearch } from '../../models/Content/Quran/quranChaptersModel.js';
-import Hadith from '../../models/Content/Hadith/hadithModel.js';
+import Hadith from '../../models/Content/Hadith/HadithModel.js';
 import Tafsir from '../../models/Content/Tafsir/TafsirModel.js';
 
 import catchAsync from '../catchAsync.js';
