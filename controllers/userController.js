@@ -121,7 +121,7 @@ export const addBookmark = catchAsync(async (req, res, next) => {
 		return next(new AppError('Please provide type and object', 400));
 	}
 
-	const user = await User.findOne({ name: req.user.name });
+	const user = await User.findOne({ username: req.user.username });
 
 	// Pass type and object as separate arguments
 	await user.addBookmark(type, object);
