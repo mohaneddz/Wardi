@@ -788,7 +788,6 @@ body {
   align-items: center;
   background-color: transparent;
   align-self: center;
-  position: absolute;
 }
 
 .circle-core {
@@ -3423,7 +3422,7 @@ body main .cards {
 
 .search_page {
   display: grid;
-  grid-template-columns: [center-start] repeat(12, [col-start] minmax(min-content, 100rem) [col-end]) [center-end];
+  grid-template-columns: repeat(12, 1fr);
   height: 90vh;
 }
 
@@ -3437,7 +3436,8 @@ input[type=radio]:checked + label {
   transform: scale(1.05);
 }
 
-label.invisible, .invisible {
+label.invisible,
+.invisible {
   opacity: 0;
   visibility: hidden;
   display: none;

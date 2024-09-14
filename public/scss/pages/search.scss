@@ -1,6 +1,6 @@
-.SearchPage{
+.SearchPage {
 	overflow-y: hidden;
-	*  {
+	* {
 		transition: all 0.3s;
 	}
 }
@@ -10,7 +10,7 @@
 }
 .search_page {
 	display: grid;
-	grid-template-columns: [center-start] repeat(12, [col-start] minmax(min-content, 100rem) [col-end]) [center-end];
+	grid-template-columns: repeat(12, 1fr);
 	height: 90vh;
 }
 
@@ -25,7 +25,8 @@ input[type='radio'] {
 	}
 }
 
-label.invisible, .invisible {
+label.invisible,
+.invisible {
 	opacity: 0;
 	visibility: hidden;
 	display: none;
