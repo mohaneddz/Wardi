@@ -1,9 +1,6 @@
 .Loginpage,
 .Signuppage {
-	display: grid;
-	grid-template-rows: auto 1fr;
 	margin-top: -10rem;
-	height: 100vh;
 }
 .mainLoginpage,
 .mainSignuppage {
