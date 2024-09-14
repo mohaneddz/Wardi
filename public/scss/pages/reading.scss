@@ -12,7 +12,10 @@
 		grid-template-columns: min-content 1fr min-content;
 		@media screen and (max-width: 1200px) {
 			grid-template-columns: 1fr;
-			grid-template-rows: 7vh 7vh 1fr;
+		}
+		@media screen and (max-width: 600px) {
+			grid-template-columns: 1fr;
+			grid-template-rows: 4vh 4vh 1fr !important;
 		}
 	}
 }

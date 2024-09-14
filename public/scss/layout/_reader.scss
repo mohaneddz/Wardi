@@ -158,8 +158,7 @@
 			filter: brightness(0.8);
 		}
 	}
-	.quran__verse 
-	.selected {
+	.quran__verse .selected {
 		color: rgb(98, 98, 205);
 	}
 	.quran__verse,
@@ -262,7 +261,7 @@
 			.tafsir,
 			.quran,
 			.hadith {
-				height: 73vh;
+				height: 90%;
 			}
 		}
 	}
@@ -333,4 +332,41 @@
 .eng {
 	font-family: 'English', serif !important;
 	direction: ltr !important;
+}
+
+@media screen and (max-width: 800px) {
+	.hadith,
+	.quran,
+	.tafsir {
+		padding: 1rem;
+		.toggle {
+			margin-left: 0;
+		}
+		h1 {
+			font-size: 7rem;
+		}
+		h2 {
+			font-size: 5rem;
+		}
+		p {
+			font-size: 2rem;
+		}
+		span {
+			font-size: 3rem;
+		}
+	}
+	.active {
+		@media screen and (max-width: 500px) {
+			// height: 80vh;
+		}
+	}
+	.quran {
+		padding: 2rem;
+		h1 {
+			font-size: 15rem;
+		}
+		h2 {
+			font-size: 12rem;
+		}
+	}
 }

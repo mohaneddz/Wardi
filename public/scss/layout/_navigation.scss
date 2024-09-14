@@ -93,6 +93,9 @@
 				&.header__menu,
 				&.header__search {
 					transform: translateX(-1rem);
+					a i {
+						font-size: 3rem;
+					}
 				}
 				&.header__menu {
 					transform: translateX(-2rem) translateY(0.5rem);
@@ -127,10 +130,9 @@
 							border: 1px solid rgba(255, 255, 255, 0.311);
 						}
 					}
-
+					
 					a {
 						order: 2;
-						font-size: 2rem;
 						color: $tertiary-color;
 						margin-left: 1rem;
 						position: relative;
@@ -139,6 +141,9 @@
 						cursor: pointer;
 						i {
 							transform: translateY(-1rem);
+						}
+						@media (max-width: 400px) {
+							margin-left: 1rem;	
 						}
 					}
 					&:hover {
@@ -181,17 +186,22 @@
 					&.header__bookmarks {
 						display: block;
 						a {
-							font-size: 2rem;
+							font-size: 3rem;
+							margin: 0 2rem;
 							i {
-								font-size: 2rem;
+								font-size: 3rem;
 							}
 						}
 						@media (max-width: 1300px) {
 							display: none;
 						}
+						@media (max-width: 576px) {
+							display: none;
+						}
 						&.toLeft {
 							transform: translateX(5rem);
 						}
+	
 					}
 				}
 			}
@@ -200,8 +210,8 @@
 				position: fixed;
 				top: 0;
 				right: 0;
-				height: 100vh;
-				width: 20rem;
+				height: 1000vh;
+				width: 40rem;
 				background-color: rgba($primary-color-dark, 0.9);
 				transition: all 0.3s;
 				display: none;
@@ -221,10 +231,11 @@
 						text-shadow: 0.4rem 0.4rem 2rem rgba(white, 0.452);
 					}
 					a {
-						margin-left: -3rem;
+						margin-left: 0rem;
+						font-size: 4rem;
 
 						i {
-							left: -7%;
+							font-size: 4rem;
 						}
 					}
 				}
@@ -316,11 +327,22 @@
 			}
 		}
 	}
-	@media screen and (max-height: 900px) {
+	@media screen and (max-height: 700px) {
 		nav * {
-			transform: translateY(-0.2rem);
 			li a {
 				font-size: 1.5rem !important;
+				i {
+					font-size: 1.2rem !important;
+				}
+			}
+		}
+	}
+	@media screen and (max-height: 600px) {
+		height: 3vh;
+		nav * {
+			li a {
+				font-size: 1.1rem !important;
+				transform: translateY(-1rem);
 				i {
 					font-size: 1.2rem !important;
 				}
