@@ -57,8 +57,8 @@ export const queryHadith = catchAsync(async (req, res, lang) => {
 
 	const filteredResults = result.map((hadith) => {
 		return {
-			name: hadith.name,
-			hadiths: hadith.hadiths
+			name: hadith?.name,
+			hadiths: hadith?.hadiths
 				.filter((hadith) => hadith.text.includes(query))
 				.filter((hadith) => hadith.text?.length > 0),
 		};

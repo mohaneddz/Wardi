@@ -42,7 +42,7 @@ function search() {
 	switch (searchType) {
 		case 'Quran': {
 			url = `/search/quran`;
-			book = quran_language
+			book = quran_language;
 			break;
 		}
 		case 'Hadith': {
@@ -70,6 +70,10 @@ function search() {
 		book,
 	})
 		.then((res) => {
+			if (res.data.results === 0) 
+				resultsContainer.innerHTML =
+					'<div class="results__item--counter--error">No Results Found</div>';
+			else
 			switch (searchType) {
 				case 'Quran':
 					displayQuranResults(res.data.data, res.data.results, query, book);
