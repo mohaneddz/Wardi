@@ -61,14 +61,14 @@
   font-style: normal;
 }
 @font-face {
-  font-family: "KungFU";
-  src: url("../../fonts/KungFuMaster-K7vrX.otf") format("opentype");
+  font-family: "Tawasul";
+  src: url("../../fonts/tawasul-regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: "Freshman";
-  src: url("../../fonts/Freshman.ttf") format("truetype");
+  font-family: "KungFU";
+  src: url("../../fonts/KungFuMaster-K7vrX.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
