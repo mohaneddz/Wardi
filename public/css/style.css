@@ -121,7 +121,7 @@ html {
 }
 @media (max-width: 450px) {
   html {
-    font-size: 45%;
+    font-size: 40%;
   }
 }
 
@@ -1002,6 +1002,19 @@ body {
 @media (max-width: 1300px) {
   .header nav ul li.header__menu {
     display: flex;
+    margin-right: 3rem;
+  }
+}
+@media (max-width: 600px) {
+  .header nav ul li.header__menu {
+    display: flex;
+    margin-right: 5rem;
+  }
+}
+@media (max-width: 400px) {
+  .header nav ul li.header__menu {
+    display: flex;
+    margin-right: 10rem;
   }
 }
 .header nav ul li.header__search {
@@ -2567,7 +2580,7 @@ main .books {
 }
 @media (max-width: 600px) {
   main .books {
-    grid-template-columns: repeat(1, minmax(14rem, 1fr));
+    grid-template-columns: repeat(1, minmax(10rem, 1fr));
   }
 }
 
@@ -2582,6 +2595,27 @@ main .books {
   .mainTafsirBooks .title {
     margin-top: -15rem;
     margin-bottom: -15rem;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .mainQuranBooks,
+  .mainHadithBooks,
+  .mainTafsirBooks {
+    padding: 0;
+  }
+  .mainQuranBooks .books,
+  .mainHadithBooks .books,
+  .mainTafsirBooks .books {
+    max-width: 90%;
+    grid-column: 1/-1;
+    margin: 0;
+    padding: 0;
+  }
+  .mainQuranBooks .books * img,
+  .mainHadithBooks .books * img,
+  .mainTafsirBooks .books * img {
+    max-width: 80%;
+    min-width: 10rem;
   }
 }
 
@@ -2643,6 +2677,7 @@ body main .cards {
   padding: 2rem;
   font-size: 3rem;
   box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
+  max-width: 90vw !important;
 }
 @media (max-width: 1200px) {
   body main .cards {
@@ -2652,11 +2687,21 @@ body main .cards {
 @media (max-width: 900px) {
   body main .cards {
     grid-template-columns: repeat(2, minmax(14rem, 1fr));
+    width: 95vw;
+    grid-column: 1/-2;
+  }
+  body main .cards .cards__surah {
+    width: 80vw;
   }
 }
 @media (max-width: 600px) {
   body main .cards {
     grid-template-columns: repeat(1, minmax(14rem, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  body main.mainHome {
+    padding: 0rem;
   }
 }
 

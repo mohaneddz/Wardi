@@ -37,7 +37,7 @@ body {
 			grid-column: span 12;
 			display: grid;
 			grid-template-columns: repeat(4, minmax(14rem, 1fr));
-			align-items: stretch; 
+			align-items: stretch;
 			justify-content: center;
 			align-content: center;
 			border-radius: 3rem;
@@ -47,6 +47,7 @@ body {
 			padding: 2rem;
 			font-size: 3rem;
 			box-shadow: 0 0 3rem rgba(0, 0, 0, 0.8);
+			max-width: 90vw !important;
 
 			@media (max-width: 1200px) {
 				grid-template-columns: repeat(3, minmax(14rem, 1fr));
@@ -54,10 +55,21 @@ body {
 
 			@media (max-width: 900px) {
 				grid-template-columns: repeat(2, minmax(14rem, 1fr));
+				width: 95vw;
+				grid-column: 1/-2;
+				.cards__surah {
+					width: 80vw;
+				}
 			}
 
 			@media (max-width: 600px) {
 				grid-template-columns: repeat(1, minmax(14rem, 1fr));
+			}
+		}
+		&.mainHome{
+
+			@media (max-width: 600px) {
+				padding: 0rem;
 			}
 		}
 	}

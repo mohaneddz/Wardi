@@ -21,7 +21,7 @@ main {
 			grid-template-columns: repeat(2, minmax(14rem, 1fr));
 		}
 		@media (max-width: 600px) {
-			grid-template-columns: repeat(1, minmax(14rem, 1fr));
+			grid-template-columns: repeat(1, minmax(10rem, 1fr));
 		}
 	}
 }
@@ -35,6 +35,21 @@ main {
 		@media screen and (max-width: 1000px) {
 			margin-top: -15rem;
 			margin-bottom: -15rem;
+		}
+	}
+	@media screen and (max-width: 1000px) {
+		padding: 0;
+		.books{
+			max-width: 90%;
+			grid-column: 1/-1;
+			margin: 0;
+			padding: 0;
+			* {
+				img {
+					max-width: 80%;
+					min-width: 10rem ;
+				}
+			}
 		}
 	}
 }
