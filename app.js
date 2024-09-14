@@ -12,6 +12,8 @@ import cookieParser from 'cookie-parser'; // cookie parser module ( for parsing 
 import bodyParser from 'body-parser'; // body parser module ( for parsing the body of the request )
 import compression from 'compression'; // compression module ( for compressing the response )
 import cors from 'cors'; // cors module ( for cross origin resource sharing )
+import cron from 'node-cron';
+import axios from 'axios'; // for making the HTTP request
 
 // Error Handlers-------------------------
 import AppError from './utils/appError.js'; // AppError class
@@ -48,7 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/models/Content/schemas/QuranSchema.js', (req, res) => {
 	res.type('application/javascript');
 	res.sendFile(path.join(__dirname, 'models', 'Content', 'schemas', 'QuranSchema.js'));
-  });
+});
 
 // // Setting the MIDDLEWARES! //////////////////////////////
 
@@ -67,9 +69,18 @@ app.use(cookieParser()); // parsing the cookies from the request
 
 app.use(mongoSanitize()); // Data sanitization against NoSQL query injection
 app.use(xss()); // Data sanitization against XSS ( Cross Site Scripting )
-app.use(hpp({ whitelist: [''] })); 
+app.use(hpp({ whitelist: [''] }));
 
 app.use(compression());
+
+cron.schedule('*/10 * * * *', async () => {
+	try {
+		await axios.get('https://wardi.onrender.com');
+		console.log('Server pinged successfully at', new Date());
+	} catch (error) {
+		console.error('Error pinging the server:', error.message);
+	}
+});
 
 // // Setting the routes //////////////////////////////
 
@@ -81,7 +92,7 @@ app.use('/user', userRouter); // user routes
 app.use('/tafsir', tafsirRouter); // booking routes
 
 app.all('*', (req, res, next) => {
-    next(new AppError(`Can't find ${req.originalUrl} on this server!, 404`));
+	next(new AppError(`Can't find ${req.originalUrl} on this server!, 404`));
 });
 app.use(globalErrorHandler); // centralize error handling functions
 
