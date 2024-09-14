@@ -79,7 +79,7 @@ export const updateMe = catchAsync(async (req, res, next) => {
 		return next(new AppError('User not found', 404));
 	}
 
-	const filteredBody = filterObj(req.body, 'username', 'email');
+	const filteredBody = filterObj(req.body, 'username');
 	if (req.file) filteredBody.photo = req.file.filename;
 
 	const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
