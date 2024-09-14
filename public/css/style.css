@@ -1,105 +1,74 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Ruwudu:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @font-face {
   font-family: "Uthmanic";
-  src: url("../fonts/Uthmanic-V22.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Uthmanic2";
-  src: url("../fonts/Elgharib-A594.ttf") format("truetype");
+  src: url("../../fonts/Uthmanic-V22.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Surah";
-  src: url("../fonts/Elgharib-SurahName V4.ttf") format("truetype");
+  src: url("../../fonts/Elgharib-SurahName V4.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Basmallah";
-  src: url("../fonts/Elgharib-Basmala.ttf") format("truetype");
+  src: url("../../fonts/Elgharib-Basmala.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Istieadha";
-  src: url("../fonts/Elgharib-istieadha.ttf") format("truetype");
+  src: url("../../fonts/Elgharib-istieadha.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Divider";
-  src: url("../fonts/Elgharib-Dividers.ttf") format("truetype");
+  src: url("../../fonts/Elgharib-Dividers.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Parenthesis";
-  src: url("../fonts/Elgharib-Parenthesis.ttf") format("truetype");
+  src: url("../../fonts/Elgharib-Parenthesis.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "English";
-  src: url("../fonts/Philosopher-Regular @Am9li9.ttf") format("truetype");
+  src: url("../../fonts/Philosopher-Regular @Am9li9.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Kufi";
-  src: url("../fonts/KFGQPC-KufiStyV14.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "TitleB";
-  src: url("../fonts/ZakhrfaBlk.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Title";
-  src: url("../fonts/Zakhrfa.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "KaleemB";
-  src: url("../fonts/Kaleem Bold.otf") format("opentype");
+  src: url("../../fonts/KFGQPC-KufiStyV14.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Kaleem";
-  src: url("../fonts/Kaleem.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Tashabuk";
-  src: url("../fonts/tashabuk.otf") format("opentype");
+  src: url("../../fonts/Kaleem.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "Amjed";
-  src: url("../fonts/HSAlmajdRegular.ttf") format("truetype");
+  src: url("../../fonts/HSAlmajdRegular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: "Tawasul";
-  src: url("../fonts/tawasul-regular.ttf") format("truetype");
+  font-family: "KungFU";
+  src: url("../../fonts/KungFuMaster-K7vrX.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: "Motion";
-  src: url("../fonts/KungFuMaster-K7vrX.otf") format("opentype");
+  font-family: "Freshman";
+  src: url("../../fonts/Freshman.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -265,14 +234,15 @@ body {
   .HadithBooks .title h2,
   .QuranBooks .title h2,
   .TafsirBooks .title h2 {
+    margin-top: 10rem;
     font-size: 6.5rem;
-    margin-bottom: -4rem;
+    margin-bottom: 5rem;
   }
 }
 .HadithBooks h3,
 .QuranBooks h3,
 .TafsirBooks h3 {
-  font-size: clamp(2rem, 1.8vw, 3.5rem);
+  font-size: clamp(4rem, 1.8vw, 3.5rem);
   text-wrap: nowrap;
   text-align: center;
   max-width: 80%;
@@ -1001,20 +971,14 @@ body {
 }
 @media (max-width: 1300px) {
   .header nav ul li.header__menu {
+    margin-right: -3rem;
     display: flex;
-    margin-right: 3rem;
   }
 }
 @media (max-width: 600px) {
   .header nav ul li.header__menu {
     display: flex;
-    margin-right: 5rem;
-  }
-}
-@media (max-width: 400px) {
-  .header nav ul li.header__menu {
-    display: flex;
-    margin-right: 10rem;
+    margin-right: -3.7rem;
   }
 }
 .header nav ul li.header__search {
@@ -1154,7 +1118,6 @@ body {
 @media (max-width: 400px) {
   .header nav ul.Menusidebar.open {
     width: 107vw;
-    padding-left: 7rem;
   }
   .header nav ul.Menusidebar.open li a {
     font-size: 5rem;
@@ -1340,6 +1303,15 @@ body {
   }
   .footer__content a, .footer__section a, .footer__social-icons a, .footer__bottom a {
     font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .footer__content {
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+  .footer__content div:not(:last-child) {
+    border-bottom: 1px white solid;
   }
 }
 
@@ -2587,7 +2559,7 @@ main .books {
 .mainQuranBooks .title h2,
 .mainHadithBooks .title h2,
 .mainTafsirBooks .title h2 {
-  font-size: clamp(5rem, 10vw, 19rem);
+  font-size: clamp(10rem, 10vw, 19rem);
 }
 @media screen and (max-width: 1000px) {
   .mainQuranBooks .title,
@@ -2629,8 +2601,6 @@ main .books {
 }
 
 body {
-  display: grid;
-  grid-template-rows: max(min-content, 5vh), max(min-content, 70%), max(min-content, 25%);
   margin-bottom: 0;
 }
 body main {
@@ -2687,16 +2657,13 @@ body main .cards {
 @media (max-width: 900px) {
   body main .cards {
     grid-template-columns: repeat(2, minmax(14rem, 1fr));
-    width: 95vw;
-    grid-column: 1/-2;
-  }
-  body main .cards .cards__surah {
-    width: 80vw;
+    grid-column: 1/-1;
   }
 }
 @media (max-width: 600px) {
   body main .cards {
     grid-template-columns: repeat(1, minmax(14rem, 1fr));
+    font-size: 2rem;
   }
 }
 @media (max-width: 600px) {

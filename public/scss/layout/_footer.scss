@@ -114,4 +114,14 @@
 			}
 		}
 	}
+	@media screen and (max-width: 400px) {
+		&__content {
+			grid-template-columns: repeat(1, minmax(200px, 1fr));
+			gap: 2rem;
+			div:not(:last-child)  {
+
+				border-bottom: 1px white solid;
+			}
+		}
+	}
 }

@@ -1,6 +1,6 @@
 body {
-	display: grid;
-	grid-template-rows: max(min-content, 5vh), max(min-content, 70%), max(min-content, 25%);
+	// display: grid;
+	// grid-template-rows: max(min-content, 5vh), max(min-content, 70%), max(min-content, 25%);
 	margin-bottom: 0;
 
 	main {
@@ -55,15 +55,12 @@ body {
 
 			@media (max-width: 900px) {
 				grid-template-columns: repeat(2, minmax(14rem, 1fr));
-				width: 95vw;
-				grid-column: 1/-2;
-				.cards__surah {
-					width: 80vw;
-				}
+				grid-column: 1/-1;
 			}
 
 			@media (max-width: 600px) {
 				grid-template-columns: repeat(1, minmax(14rem, 1fr));
+				font-size: 2rem;
 			}
 		}
 		&.mainHome{
@@ -71,6 +68,7 @@ body {
 			@media (max-width: 600px) {
 				padding: 0rem;
 			}
+
 		}
 	}
 }
