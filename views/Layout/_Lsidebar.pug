@@ -49,7 +49,7 @@ include _mixin.pug
                         a(href=`/hadith/book/${book.name}/hadith/1` class="LsideEntry selectedEntry" data-name=`${book.name}` data-metadata_name=book.metadata.name data-type=`hadith_book`)= book.metadata.name
                             +favIcon(book.name, fav_books)
                 else
-                    lib
+                    li
                         a(href=`/hadith/book/${book.name}/hadith/1` class="LsideEntry" data-name=`${book.name}` data-metadata_name=book.metadata.name data-type=`hadith_book`)= book.metadata.name
                             +favIcon(book.name, fav_books)
             li

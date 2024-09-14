@@ -96,8 +96,7 @@ html {
 
 body {
   box-sizing: border-box;
-  padding: 3rem;
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
   min-height: 100vh;
   background-attachment: fixed;
@@ -633,6 +632,12 @@ body {
     min-width: calc(100% + 3rem);
   }
 }
+@media (max-width: 800px) {
+  .LsideEntry,
+  .RsideEntry {
+    border: 1px solid rgba(1, 2, 5, 0.9);
+  }
+}
 
 .selectedEntry {
   background-color: #c72378;
@@ -1122,10 +1127,10 @@ body {
 }
 .header nav ul.Menusidebar li a {
   margin-left: 0rem;
-  font-size: 4rem;
+  font-size: 4rem !important;
 }
 .header nav ul.Menusidebar li a i {
-  font-size: 4rem;
+  font-size: 4rem !important;
 }
 .header nav ul.Menusidebar.open {
   display: flex;
@@ -1155,16 +1160,18 @@ body {
   }
 }
 
+.header {
+  height: min(6rem, 100%);
+}
 @media screen and (max-height: 1300px) {
   .header {
     margin-top: 0;
     padding-top: 0;
+    padding-bottom: 0;
   }
   .header nav {
     padding-top: 0;
-  }
-  .header nav ul li.header__logo {
-    padding-top: 1rem;
+    padding-bottom: 0;
   }
   .header nav ul li.header__logo img {
     width: 4rem;
@@ -1208,23 +1215,24 @@ body {
     transform: translateY(0.7rem);
   }
 }
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 780px) {
   .header nav * li a {
     font-size: 1.5rem !important;
   }
   .header nav * li a i {
     font-size: 1.2rem !important;
   }
+  .header nav * li.header__logo a img {
+    width: 30px;
+    height: 30px;
+    margin-top: 0.5rem;
+  }
 }
 @media screen and (max-height: 600px) {
-  .header {
-    height: 3vh;
-  }
-  .header nav * li a {
+  .header nav ul li a {
     font-size: 1.1rem !important;
-    transform: translateY(-1rem);
   }
-  .header nav * li a i {
+  .header nav ul li a i {
     font-size: 1.2rem !important;
   }
 }
@@ -1434,6 +1442,25 @@ body {
     text-decoration: none;
   }
 }
+@media screen and (max-height: 1000px) {
+  .Lsidebar h1 {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-height: 500px) {
+  .Lsidebar h1 {
+    padding: 0rem;
+    border: 1px solid rgba(1, 2, 5, 0.9);
+  }
+  .Lsidebar ul li a {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-height: 400px) {
+  .Lsidebar ul li a {
+    font-size: 0.7rem;
+  }
+}
 .Lsidebar.active {
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
   display: flex;
@@ -1460,10 +1487,25 @@ body {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
   .Lsidebar .search input {
     width: 15rem;
+    font-size: 0.5rem;
+  }
+}
+@media screen and (max-width: 1200px) and (max-height: 650px) {
+  .Lsidebar .search input {
     font-size: 1.2rem;
+    width: 12rem;
+    padding: 0.5rem;
+    border: 1px solid rgba(1, 2, 5, 0.9);
+  }
+}
+@media screen and (max-width: 1200px) and (max-height: 500px) {
+  .Lsidebar .search input {
+    font-size: 1rem;
+    width: 10rem;
+    padding: 0.4rem;
   }
 }
 .Lsidebar .search input:focus {
@@ -1478,6 +1520,11 @@ body {
   right: 7%;
   z-index: 99;
   cursor: pointer;
+}
+@media screen and (max-width: 1200px) {
+  .Lsidebar .search i {
+    font-size: 1.5rem;
+  }
 }
 @media screen and (max-width: 600px) {
   .Lsidebar {
@@ -1592,6 +1639,25 @@ body {
     text-decoration: none;
   }
 }
+@media screen and (max-height: 1000px) {
+  .Rsidebar h1 {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-height: 500px) {
+  .Rsidebar h1 {
+    padding: 0rem;
+    border: 1px solid rgba(1, 2, 5, 0.9);
+  }
+  .Rsidebar ul li a {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-height: 400px) {
+  .Rsidebar ul li a {
+    font-size: 0.7rem;
+  }
+}
 .Rsidebar.active {
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
   display: flex;
@@ -1618,10 +1684,25 @@ body {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
   .Rsidebar .search input {
     width: 15rem;
+    font-size: 0.5rem;
+  }
+}
+@media screen and (max-width: 1200px) and (max-height: 650px) {
+  .Rsidebar .search input {
     font-size: 1.2rem;
+    width: 12rem;
+    padding: 0.5rem;
+    border: 1px solid rgba(1, 2, 5, 0.9);
+  }
+}
+@media screen and (max-width: 1200px) and (max-height: 500px) {
+  .Rsidebar .search input {
+    font-size: 1rem;
+    width: 10rem;
+    padding: 0.4rem;
   }
 }
 .Rsidebar .search input:focus {
@@ -1636,6 +1717,11 @@ body {
   right: 7%;
   z-index: 99;
   cursor: pointer;
+}
+@media screen and (max-width: 1200px) {
+  .Rsidebar .search i {
+    font-size: 1.5rem;
+  }
 }
 @media screen and (max-width: 600px) {
   .Rsidebar {
@@ -2018,7 +2104,7 @@ body {
   direction: ltr !important;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and ((max-width: 800px) or (max-height: 800px)) {
   .hadith,
   .quran,
   .tafsir {
@@ -2032,12 +2118,12 @@ body {
   .hadith h1,
   .quran h1,
   .tafsir h1 {
-    font-size: 7rem;
+    font-size: 15rem;
   }
   .hadith h2,
   .quran h2,
   .tafsir h2 {
-    font-size: 5rem;
+    font-size: 9rem;
   }
   .hadith p,
   .quran p,
@@ -2640,6 +2726,7 @@ main .books {
 .mainHadithBooks .title h2,
 .mainTafsirBooks .title h2 {
   font-size: clamp(10rem, 10vw, 19rem);
+  padding: 20rem 0;
 }
 @media screen and (max-width: 1000px) {
   .mainQuranBooks .title,

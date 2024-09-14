@@ -334,7 +334,7 @@
 	direction: ltr !important;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and ((max-width: 800px) or (max-height: 800px) ){
 	.hadith,
 	.quran,
 	.tafsir {
@@ -343,10 +343,10 @@
 			margin-left: 0;
 		}
 		h1 {
-			font-size: 7rem;
+			font-size: 15rem;
 		}
 		h2 {
-			font-size: 5rem;
+			font-size: 9rem;
 		}
 		p {
 			font-size: 2rem;
@@ -356,7 +356,7 @@
 		}
 	}
 	.active {
-		@media screen and (max-width: 500px) {
+		@media screen and ((max-width: 500px) or (max-height: 500px) ){
 			// height: 80vh;
 		}
 	}

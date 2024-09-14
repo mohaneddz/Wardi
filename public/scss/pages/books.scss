@@ -31,6 +31,7 @@ main {
 	.title {
 		h2 {
 			font-size: clamp(10rem, 10vw, 19rem);
+			padding: 20rem 0;
 		}
 		@media screen and (max-width: 1000px) {
 			margin-top: -15rem;

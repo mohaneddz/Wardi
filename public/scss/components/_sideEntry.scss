@@ -59,6 +59,9 @@
 	@media (max-width: 1200px) {
 		min-width: calc(100% + 3rem);
 	}
+	@media (max-width: 800px) {
+	border: 1px solid rgba($primary-color-dark, 0.9);
+	}
 }
 .selectedEntry {
 	background-color: $tertiary-color;

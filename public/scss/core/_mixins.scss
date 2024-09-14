@@ -106,6 +106,26 @@
 			}
 		}
 	}
+	@media screen and (max-height: 1000px) {
+		h1 {
+			font-size: 1rem;
+		}
+	}
+	@media screen and (max-height: 500px) {
+		h1 {
+			padding: 0rem;
+	border: 1px solid rgba($primary-color-dark, 0.9);
+
+		}
+		ul li a {
+			font-size: 1rem;
+		}
+	}
+	@media screen and (max-height: 400px) {
+		ul li a {
+			font-size: 0.7rem;
+		}
+	}
 
 	// ----------------------------------------------
 	&.active {
@@ -136,9 +156,20 @@
 			margin-top: 2rem;
 			margin-bottom: 2rem;
 
-			@media screen and (max-width: 1000px) {
+			@media screen and (max-width: 1200px) {
 				width: 15rem;
-				font-size: 1.2rem;
+				font-size: 0.5rem;
+				@media screen and (max-height: 650px) {
+					font-size: 1.2rem;
+					width: 12rem;
+					padding: 0.5rem;
+					border: 1px solid rgba($primary-color-dark, 0.9);
+				}
+				@media screen and (max-height: 500px) {
+					font-size: 1rem;
+					width: 10rem;
+					padding: 0.4rem;
+				}
 			}
 
 			&:focus {
@@ -155,6 +186,9 @@
 			right: 7%;
 			z-index: 99;
 			cursor: pointer;
+			@media screen and (max-width: 1200px) {
+				font-size: 1.5rem;
+			}
 		}
 	}
 	@media screen and (max-width: 600px) {
