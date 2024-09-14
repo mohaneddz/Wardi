@@ -55,7 +55,7 @@ export const getSearch = catchAsync(async (req, res, next) => {
 });
 
 export const searchView = catchAsync(async (req, res, next) => {
-	const search = ' ';
+	const search = true;
 
 	// Hadiths
 	let all_hadith_books = await Hadith.find({ name: { $regex: /^eng/ } })

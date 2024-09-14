@@ -11,13 +11,13 @@ header.header
             li.header__logo
                 a(href='/' )
                   img(src='/img/LogoHD.png', alt='Logo') 
-            if seach 
-                +navItem('header__quran', '/quran', 'Quran', 'fi fi-rs-book-quran')
-                +navItem('header__hadith', '/hadith', 'Hadith', 'fi fi-rs-books')
-                +navItem('header__tafsir', '/tafsir', 'Tafsir', 'fi fi-rs-book-open-cover')
-                +navItem('header__about', '/about', 'About', 'fi fi-rs-info')
-                +navItem('header__bookmarks', '/user/bookmarks', 'Bookmarks', 'fi fi-rs-wishlist-star')
-            else 
+            if search 
+                +navItem('header__quran earlyHide', '/quran', 'Quran', 'fi fi-rs-book-quran')
+                +navItem('header__hadith earlyHide', '/hadith', 'Hadith', 'fi fi-rs-books')
+                +navItem('header__tafsir earlyHide', '/tafsir', 'Tafsir', 'fi fi-rs-book-open-cover')
+                +navItem('header__about earlyHide', '/about', 'About', 'fi fi-rs-info')
+                +navItem('header__bookmarks earlyHide', '/user/bookmarks', 'Bookmarks', 'fi fi-rs-wishlist-star')
+            else
                 +navItem('header__quran toLeft', '/quran', 'Quran', 'fi fi-rs-book-quran')
                 +navItem('header__hadith toLeft', '/hadith', 'Hadith', 'fi fi-rs-books')
                 +navItem('header__tafsir toLeft', '/tafsir', 'Tafsir', 'fi fi-rs-book-open-cover')
@@ -26,15 +26,15 @@ header.header
 
             
             li.header__search
-                if !search
-                    input(type="text", placeholder="Click for search page" id="searchField" readonly)
-                    a(href='/search' id="searchButton") 
-                            i(class="fi fi-rs-search")
-                else
+                if search
                     input(type="text", placeholder="Search.." id="searchField" class="shown")
                     a(href='#' id="searchButton") 
                             i(class="fi fi-rs-search")
             
+                else 
+                    input(type="text", placeholder="Click for search page" id="searchField" readonly)
+                    a(href='/search' id="searchButton") 
+                            i(class="fi fi-rs-search")
             if !user
                 +navItem('header__user nologin', '/user/me', '', 'fi fi-rs-user')
             else
@@ -42,11 +42,22 @@ header.header
                     a(href='/user/me' )
                         img(src=`/img/users/${user.photo || 'default-user.png'}`, alt='Logo') 
 
-            +navItem('header__menu', '#', '', 'fi fi-rr-menu-burger')
+            if search 
+                +navItem('header__menu earlyHide', '#', '', 'fi fi-rr-menu-burger')
+            else
+                +navItem('header__menu', '#', '', 'fi fi-rr-menu-burger')
 
-        ul.Menusidebar
-            +navItem('header__quran', '/quran', 'Quran', 'fi fi-rs-book-quran')
-            +navItem('header__hadith', '/hadith', 'Hadith', 'fi fi-rs-books')
-            +navItem('header__tafsir', '/tafsir', 'Tafsir', 'fi fi-rs-book-open-cover')
-            +navItem('header__about', '/about', 'About', 'fi fi-rs-info')
-            +navItem('header__bookmarks', '/user/bookmarks', 'Bookmarks', 'fi fi-rs-wishlist-star')
+        if search
+            ul.Menusidebar.earlyShow
+                +navItem('header__quran', '/quran', 'Quran', 'fi fi-rs-book-quran')
+                +navItem('header__hadith', '/hadith', 'Hadith', 'fi fi-rs-books')
+                +navItem('header__tafsir', '/tafsir', 'Tafsir', 'fi fi-rs-book-open-cover')
+                +navItem('header__about', '/about', 'About', 'fi fi-rs-info')
+                +navItem('header__bookmarks', '/user/bookmarks', 'Bookmarks', 'fi fi-rs-wishlist-star')
+        else 
+            ul.Menusidebar
+                +navItem('header__quran', '/quran', 'Quran', 'fi fi-rs-book-quran')
+                +navItem('header__hadith', '/hadith', 'Hadith', 'fi fi-rs-books')
+                +navItem('header__tafsir', '/tafsir', 'Tafsir', 'fi fi-rs-book-open-cover')
+                +navItem('header__about', '/about', 'About', 'fi fi-rs-info')
+                +navItem('header__bookmarks', '/user/bookmarks', 'Bookmarks', 'fi fi-rs-wishlist-star')

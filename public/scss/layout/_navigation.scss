@@ -101,12 +101,17 @@
 					transform: translateX(-2rem) translateY(0.5rem);
 					display: none;
 					z-index: 1000;
+					&.earlyHide {
+						@media (max-width: 1600px) {
+							margin-right: -3rem;
+							display: flex;
+						}
+					}
 					@media (max-width: 1300px) {
 						margin-right: -3rem;
 						display: flex;
 					}
 					@media (max-width: 600px) {
-						display: flex;
 						margin-right: -3.7rem;
 					}
 				}
@@ -135,7 +140,7 @@
 							border: 1px solid rgba(255, 255, 255, 0.311);
 						}
 					}
-					
+
 					a {
 						order: 2;
 						color: $tertiary-color;
@@ -147,8 +152,8 @@
 						i {
 							transform: translateY(-1rem);
 						}
-						@media (max-width: 400px) {
-							margin-left: 1rem;	
+						@media (max-width: 500px) {
+							margin-left: 1rem;
 						}
 					}
 					&:hover {
@@ -197,6 +202,20 @@
 								font-size: 3rem;
 							}
 						}
+						&.earlyHide {
+							@media (max-width: 1600px) {
+								display: none;
+							}
+						}
+						@media (max-width: 1600px) {
+							a {
+								font-size: 2.5rem;
+								margin: 0 2rem;
+								i {
+									font-size: 2.5rem;
+								}
+							}
+						}
 						@media (max-width: 1300px) {
 							display: none;
 						}
@@ -206,7 +225,6 @@
 						&.toLeft {
 							transform: translateX(5rem);
 						}
-	
 					}
 				}
 			}
@@ -243,13 +261,20 @@
 							font-size: 4rem;
 						}
 					}
+
 				}
 				&.open {
 					display: flex;
 					@media (min-width: 1300px) {
 						display: none;
 					}
-					@media (max-width: 400px) {
+					&.earlyShow {
+						@media (max-width: 1600px) {
+							margin-right: -3rem;
+							display: flex;
+						}
+					}
+					@media (max-width: 500px) {
 						width: 107vw;
 						li a {
 							font-size: 5rem;
@@ -285,7 +310,7 @@
 				&.header__about,
 				&.header__bookmarks {
 					a {
-						font-size: rem;
+						font-size: 4rem;
 						transform: translateY(-0.5rem);
 						img {
 							width: 3rem;
@@ -302,31 +327,34 @@
 		padding-top: 0;
 		nav {
 			padding-top: 0;
-			ul li {
-				&.header__logo {
-					padding-top: 1rem;
-					img {
-						width: 3rem;
-						height: 3rem;
+			.topbar{
+
+				ul li {
+					&.header__logo {
+						padding-top: 1rem;
+						img {
+							width: 3rem;
+							height: 3rem;
+						}
 					}
-				}
-				&.header__quran,
-				&.header__hadith,
-				&.header__tafsir,
-				&.header__about,
-				&.header__bookmarks {
-					a {
-						font-size: 1.2rem;
-						transform: translateY(-0.5rem);
+					&.header__quran,
+					&.header__hadith,
+					&.header__tafsir,
+					&.header__about,
+					&.header__bookmarks {
+						a {
+							font-size: 1rem;
+							transform: translateY(-0.5rem);
+						}
+						i {
+							font-size: 1.5rem;
+						}
 					}
-					i {
-						font-size: 1.5rem;
+					&.header__user--image a img {
+						width: 2.5rem;
+						height: 2.5rem;
+						transform: translateY(0.7rem);
 					}
-				}
-				&.header__user--image a img {
-					width: 2.5rem;
-					height: 2.5rem;
-					transform: translateY(0.7rem);
 				}
 			}
 		}

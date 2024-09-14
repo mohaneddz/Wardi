@@ -30,7 +30,7 @@ const results = document.querySelector('.results');
 
 // Function -----------------------------------------------------------------
 
-function search() {
+async function search() {
 	const { searchType, quran_language, hadith_language, tafsir_language, hadith_collection, tafsir_collection } =
 		selectedValues;
 	const query = searchInput.value;
@@ -65,7 +65,7 @@ function search() {
 	loading.classList.remove('invisible');
 	resultsContainer.innerHTML = '<div class="results__item--counter">Searching In Progress..</div>';
 	// axios post request to search
-	axios.post(url, {
+	const response = await axios.post(url, {
 		query,
 		book,
 	})

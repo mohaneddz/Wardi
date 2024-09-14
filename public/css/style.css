@@ -783,6 +783,7 @@ body {
   align-items: center;
   background-color: transparent;
   align-self: center;
+  position: absolute;
 }
 
 .circle-core {
@@ -969,6 +970,12 @@ body {
   display: none;
   z-index: 1000;
 }
+@media (max-width: 1600px) {
+  .header nav ul li.header__menu.earlyHide {
+    margin-right: -3rem;
+    display: flex;
+  }
+}
 @media (max-width: 1300px) {
   .header nav ul li.header__menu {
     margin-right: -3rem;
@@ -977,7 +984,6 @@ body {
 }
 @media (max-width: 600px) {
   .header nav ul li.header__menu {
-    display: flex;
     margin-right: -3.7rem;
   }
 }
@@ -1019,7 +1025,7 @@ body {
 .header nav ul li.header__search a i {
   transform: translateY(-1rem);
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .header nav ul li.header__search a {
     margin-left: 1rem;
   }
@@ -1059,6 +1065,20 @@ body {
 }
 .header nav ul.topbar li.header__quran a i, .header nav ul.topbar li.header__hadith a i, .header nav ul.topbar li.header__tafsir a i, .header nav ul.topbar li.header__about a i, .header nav ul.topbar li.header__bookmarks a i {
   font-size: 3rem;
+}
+@media (max-width: 1600px) {
+  .header nav ul.topbar li.header__quran.earlyHide, .header nav ul.topbar li.header__hadith.earlyHide, .header nav ul.topbar li.header__tafsir.earlyHide, .header nav ul.topbar li.header__about.earlyHide, .header nav ul.topbar li.header__bookmarks.earlyHide {
+    display: none;
+  }
+}
+@media (max-width: 1600px) {
+  .header nav ul.topbar li.header__quran a, .header nav ul.topbar li.header__hadith a, .header nav ul.topbar li.header__tafsir a, .header nav ul.topbar li.header__about a, .header nav ul.topbar li.header__bookmarks a {
+    font-size: 2.5rem;
+    margin: 0 2rem;
+  }
+  .header nav ul.topbar li.header__quran a i, .header nav ul.topbar li.header__hadith a i, .header nav ul.topbar li.header__tafsir a i, .header nav ul.topbar li.header__about a i, .header nav ul.topbar li.header__bookmarks a i {
+    font-size: 2.5rem;
+  }
 }
 @media (max-width: 1300px) {
   .header nav ul.topbar li.header__quran, .header nav ul.topbar li.header__hadith, .header nav ul.topbar li.header__tafsir, .header nav ul.topbar li.header__about, .header nav ul.topbar li.header__bookmarks {
@@ -1115,7 +1135,13 @@ body {
     display: none;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 1600px) {
+  .header nav ul.Menusidebar.open.earlyShow {
+    margin-right: -3rem;
+    display: flex;
+  }
+}
+@media (max-width: 500px) {
   .header nav ul.Menusidebar.open {
     width: 107vw;
   }
@@ -1145,7 +1171,7 @@ body {
     height: 4rem;
   }
   .header nav ul li.header__quran a, .header nav ul li.header__hadith a, .header nav ul li.header__tafsir a, .header nav ul li.header__about a, .header nav ul li.header__bookmarks a {
-    font-size: rem;
+    font-size: 4rem;
     transform: translateY(-0.5rem);
   }
   .header nav ul li.header__quran a img, .header nav ul li.header__hadith a img, .header nav ul li.header__tafsir a img, .header nav ul li.header__about a img, .header nav ul li.header__bookmarks a img {
@@ -1162,21 +1188,21 @@ body {
   .header nav {
     padding-top: 0;
   }
-  .header nav ul li.header__logo {
+  .header nav .topbar ul li.header__logo {
     padding-top: 1rem;
   }
-  .header nav ul li.header__logo img {
+  .header nav .topbar ul li.header__logo img {
     width: 3rem;
     height: 3rem;
   }
-  .header nav ul li.header__quran a, .header nav ul li.header__hadith a, .header nav ul li.header__tafsir a, .header nav ul li.header__about a, .header nav ul li.header__bookmarks a {
-    font-size: 1.2rem;
+  .header nav .topbar ul li.header__quran a, .header nav .topbar ul li.header__hadith a, .header nav .topbar ul li.header__tafsir a, .header nav .topbar ul li.header__about a, .header nav .topbar ul li.header__bookmarks a {
+    font-size: 1rem;
     transform: translateY(-0.5rem);
   }
-  .header nav ul li.header__quran i, .header nav ul li.header__hadith i, .header nav ul li.header__tafsir i, .header nav ul li.header__about i, .header nav ul li.header__bookmarks i {
+  .header nav .topbar ul li.header__quran i, .header nav .topbar ul li.header__hadith i, .header nav .topbar ul li.header__tafsir i, .header nav .topbar ul li.header__about i, .header nav .topbar ul li.header__bookmarks i {
     font-size: 1.5rem;
   }
-  .header nav ul li.header__user--image a img {
+  .header nav .topbar ul li.header__user--image a img {
     width: 2.5rem;
     height: 2.5rem;
     transform: translateY(0.7rem);
@@ -2071,9 +2097,10 @@ body {
   overflow-y: scroll;
   border-radius: 1rem;
   height: 90vh;
+  grid-column: 10/-1;
 }
 .options h2 {
-  font-size: 5rem;
+  font-size: 4.8rem;
   color: #c72378;
   text-align: center;
   display: block;
@@ -2183,7 +2210,10 @@ body {
     font-size: 1.3rem;
   }
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1300px) {
+  .options {
+    grid-column: 9/-1;
+  }
   .options h2 {
     font-size: 3rem;
   }
@@ -2207,7 +2237,7 @@ body {
 }
 @media screen and (max-width: 850px) {
   .options h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   .options h3 {
     font-size: 2.5rem;
@@ -2217,6 +2247,11 @@ body {
   }
   .options label {
     font-size: 1rem;
+  }
+}
+@media screen and (max-width: 650px) {
+  .options {
+    grid-column: 8/-1;
   }
 }
 
@@ -2262,6 +2297,16 @@ body {
 .results__item--counter--error, .results__item--counter--error--error {
   color: #b4626a;
 }
+@media screen and (max-width: 1200px) {
+  .results__item--counter, .results__item--counter--error {
+    font-size: 2.5rem;
+  }
+}
+@media screen and (max-width: 800px) {
+  .results__item--counter, .results__item--counter--error {
+    font-size: 2rem;
+  }
+}
 .results__item--quran, .results__item--hadith, .results__item--tafsir {
   padding: 1.5rem;
   border-left: 5px solid #192653;
@@ -2287,6 +2332,16 @@ body {
   line-height: 1.6;
   color: #b0b5c9;
 }
+@media screen and (max-width: 1200px) {
+  .results__item--quran--text, .results__item--hadith--text, .results__item--tafsir--text {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .results__item--quran--text, .results__item--hadith--text, .results__item--tafsir--text {
+    font-size: 1.3rem;
+  }
+}
 .results__item--quran--text span.match, .results__item--hadith--text span.match, .results__item--tafsir--text span.match {
   color: #45cf45;
 }
@@ -2297,6 +2352,16 @@ body {
   color: #c72378;
   text-shadow: 0 0 0.5rem black;
   text-decoration: underline;
+}
+@media screen and (max-width: 1200px) {
+  .results__item--quran--ayah, .results__item--quran--collection, .results__item--quran--collection, .results__item--hadith--ayah, .results__item--hadith--collection, .results__item--hadith--collection, .results__item--tafsir--ayah, .results__item--tafsir--collection, .results__item--tafsir--collection {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 800px) {
+  .results__item--quran--ayah, .results__item--quran--collection, .results__item--quran--collection, .results__item--hadith--ayah, .results__item--hadith--collection, .results__item--hadith--collection, .results__item--tafsir--ayah, .results__item--tafsir--collection, .results__item--tafsir--collection {
+    font-size: 1.7rem;
+  }
 }
 .results__item--quran:hover, .results__item--hadith:hover, .results__item--tafsir:hover {
   transform: translateY(-0.5rem);
@@ -2312,12 +2377,23 @@ body {
 .results__item--tafsir {
   border-left-color: #c72378;
 }
+@media screen and (max-width: 1300px) {
+  .results {
+    grid-column: 1/-5;
+  }
+}
+@media screen and (max-width: 650px) {
+  .results {
+    grid-column: 1/8;
+  }
+}
 
 .Loginpage,
 .Signuppage {
   display: grid;
   grid-template-rows: auto 1fr;
   margin-top: -10rem;
+  height: 100vh;
 }
 
 .mainLoginpage,
@@ -2496,6 +2572,10 @@ body {
   .Singup h1 {
     font-size: 8rem;
   }
+}
+
+.Singup {
+  transform: translateY(-5rem);
 }
 
 .lower {

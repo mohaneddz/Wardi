@@ -12,9 +12,10 @@
 	overflow-y: scroll;
 	border-radius: 1rem;
 	height: 90vh;
+	grid-column: 10/-1;
 
 	h2 {
-		font-size: 5rem;
+		font-size: 4.8rem;
 		color: $tertiary-color;
 		text-align: center;
 		display: block;
@@ -152,7 +153,8 @@
 			font-size: 1.3rem;
 		}
 	}
-	@media screen and (max-width: 1200px) {
+	@media screen and (max-width: 1300px) {
+		grid-column: 9/-1;
 		h2 {
 			font-size: 3rem;
 		}
@@ -176,7 +178,7 @@
 	}
 	@media screen and (max-width: 850px) {
 		h2 {
-			font-size: 2rem;
+			font-size: 1.8rem;
 		}
 		h3 {
 			font-size: 2.5rem;
@@ -187,5 +189,9 @@
 		label {
 			font-size: 1rem;
 		}
+	}
+	@media screen and (max-width: 650px) {
+		grid-column: 8/-1;
+
 	}
 }
