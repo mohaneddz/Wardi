@@ -1,102 +1,185 @@
-# Welcome to Wardi 🌟
+<h1 style="font-family: Arial, sans-serif; font-size: 36px; color: #4A90E2; display: flex; align-items: center; border-bottom: 3px solid #4A90E2; padding-bottom: 5px;">
+    <img src="public/img/favicon.ico" alt="Wardi Icon" style="width: 50px; height: 50px; margin-right: 15px;">
+    Welcome to Wardi! 🌟
+</h1>
+
+
+
+
 
 ## Introduction
 
-Wardi is a modern, minimalistic platform designed to provide a seamless and engaging experience for users exploring **Quran**, **Hadith**, and **Tafsir**. With a focus on both spiritual enrichment and cutting-edge technology, Wardi is tailored to enhance your spiritual journey, offering personalized reading options, an intuitive user interface, and synchronization across all your devices.
+Wardi is a modern and minimalistic platform designed to enrich your spiritual journey through an enhanced experience of exploring **Quran**, **Hadith**, and **Tafsir**. Blending cutting-edge technology with a spiritual focus, Wardi offers a personalized and seamless reading experience, complete with cloud sync and an intuitive user interface that adapts to all your devices. Whether you’re at home or on the go, Wardi ensures that your connection to these sacred texts remains uninterrupted.
 
-**Difficulty**: 7/10
+**Accessible At:**  [Wardi's Official Website](https://wardi.onrender.com)
+
+## The Idea 
+
+**The Concept:** I wanted to make an interactive website to sharpen my Web-Dev Skills as a **first project**, and I wanted it to be something that I see myself using everyday, which lead me to making a website for reading Quran, Hadith, Tafsir, with a beatiful interface, bookmarking capabilities, to **motivate myself for reading the quran even more!**, by something I specifically built by my own hands.
+
+**The Name "Wardi:"** was illustrated from the word **ورد** (ward) which refers to the daily amount of quran a person reads, and to take it even further, I made the website 's primary font **Pink!** which is a Synonyme to the website's name in arabic
 
 ## Features
+**You can see the representation video found [here](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)**
+[![Watch the video](public/img/screenshots/Thumbnail.png)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
 
 ### 📖 Access to Quran, Hadith, and Tafsir
-- Wardi provides a vast library of resources, available in both **Arabic** and **English**. Whether you're reading the **Quran**, exploring **Hadith**, or delving into **Tafsir**, Wardi has you covered. More languages will be added soon to cater to a broader audience.
+- Dive deep into a vast library of **Quran**, **Hadith**, and **Tafsir** content available in **Arabic** and **English**, with additional languages to be added soon. Whether you prefer exploring by chapter or verse, Wardi offers flexible access to its content, ensuring that your learning or reading journey remains fluid and insightful.
 
 ### 🧘‍♂️ Modern & Minimal Interface
-- Wardi's design keeps things simple and clean, allowing you to immerse yourself in the content. The minimalist approach ensures that there are no distractions, so you can focus on your reading.
+- Wardi embraces a clean and minimal design philosophy, eliminating distractions so you can focus solely on the content. The interface is user-friendly, intuitive, and purpose-built for seamless navigation, so your interaction with sacred texts is uninterrupted by unnecessary clutter.
 
 ### 📝 Tailored Reading Options
-- Customize your reading experience by choosing to read **by chapters**, **juzs**, **sections**, or even **pages**. The flexible fonts adjust to your device’s settings, while personalized bookmarks allow you to track your progress effortlessly.
+- Personalize your reading experience! You can choose to read by **chapter**, **juz**, **sections**, or even **pages**. Additionally, Wardi offers flexible font adjustments based on your device’s settings, allowing you to set the perfect reading experience tailored to your preferences. Keep track of your progress with **personalized bookmarks** and never lose your place again.
 
 ### 👤 Customizable User Pages
-- Wardi offers personalized user profiles where you can customize your information and profile picture. Track your spiritual journey and sync your preferences across devices for a unified experience.
+- Your Wardi profile is a reflection of your spiritual journey. Customize your profile with your own personal details and track your progress, preferences, and saved content across devices. You can update your profile picture and information for a fully personalized experience.
 
 ### 🔒 Secure & Private
-- Wardi places a high emphasis on **security** and **privacy**. With encrypted passwords and secure inbox mail for registration and recovery, your account and personal data are safe with us.
+- Security is at the core of Wardi's platform. Your account is protected with **encrypted passwords** using **sha256** encryption, and you can use your **secure inbox mail** for registration and recovery, ensuring your personal data remains safe and private.
 
 ### 💾 Persistent Settings & Cloud Sync
-- Your preferences, reading progress, and bookmarks are securely stored in the **cloud** and synced across all devices. This ensures you can pick up where you left off, no matter the device you're using.
+- Wardi stores your reading preferences, progress, and bookmarks in the **cloud**, ensuring you can seamlessly pick up where you left off across all your devices. Whether you’re switching from your phone to your tablet or desktop, Wardi syncs your data to provide a consistent experience.
 
 ### 📱 Responsive Design
-- Wardi is fully responsive, offering a consistent and smooth experience across **smartphones**, **tablets**, and **desktops**. The platform adapts to different screen sizes and resolutions, making it easy to read on any device.
+- Whether you’re using a smartphone, tablet, or desktop, Wardi is designed to deliver a smooth and consistent experience. With full **responsive design**, the platform adapts to your device’s screen size and resolution, making it as easy to navigate on a small screen as it is on a larger one.
 
 ### 🎨 Beautiful Animations & Visual Feedback
-- Wardi’s subtle animations and visual feedback enhance the **user experience** by guiding you smoothly through your interactions with the platform. These polished elements give the interface a dynamic yet professional feel.
+- Every interaction with Wardi is polished and refined. From subtle animations to smooth transitions, Wardi provides **visual feedback** that enhances the **user experience** without taking away from the core focus of reading and exploring.
 
 ### 🔖 Advanced Bookmarking System
-- The bookmarking system allows you to save and organize **Quran**, **Hadith**, and **Tafsir** content. Bookmark specific **verses**, **chapters**, or even entire **books** to access them later with ease.
+- Wardi’s bookmarking system allows you to save and organize your favorite **Quran**, **Hadith**, and **Tafsir** content. With the ability to bookmark specific **verses**, **chapters**, or entire **books**, you can easily revisit your most important sections later.
+
+### 💬 Multilingual Interface
+- Wardi is prepared for a global audience with its multilingual support, currently offering Arabic and English, with more languages coming soon. Whether you're fluent in Arabic or prefer English translations, the platform caters to both.
 
 ## Screenshots & Descriptions 🖼️
 
-### Screenshot 1: Clean Design
-![Modern Interface](/img/screenshots/2.png)
+### Clean Design  
+![Modern Interface](public/img/screenshots/1.png)  
 *Description: Wardi’s sleek and minimal interface ensures a distraction-free reading experience.*
 
-### Screenshot 2: Tailored Reading Options
-![Reading Options](/img/screenshots/3.png)
-*Description: Customize your reading experience with flexible reading options.*
+### The Quranic Collection  
+![Reading Options](public/img/screenshots/2.png)  
+*Description: chose amongst Warsh or Hafs recitations, as well as the english edition.*
 
-### Screenshot 3: Custom User Pages
-![User Profile](/img/screenshots/4.png)
-*Description: Personalize your profile and track your spiritual journey with ease.*
+### The Hadith Collection  
+![User Profile](public/img/screenshots/3.png)  
+*Description: With the 9 most well known Hadith books in both languages, you can find whatever it is you are looking for!.*
 
-### Screenshot 4: Extensive Resources
-![Resources](/img/screenshots/5.png)
-*Description: Access a wide library of Quran, Hadith, and Tafsir resources.*
+### The Tafsir Collections  
+![Resources](public/img/screenshots/4.png)  
+*Description: Access a wide library of 12 Quran Explanations, minimal and extensive, in both Arabic and English.*
 
-### Screenshot 5: Security and Privacy
-![Security](/img/screenshots/6.png)
-*Description: Wardi offers secure registration and password recovery options.*
+### The About says it All!
+![Security](public/img/screenshots/5.png)  
+![Performance](public/img/screenshots/6.png)  
+*Description: For an extensive yet beatiful list of features, visit the about us page!.*
 
-### Screenshot 6: Fast & Responsive
-![Performance](/img/screenshots/7.png)
-*Description: Wardi adapts seamlessly to all devices, offering a fast and responsive interface.*
+### Sign-in Page  
+![UX and Animations](public/img/screenshots/7.png)  
+*Description: which is confirmed by an email straight to your inbox!.*
 
-### Screenshot 7: UX & Animations
-![UX and Animations](/img/screenshots/8.png)
-*Description: Subtle animations and visual feedback enhance user experience.*
+### Login Page 
+![Bookmarking](public/img/screenshots/8.png)  
+*Description: you can login to your account if you have one, we can also help you reset your password in case you forget it.*
 
-### Screenshot 8: Bookmarking System
-![Bookmarking](/img/screenshots/9.png)
+### Customizable User Page  
+![Cloud Sync](public/img/screenshots/9.png)  
+*Description: Customize your profile and Sync your information and progress across all devices.*
+
+###  Bookmarks!
+![Design for Ease](public/img/screenshots/10.png)  
+![Font Settings](public/img/screenshots/11.png)  
 *Description: Advanced bookmarking system for saving and organizing content.*
 
-### Screenshot 9: Cloud Sync
-![Cloud Sync](/img/screenshots/10.png)
-*Description: Sync your preferences and progress across all devices.*
+###  Start Reading!  
+![Reading by Juz](public/img/screenshots/12.png)  
+*Description: with a beatiful & modern reader, the long chapters feel a lot shorter! (guarentee).*
+###  Bookmark, Bookmark, BOOKMARK!  
+![Offline Mode](public/img/screenshots/13.png)  
+*Description: Bookmark any verse, hadith, chapter...Anything! with a click of a button.*
 
-### Screenshot 10: Ease of Use
-![Design for Ease](/img/screenshots/11.png)
-*Description: Intuitive design makes navigating and using Wardi a breeze.*
+###  Special fonts for your need!
+![Dark Mode](public/img/screenshots/14.png)  
+*Description: Tailored to have a smooth reading experience in both Arabic & English.*
+
+###  Multiple Reading modes  
+![Language Support](public/img/screenshots/15.png)  
+*Description: Switch between Multiple reading modes, made for each reading purpose in mind!.*
+
+###  The Ultimate All-in-ne Search!  
+![Tafsir](public/img/screenshots/16.png)  
+![Bookmarks](public/img/screenshots/17.png)  
+*Description: Search for any query, in all of your books, Whether it is from Quran, Hadith, or Tafsir!.*
+
+###  Welcome to the Hadith Reader  
+![Dashboard](public/img/screenshots/18.png)  
+![Search](public/img/screenshots/19.png)  
+*Description: A beatiful interface for reading hadiths, from any given book.*
+
+###  Tafsir is Next!  
+![Device Syncing](public/img/screenshots/20.png)  
+![Reading by Section](public/img/screenshots/21.png)  
+![Animations](public/img/screenshots/22.png)  
+*Description: Either you want a brief or in depth explanations, or even Explanations in a different language.*
+
+###  Your Bookmarks are Smart!
+![Secure Login](public/img/screenshots/23.png)  
+*Description: displaying various types of inormation, depending on the selected field, such as the numbers, the books or even the languages!.*
+
+###  Snapshot of data Collection (taken before i go insane)
+![Bookmark Organization](public/img/screenshots/24.png)  
+*Description: Data was extracted, cleaned & manipulated from multiple sources manually with the power of VS-Code and using python.*
+
+###  Email examples sent by Wardi
+![Bookmark Organization](public/img/screenshots/25.png)  
+![Bookmark Organization](public/img/screenshots/26.png)  
+![Bookmark Organization](public/img/screenshots/27.png)  
+*Description: Official Emails sent on multiple occasions, such as email verification, creation, or Password reset Token.*
 
 ## Technologies Used 🛠️
 
-- **HTML**: Structure of the website.
-- **CSS**: Visual design and layout.
-- **SASS**: For better management of styles using variables, mixins, and more.
-- **JavaScript**: Handles the platform's interactive features and logic.
-- **Node.js**: Powers the back-end logic and data handling.
+- **HTML**: For structuring the website's content.
+- **CSS**: To define the design and layout.
+- **SASS**: For better style management, utilizing variables, mixins, and functions.
+- **JavaScript**: Responsible for handling the platform's interactivity.
+- **Node.js**: Powers the server-side logic and handles data processing.
+- **Express.js**: Provides a robust back-end framework for handling routes and middleware.
+- **Pug**: Used as a templating engine for rendering dynamic HTML pages more efficiently.
 
 ## How to Use Wardi 📃
+**You can do so by visiting the ofiicial website deployed at https://wardi.onrender.com with render**
+- active 24/7 using **Daemon pings***  
+- it uses both the free plan of MongoDB & Render, which might slow down the user experience
 
-1. **Clone the Repository**: Start by cloning this repository to your local machine.
-2. **Install Dependencies**: Run `npm install` to install all the necessary dependencies.
-3. **Run the Application**: Use `npm start` to start the application on your local server.
-4. **Customize Your Experience**: Once running, you can customize your settings, bookmarks, and preferences.
-5. **Sync Across Devices**: Log in from any device to access your saved preferences and reading progress.
+## Constraints, Known Issues & Future Plans 🚧
+
+### Constraints
+- **Free Plan Limitations**: Wardi is currently using free tiers for both **MongoDB** and **Render**, which can lead to slower performance during peak usage or when the platform is idle for extended periods. The platform relies on **Daemon pings** to stay active and has great optimizations, but this may still cause occasional downtime.
+- **Limited Languages**: At the moment, Wardi only supports **Arabic** and **English** languages. that is because adding more languages just means spending more time doing the tasks as before which contradicts my goal of learning by making this project. Hoever, adding more languages support is still possible if I recieve requests for it.
+
+### Known Issues
+- **Performance Delays**: Some users may experience slower load times or occasional lags when syncing data across devices due to free hosting limitations.
+- **Email Delivery**: During heavy traffic, emails for password recovery or verification may take longer to arrive, potentially affecting the registration process, which might take up to a minute of delay maximum.
+- **Potential bugs or visual inconsistencies**: Due to the limited time making this website, and how flexible and ever changing the layouts are, it is possible to encounter bugs, mostly just visual ones.
+
+### Future Plans
+- **Premium Hosting Upgrade**: We plan to move Wardi to premium hosting solutions if requested, to address performance and uptime issues. This will ensure faster response times and a more reliable service.
+- **Dark Mode / White Mode**: Although it's quite easy, I just didn't want to implement it yet, as I did a harder task in my past [Pomodoro](https://github.com/mohaneddz/BreezePomodoro) project, so it won't bring that much of a learning value to my project
+- **Delete My Account**: Quite an easy thing to do, If users request so do so, I will add this feature in a way that is similiar to the way you delete all bookmarks
+
+We welcome feedback from the community to further identify issues and prioritize new features.
+
+### Potential Plans
+- **Expanded Language Support**: By adding **French**, **Urdu**, and **Malay** and to Wardi's supported languages.
+- **Mobile App Development**: To launch dedicated **iOS** and **Android** apps, optimized for mobile devices, offering a smoother experience.
+
 
 ## Contributing 💌
 
-Feel free to contribute to Wardi! You can fork the repository, submit pull requests, or raise issues for improvements. We welcome contributions in the form of bug fixes, new features, or performance enhancements.
+We welcome contributions! You can fork the repository, submit pull requests, or raise issues for improvements. Contributions could include bug fixes, new feature development, or performance optimizations. Help us make Wardi even better!
 
 ## License ⚖️
 
-Wardi is open-source and available under the [MIT License](LICENSE).
+Wardi is open-source and licensed under the [CC BY-NC License](https://creativecommons.org/licenses/by-nc/4.0/deed.en). Feel free to explore, contribute, and use the platform within the bounds of this license.
