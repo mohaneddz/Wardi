@@ -4,10 +4,9 @@
 </h1>
 
 
-
-
-
 ## Introduction
+
+In celebration of the arrival of the Prophet's birthday (Mawlid al-Nabi). I have decided to share my latest Web-Dev Project, **Wardi!**
 
 Wardi is a modern and minimalistic platform designed to enrich your spiritual journey through an enhanced experience of exploring **Quran**, **Hadith**, and **Tafsir**. Blending cutting-edge technology with a spiritual focus, Wardi offers a personalized and seamless reading experience, complete with cloud sync and an intuitive user interface that adapts to all your devices. Whether you’re at home or on the go, Wardi ensures that your connection to these sacred texts remains uninterrupted.
 
