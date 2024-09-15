@@ -2143,6 +2143,12 @@ body {
   .quran h2 {
     font-size: 12rem;
   }
+  .hadith h1 {
+    font-size: 7rem;
+  }
+  .hadith h2 {
+    font-size: 12rem;
+  }
 }
 .alert {
   position: fixed;

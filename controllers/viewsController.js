@@ -90,7 +90,7 @@ export const searchView = catchAsync(async (req, res, next) => {
 export const sendWelcome= catchAsync(async (req, res, next) => {
 
 	const user = req.user;
-	const url = 'https://quran.com';
+	const url = `${req.protocol}://${req.get('host')}`;
 
 	await new email(user, url).sendWelcome();
 	res.status(200).json({
