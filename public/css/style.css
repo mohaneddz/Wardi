@@ -762,15 +762,43 @@ body {
   color: white;
 }
 @media screen and (max-width: 1000px) {
+  .Popup .Popup__Content .Popup__Buttons {
+    gap: 3rem;
+  }
   .Popup .Popup__Content h2 {
-    font-size: 4rem;
+    font-size: 3.5rem;
+  }
+}
+.Popup .Popup__Content .Popup__Buttons a {
+  font-size: 2rem;
+  width: 16rem;
+  height: 20rem;
+}
+.Popup .Popup__Content .Popup__Buttons a i {
+  font-size: 10rem;
+}
+@media screen and (max-width: 500px) {
+  .Popup .Popup__Content h2 {
+    font-size: 3rem;
   }
   .Popup .Popup__Content a {
     font-size: 2rem;
-    width: 17rem;
+    width: 15rem;
     height: 20rem;
   }
   .Popup .Popup__Content a i {
+    font-size: 10rem;
+  }
+  .Popup .Popup__Content .Popup__Buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .Popup .Popup__Content .Popup__Buttons a {
+    font-size: 2rem;
+    width: 16rem;
+    height: 20rem;
+  }
+  .Popup .Popup__Content .Popup__Buttons a i {
     font-size: 10rem;
   }
 }

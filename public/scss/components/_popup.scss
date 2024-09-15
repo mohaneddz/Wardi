@@ -103,15 +103,45 @@
 			}
 		}
 		@media screen and (max-width: 1000px) {
-			h2{
-				font-size: 4rem;
+			.Popup__Buttons {
+				gap: 3rem;
 			}
+			h2 {
+				font-size: 3.5rem;
+			}
+		}
+		.Popup__Buttons {
 			a {
 				font-size: 2rem;
-				width: 17rem;
+				width: 16rem;
 				height: 20rem;
 				i {
 					font-size: 10rem;
+				}
+			}
+		}
+		@media screen and (max-width: 500px) {
+			h2 {
+				font-size: 3rem;
+			}
+			a {
+				font-size: 2rem;
+				width: 15rem;
+				height: 20rem;
+				i {
+					font-size: 10rem;
+				}
+			}
+			.Popup__Buttons {
+				flex-direction: column;
+				align-items: center;
+				a {
+					font-size: 2rem;
+					width: 16rem;
+					height: 20rem;
+					i {
+						font-size: 10rem;
+					}
 				}
 			}
 		}
