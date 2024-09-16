@@ -16,7 +16,7 @@ Wardi is a modern and minimalistic platform designed to enrich your spiritual jo
 
 **The Concept:** I wanted to make an interactive website to sharpen my Web-Dev Skills as a **first project**, and I wanted it to be something that I see myself using everyday, which lead me to making a website for reading Quran, Hadith, Tafsir, with a beatiful interface, bookmarking capabilities, to **motivate myself for reading the quran even more!**, by something I specifically built by my own hands.
 
-**The Name "Wardi:"** was illustrated from the word **ورد** (ward) which refers to the daily amount of quran a person reads, and to take it even further, I made the website 's primary font **Pink!** which is a Synonyme to the website's name in arabic
+**The Name "Wardi:"** was illustrated from the word **وِرْد** (wird) which refers to the daily amount of quran a person reads, and to take it even further, I made the website 's primary font **Pink!** which is a Synonyme to the website's name in arabic
 
 ## Features
 **You can see the representation video found [here](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)**
