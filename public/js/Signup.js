@@ -25,8 +25,8 @@ const signup = async (username, email, password, passwordConfirm) => {
                 location.assign('/user/login');
             }, 1500);
         }
-    } catch (err) {
-        showAlert('error', err.response.data.message);
+    } catch (error) {
+        showAlert('error', error.response.data.message);
     }
 };
 

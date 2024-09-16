@@ -30,7 +30,7 @@ router.get('/resetPassword', authController.resetPassword).post(
 	authController.resetPassword,
 	userController.newPasswordView
 );
-// TODO : add verification for changing email
+// TODO : Delete inactaive users after 24 hours
 
 // ---------------------------------------------------------------------------------------------------------------- Deprecated Routes ( Not Needed )
 

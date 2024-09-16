@@ -23,8 +23,8 @@ export const reset = async (password) => {
                 location.assign('/');
             }, 1500);
         }
-    } catch (err) {
-        showAlert('error', err.message);
+    } catch (error) {
+        showAlert('error', error.response.data.message);
     }
 };
 

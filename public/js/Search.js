@@ -88,7 +88,7 @@ async function search() {
 		})
 		.catch((err) => {
 			loading.classList.add('invisible');
-			showAlert('error', err.message);
+			showAlert('error', err.response.data.message);
 			resultsContainer.innerHTML =
 				'<div class="results__item--counter">Please Try Again with different parameters</div>';
 		});

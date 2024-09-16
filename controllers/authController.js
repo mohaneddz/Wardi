@@ -68,8 +68,8 @@ export const signup = async (req, res, next) => {
 				user: newUser,
 			},
 		});
-	} catch (err) {
-		next(err);
+	} catch (error) {
+		next(error);
 	}
 };
 
@@ -82,7 +82,11 @@ export const login = catchAsync(async (req, res, next) => {
 	}
 
 	// 2) Check if user exists && password is correct
-	const user = await User.findOne({ email }).select('+password');
+	const user = await User.findOne({ email }).setOptions({bypassMiddleware: true}).select('+password');
+
+	if (user && !user.isActive) {
+		return next(new AppError('User must finish email verification first!', 400));
+	}
 
 	if (!user || !(await user.correctPassword(password, user.password))) {
 		return next(new AppError('Incorrect email or password', 401));
@@ -176,7 +180,7 @@ export const isLoggedIn = async (req, res, next) => {
 			res.locals.user = currentUser;
 
 			return next();
-		} catch (err) {
+		} catch (error) {
 			return next();
 		}
 	}
@@ -217,7 +221,7 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
 			status: 'success',
 			message: 'Token sent to email!',
 		});
-	} catch (err) {
+	} catch (error) {
 		// Reset the token and the expires date if there is an error
 		user.passwordResetToken = undefined;
 		user.passwordResetExpires = undefined;

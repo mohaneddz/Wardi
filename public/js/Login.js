@@ -25,8 +25,8 @@ export const login = async (email, password) => {
                 location.assign('/');
             }, 1500);
         }
-    } catch (err) {
-        showAlert('error', err);
+    } catch (error) {
+        showAlert('error', error.response.data.message);
     }
 };
 
@@ -46,8 +46,8 @@ export const forgottenPassword = async (email) => {
                 location.assign('/');
             }, 1500);
         }
-    } catch (err) {
-        showAlert('error', err.response.data.message);
+    } catch (error) {
+        showAlert('error', error.response.data.message);
     }
 }
 

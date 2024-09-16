@@ -51,7 +51,7 @@ function updateUser(e) {
 			}
 		})
 		.catch((err) => {
-			showAlert('error', err.message);
+			showAlert('error', err.response.data.message);
 		});
 }
 
@@ -70,7 +70,7 @@ function logout(e) {
 			}
 		})
 		.catch((err) => {
-			showAlert(`error', 'Error, ${err.message}`);
+			showAlert(`error', 'Error, ${err.response.data.message}`);
 		});
 }
 
