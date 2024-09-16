@@ -19,8 +19,8 @@ Wardi is a modern and minimalistic platform designed to enrich your spiritual jo
 **The Name "Wardi:"** was illustrated from the word **وِرْد** (wird) which refers to the daily amount of quran a person reads, and to take it even further, I made the website 's primary font **Pink!** which is a Synonyme to the website's name in arabic
 
 ## Features
-**You can see the representation video found [here](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)**
-[![Watch the video](public/img/screenshots/Thumbnail.png)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+**You can see the representation video found [here](https://www.youtube.com/watch?v=UM0ln64cOvU&ab_channel=MohanedManaa)**
+[![Watch the video](public/img/screenshots/Thumbnail.png)](https://www.youtube.com/watch?v=UM0ln64cOvU&ab_channel=MohanedManaa)
 
 ### 📖 Access to Quran, Hadith, and Tafsir
 - Dive deep into a vast library of **Quran**, **Hadith**, and **Tafsir** content available in **Arabic** and **English**, with additional languages to be added soon. Whether you prefer exploring by chapter or verse, Wardi offers flexible access to its content, ensuring that your learning or reading journey remains fluid and insightful.
