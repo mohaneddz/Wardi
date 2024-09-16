@@ -24,7 +24,7 @@ router.get('/me', userController.getUserPage).patch(
 );
 router.get('/verifyEmail', authController.verifyEmail);
 router.get('/forgotPassword', userController.newPasswordView).post('/forgotPassword', authController.forgotPassword);
-router.get('/resetPassword',authController.resetPassword ).post(
+router.get('/resetPassword', authController.resetPassword).post(
 	'/resetPassword',
 	authController.isLoggedIn,
 	authController.resetPassword,
@@ -32,9 +32,7 @@ router.get('/resetPassword',authController.resetPassword ).post(
 );
 // TODO : add verification for changing email
 
-
-
-// ---------------------------------------------------------------------------------------------------------------- Deprecated Routes ( Not Needed ) 
+// ---------------------------------------------------------------------------------------------------------------- Deprecated Routes ( Not Needed )
 
 // router.get('/bookmarks', userController.getBookmarksView).post('/bookmarks', authController.isLoggedIn, userController.addBookmark);
 // Password Reset Routes ------------------------------------------------

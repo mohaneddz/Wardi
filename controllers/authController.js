@@ -37,8 +37,11 @@ export const createSendToken = (user, statusCode, req, res) => {
 export const signup = async (req, res, next) => {
 	// Trying to create a new user 🤷‍♂️
 	try {
-		const user = await User.findOne({ email: req.body.email });
+		const user = await User.findOne({ email: req.body.email }).setOptions({ bypassMiddleware: true });;
 		if (user) return next(new AppError('User already exists', 400));
+		
+		const userName = await User.findOne({ username: req.body.username }).setOptions({ bypassMiddleware: true });;
+		if (userName) return next(new AppError('This Name is Already taken', 400));
 
 		const { username, email, password, passwordConfirm } = req.body;
 		const newUser = await User.create({

@@ -8,6 +8,11 @@ import AppError from './../utils/appError.js';
 import * as factory from './handlerFactory.js';
 import { updatePassword } from './authController.js';
 import { info } from 'sass';
+import { v2 as cloudinary } from 'cloudinary';
+import streamifier from 'streamifier';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: './config.env' });
 
 // export const uploadUserPhoto = upload.single('photo');
 
@@ -153,41 +158,6 @@ export const removeBookmark = catchAsync(async (req, res, next) => {
 			bookmark: user.bookmarks,
 		},
 	});
-});
-
-// Image Upload ----------------------------------------------
-
-const multerStorage = multer.memoryStorage();
-
-const multerFilter = (req, file, cb) => {
-	if (file.mimetype.startsWith('image')) {
-		cb(null, true);
-	} else {
-		cb(new AppError('Not an image! Please upload only images.', 400), false);
-	}
-};
-
-const upload = multer({
-	storage: multerStorage,
-	fileFilter: multerFilter,
-});
-
-export const uploadUserPhoto = upload.single('photo');
-
-export const resizeUserPhoto = catchAsync(async (req, res, next) => {
-	if (!req.file) return next();
-
-	const filename = `user-${req.user.id}-${Date.now()}.jpeg`;
-
-	await sharp(req.file.buffer)
-		.resize(500, 500)
-		.toFormat('jpeg')
-		.jpeg({ quality: 90 })
-		.toFile(`public/img/users/${filename}`);
-
-	req.file.filename = filename;
-
-	next();
 });
 
 export const bookmarksView = (req, res) => {
@@ -373,6 +343,68 @@ export const getBookmarks = catchAsync(async (req, res, next) => {
 		type,
 		url,
 	});
+});
+
+// Image Upload ----------------------------------------------
+
+// Multer storage and filter setup
+const multerStorage = multer.memoryStorage(); // Use memoryStorage for buffer handling
+
+const multerFilter = (req, file, cb) => {
+	if (file.mimetype.startsWith('image')) {
+		cb(null, true);
+	} else {
+		cb(new AppError('Not an image! Please upload only images.', 400), false);
+	}
+};
+
+const upload = multer({
+	storage: multerStorage,
+	fileFilter: multerFilter,
+});
+(async () => {
+cloudinary.config({
+	cloud_name: String(process.env.CLOUD_NAME),
+	api_key: Number(process.env.CLOUD_API_KEY),
+	api_secret: String(process.env.CLOUD_API_SECRET),
+});
+})();
+
+export const uploadUserPhoto = upload.single('photo');
+
+// Resize and upload image to Cloudinary
+export const resizeUserPhoto = catchAsync(async (req, res, next) => {
+	if (!req.file) return next(); // Proceed if no file
+
+	// Resize image with sharp
+	const buffer = await sharp(req.file.buffer).resize(500, 500).toFormat('jpeg').jpeg({ quality: 90 }).toBuffer();
+
+	const uploadFromBuffer = (buffer) => {
+		return new Promise((resolve, reject) => {
+			const stream = cloudinary.uploader.upload_stream(
+				{ public_id: `user-${req.user.id}-${Date.now()}` }, // Naming scheme
+				(error, result) => {
+					if (result) resolve(result);
+					else reject(error);
+				}
+			);
+			streamifier.createReadStream(buffer).pipe(stream);
+		});
+	};
+
+	const result = await uploadFromBuffer(buffer);
+
+	req.file.filename = result.secure_url; // Store the Cloudinary URL in req.file
+
+	// Apply image transformation and optimization (optional)
+	const optimizedUrl = cloudinary.url(result.public_id, {
+		fetch_format: 'auto',
+		quality: 'auto',
+	});
+
+	console.log('Optimized image URL:', optimizedUrl);
+
+	next();
 });
 
 // Label Removal Bookmarks ----------------------------------------------
