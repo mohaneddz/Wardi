@@ -40,7 +40,7 @@ header.header
             else
                 li.header__user--image
                     a(href='/user/me' )
-                        img(src=`/img/users/${user.photo || 'default-user.png'}`, alt='Logo') 
+                        img(src=`${user.photo || 'default-user.png'}`, alt='Logo') 
 
             if search 
                 +navItem('header__menu earlyHide', '#', '', 'fi fi-rr-menu-burger')
