@@ -24,11 +24,46 @@
 }
 
 .quran__page--number {
-	position: static;
+	position: relative;
+	bottom: 0;
 	opacity: 0.5;
-	margin-top: 5rem;
-	backdrop-filter: blur(10px);
-	background-color: rgba(#b0b3c0, 0.5);
+	direction: ltr;
+	width: 100%;
+	text-align: center;
+	margin-top: auto;
+	padding: 10rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	span {
+		padding-left: 5rem;
+		padding-right: 5rem;
+	}
+	a {
+		color: black;
+		padding: 1rem;
+		transition: 0.3s;
+		height: min-content;
+		border-radius: 50rem;
+		text-decoration: none;
+		i {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+		}
+		&:hover {
+			color: white;
+			background-color: black;
+			scale: 1.1;
+		}
+		&:active {
+			color: white;
+			background-color: black;
+			scale: 1.1;
+		}
+	}
 }
 .divider {
 	font-family: 'Divider', serif;
@@ -334,7 +369,7 @@
 	direction: ltr !important;
 }
 
-@media screen and ((max-width: 800px) or (max-height: 800px) ){
+@media screen and ((max-width: 800px) or (max-height: 800px)) {
 	.hadith,
 	.quran,
 	.tafsir {
@@ -356,7 +391,7 @@
 		}
 	}
 	.active {
-		@media screen and ((max-width: 500px) or (max-height: 500px) ){
+		@media screen and ((max-width: 500px) or (max-height: 500px)) {
 			// height: 80vh;
 		}
 	}
@@ -369,7 +404,7 @@
 			font-size: 12rem;
 		}
 	}
-	.hadith{
+	.hadith {
 		h1 {
 			font-size: 7rem;
 		}

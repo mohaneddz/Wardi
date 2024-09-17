@@ -1776,7 +1776,10 @@ body {
   border-radius: 2rem;
   height: 90vh;
   width: 100%;
+  overflow-x: hidden;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 .hadith .active,
 .quran .active,
@@ -1808,11 +1811,44 @@ body {
 }
 
 .quran__page--number {
-  position: static;
+  position: relative;
+  bottom: 0;
   opacity: 0.5;
-  margin-top: 5rem;
-  backdrop-filter: blur(10px);
-  background-color: rgba(176, 179, 192, 0.5);
+  direction: ltr;
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
+  padding: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quran__page--number span {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+.quran__page--number a {
+  color: black;
+  padding: 1rem;
+  transition: 0.3s;
+  height: min-content;
+  border-radius: 50rem;
+  text-decoration: none;
+}
+.quran__page--number a i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quran__page--number a:hover {
+  color: white;
+  background-color: black;
+  scale: 1.1;
+}
+.quran__page--number a:active {
+  color: white;
+  background-color: black;
+  scale: 1.1;
 }
 
 .divider {
@@ -2935,6 +2971,11 @@ body main .cards {
 @media screen and (max-width: 1500px) {
   .error__message h1 {
     font-size: 8rem;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .error__message h1 {
+    font-size: 4rem;
   }
 }
 

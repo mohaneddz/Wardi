@@ -53,5 +53,14 @@
                     | !{`${verse.text} ${verse.verse} `.replace(/\d+/g, d => `<span class="ayah_number">${d.split('').map(digit => '٠١٢٣٤٥٦٧٨٩'[digit]).join('')}</span>`)}
 
             // Display the page number at the end   
-            p.quran__page--number
-                span= `${this_page.page_number} الصفحة`
+
+        p.quran__page--number
+            if pageNumber > 1
+                a.quran__page--prev(href=`/quran/book/${this_book}/page/${pageNumber + -1}`)
+                    i(class='fi fi-rr-arrow-left')
+            
+            span= `${this_page.page_number} الصفحة`
+            
+            if pageNumber < 604
+                a.quran__page--next(href=`/quran/book/${this_book}/page/${pageNumber + 1}`)
+                    i(class='fi fi-rr-arrow-right')

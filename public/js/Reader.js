@@ -153,6 +153,7 @@ function toggleSides() {
 	} else {
 		sidesbtn.innerHTML = '<i class="fi fi-rr-menu-burger"></i>';
 	}
+	innit();
 }
 
 function searchSurah() {
@@ -190,6 +191,24 @@ export function closePopupFromOutside(e) {
 	}
 }
 
+export function innit() {
+	const lseceltion = document.querySelector('.Lsidebar .selectedEntry');
+	const rselection = document.querySelector('.Rsidebar .selectedEntry');
+	console.log(lseceltion, rselection);
+	console.log(lsidebar, rsidebar);
+
+	lseceltion &&
+		lsidebar.scrollTo({
+			top: lseceltion.offsetTop - lsidebar.offsetTop,
+			behavior: 'smooth',
+		});
+	rselection &&
+		rsidebar.scrollTo({
+			top: rselection.offsetTop - rsidebar.offsetTop,
+			behavior: 'smooth',
+		});
+}
+
 // Event Listeners -------------------------
 sidesbtn?.addEventListener('click', toggleSides);
 lsearch?.addEventListener('input', searchSurah);
@@ -202,3 +221,5 @@ readingbtn.addEventListener('click', () => {
 	popup.classList.toggle('invisible');
 });
 document.addEventListener('click', closePopupFromOutside);
+
+innit();

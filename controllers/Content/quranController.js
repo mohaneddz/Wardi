@@ -204,7 +204,7 @@ export const getPageView = catchAsync(async (req, res, next) => {
 			break;
 		}
 	}
-
+	// TODO Add 604+ pages to English Quran
 	const this_page = await Page.findOne({ page_number: pageNumber }).sort({ chapter: 1, verses: 1 }).lean();
 	const allpages = await Page.find().select('page_number').sort({ page_number: 1 }).lean();
 	const chapter_info = await ChapterInfo.find().sort({ number: 1 }).lean();
