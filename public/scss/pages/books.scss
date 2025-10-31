@@ -6,12 +6,14 @@ main {
 		align-items: stretch;
 		justify-content: center;
 		align-content: center;
-		border-radius: 3rem;
+		border-radius: 1rem;
 		gap: 2rem;
+		width: 80vw;
+		max-width: 1200px;
 		margin-bottom: 10rem;
 		background-color: $primary-color-light;
 		padding: 2rem;
-		font-size: 3rem;
+		font-size: 1rem;
 		box-shadow: 0 0 5rem rgba(0, 0, 0, 0.5);
 
 		@media (max-width: 1000px) {

@@ -1,40 +1,47 @@
 @import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
 @font-face {
   font-family: "Uthmanic";
   src: url("../fonts/Uthmanic-V22.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Surah";
   src: url("../fonts/Elgharib-SurahName V4.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Basmallah";
   src: url("../fonts/Elgharib-Basmala.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Istieadha";
   src: url("../fonts/Elgharib-istieadha.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Divider";
   src: url("../fonts/Elgharib-Dividers.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Parenthesis";
   src: url("../fonts/Elgharib-A002.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
+
 *,
 *::after,
 *::before {
@@ -46,11 +53,13 @@
 html {
   font-size: 62.5%;
 }
+
 @media (max-width: 576px) {
   html {
     font-size: 50%;
   }
 }
+
 @media (max-width: 450px) {
   html {
     font-size: 45%;
@@ -103,11 +112,13 @@ body {
   padding: 0 1rem;
   cursor: pointer;
 }
+
 .title h1:hover {
   transform: scale(1.2) translateY(-0.5rem);
   text-shadow: 0.4rem 0.4rem 2rem rgba(199, 35, 120, 0.452);
   color: #c72378;
 }
+
 .title h2 {
   display: flex;
   justify-content: center;
@@ -119,6 +130,7 @@ body {
   max-width: 100%;
   padding: 0 1rem;
 }
+
 .title h2:hover {
   transform: scale(1.2) translateY(-0.5rem);
   text-shadow: 0.4rem 0.4rem 2rem rgba(176, 181, 201, 0.452);
@@ -144,48 +156,57 @@ body {
   font-size: 7rem;
   text-align: center;
 }
+
 .HadithBooks .title h2:hover {
   cursor: pointer;
   color: #010205;
   text-shadow: 0 0 10px #c72378;
 }
+
 @media (max-width: 1000px) {
   .HadithBooks .title h2 {
     font-size: 5.5rem;
     margin-bottom: -3rem;
   }
 }
+
 @media (max-width: 800px) {
   .HadithBooks .title h2 {
     font-size: 4.5rem;
     margin-bottom: -3.5rem;
   }
 }
+
 @media (max-width: 400px) {
   .HadithBooks .title h2 {
     font-size: 4rem;
     margin-bottom: -4rem;
   }
 }
+
 .HadithBooks h3 {
   font-size: 3rem;
   text-align: center;
   color: #c72378;
   text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.5);
 }
+
 .HadithBooks .books__card__info {
   display: flex;
   width: 100%;
 }
+
 .HadithBooks .books__card__info__hadiths {
   font-size: 2rem;
   color: #dee2e6;
   display: flex;
 }
+
 .HadithBooks .books__card__info__fav a {
   text-decoration: none;
   color: #c72378;
 }
+
 .HadithBooks .books__card__info__language {
   position: absolute;
   font-size: 2rem;
@@ -203,11 +224,13 @@ body {
     opacity: 0;
     scale: 0.5;
   }
+
   100% {
     opacity: 1;
     scale: 1;
   }
 }
+
 .hidden {
   opacity: 0;
   scale: 0.3;
@@ -229,6 +252,7 @@ body {
     scale: 1;
   }
 }
+
 .books__card {
   display: flex;
   flex-direction: column;
@@ -245,22 +269,26 @@ body {
   cursor: pointer;
   position: relative;
 }
+
 .books__card .books__card__link {
   position: absolute;
   z-index: 50;
   width: 100%;
   height: 100%;
 }
+
 .books__card .books__card__info {
   display: flex;
   justify-content: center;
   align-items: center;
   color: #dee2e6;
 }
+
 .books__card .books__card__info__hadiths {
   font-size: 2rem;
   display: flex;
 }
+
 .books__card .books__card__info__fav a {
   position: absolute;
   z-index: 60;
@@ -271,16 +299,19 @@ body {
   left: 5%;
   transition: all 0.3s;
 }
+
 .books__card .books__card__info__fav a:hover {
   color: #e56baa;
   transform: scale(1.4);
 }
+
 .books__card img {
   width: 100%;
   height: 100%;
   border: 5px solid #010205;
   border-radius: 15px;
 }
+
 .books__card:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
@@ -288,7 +319,7 @@ body {
   border: 2px solid #701444;
 }
 
-.cuts > * {
+.cuts>* {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -304,23 +335,26 @@ body {
   border-radius: 1rem;
   cursor: pointer;
 }
+
 @media (max-width: 800px) {
-  .cuts > * {
+  .cuts>* {
     font-size: 2.5rem;
   }
 }
+
 @media (max-width: 656px) {
-  .cuts > * {
+  .cuts>* {
     font-size: 1.75rem;
   }
 }
-.cuts > *:hover {
+
+.cuts>*:hover {
   transform: scale(1.2) translateY(-0.5rem);
   text-shadow: 0.4rem 0.4rem 2rem rgba(199, 35, 120, 0.452);
   color: #c72378;
 }
 
-.cards > * {
+.cards>* {
   background-color: #0D142C;
   color: white;
   position: relative;
@@ -336,10 +370,12 @@ body {
   animation: listscroll linear;
   animation-timeline: view(100px);
 }
-.cards > * .cards__surah {
+
+.cards>* .cards__surah {
   position: relative;
 }
-.cards > * .cards__surah__link {
+
+.cards>* .cards__surah__link {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -347,8 +383,9 @@ body {
   text-decoration: none;
   z-index: 20;
 }
-.cards > * p.cards__surah__info__order,
-.cards > * h3.cards__surah__name {
+
+.cards>* p.cards__surah__info__order,
+.cards>* h3.cards__surah__name {
   display: inline;
   position: relative;
   z-index: 2;
@@ -356,14 +393,16 @@ body {
   margin-left: 1rem;
   color: #b0b5c9;
 }
-.cards > * p.cards__surah__info__order {
+
+.cards>* p.cards__surah__info__order {
   font-size: 1.5rem;
   width: 3.5rem;
   height: 3.5rem;
   color: rgb(255, 254, 254);
   margin-bottom: 1rem;
 }
-.cards > * p.cards__surah__info__order::after {
+
+.cards>* p.cards__surah__info__order::after {
   content: "";
   width: 3.5rem;
   height: 3.5rem;
@@ -375,31 +414,36 @@ body {
   transform: translate(-50%, -50%) rotate(45deg);
   border-radius: 5px;
 }
-.cards > * p.cards__surah__info__ayat,
-.cards > * p.cards__surah__info__type {
+
+.cards>* p.cards__surah__info__ayat,
+.cards>* p.cards__surah__info__type {
   display: inline;
   color: #737ca0;
   font-size: 2rem;
   float: left;
 }
-.cards > * p.cards__surah__info__type {
+
+.cards>* p.cards__surah__info__type {
   float: right;
 }
-.cards > * a {
+
+.cards>* a {
   position: absolute;
   top: 5%;
   right: 5%;
   color: #c72378;
   text-decoration: none;
 }
-.cards > *:hover {
+
+.cards>*:hover {
   transform: scale(1.1);
   background-color: #701444;
   z-index: 3;
   cursor: pointer;
 }
+
 @media (max-width: 600px) {
-  .cards > * {
+  .cards>* {
     min-width: 40rem;
   }
 }
@@ -423,10 +467,12 @@ body {
   border-radius: 1rem;
   transition: all 0.3s;
 }
+
 .LsideEntry[style*="display: none"],
 .RsideEntry[style*="display: none"] {
   display: none !important;
 }
+
 .LsideEntry i,
 .RsideEntry i {
   z-index: 30;
@@ -440,24 +486,29 @@ body {
   background-color: rgba(36, 56, 123, 0.2);
   border-radius: 1rem;
   -webkit-backdrop-filter: blur(1rem);
-          backdrop-filter: blur(1rem);
+  backdrop-filter: blur(1rem);
 }
+
 .LsideEntry i:hover,
 .RsideEntry i:hover {
   opacity: 1;
   transform: scale(1.3);
 }
+
 .LsideEntry:hover,
 .RsideEntry:hover {
   background-color: #24387b;
   color: #c72378;
   transform: scale(1.05);
 }
+
 .LsideEntry:hover *,
 .RsideEntry:hover * {
   opacity: 1;
 }
+
 @media (max-width: 1800px) {
+
   .LsideEntry,
   .RsideEntry {
     font-size: clamp(1rem, 2vw, 2rem);
@@ -468,7 +519,9 @@ body {
     gap: 0.5rem;
   }
 }
+
 @media (max-width: 1200px) {
+
   .LsideEntry,
   .RsideEntry {
     min-width: calc(100% + 3rem);
@@ -505,6 +558,7 @@ body {
   width: 100%;
   z-index: 1000;
 }
+
 .header nav {
   padding: 1rem 0;
   display: flex;
@@ -512,6 +566,7 @@ body {
   align-items: center;
   width: 100%;
 }
+
 .header nav ul {
   display: flex;
   justify-content: center;
@@ -520,79 +575,104 @@ body {
   list-style: none;
   width: 100%;
 }
+
 .header nav ul li {
   margin-right: 1rem;
   position: relative;
   display: block;
 }
+
 .header nav ul li:last-child {
   margin-right: 0;
 }
+
 .header nav ul li:hover {
   transform: scale(1.3) translateY(0);
   text-shadow: 0.4rem 0.4rem 2rem rgba(255, 255, 255, 0.452);
   color: white;
 }
+
 .header nav ul li:hover * {
   color: white;
 }
+
 .header nav ul li:hover a i {
   cursor: pointer;
 }
+
 .header nav ul li a i {
   font-size: 2rem;
   color: #c72378;
   position: absolute;
   left: -70%;
 }
+
 .header nav ul li.header__bookmarks a i {
   left: -40%;
 }
+
 .header nav ul li.header__logo {
   margin-right: auto;
 }
+
 .header nav ul li.header__logo img {
   width: 5rem;
   height: 5rem;
 }
+
 .header nav ul li.header__logo a i {
   align-self: flex-start;
 }
-.header nav ul li.header__user, .header nav ul li.header__menu {
+
+.header nav ul li.header__user,
+.header nav ul li.header__menu {
   display: flex;
   align-items: center;
 }
-.header nav ul li.header__user img, .header nav ul li.header__menu img {
+
+.header nav ul li.header__user img,
+.header nav ul li.header__menu img {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
   margin-right: 1rem;
 }
-.header nav ul li.header__user:hover, .header nav ul li.header__menu:hover {
+
+.header nav ul li.header__user:hover,
+.header nav ul li.header__menu:hover {
   cursor: pointer;
 }
-.header nav ul li.header__user a i, .header nav ul li.header__menu a i {
+
+.header nav ul li.header__user a i,
+.header nav ul li.header__menu a i {
   transform: translate(-1rem, -1rem);
 }
-.header nav ul li.header__user, .header nav ul li.header__menu, .header nav ul li.header__search {
+
+.header nav ul li.header__user,
+.header nav ul li.header__menu,
+.header nav ul li.header__search {
   transform: translateX(-1rem);
 }
+
 .header nav ul li.header__menu {
   transform: translateX(-2rem);
   display: none;
   z-index: 10;
 }
+
 @media (max-width: 1150px) {
   .header nav ul li.header__menu {
     display: flex;
   }
 }
+
 .header nav ul li.header__search {
   margin-left: auto;
   position: relative;
   display: flex;
   align-items: center;
 }
+
 .header nav ul li.header__search input {
   order: 1;
   margin-right: 0.5rem;
@@ -604,11 +684,13 @@ body {
   font-size: 1.6rem;
   transition: all 0.3s ease;
 }
+
 .header nav ul li.header__search input:focus {
   color: white;
   outline: none;
   border: 1px solid rgba(255, 255, 255, 0.311);
 }
+
 .header nav ul li.header__search a {
   order: 2;
   font-size: 2rem;
@@ -618,28 +700,45 @@ body {
   transform: none;
   cursor: pointer;
 }
+
 .header nav ul li.header__search a i {
   transform: translateY(-1rem);
 }
+
 .header nav ul li.header__search:hover input {
   background-color: rgba(1, 2, 5, 0.7);
 }
+
 .header nav ul li.header__search:hover * {
   color: white;
 }
-.header nav ul li a, .header nav ul li:visited {
+
+.header nav ul li a,
+.header nav ul li:visited {
   text-decoration: none;
   color: #c72378;
   font-size: 1.6rem;
 }
-.header nav ul.topbar li.header__quran, .header nav ul.topbar li.header__hadith, .header nav ul.topbar li.header__tafsir, .header nav ul.topbar li.header__about, .header nav ul.topbar li.header__bookmarks {
+
+.header nav ul.topbar li.header__quran,
+.header nav ul.topbar li.header__hadith,
+.header nav ul.topbar li.header__tafsir,
+.header nav ul.topbar li.header__about,
+.header nav ul.topbar li.header__bookmarks {
   transform: translateX(15rem);
 }
+
 @media (max-width: 1150px) {
-  .header nav ul.topbar li.header__quran, .header nav ul.topbar li.header__hadith, .header nav ul.topbar li.header__tafsir, .header nav ul.topbar li.header__about, .header nav ul.topbar li.header__bookmarks {
+
+  .header nav ul.topbar li.header__quran,
+  .header nav ul.topbar li.header__hadith,
+  .header nav ul.topbar li.header__tafsir,
+  .header nav ul.topbar li.header__about,
+  .header nav ul.topbar li.header__bookmarks {
     display: none;
   }
 }
+
 .header nav ul.Menusidebar {
   position: fixed;
   top: 0;
@@ -656,37 +755,45 @@ body {
   padding-top: 4rem;
   z-index: 5;
   -webkit-backdrop-filter: blur(15px);
-          backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
 }
+
 .header nav ul.Menusidebar li {
   transform: translateX(5rem);
   margin-right: 0;
   width: 100%;
   z-index: 10;
 }
+
 .header nav ul.Menusidebar li:hover {
   text-shadow: 0.4rem 0.4rem 2rem rgba(255, 255, 255, 0.452);
 }
+
 .header nav ul.Menusidebar li a i {
   left: -15%;
 }
+
 .header nav ul.Menusidebar.open {
   display: flex;
 }
+
 @media (min-width: 1150px) {
   .header nav ul.Menusidebar.open {
     display: none;
   }
 }
+
 @media (max-width: 400px) {
   .header nav ul.Menusidebar.open {
     width: 107vw;
     padding-left: 5rem;
   }
+
   .header nav ul.Menusidebar.open li a {
     font-size: 5rem;
     margin-left: 5rem;
   }
+
   .header nav ul.Menusidebar.open li a i {
     left: -10%;
     font-size: 5rem;
@@ -701,37 +808,46 @@ body {
   width: 100%;
   align-self: end;
 }
+
 .footer__content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
 }
+
 .footer__section {
   margin-bottom: 1.5rem;
 }
+
 .footer__section h2 {
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
+
 .footer__section p,
 .footer__section ul {
   font-size: 1rem;
   margin: 0;
 }
+
 .footer__section ul {
   list-style-type: none;
   padding: 0;
 }
+
 .footer__section ul li {
   margin-bottom: 0.5rem;
 }
+
 .footer__section ul li a {
   color: #fff;
   text-decoration: none;
 }
+
 .footer__section ul li a:hover {
   text-decoration: underline;
 }
+
 .footer__social-icons {
   list-style-type: none;
   padding: 0;
@@ -739,10 +855,12 @@ body {
   justify-content: center;
   gap: 1rem;
 }
+
 .footer__social-icons li a img {
   width: 32px;
   height: 32px;
 }
+
 .footer__bottom {
   margin-top: 2rem;
   font-size: 0.875rem;
@@ -763,9 +881,11 @@ body {
   height: 88.5vh;
   max-width: 20vw;
 }
+
 .Lsidebar h1 {
   font-size: 4rem;
 }
+
 .Lsidebar ul {
   list-style-type: none;
   display: flex;
@@ -776,19 +896,23 @@ body {
   gap: 0.5em;
   flex-wrap: nowrap;
 }
+
 .Lsidebar ul li {
   width: 100%;
   list-style-type: none;
 }
+
 .Lsidebar ul li a {
   position: relative;
   text-decoration: none;
 }
+
 .Lsidebar p {
   text-align: center;
   font-size: 1.5rem;
   color: rgba(176, 179, 192, 0.5411764706);
 }
+
 @media screen and (max-width: 1200px) {
   .Lsidebar {
     max-height: 7vh;
@@ -799,15 +923,18 @@ body {
     padding: 0.5rem;
     overflow-y: hidden;
   }
+
   .Lsidebar .Sidebar__title {
     width: 10rem;
     margin-right: 2rem;
   }
+
   .Lsidebar h1 {
     font-size: 2.4rem;
     padding: 0.5rem;
     width: 100%;
   }
+
   .Lsidebar ul {
     flex-direction: row;
     max-height: 7vh;
@@ -816,6 +943,7 @@ body {
     gap: 5rem;
     overflow-y: hidden;
   }
+
   .Lsidebar ul li a {
     padding: 0.5rem;
     font-size: 2rem;
@@ -826,29 +954,35 @@ body {
     justify-content: center;
     text-decoration: none;
   }
+
   .Lsidebar p {
     display: none;
   }
 }
+
 @media screen and (max-width: 1000px) {
   .Lsidebar h1 {
     font-size: 2rem;
   }
+
   .Lsidebar ul {
     justify-content: start;
   }
+
   .Lsidebar ul li a {
     font-size: 1.5rem;
     width: 15rem;
     text-decoration: none;
   }
 }
+
 .Lsidebar.active {
   display: flex;
   justify-content: start;
   align-content: center;
   gap: 1rem;
 }
+
 .Lsidebar .search {
   display: flex;
   position: relative;
@@ -856,6 +990,7 @@ body {
   justify-content: center;
   flex-grow: 0;
 }
+
 .Lsidebar .search input {
   width: 20rem;
   padding: 1rem;
@@ -867,16 +1002,19 @@ body {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
 @media screen and (max-width: 1000px) {
   .Lsidebar .search input {
     width: 15rem;
     font-size: 1.2rem;
   }
 }
+
 .Lsidebar .search input:focus {
   outline: none;
   color: #c72378;
 }
+
 .Lsidebar .search i {
   position: absolute;
   font-size: 2rem;
@@ -886,6 +1024,7 @@ body {
   z-index: 99;
   cursor: pointer;
 }
+
 @media screen and (max-width: 1200px) {
   .Lsidebar {
     grid-row: 1/2;
@@ -896,6 +1035,7 @@ body {
   .mainReading_Hadith .Lsidebar ul a {
     font-size: 1.5rem;
   }
+
   .mainReading_Hadith .hadith {
     height: 90vh;
   }
@@ -914,9 +1054,11 @@ body {
   height: 88.5vh;
   max-width: 20vw;
 }
+
 .Rsidebar h1 {
   font-size: 4rem;
 }
+
 .Rsidebar ul {
   list-style-type: none;
   display: flex;
@@ -927,19 +1069,23 @@ body {
   gap: 0.5em;
   flex-wrap: nowrap;
 }
+
 .Rsidebar ul li {
   width: 100%;
   list-style-type: none;
 }
+
 .Rsidebar ul li a {
   position: relative;
   text-decoration: none;
 }
+
 .Rsidebar p {
   text-align: center;
   font-size: 1.5rem;
   color: rgba(176, 179, 192, 0.5411764706);
 }
+
 @media screen and (max-width: 1200px) {
   .Rsidebar {
     max-height: 7vh;
@@ -950,15 +1096,18 @@ body {
     padding: 0.5rem;
     overflow-y: hidden;
   }
+
   .Rsidebar .Sidebar__title {
     width: 10rem;
     margin-right: 2rem;
   }
+
   .Rsidebar h1 {
     font-size: 2.4rem;
     padding: 0.5rem;
     width: 100%;
   }
+
   .Rsidebar ul {
     flex-direction: row;
     max-height: 7vh;
@@ -967,6 +1116,7 @@ body {
     gap: 5rem;
     overflow-y: hidden;
   }
+
   .Rsidebar ul li a {
     padding: 0.5rem;
     font-size: 2rem;
@@ -977,29 +1127,35 @@ body {
     justify-content: center;
     text-decoration: none;
   }
+
   .Rsidebar p {
     display: none;
   }
 }
+
 @media screen and (max-width: 1000px) {
   .Rsidebar h1 {
     font-size: 2rem;
   }
+
   .Rsidebar ul {
     justify-content: start;
   }
+
   .Rsidebar ul li a {
     font-size: 1.5rem;
     width: 15rem;
     text-decoration: none;
   }
 }
+
 .Rsidebar.active {
   display: flex;
   justify-content: start;
   align-content: center;
   gap: 1rem;
 }
+
 .Rsidebar .search {
   display: flex;
   position: relative;
@@ -1007,6 +1163,7 @@ body {
   justify-content: center;
   flex-grow: 0;
 }
+
 .Rsidebar .search input {
   width: 20rem;
   padding: 1rem;
@@ -1018,16 +1175,19 @@ body {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
 @media screen and (max-width: 1000px) {
   .Rsidebar .search input {
     width: 15rem;
     font-size: 1.2rem;
   }
 }
+
 .Rsidebar .search input:focus {
   outline: none;
   color: #c72378;
 }
+
 .Rsidebar .search i {
   position: absolute;
   font-size: 2rem;
@@ -1037,6 +1197,7 @@ body {
   z-index: 99;
   cursor: pointer;
 }
+
 @media screen and (max-width: 1200px) {
   .Rsidebar {
     grid-row: 2/3;
@@ -1059,11 +1220,13 @@ body {
   width: 100%;
   overflow-y: auto;
 }
+
 .hadith .active,
 .quran .active,
 .tafsir .active {
   width: 70vw;
 }
+
 .hadith .toggle,
 .quran .toggle,
 .tafsir .toggle {
@@ -1081,7 +1244,7 @@ body {
   right: 45%;
   opacity: 0.5;
   -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   background-color: rgba(176, 179, 192, 0.5);
 }
 
@@ -1101,16 +1264,19 @@ body {
   font-size: 8rem;
   margin: 3rem 0rem;
 }
+
 .hadith h1.selected,
 .hadith p h1.selected {
   color: rgb(98, 98, 205);
 }
+
 .hadith p {
   font-family: "amiri", serif;
   font-weight: 400;
   border: 3px solid rgba(0, 0, 0, 0.1);
   padding: 5rem;
 }
+
 .hadith h2,
 .hadith p h2 {
   font-family: "Divider", serif;
@@ -1118,10 +1284,12 @@ body {
   font-weight: 400;
   margin: 1.5rem 0rem;
 }
+
 .hadith h2.selected,
 .hadith p h2.selected {
   color: rgb(98, 98, 205);
 }
+
 .hadith .grades p {
   color: #81838d;
   border: none;
@@ -1133,10 +1301,12 @@ body {
   font-family: "Uthmanic", "amiri", serif;
   font-weight: 400;
 }
+
 .quran p .padds,
 .quran span .padds {
   padding: 1.5rem;
 }
+
 .quran h1 {
   font-family: "Surah", serif;
   font-weight: 100;
@@ -1145,21 +1315,26 @@ body {
   color: #c72378;
   -webkit-text-stroke: 1px #0D142C;
 }
+
 .quran h2 {
   font-weight: 400;
   font-size: 8rem;
   margin: 3.5rem 0rem;
 }
+
 .quran h2.quran__istieadha {
   font-family: "Istieadha", serif;
 }
+
 .quran h2.quran__basmallah {
   font-family: "Basmallah", serif;
 }
+
 .quran .quran__verse .selected,
 .quran span .selected {
   color: rgb(98, 98, 205);
 }
+
 .quran .selected {
   color: rgb(98, 98, 205);
 }
@@ -1172,22 +1347,27 @@ body {
   color: #c72378;
   -webkit-text-stroke: 1px #0D142C;
 }
+
 .tafsir h2 {
   font-weight: 400;
   margin: 1.5rem 0rem;
 }
+
 .tafsir h2.quran__istieadha {
   font-family: "Istieadha", serif;
 }
+
 .tafsir h2.quran__basmallah {
   font-family: "Basmallah", serif;
 }
+
 .tafsir p {
   font-family: "Uthmanic", "amiri", serif;
   font-weight: 400;
   margin: 1.5rem 0rem;
   text-align: end;
 }
+
 .tafsir p.explanation {
   border: 3px solid rgba(0, 0, 0, 0.1);
   font-size: 3rem;
@@ -1196,6 +1376,7 @@ body {
   color: rgba(0, 0, 0, 0.6);
   font-family: "amiri", serif;
 }
+
 .tafsir p.seperator {
   font-family: "Divider", serif;
   font-size: 5rem;
@@ -1204,21 +1385,26 @@ body {
   font-weight: 400;
   margin: 0rem 0rem;
 }
+
 .tafsir p.quran__verse {
   border: 3px solid rgba(0, 0, 0, 0.5);
   padding: 2rem;
 }
+
 .tafsir p.selected {
   color: rgb(98, 98, 205);
 }
 
 @media screen and (max-width: 1200px) {
+
   .hadith h1,
   .tafsir h1 {
     font-size: 12rem;
   }
 }
+
 @media screen and (max-width: 1200px) {
+
   .mainReading_Quran,
   .mainReading_Tafsir,
   .mainReading_Hadith {
@@ -1230,12 +1416,14 @@ body {
     align-items: center;
     justify-content: center;
   }
+
   .mainReading_Quran.active,
   .mainReading_Tafsir.active,
   .mainReading_Hadith.active {
     grid-template-columns: 1fr;
     grid-template-rows: 7vh 7vh 1fr;
   }
+
   .mainReading_Quran.active .tafsir,
   .mainReading_Quran.active .quran,
   .mainReading_Quran.active .hadith,
@@ -1247,10 +1435,12 @@ body {
   .mainReading_Hadith.active .hadith {
     height: 72vh;
   }
+
   .Lsidebar,
   .Rsidebar {
     flex-direction: row;
   }
+
   .tafsir,
   .quran,
   .hadith {
@@ -1259,34 +1449,40 @@ body {
     grid-row: 1/4;
     margin-bottom: 2rem;
   }
+
   .tafsir h1,
   .quran h1,
   .hadith h1 {
     font-size: 20rem;
   }
+
   .tafsir h2,
   .quran h2,
   .hadith h2 {
     font-size: 10rem;
   }
+
   .tafsir p.verse,
   .quran p.verse,
   .hadith p.verse {
     font-size: 3rem;
     padding: 1rem;
   }
+
   .tafsir p.explanation,
   .quran p.explanation,
   .hadith p.explanation {
     font-size: 2.5rem;
     padding: 1rem;
   }
+
   .tafsir p.seperator,
   .quran p.seperator,
   .hadith p.seperator {
     font-size: 3rem;
     padding: 1rem;
   }
+
   .tafsir.active,
   .quran.active,
   .hadith.active {
@@ -1294,13 +1490,16 @@ body {
     height: 72vh;
     width: 97;
   }
+
   .hadith h1 {
     font-size: 7rem;
   }
+
   .quran__page--number {
     bottom: 2.7%;
   }
 }
+
 .alert {
   position: fixed;
   top: 0;
@@ -1316,9 +1515,11 @@ body {
   padding: 1.6rem 15rem;
   box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
 }
+
 .alert--success {
   background-color: #c72378;
 }
+
 .alert--error {
   background-color: #f53b57;
 }
@@ -1348,16 +1549,19 @@ body {
   padding: 2rem;
   z-index: 1;
 }
+
 .Login h1 {
   font-size: 10rem;
   margin-bottom: 2rem;
   text-shadow: 0 0 1rem rgba(0, 0, 0, 0.8);
 }
+
 .Login img {
   width: 10rem;
   height: 10rem;
   border-radius: 100rem;
 }
+
 .Login form {
   background-color: #24387b;
   padding: 4rem 6rem;
@@ -1366,9 +1570,11 @@ body {
   width: -moz-max-content;
   width: max-content;
 }
+
 .Login form div {
   margin-bottom: 2rem;
 }
+
 .Login form div label {
   display: block;
   margin-bottom: 1rem;
@@ -1377,6 +1583,7 @@ body {
   font-weight: 700;
   text-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
 }
+
 .Login form div input[type=email],
 .Login form div input[type=password] {
   width: 100%;
@@ -1386,23 +1593,28 @@ body {
   border-radius: 0.5rem;
   color: #9c1b5e;
 }
+
 .Login form div input[type=email]:focus,
 .Login form div input[type=password]:focus {
   outline: none;
   border-color: #c72378;
 }
+
 .Login form div input[type=email]:invalid,
 .Login form div input[type=password]:invalid {
   border-color: #c72378;
   box-shadow: 0 0 15px #c72378;
   border-width: 2px;
 }
-.Login form div input[type=email]:valid:not(:-moz-placeholder-shown), .Login form div input[type=password]:valid:not(:-moz-placeholder-shown) {
+
+.Login form div input[type=email]:valid:not(:-moz-placeholder-shown),
+.Login form div input[type=password]:valid:not(:-moz-placeholder-shown) {
   border-width: 2px;
   border-color: green;
   box-shadow: 0 0 5px green;
   color: rgb(2, 100, 2);
 }
+
 .Login form div input[type=email]:valid:not(:placeholder-shown),
 .Login form div input[type=password]:valid:not(:placeholder-shown) {
   border-width: 2px;
@@ -1410,6 +1622,7 @@ body {
   box-shadow: 0 0 5px green;
   color: rgb(2, 100, 2);
 }
+
 .Login form div input[type=submit] {
   width: 100%;
   padding: 1.5rem 2rem;
@@ -1420,21 +1633,25 @@ body {
   border-radius: 0.5rem;
   cursor: pointer;
 }
+
 .Login form div input[type=submit]:hover {
   background-color: #070b18;
   scale: 1.1;
   transition: all 0.2s;
   box-shadow: 0 0 15px rgba(1, 2, 5, 0.4);
 }
+
 .Login form div input[type=submit]:active {
   background-color: #364167;
   scale: 0.95;
   transition: all 0.2s;
   box-shadow: 0 0 15px rgba(1, 2, 5, 0.4);
 }
+
 .Login form div.password-container {
   margin-bottom: 5rem;
 }
+
 @media screen and (max-width: 500px) {
   .Login h1 {
     font-size: 8rem;
@@ -1450,16 +1667,20 @@ body {
   z-index: -1;
   translate: 0 -3rem;
 }
+
 .lower a {
   color: #9c1b5e;
   text-decoration: none;
 }
+
 .lower a:hover {
   color: #c72378;
 }
+
 .lower a:active {
   color: #701444;
 }
+
 @media screen and (max-width: 630px) {
   .lower {
     font-size: 1.8rem;
@@ -1480,16 +1701,19 @@ main .books {
   padding: 2rem;
   font-size: 3rem;
 }
+
 @media (max-width: 1000px) {
   main .books {
     grid-template-columns: repeat(3, minmax(14rem, 1fr));
   }
 }
+
 @media (max-width: 800px) {
   main .books {
     grid-template-columns: repeat(2, minmax(14rem, 1fr));
   }
 }
+
 @media (max-width: 400px) {
   main .books {
     grid-template-columns: repeat(1, minmax(14rem, 1fr));
@@ -1501,6 +1725,7 @@ body {
   grid-template-rows: max(min-content, 5vh), max(min-content, 70%), max(min-content, 25%);
   margin-bottom: 0;
 }
+
 body main {
   display: grid;
   grid-template-rows: minmax(30vh, min-content) repeat(2, min-content);
@@ -1510,6 +1735,7 @@ body main {
   row-gap: 2rem;
   padding: 2rem;
 }
+
 body main .title {
   grid-column: center-start/center-end;
   padding: 1rem 3rem;
@@ -1521,6 +1747,7 @@ body main .title {
   align-items: center;
   justify-content: center;
 }
+
 body main .cuts {
   grid-column: center-start/center-end;
   display: flex;
@@ -1531,6 +1758,7 @@ body main .cuts {
   border: 5px solid rgba(1, 2, 5, 0.9);
   gap: 2rem;
 }
+
 body main .cards {
   grid-column: span 12;
   display: grid;
@@ -1545,16 +1773,19 @@ body main .cards {
   padding: 2rem;
   font-size: 3rem;
 }
+
 @media (max-width: 1200px) {
   body main .cards {
     grid-template-columns: repeat(3, minmax(14rem, 1fr));
   }
 }
+
 @media (max-width: 900px) {
   body main .cards {
     grid-template-columns: repeat(2, minmax(14rem, 1fr));
   }
 }
+
 @media (max-width: 600px) {
   body main .cards {
     grid-template-columns: repeat(1, minmax(14rem, 1fr));
@@ -1565,7 +1796,7 @@ body main .cards {
 .mainReading_Tafsir,
 .mainReading_Hadith {
   -moz-column-gap: 1%;
-       column-gap: 1%;
+  column-gap: 1%;
   display: grid;
   width: 100vw;
   height: 100vh;
@@ -1573,12 +1804,15 @@ body main .cards {
   align-items: start;
   margin: 0;
 }
+
 .mainReading_Quran.active,
 .mainReading_Tafsir.active,
 .mainReading_Hadith.active {
   grid-template-columns: min-content 1fr min-content;
 }
+
 @media screen and (max-width: 1200px) {
+
   .mainReading_Quran.active,
   .mainReading_Tafsir.active,
   .mainReading_Hadith.active {
@@ -1608,17 +1842,21 @@ body main .cards {
   box-sizing: border-box;
   max-width: 80vw;
 }
+
 .error__message h1 {
   font-size: 12rem;
   margin-bottom: 1rem;
 }
+
 .error__message p {
   font-size: 4rem;
 }
+
 @media screen and (max-width: 1500px) {
   .error__message h1 {
     font-size: 8rem;
   }
+
   .error__message p {
     font-size: 2rem;
   }
@@ -1639,6 +1877,7 @@ body main .cards {
   gap: 20px;
   box-shadow: 0 0 15rem rgba(0, 0, 0, 0.7);
 }
+
 .user h2 {
   text-align: center;
   color: #c72378;
@@ -1646,29 +1885,48 @@ body main .cards {
   font-size: 8rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
 .user form {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2.5rem;
 }
-.user form .user__info--photo, .user form .user__info--username, .user form .user__info--email, .user form .user__info--bookmarks, .user form .user__info--password, .user form .user__info--confirm_password {
+
+.user form .user__info--photo,
+.user form .user__info--username,
+.user form .user__info--email,
+.user form .user__info--bookmarks,
+.user form .user__info--password,
+.user form .user__info--confirm_password {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 }
-.user form .user__info--photo h3, .user form .user__info--username h3, .user form .user__info--email h3, .user form .user__info--bookmarks h3, .user form .user__info--password h3, .user form .user__info--confirm_password h3 {
+
+.user form .user__info--photo h3,
+.user form .user__info--username h3,
+.user form .user__info--email h3,
+.user form .user__info--bookmarks h3,
+.user form .user__info--password h3,
+.user form .user__info--confirm_password h3 {
   font-size: 2.5rem;
   color: #9299b4;
   margin-bottom: 5px;
 }
+
 .user form .user__info--photo input,
-.user form .user__info--photo select, .user form .user__info--username input,
-.user form .user__info--username select, .user form .user__info--email input,
-.user form .user__info--email select, .user form .user__info--bookmarks input,
-.user form .user__info--bookmarks select, .user form .user__info--password input,
-.user form .user__info--password select, .user form .user__info--confirm_password input,
+.user form .user__info--photo select,
+.user form .user__info--username input,
+.user form .user__info--username select,
+.user form .user__info--email input,
+.user form .user__info--email select,
+.user form .user__info--bookmarks input,
+.user form .user__info--bookmarks select,
+.user form .user__info--password input,
+.user form .user__info--password select,
+.user form .user__info--confirm_password input,
 .user form .user__info--confirm_password select {
   padding: 10px;
   font-size: 14px;
@@ -1681,50 +1939,87 @@ body main .cards {
   color: #737ca0;
   margin-bottom: 3rem;
 }
+
 .user form .user__info--photo input #photoInput,
-.user form .user__info--photo select #photoInput, .user form .user__info--username input #photoInput,
-.user form .user__info--username select #photoInput, .user form .user__info--email input #photoInput,
-.user form .user__info--email select #photoInput, .user form .user__info--bookmarks input #photoInput,
-.user form .user__info--bookmarks select #photoInput, .user form .user__info--password input #photoInput,
-.user form .user__info--password select #photoInput, .user form .user__info--confirm_password input #photoInput,
+.user form .user__info--photo select #photoInput,
+.user form .user__info--username input #photoInput,
+.user form .user__info--username select #photoInput,
+.user form .user__info--email input #photoInput,
+.user form .user__info--email select #photoInput,
+.user form .user__info--bookmarks input #photoInput,
+.user form .user__info--bookmarks select #photoInput,
+.user form .user__info--password input #photoInput,
+.user form .user__info--password select #photoInput,
+.user form .user__info--confirm_password input #photoInput,
 .user form .user__info--confirm_password select #photoInput {
   display: none;
 }
+
 .user form .user__info--photo input:focus,
-.user form .user__info--photo select:focus, .user form .user__info--username input:focus,
-.user form .user__info--username select:focus, .user form .user__info--email input:focus,
-.user form .user__info--email select:focus, .user form .user__info--bookmarks input:focus,
-.user form .user__info--bookmarks select:focus, .user form .user__info--password input:focus,
-.user form .user__info--password select:focus, .user form .user__info--confirm_password input:focus,
+.user form .user__info--photo select:focus,
+.user form .user__info--username input:focus,
+.user form .user__info--username select:focus,
+.user form .user__info--email input:focus,
+.user form .user__info--email select:focus,
+.user form .user__info--bookmarks input:focus,
+.user form .user__info--bookmarks select:focus,
+.user form .user__info--password input:focus,
+.user form .user__info--password select:focus,
+.user form .user__info--confirm_password input:focus,
 .user form .user__info--confirm_password select:focus {
   border-color: #0D142C;
   outline: none;
 }
-.user form .user__info--photo p, .user form .user__info--username p, .user form .user__info--email p, .user form .user__info--bookmarks p, .user form .user__info--password p, .user form .user__info--confirm_password p {
+
+.user form .user__info--photo p,
+.user form .user__info--username p,
+.user form .user__info--email p,
+.user form .user__info--bookmarks p,
+.user form .user__info--password p,
+.user form .user__info--confirm_password p {
   color: gray;
   font-size: 12px;
   margin-top: -3rem;
   margin-bottom: 2.5rem;
 }
-.user form .user__info--photo img, .user form .user__info--username img, .user form .user__info--email img, .user form .user__info--bookmarks img, .user form .user__info--password img, .user form .user__info--confirm_password img {
+
+.user form .user__info--photo img,
+.user form .user__info--username img,
+.user form .user__info--email img,
+.user form .user__info--bookmarks img,
+.user form .user__info--password img,
+.user form .user__info--confirm_password img {
   display: block;
   margin-top: 10px;
   margin-bottom: 2rem;
   border-radius: 50%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border: 2px solid #0D142C;
   width: 100px;
   height: 100px;
 }
-.user form .user__info--photo img:hover, .user form .user__info--username img:hover, .user form .user__info--email img:hover, .user form .user__info--bookmarks img:hover, .user form .user__info--password img:hover, .user form .user__info--confirm_password img:hover {
+
+.user form .user__info--photo img:hover,
+.user form .user__info--username img:hover,
+.user form .user__info--email img:hover,
+.user form .user__info--bookmarks img:hover,
+.user form .user__info--password img:hover,
+.user form .user__info--confirm_password img:hover {
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   scale: 1.1;
 }
-.user form .user__info--photo input[type=file], .user form .user__info--username input[type=file], .user form .user__info--email input[type=file], .user form .user__info--bookmarks input[type=file], .user form .user__info--password input[type=file], .user form .user__info--confirm_password input[type=file] {
+
+.user form .user__info--photo input[type=file],
+.user form .user__info--username input[type=file],
+.user form .user__info--email input[type=file],
+.user form .user__info--bookmarks input[type=file],
+.user form .user__info--password input[type=file],
+.user form .user__info--confirm_password input[type=file] {
   padding: 0;
 }
+
 .user form .user__info .buttonlike {
   grid-column: span 2;
   display: inline-block;
@@ -1741,37 +2036,45 @@ body main .cards {
   margin-bottom: 2rem;
   transition: all 0.15s ease;
 }
+
 .user form .user__info .buttonlike:hover {
   background-color: #010205;
   scale: 1.1;
 }
+
 .user form .user__info .buttonlike:active {
   background-color: #020e37;
   scale: 0.95;
 }
+
 .user form .user__info .buttonlike.logout {
   background-color: #b4626a;
   color: white;
 }
+
 .user form .user__info .buttonlike.logout:hover {
   background-color: #9a4951;
   scale: 1.1;
 }
+
 .user form .user__info .buttonlike.logout:active {
   background-color: #cb4b57;
   scale: 0.95;
 }
+
 .user form hr {
   margin: 20px 0;
   border: 0;
   border-top: 1px solid #9299b4;
   grid-column: span 2;
 }
+
 .user form h4 {
   font-size: 18px;
   color: #0D142C;
   grid-column: span 2;
 }
+
 .user form a {
   grid-column: span 2;
   display: inline-block;
@@ -1782,14 +2085,19 @@ body main .cards {
   background-color: #f2f2f2;
   transition: background-color 0.3s ease;
 }
+
 .user form a:hover {
   background-color: #edeef2;
 }
+
 @media screen and (max-width: 800px) {
   .user {
     padding: 5rem 6rem;
   }
+
   .user h2 {
     font-size: 6rem;
   }
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*# sourceMappingURL=main.css.map */

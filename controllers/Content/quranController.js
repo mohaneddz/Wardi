@@ -182,6 +182,7 @@ export const getJuzView = catchAsync(async (req, res, next) => {
 });
 
 // For the Quran Page View --------------------------------------------
+
 export const getPageView = catchAsync(async (req, res, next) => {
 	const user = req.user;
 

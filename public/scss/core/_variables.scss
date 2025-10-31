@@ -23,6 +23,7 @@ $error-dark: darken($error, 10%);
 $success: #5cb85c;
 $sucess-saturated: saturate($success, 20%);
 $success-dark: darken($success, 10%);
+$active-color: darken($primary-color, 15%);
 
 // Typography //////////////////////////
 $font-family-base: 'Roboto', sans-serif;
@@ -85,5 +86,5 @@ $transition-slow: 0.5s ease-in-out;
 $input-bg: $primary-color-lighter;
 $border-radius: 8px;
 $hover-color: darken($primary-color, 10%);
-$acrive-color: saturate($primary-color, 40%);
+$archive-color: saturate($primary-color, 40%);
 $font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
