@@ -1,3 +1,5 @@
+![Wardi](screenshots/cover.avif)
+
 <h1 style="font-family: Arial, sans-serif; font-size: 36px; color: #4A90E2; display: flex; align-items: center; border-bottom: 3px solid #4A90E2; padding-bottom: 5px;">
     <img src="public/img/favicon.ico" alt="Wardi Icon" style="width: 50px; height: 50px; margin-right: 15px;">
     Welcome to Wardi! 🌟
