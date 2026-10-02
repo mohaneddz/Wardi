@@ -3,66 +3,70 @@ footer.footer
     .footer__section.footer__section--about
       h2 About وردي
       p Wardi is your daily source of spiritual nourishment, offering Quranic readings, Hadith, and Tafsir. Join us on the path of enlightenment.
-      
+
     .footer__section.footer__section--links
       h2 Quick Links
       ul
-        li 
+        li
           a(href='/')
             i(class='fi fi-rr-home')
-            |      Home
-        li 
+            span Home
+        li
           a(href='/quran')
             i(class='fi fi-rs-book-quran')
-            |      Quran
-        li 
+            span Quran
+        li
           a(href='/hadith')
             i(class='fi fi-rs-books')
-            |      Hadith
-        li 
+            span Hadith
+        li
           a(href='/tafsir')
             i(class='fi fi-rs-book-open-cover')
-            |      Tafsir
-      
+            span Tafsir
+        li
+          a(href='/about')
+            i(class='fi fi-rs-info')
+            span About
+
     .footer__section.footer__section--contact
-
       h2 Contact Us
-
-      a(href='https://github.com/mohaneddz/Wardi' target='_blank')
-        i(class='fi fi-sr-location')
-        | Official Repository ( Leave us a star ⭐ )
-
-      a(href='mailto:mohaned.manaa.dev@gmail.com')
-        i(class='fi fi-sr-mail')
-          | mohaned.manaa.dev@gmail.com
-
-      a(href='https://www.google.com/maps/search/?api=1&query=Algeria,Constantine,25000' target='_blank')
-        i(class='fi fi-sr-location')
-        | Algeria, Constantine 25000
+      ul
+        li
+          a(href='https://github.com/mohaneddz/Wardi' target='_blank' rel='noopener')
+            i(class='fi fi-brands-github')
+            span Star us on GitHub
+        li
+          a(href='mailto:mohaned.manaa.dev@gmail.com')
+            i(class='fi fi-sr-envelope')
+            span mohaned.manaa.dev@gmail.com
+        li
+          a(href='https://www.google.com/maps/search/?api=1&query=Algeria,Constantine,25000' target='_blank' rel='noopener')
+            i(class='fi fi-sr-marker')
+            span Constantine, Algeria 25000
 
     .footer__section.footer__section--social
       h2 Follow Us
       ul.footer__social-icons
-        li 
-          a(href='https://github.com/mohaneddz') 
+        li
+          a(href='https://github.com/mohaneddz' target='_blank' rel='noopener')
             i(class='fi fi-brands-github')
-              |      Github
-        li 
-          a(href='https://www.linkedin.com/in/mohaned-manaa-491483295/')
+            span GitHub
+        li
+          a(href='https://www.linkedin.com/in/mohaned-manaa-491483295/' target='_blank' rel='noopener')
             i(class='fi fi-brands-linkedin')
-              |      LinkedIn
+            span LinkedIn
         li
-          a(href='https://www.instagram.com/mohaned.himself/') 
+          a(href='https://www.instagram.com/mohaned.himself/' target='_blank' rel='noopener')
             i(class='fi fi-brands-instagram')
-              |      Instagram
-        li 
-          a(href='https://www.facebook.com/profile.php?id=61558410783901')
-            i(class='fi fi-brands-facebook')
-              |      Facebook
+            span Instagram
         li
-          a(href='https://x.com/DzMohaned') 
+          a(href='https://www.facebook.com/profile.php?id=61558410783901' target='_blank' rel='noopener')
+            i(class='fi fi-brands-facebook')
+            span Facebook
+        li
+          a(href='https://x.com/DzMohaned' target='_blank' rel='noopener')
             i(class='fi fi-brands-twitter-alt-circle')
-              |      Twitter
-  
+            span Twitter
+
   .footer__bottom
-    p &copy; 2024 وردى. All Rights Reserved.
+    p &copy; #{new Date().getFullYear()} وردي. All Rights Reserved.

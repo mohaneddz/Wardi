@@ -1,127 +1,114 @@
+// NOTE: rem here is 10px (html { font-size: 62.5% }), so 1.5rem = 15px.
+
 .footer {
-	background-color: rgba($primary-color-dark, 0.7);
-	color: #fff;
-	padding: 2rem;
-	text-align: center;
+	background-color: rgba($primary-color-dark, 0.85);
+	border-top: 1px solid rgba($secondary-color, 0.15);
+	color: $secondary-color-light;
+	font-family: $font-stack;
+	padding: 5rem 4rem 2rem;
 	width: 100%;
 	align-self: end;
 
 	&__content {
 		display: grid;
-		grid-template-columns: repeat(4, minmax(200px, 1fr));
-		gap: 2rem;
+		grid-template-columns: 1.6fr 1fr 1.4fr 1fr; // wider About + Contact columns
+		gap: 4rem 5rem;
+		max-width: 120rem;
+		margin: 0 auto;
 	}
 
 	&__section {
-		margin-bottom: 1.5rem;
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
-		h2 {
-			margin-bottom: 1rem;
-			font-size: 4rem;
-			color: $secondary-color-dark;
-		}
-		a {
-			color: #fff;
-			text-decoration: none;
-			font-size: 2rem;
+		align-items: flex-start; // every column hugs the left edge
+		gap: 1.6rem;
+		text-align: left;
 
-			&:hover {
-				text-decoration: underline;
-			}
+		// Headings: serif (Amiri, same as the app), one size, one color
+		h2 {
+			font-family: 'amiri', serif;
+			font-size: 2.4rem;
+			font-weight: 700;
+			line-height: 1.2;
+			color: #fff;
+			padding-bottom: 0.8rem;
+			border-bottom: 2px solid $tertiary-color; // small accent underline
 		}
+
+		// Sub text: small, muted, comfortable line height
 		p,
-		ul {
-			font-size: 2rem;
+		a {
+			font-size: 1.4rem;
+			line-height: 1.7;
+			color: $secondary-color;
+		}
+
+		p {
+			max-width: 34ch;
 			margin: 0;
 		}
+
 		ul {
-			list-style-type: none;
-			text-align: start;
-			align-items: start;
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			margin: 0;
 			padding: 0;
-			li {
-				padding-left: 35%;
-				margin-bottom: 0.5rem;
-
-				a {
-					color: #fff;
-					text-decoration: none;
-
-					&:hover {
-						text-decoration: underline;
-					}
-				}
-			}
 		}
-		&.footer__section--about {
-			p {
-				padding: 1rem 3rem;
-			}
-		}
-		&.footer__section--links {
-			ul {
-				display: flex;
-				flex-direction: column;
-				gap: 1.5rem;
-			}
-		}
-	}
 
-	&__social-icons {
-		list-style-type: none;
-		padding: 0;
-		display: flex;
-		justify-content: center;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 1rem;
-		li a i {
-			margin-right: 1rem;
-			width: 32px;
-			height: 32px;
+		li {
+			margin: 0;
+			padding: 0;
+		}
+
+		a {
+			display: inline-flex;
+			align-items: center;
+			gap: 1rem;
+			text-decoration: none;
+			transition: color $transition-base, transform $transition-base;
+
+			i {
+				display: inline-flex; // icons sit in a fixed column so text lines up
+				justify-content: center;
+				width: 2rem;
+				font-size: 1.6rem;
+				color: $tertiary-color-light;
+			}
+
+			&:hover {
+				color: #fff;
+				transform: translateX(0.3rem);
+			}
 		}
 	}
 
 	&__bottom {
-		margin-top: 2rem;
-		font-size: 0.875rem;
-		border-top: 1px solid #444;
-		padding-top: 4rem;
+		max-width: 120rem;
+		margin: 4rem auto 0;
+		padding-top: 2rem;
+		border-top: 1px solid rgba($secondary-color, 0.15);
+		text-align: center;
+
+		p {
+			font-size: 1.3rem;
+			color: rgba($secondary-color, 0.7);
+		}
 	}
 
 	@media screen and (max-width: 900px) {
+		padding: 4rem 2.5rem 2rem;
+
 		&__content {
-			grid-template-columns: repeat(2, minmax(200px, 1fr));
-			gap: 2rem;
-		}
-		&__content,
-		&__section,
-		&__social-icons,
-		&__bottom {
-			gap: 1rem;
-			p {
-				font-size: 1.5rem;
-			}
-			h2 {
-				font-size: 2rem;
-			}
-			a {
-				font-size: 1.5rem;
-			}
+			grid-template-columns: repeat(2, 1fr);
+			gap: 3.5rem 3rem;
 		}
 	}
-	@media screen and (max-width: 400px) {
-		&__content {
-			grid-template-columns: repeat(1, minmax(200px, 1fr));
-			gap: 2rem;
-			div:not(:last-child)  {
 
-				border-bottom: 1px white solid;
-			}
+	@media screen and (max-width: 500px) {
+		&__content {
+			grid-template-columns: 1fr;
 		}
 	}
 }
